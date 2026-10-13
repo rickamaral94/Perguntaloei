@@ -172,8 +172,10 @@ fun SettingsScreen(vm: AppViewModel) {
                 Spacer(Modifier.height(6.dp))
                 VoicePicker(vm)
                 Spacer(Modifier.height(10.dp))
-                Text("Tom da voz: ${"%.2f".format(s.voicePitch)}", color = Arcade.White, fontSize = 17.sp)
-                Slider(value = s.voicePitch, onValueChange = { v -> vm.setVoicePitch((v * 20).toInt() / 20f) }, valueRange = 0.8f..1.2f, colors = sliderColors())
+                if (!vm.usingNeuralVoice) {
+                    Text("Tom da voz: ${"%.2f".format(s.voicePitch)}", color = Arcade.White, fontSize = 17.sp)
+                    Slider(value = s.voicePitch, onValueChange = { v -> vm.setVoicePitch((v * 20).toInt() / 20f) }, valueRange = 0.8f..1.2f, colors = sliderColors())
+                }
                 Text("Velocidade da fala: ${"%.1f".format(s.speechRate)}x", color = Arcade.White, fontSize = 17.sp)
                 Slider(value = s.speechRate, onValueChange = { v -> vm.updateSettings { it.copy(speechRate = (v * 10).toInt() / 10f) } }, valueRange = 0.6f..1.4f, colors = sliderColors())
                 SwitchRow("Abrir o microfone sozinho após a leitura", s.autoListen) { v -> vm.updateSettings { it.copy(autoListen = v) } }
@@ -324,11 +326,11 @@ fun Dialogs(vm: AppViewModel) {
 private fun VoicePicker(vm: AppViewModel) {
     val s = vm.settings
     Text(
-        "Para uma voz mais natural, escolha uma voz de \"alta qualidade\" ou \"muito alta\". " +
-            "No Google, instale vozes melhores em: Configurações de voz › Instalar dados de voz › Português (Brasil).",
+        if (vm.usingNeuralVoice) "Usando a voz neural embutida no jogo: natural, em português do Brasil e 100% offline."
+        else "Usando as vozes do sistema. Para a voz mais natural, escolha \"Voz neural do jogo\" abaixo.",
         color = Arcade.Muted, fontSize = 14.sp,
     )
-    if (vm.engineOptions.size > 1) {
+    if (vm.engineOptions.isNotEmpty()) {
         Spacer(Modifier.height(8.dp))
         Text("Mecanismo de voz", color = Arcade.White, fontSize = 17.sp, fontWeight = FontWeight.Bold)
         vm.engineOptions.forEach { e ->
@@ -363,8 +365,9 @@ private fun VoicePicker(vm: AppViewModel) {
     Spacer(Modifier.height(8.dp))
     Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
         ArcadeButton("▶ Ouvir exemplo", { vm.previewVoice() }, Modifier.weight(1f), color = Arcade.Green, fontSize = 15.sp)
-        ArcadeButton("Instalar vozes", { vm.openTtsSettings() }, Modifier.weight(1f), color = Arcade.Cyan, fontSize = 15.sp)
+        if (!vm.usingNeuralVoice) ArcadeButton("Instalar vozes", { vm.openTtsSettings() }, Modifier.weight(1f), color = Arcade.Cyan, fontSize = 15.sp)
     }
+    if (vm.usingNeuralVoice) return
     SwitchRow("Permitir vozes online (mais naturais)", s.allowNetworkVoices) { vm.setAllowNetworkVoices(it) }
     Text(
         "Vozes online enviam ao provedor de voz (ex.: Google) o texto falado, que inclui as perguntas e os nomes dos jogadores. " +

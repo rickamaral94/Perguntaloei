@@ -39,6 +39,8 @@ import br.com.perguntaloei.voice.SpeakResult
 import br.com.perguntaloei.voice.SpeechEvent
 import br.com.perguntaloei.voice.SpeechInput
 import br.com.perguntaloei.voice.TtsStatus
+import br.com.perguntaloei.voice.EngineOption
+import br.com.perguntaloei.voice.NeuralSpeaker
 import br.com.perguntaloei.voice.VoiceDeps
 import br.com.perguntaloei.voice.VoiceHost
 import kotlinx.coroutines.Dispatchers
@@ -49,6 +51,9 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 import java.io.File
 import java.util.UUID
+
+/** Mecanismo "voz padrão do sistema" (usado quando a voz neural não está disponível). */
+const val SYSTEM_VOICE = ""
 
 enum class Screen { HOME, PLAYERS, SETUP, GAME, LOG, RULES, SETTINGS }
 
@@ -97,7 +102,14 @@ sealed interface UiEvent {
 class AppViewModel @JvmOverloads constructor(
     app: Application,
     deps: VoiceDeps = VoiceDeps(
-        speaker = { engine, onStatus -> VoiceHost(app, engine, onStatus) },
+        speaker = { engine, onStatus ->
+            // Padrão: voz neural embutida; "" = voz padrão do sistema; outro valor = mecanismo do sistema.
+            if ((engine == null || engine == NeuralSpeaker.ENGINE_ID) && NeuralSpeaker.isSupported()) {
+                NeuralSpeaker(app, onStatus)
+            } else {
+                VoiceHost(app, engine?.takeIf { it != NeuralSpeaker.ENGINE_ID }?.ifBlank { null }, onStatus)
+            }
+        },
         listener = SpeechInput(app),
         sounds = SoundFx(),
         micPermission = {
@@ -234,12 +246,21 @@ class AppViewModel @JvmOverloads constructor(
     /** Postado na thread principal: o aviso pode chegar antes de o apresentador terminar de ser criado. */
     private fun onTtsStatus(status: TtsStatus) {
         viewModelScope.launch(Dispatchers.Main) {
+            // Voz neural não carregou neste aparelho: volta para a voz do sistema, sem travar o jogo.
+            if (status == TtsStatus.UNAVAILABLE && host.engine == NeuralSpeaker.ENGINE_ID) {
+                host.shutdown()
+                host = speakerFactory(SYSTEM_VOICE) { onTtsStatus(it) }
+                return@launch
+            }
             ttsStatus = status
             if (status == TtsStatus.READY) applyVoice()
-            engineOptions = host.engines()
+            engineOptions = listOf(EngineOption(NeuralSpeaker.ENGINE_ID, "Voz neural do jogo (offline, mais natural)")) +
+                host.engines().filter { it.packageName != NeuralSpeaker.ENGINE_ID }
             currentEngine = host.engine
         }
     }
+
+    val usingNeuralVoice: Boolean get() = currentEngine == NeuralSpeaker.ENGINE_ID
 
     /** Aplica a voz escolhida (ou a mais natural) e atualiza as listas da tela. */
     private fun applyVoice() {
@@ -250,6 +271,10 @@ class AppViewModel @JvmOverloads constructor(
 
     fun chooseEngine(packageName: String) {
         if (packageName == currentEngine) return
+        if (packageName == NeuralSpeaker.ENGINE_ID && !NeuralSpeaker.isSupported()) {
+            dialog = AppDialog.Message("Voz neural", "Este aparelho não é compatível com a voz neural embutida.")
+            return
+        }
         updateSettings { it.copy(ttsEngine = packageName, ttsVoice = null) }
         silenceIO()
         host.shutdown()

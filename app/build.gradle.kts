@@ -16,6 +16,12 @@ android {
         versionCode = 2
         versionName = "1.1.0"
         vectorDrawables { useSupportLibrary = true }
+        // Voz neural: bibliotecas nativas só para celulares ARM (todos os aparelhos Android atuais).
+        ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
+    }
+    androidResources {
+        // O modelo de voz já é binário compacto; não comprimir acelera a leitura.
+        noCompress += "onnx"
     }
 
     buildTypes {
@@ -44,7 +50,11 @@ android {
             it.maxHeapSize = "2g"
         }
     }
-    packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
+    packaging {
+        resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" }
+        // Bibliotecas nativas comprimidas no APK: download bem menor (extraídas na instalação).
+        jniLibs { useLegacyPackaging = true }
+    }
 }
 
 dependencies {
@@ -59,6 +69,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    // Voz neural offline (Piper/VITS) — Apache 2.0.
+    implementation("com.github.k2-fsa.sherpa-onnx:sherpa-onnx:v1.13.8")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
     testImplementation("junit:junit:4.13.2")

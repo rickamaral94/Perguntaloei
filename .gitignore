@@ -8,3 +8,4 @@ build/
 .externalNativeBuild
 .cxx
 /app/release/
+tools/voz-neural/build/
