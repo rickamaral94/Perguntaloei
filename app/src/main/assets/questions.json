@@ -1,0 +1,7013 @@
+{
+ "version": 1,
+ "questions": [
+  {
+   "id": "geo-001",
+   "text": "Qual é a capital do Brasil?",
+   "theme": "geografia",
+   "subtheme": "capitais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Brasília",
+    "Rio de Janeiro",
+    "São Paulo",
+    "Salvador"
+   ],
+   "answer": "Brasília",
+   "synonyms": [],
+   "explanation": "Brasília é a capital federal desde 21 de abril de 1960, quando foi inaugurada.",
+   "source": "Constituição Federal de 1988, art. 18, §1º; IBGE",
+   "brazil": true
+  },
+  {
+   "id": "geo-002",
+   "text": "Em qual continente fica o Brasil?",
+   "theme": "geografia",
+   "subtheme": "continentes",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "América do Sul",
+    "Europa",
+    "África",
+    "Ásia"
+   ],
+   "answer": "América do Sul",
+   "synonyms": [],
+   "explanation": "O Brasil ocupa cerca de metade da área da América do Sul.",
+   "source": "IBGE – Brasil em síntese",
+   "brazil": true
+  },
+  {
+   "id": "geo-003",
+   "text": "Qual destes é um oceano?",
+   "theme": "geografia",
+   "subtheme": "oceanos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Atlântico",
+    "Amazonas",
+    "Saara",
+    "Andes"
+   ],
+   "answer": "Atlântico",
+   "synonyms": [],
+   "explanation": "O Atlântico é o oceano que banha todo o litoral brasileiro. Amazonas é um rio, Saara é um deserto e Andes é uma cordilheira.",
+   "source": "Enciclopédia Britannica – verbete 'Atlantic Ocean'",
+   "brazil": false
+  },
+  {
+   "id": "geo-004",
+   "text": "Como se chama uma porção de terra cercada de água por todos os lados?",
+   "theme": "geografia",
+   "subtheme": "relevo",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "aberta",
+   "options": [],
+   "answer": "Ilha",
+   "synonyms": [
+    "uma ilha",
+    "ilhas"
+   ],
+   "explanation": "Ilha é uma porção de terra rodeada de água. Exemplos: Ilha de Marajó (PA) e Florianópolis (SC).",
+   "source": "IBGE – Glossário de termos geográficos",
+   "brazil": false
+  },
+  {
+   "id": "geo-005",
+   "text": "O Brasil é o maior país da América do Sul em área.",
+   "theme": "geografia",
+   "subtheme": "território",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Com cerca de 8,5 milhões de km², o Brasil é o maior país sul-americano e o 5º maior do mundo.",
+   "source": "IBGE – Área territorial brasileira (2022)",
+   "brazil": true
+  },
+  {
+   "id": "geo-006",
+   "text": "Qual é o maior oceano do planeta?",
+   "theme": "geografia",
+   "subtheme": "oceanos",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Pacífico",
+    "Atlântico",
+    "Índico",
+    "Ártico"
+   ],
+   "answer": "Pacífico",
+   "synonyms": [],
+   "explanation": "O Pacífico cobre cerca de um terço da superfície da Terra, mais que todos os continentes juntos.",
+   "source": "NOAA – Ocean facts",
+   "brazil": false
+  },
+  {
+   "id": "geo-007",
+   "text": "Qual é a capital da França?",
+   "theme": "geografia",
+   "subtheme": "capitais",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Paris",
+    "Londres",
+    "Roma",
+    "Madri"
+   ],
+   "answer": "Paris",
+   "synonyms": [],
+   "explanation": "Paris é a capital e a maior cidade da França.",
+   "source": "Enciclopédia Britannica – verbete 'Paris'",
+   "brazil": false
+  },
+  {
+   "id": "geo-008",
+   "text": "Qual é a capital do estado da Bahia?",
+   "theme": "geografia",
+   "subtheme": "capitais",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "aberta",
+   "options": [],
+   "answer": "Salvador",
+   "synonyms": [
+    "cidade de salvador"
+   ],
+   "explanation": "Salvador foi também a primeira capital do Brasil, de 1549 a 1763.",
+   "source": "IBGE – Cidades",
+   "brazil": true
+  },
+  {
+   "id": "geo-009",
+   "text": "Qual é a capital da Argentina?",
+   "theme": "geografia",
+   "subtheme": "capitais",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Buenos Aires",
+    "Montevidéu",
+    "Santiago",
+    "Lima"
+   ],
+   "answer": "Buenos Aires",
+   "synonyms": [],
+   "explanation": "Buenos Aires fica às margens do Rio da Prata. Montevidéu é a capital do Uruguai.",
+   "source": "Enciclopédia Britannica – verbete 'Buenos Aires'",
+   "brazil": false
+  },
+  {
+   "id": "geo-010",
+   "text": "Qual é a cidade mais populosa do Brasil?",
+   "theme": "geografia",
+   "subtheme": "cidades",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "aberta",
+   "options": [],
+   "answer": "São Paulo",
+   "synonyms": [
+    "sao paulo",
+    "sampa",
+    "cidade de sao paulo"
+   ],
+   "explanation": "São Paulo tinha cerca de 11,4 milhões de habitantes no Censo de 2022.",
+   "source": "IBGE – Censo Demográfico 2022",
+   "brazil": true,
+   "referenceDate": "Censo 2022"
+  },
+  {
+   "id": "geo-011",
+   "text": "Qual é o maior estado brasileiro em área?",
+   "theme": "geografia",
+   "subtheme": "estados",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Amazonas",
+    "Pará",
+    "Mato Grosso",
+    "Minas Gerais"
+   ],
+   "answer": "Amazonas",
+   "synonyms": [],
+   "explanation": "O Amazonas tem cerca de 1,56 milhão de km², quase 18% do território nacional.",
+   "source": "IBGE – Áreas territoriais (2022)",
+   "brazil": true
+  },
+  {
+   "id": "geo-012",
+   "text": "Quantos estados tem o Brasil, sem contar o Distrito Federal?",
+   "theme": "geografia",
+   "subtheme": "estados",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "26",
+    "27",
+    "25",
+    "24"
+   ],
+   "answer": "26",
+   "synonyms": [],
+   "explanation": "São 26 estados mais o Distrito Federal, somando 27 unidades da federação.",
+   "source": "Constituição Federal de 1988, art. 18; IBGE",
+   "brazil": true
+  },
+  {
+   "id": "geo-013",
+   "text": "Qual rio é o maior do mundo em volume de água?",
+   "theme": "geografia",
+   "subtheme": "rios",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Amazonas",
+    "Nilo",
+    "Mississippi",
+    "Yangtzé"
+   ],
+   "answer": "Amazonas",
+   "synonyms": [],
+   "explanation": "O Amazonas despeja no Atlântico mais água do que qualquer outro rio, cerca de 20% da água doce que chega aos oceanos.",
+   "source": "Enciclopédia Britannica – verbete 'Amazon River'",
+   "brazil": true
+  },
+  {
+   "id": "geo-014",
+   "text": "A Linha do Equador passa pelo território brasileiro.",
+   "theme": "geografia",
+   "subtheme": "território",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "A Linha do Equador cruza os estados do Amapá, Roraima, Amazonas e Pará. Em Macapá há o monumento Marco Zero.",
+   "source": "IBGE – Atlas geográfico escolar",
+   "brazil": true
+  },
+  {
+   "id": "geo-015",
+   "text": "Em que estado brasileiro ficam as Cataratas do Iguaçu?",
+   "theme": "geografia",
+   "subtheme": "paisagens",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Paraná",
+    "Santa Catarina",
+    "Mato Grosso do Sul",
+    "São Paulo"
+   ],
+   "answer": "Paraná",
+   "synonyms": [],
+   "explanation": "As cataratas ficam na divisa entre o Paraná (Brasil) e a província de Misiones (Argentina).",
+   "source": "Parque Nacional do Iguaçu – ICMBio",
+   "brazil": true
+  },
+  {
+   "id": "geo-016",
+   "text": "Segundo estimativas da ONU de 2023, qual país passou a ter a maior população do mundo?",
+   "theme": "geografia",
+   "subtheme": "população",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Índia",
+    "China",
+    "Estados Unidos",
+    "Indonésia"
+   ],
+   "answer": "Índia",
+   "synonyms": [],
+   "explanation": "Em 2023 a ONU estimou que a Índia ultrapassou a China em número de habitantes.",
+   "source": "ONU – World Population Prospects / UNFPA (abril de 2023)",
+   "brazil": false,
+   "referenceDate": "Estimativa da ONU, 2023"
+  },
+  {
+   "id": "geo-017",
+   "text": "Qual é o ponto mais alto do Brasil?",
+   "theme": "geografia",
+   "subtheme": "relevo",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Pico da Neblina",
+    "Pico da Bandeira",
+    "Monte Roraima",
+    "Pico Paraná"
+   ],
+   "answer": "Pico da Neblina",
+   "synonyms": [],
+   "explanation": "O Pico da Neblina, no Amazonas, tem cerca de 2.995 metros de altitude.",
+   "source": "IBGE – Altitudes dos pontos culminantes (2016)",
+   "brazil": true,
+   "referenceDate": "Medição do IBGE de 2016"
+  },
+  {
+   "id": "geo-018",
+   "text": "Qual é a capital da Austrália?",
+   "theme": "geografia",
+   "subtheme": "capitais",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Camberra",
+    "Sydney",
+    "Melbourne",
+    "Perth"
+   ],
+   "answer": "Camberra",
+   "synonyms": [],
+   "explanation": "Camberra foi planejada para ser a capital, como Brasília. Sydney é a maior cidade australiana.",
+   "source": "Enciclopédia Britannica – verbete 'Canberra'",
+   "brazil": false
+  },
+  {
+   "id": "geo-019",
+   "text": "Com quantos países o Brasil faz fronteira?",
+   "theme": "geografia",
+   "subtheme": "fronteiras",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "10",
+    "8",
+    "12",
+    "9"
+   ],
+   "answer": "10",
+   "synonyms": [],
+   "explanation": "O Brasil faz fronteira com todos os países da América do Sul, exceto Chile e Equador.",
+   "source": "IBGE – Brasil em síntese",
+   "brazil": true
+  },
+  {
+   "id": "geo-020",
+   "text": "Qual estado brasileiro tem a menor área territorial?",
+   "theme": "geografia",
+   "subtheme": "estados",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Sergipe",
+    "Alagoas",
+    "Rio de Janeiro",
+    "Espírito Santo"
+   ],
+   "answer": "Sergipe",
+   "synonyms": [],
+   "explanation": "Sergipe tem cerca de 21,9 mil km². O Distrito Federal é menor, mas não é um estado.",
+   "source": "IBGE – Áreas territoriais (2022)",
+   "brazil": true
+  },
+  {
+   "id": "geo-021",
+   "text": "Em que estado fica a Chapada dos Veadeiros?",
+   "theme": "geografia",
+   "subtheme": "paisagens",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Goiás",
+    "Bahia",
+    "Mato Grosso",
+    "Tocantins"
+   ],
+   "answer": "Goiás",
+   "synonyms": [],
+   "explanation": "O Parque Nacional da Chapada dos Veadeiros fica no nordeste de Goiás, no Cerrado.",
+   "source": "ICMBio – Parque Nacional da Chapada dos Veadeiros",
+   "brazil": true
+  },
+  {
+   "id": "geo-022",
+   "text": "Qual é a capital do Canadá?",
+   "theme": "geografia",
+   "subtheme": "capitais",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Ottawa",
+    "Toronto",
+    "Vancouver",
+    "Montreal"
+   ],
+   "answer": "Ottawa",
+   "synonyms": [],
+   "explanation": "Ottawa fica na província de Ontário. Toronto é a maior cidade do país.",
+   "source": "Enciclopédia Britannica – verbete 'Ottawa'",
+   "brazil": false
+  },
+  {
+   "id": "geo-023",
+   "text": "Qual é o deserto não polar mais seco do mundo?",
+   "theme": "geografia",
+   "subtheme": "desertos",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Atacama",
+    "Saara",
+    "Gobi",
+    "Kalahari"
+   ],
+   "answer": "Atacama",
+   "synonyms": [],
+   "explanation": "O Atacama, no Chile, tem áreas onde quase nunca chove.",
+   "source": "NASA Earth Observatory – Atacama Desert",
+   "brazil": false
+  },
+  {
+   "id": "geo-024",
+   "text": "O Monte Everest fica na fronteira entre o Nepal e qual país?",
+   "theme": "geografia",
+   "subtheme": "montanhas",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "China",
+    "Índia",
+    "Butão",
+    "Paquistão"
+   ],
+   "answer": "China",
+   "synonyms": [],
+   "explanation": "O Everest fica entre o Nepal e a Região Autônoma do Tibete, na China.",
+   "source": "Enciclopédia Britannica – verbete 'Mount Everest'",
+   "brazil": false
+  },
+  {
+   "id": "his-001",
+   "text": "Os dinossauros viveram antes dos seres humanos.",
+   "theme": "historia",
+   "subtheme": "pré-história",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Os dinossauros não aviários foram extintos há cerca de 66 milhões de anos, muito antes do surgimento dos humanos.",
+   "source": "Museu de História Natural de Londres – Dinosaur extinction",
+   "brazil": false
+  },
+  {
+   "id": "his-002",
+   "text": "Como são chamados os povos que já viviam no Brasil antes da chegada dos portugueses?",
+   "theme": "historia",
+   "subtheme": "povos originários",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Povos indígenas",
+    "Vikings",
+    "Romanos",
+    "Egípcios"
+   ],
+   "answer": "Povos indígenas",
+   "synonyms": [
+    "indigenas",
+    "indios",
+    "povos originarios"
+   ],
+   "explanation": "Milhões de indígenas, de centenas de povos diferentes, já viviam no território quando os europeus chegaram.",
+   "source": "FUNAI; IBGE – Os indígenas no Censo",
+   "brazil": true
+  },
+  {
+   "id": "his-003",
+   "text": "O que os cavaleiros medievais usavam para se proteger nas batalhas?",
+   "theme": "historia",
+   "subtheme": "idade média",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Armadura",
+    "Capa de chuva",
+    "Boia",
+    "Patins"
+   ],
+   "answer": "Armadura",
+   "synonyms": [],
+   "explanation": "As armaduras eram feitas de metal, como malhas de ferro e placas de aço.",
+   "source": "Metropolitan Museum of Art – Arms and Armor",
+   "brazil": false
+  },
+  {
+   "id": "his-004",
+   "text": "Que embarcações os navegadores portugueses usavam para atravessar o oceano há mais de 500 anos?",
+   "theme": "historia",
+   "subtheme": "navegações",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Caravelas",
+    "Aviões",
+    "Submarinos",
+    "Balões"
+   ],
+   "answer": "Caravelas",
+   "synonyms": [],
+   "explanation": "As caravelas eram barcos a vela leves e rápidos, usados nas Grandes Navegações.",
+   "source": "Museu de Marinha (Lisboa)",
+   "brazil": true
+  },
+  {
+   "id": "his-005",
+   "text": "Em que ano os portugueses chegaram ao território que hoje é o Brasil?",
+   "theme": "historia",
+   "subtheme": "brasil colônia",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "1500",
+    "1492",
+    "1600",
+    "1822"
+   ],
+   "answer": "1500",
+   "synonyms": [],
+   "explanation": "A frota de Pedro Álvares Cabral chegou em 22 de abril de 1500, no litoral da atual Bahia.",
+   "source": "Carta de Pero Vaz de Caminha (1500); Arquivo Nacional da Torre do Tombo",
+   "brazil": true
+  },
+  {
+   "id": "his-006",
+   "text": "Quem proclamou a independência do Brasil?",
+   "theme": "historia",
+   "subtheme": "independência",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Dom Pedro I",
+    "Dom Pedro II",
+    "Tiradentes",
+    "Getúlio Vargas"
+   ],
+   "answer": "Dom Pedro I",
+   "synonyms": [
+    "pedro primeiro",
+    "dom pedro primeiro",
+    "pedro 1"
+   ],
+   "explanation": "Dom Pedro I proclamou a independência às margens do riacho Ipiranga, em São Paulo.",
+   "source": "Arquivo Nacional; Museu do Ipiranga",
+   "brazil": true
+  },
+  {
+   "id": "his-007",
+   "text": "Em que ano o Brasil declarou sua independência de Portugal?",
+   "theme": "historia",
+   "subtheme": "independência",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "1822",
+    "1500",
+    "1889",
+    "1888"
+   ],
+   "answer": "1822",
+   "synonyms": [],
+   "explanation": "A independência foi proclamada em 7 de setembro de 1822.",
+   "source": "Arquivo Nacional",
+   "brazil": true
+  },
+  {
+   "id": "his-008",
+   "text": "Qual navegador chegou à América em 1492, a serviço da Espanha?",
+   "theme": "historia",
+   "subtheme": "grandes navegações",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Cristóvão Colombo",
+    "Pedro Álvares Cabral",
+    "Vasco da Gama",
+    "Fernão de Magalhães"
+   ],
+   "answer": "Cristóvão Colombo",
+   "synonyms": [
+    "colombo"
+   ],
+   "explanation": "Colombo chegou às ilhas do Caribe em outubro de 1492, achando que estava na Ásia.",
+   "source": "Enciclopédia Britannica – verbete 'Christopher Columbus'",
+   "brazil": false
+  },
+  {
+   "id": "his-009",
+   "text": "Qual civilização construiu as pirâmides de Gizé?",
+   "theme": "historia",
+   "subtheme": "antiguidade",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Egípcios antigos",
+    "Romanos",
+    "Gregos",
+    "Maias"
+   ],
+   "answer": "Egípcios antigos",
+   "synonyms": [
+    "egipcios",
+    "os egipcios",
+    "egito"
+   ],
+   "explanation": "As pirâmides de Gizé foram construídas há mais de 4.500 anos, no Egito.",
+   "source": "UNESCO – Memphis and its Necropolis",
+   "brazil": false
+  },
+  {
+   "id": "his-010",
+   "text": "Quem foi o primeiro ser humano a pisar na Lua?",
+   "theme": "historia",
+   "subtheme": "corrida espacial",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Neil Armstrong",
+    "Yuri Gagarin",
+    "Buzz Aldrin",
+    "Marcos Pontes"
+   ],
+   "answer": "Neil Armstrong",
+   "synonyms": [
+    "armstrong"
+   ],
+   "explanation": "Armstrong pisou na Lua em 20 de julho de 1969, na missão Apollo 11.",
+   "source": "NASA – Apollo 11 Mission Overview",
+   "brazil": false
+  },
+  {
+   "id": "his-011",
+   "text": "Qual lei aboliu a escravidão no Brasil, em 1888?",
+   "theme": "historia",
+   "subtheme": "abolição",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Lei Áurea",
+    "Lei do Ventre Livre",
+    "Lei dos Sexagenários",
+    "Lei Eusébio de Queirós"
+   ],
+   "answer": "Lei Áurea",
+   "synonyms": [
+    "aurea"
+   ],
+   "explanation": "A Lei Áurea foi assinada em 13 de maio de 1888 e extinguiu a escravidão no país.",
+   "source": "Lei nº 3.353, de 13 de maio de 1888 – Arquivo Nacional",
+   "brazil": true
+  },
+  {
+   "id": "his-012",
+   "text": "Quem assinou a Lei Áurea?",
+   "theme": "historia",
+   "subtheme": "abolição",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Princesa Isabel",
+    "Dom Pedro II",
+    "Dom Pedro I",
+    "Marechal Deodoro"
+   ],
+   "answer": "Princesa Isabel",
+   "synonyms": [
+    "isabel"
+   ],
+   "explanation": "A princesa Isabel assinou a lei como regente, enquanto Dom Pedro II estava fora do país.",
+   "source": "Arquivo Nacional – Lei Áurea",
+   "brazil": true
+  },
+  {
+   "id": "his-013",
+   "text": "Em que ano foi proclamada a República no Brasil?",
+   "theme": "historia",
+   "subtheme": "república",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "1889",
+    "1822",
+    "1891",
+    "1930"
+   ],
+   "answer": "1889",
+   "synonyms": [],
+   "explanation": "A República foi proclamada em 15 de novembro de 1889.",
+   "source": "Arquivo Nacional",
+   "brazil": true
+  },
+  {
+   "id": "his-014",
+   "text": "Quem foi o primeiro presidente do Brasil?",
+   "theme": "historia",
+   "subtheme": "república",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Deodoro da Fonseca",
+    "Floriano Peixoto",
+    "Getúlio Vargas",
+    "Prudente de Morais"
+   ],
+   "answer": "Deodoro da Fonseca",
+   "synonyms": [
+    "deodoro",
+    "marechal deodoro"
+   ],
+   "explanation": "O marechal Deodoro da Fonseca chefiou o governo provisório e foi eleito presidente em 1891.",
+   "source": "Biblioteca da Presidência da República",
+   "brazil": true
+  },
+  {
+   "id": "his-015",
+   "text": "Tiradentes foi um dos líderes da Inconfidência Mineira.",
+   "theme": "historia",
+   "subtheme": "brasil colônia",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Joaquim José da Silva Xavier, o Tiradentes, foi executado em 21 de abril de 1792.",
+   "source": "Arquivo Nacional – Autos de Devassa da Inconfidência Mineira",
+   "brazil": true
+  },
+  {
+   "id": "his-016",
+   "text": "Em que ano começou a Segunda Guerra Mundial?",
+   "theme": "historia",
+   "subtheme": "século XX",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "1939",
+    "1914",
+    "1945",
+    "1929"
+   ],
+   "answer": "1939",
+   "synonyms": [],
+   "explanation": "A guerra começou em 1º de setembro de 1939, com a invasão da Polônia pela Alemanha.",
+   "source": "Enciclopédia Britannica – verbete 'World War II'",
+   "brazil": false
+  },
+  {
+   "id": "his-017",
+   "text": "Qual presidente inaugurou Brasília, em 1960?",
+   "theme": "historia",
+   "subtheme": "brasília",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Juscelino Kubitschek",
+    "Getúlio Vargas",
+    "Jânio Quadros",
+    "João Goulart"
+   ],
+   "answer": "Juscelino Kubitschek",
+   "synonyms": [
+    "jk",
+    "juscelino"
+   ],
+   "explanation": "JK prometeu 'cinquenta anos em cinco' e inaugurou Brasília em 21 de abril de 1960.",
+   "source": "Biblioteca da Presidência da República",
+   "brazil": true
+  },
+  {
+   "id": "his-018",
+   "text": "Qual muro caiu em 1989, tornando-se símbolo do fim da Guerra Fria?",
+   "theme": "historia",
+   "subtheme": "guerra fria",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Muro de Berlim",
+    "Muralha da China",
+    "Muro das Lamentações",
+    "Muralha de Adriano"
+   ],
+   "answer": "Muro de Berlim",
+   "synonyms": [
+    "berlim"
+   ],
+   "explanation": "O Muro de Berlim dividiu a cidade de 1961 até 9 de novembro de 1989.",
+   "source": "Enciclopédia Britannica – verbete 'Berlin Wall'",
+   "brazil": false
+  },
+  {
+   "id": "his-019",
+   "text": "Qual cidade era a capital do Brasil antes de Brasília?",
+   "theme": "historia",
+   "subtheme": "capitais",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Rio de Janeiro",
+    "Salvador",
+    "São Paulo",
+    "Recife"
+   ],
+   "answer": "Rio de Janeiro",
+   "synonyms": [],
+   "explanation": "O Rio de Janeiro foi capital de 1763 até 1960.",
+   "source": "IBGE – Histórico das capitais",
+   "brazil": true
+  },
+  {
+   "id": "his-020",
+   "text": "Qual língua era falada pelos antigos romanos?",
+   "theme": "historia",
+   "subtheme": "antiguidade",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "aberta",
+   "options": [],
+   "answer": "Latim",
+   "synonyms": [
+    "latim"
+   ],
+   "explanation": "Do latim surgiram línguas como o português, o espanhol, o italiano e o francês.",
+   "source": "Enciclopédia Britannica – verbete 'Latin language'",
+   "brazil": false
+  },
+  {
+   "id": "his-021",
+   "text": "Qual foi a primeira capital do Brasil?",
+   "theme": "historia",
+   "subtheme": "capitais",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Salvador",
+    "Rio de Janeiro",
+    "Olinda",
+    "São Vicente"
+   ],
+   "answer": "Salvador",
+   "synonyms": [],
+   "explanation": "Salvador foi fundada em 1549 para ser a sede do governo-geral e foi capital até 1763.",
+   "source": "IPHAN – Centro Histórico de Salvador",
+   "brazil": true
+  },
+  {
+   "id": "his-022",
+   "text": "Em que ano foi promulgada a atual Constituição brasileira?",
+   "theme": "historia",
+   "subtheme": "república",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "1988",
+    "1985",
+    "1946",
+    "1967"
+   ],
+   "answer": "1988",
+   "synonyms": [],
+   "explanation": "A Constituição Cidadã foi promulgada em 5 de outubro de 1988.",
+   "source": "Constituição da República Federativa do Brasil de 1988",
+   "brazil": true
+  },
+  {
+   "id": "his-023",
+   "text": "Qual imperador francês foi derrotado na Batalha de Waterloo, em 1815?",
+   "theme": "historia",
+   "subtheme": "idade moderna",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Napoleão Bonaparte",
+    "Luís XIV",
+    "Carlos Magno",
+    "Luís XVI"
+   ],
+   "answer": "Napoleão Bonaparte",
+   "synonyms": [
+    "napoleao"
+   ],
+   "explanation": "Depois de Waterloo, Napoleão foi exilado na ilha de Santa Helena.",
+   "source": "Enciclopédia Britannica – verbete 'Battle of Waterloo'",
+   "brazil": false
+  },
+  {
+   "id": "his-024",
+   "text": "Em que ano começou a Revolução Francesa?",
+   "theme": "historia",
+   "subtheme": "idade moderna",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "1789",
+    "1776",
+    "1815",
+    "1848"
+   ],
+   "answer": "1789",
+   "synonyms": [],
+   "explanation": "A tomada da Bastilha, em 14 de julho de 1789, é o marco do início da Revolução.",
+   "source": "Enciclopédia Britannica – verbete 'French Revolution'",
+   "brazil": false
+  },
+  {
+   "id": "his-025",
+   "text": "Qual navegador português comandou a primeira viagem marítima da Europa até a Índia contornando a África, em 1498?",
+   "theme": "historia",
+   "subtheme": "grandes navegações",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Vasco da Gama",
+    "Bartolomeu Dias",
+    "Pedro Álvares Cabral",
+    "Fernão de Magalhães"
+   ],
+   "answer": "Vasco da Gama",
+   "synonyms": [],
+   "explanation": "Vasco da Gama chegou a Calicute, na Índia, em 1498. Bartolomeu Dias havia contornado o Cabo da Boa Esperança em 1488.",
+   "source": "Enciclopédia Britannica – verbete 'Vasco da Gama'",
+   "brazil": false
+  },
+  {
+   "id": "his-026",
+   "text": "Qual tratado de 1494 dividiu as terras 'descobertas' e por descobrir entre Portugal e Espanha?",
+   "theme": "historia",
+   "subtheme": "brasil colônia",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Tratado de Tordesilhas",
+    "Tratado de Madri",
+    "Tratado de Versalhes",
+    "Tratado de Methuen"
+   ],
+   "answer": "Tratado de Tordesilhas",
+   "synonyms": [
+    "tordesilhas"
+   ],
+   "explanation": "A linha imaginária de Tordesilhas ficava 370 léguas a oeste de Cabo Verde.",
+   "source": "Arquivo Nacional da Torre do Tombo – Tratado de Tordesilhas",
+   "brazil": true
+  },
+  {
+   "id": "cie-001",
+   "text": "Qual órgão bombeia o sangue pelo corpo?",
+   "theme": "ciencia",
+   "subtheme": "corpo humano",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Coração",
+    "Pulmão",
+    "Estômago",
+    "Fígado"
+   ],
+   "answer": "Coração",
+   "synonyms": [],
+   "explanation": "O coração bate cerca de 100 mil vezes por dia, levando sangue a todo o corpo.",
+   "source": "Biblioteca Virtual em Saúde – Ministério da Saúde",
+   "brazil": false
+  },
+  {
+   "id": "cie-002",
+   "text": "Em que estado físico a água fica quando vira gelo?",
+   "theme": "ciencia",
+   "subtheme": "estados da matéria",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Sólido",
+    "Líquido",
+    "Gasoso",
+    "Plasma"
+   ],
+   "answer": "Sólido",
+   "synonyms": [],
+   "explanation": "Ao nível do mar, a água congela a 0 °C e passa do estado líquido para o sólido.",
+   "source": "USGS – Water Science School",
+   "brazil": false
+  },
+  {
+   "id": "cie-003",
+   "text": "Qual planeta é conhecido como Planeta Vermelho?",
+   "theme": "ciencia",
+   "subtheme": "astronomia",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Marte",
+    "Júpiter",
+    "Vênus",
+    "Saturno"
+   ],
+   "answer": "Marte",
+   "synonyms": [],
+   "explanation": "A cor avermelhada vem do óxido de ferro (ferrugem) presente no solo marciano.",
+   "source": "NASA – Mars Facts",
+   "brazil": false
+  },
+  {
+   "id": "cie-004",
+   "text": "A Lua tem luz própria.",
+   "theme": "ciencia",
+   "subtheme": "astronomia",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Falso",
+   "synonyms": [],
+   "explanation": "A Lua apenas reflete a luz do Sol. Por isso vemos suas fases.",
+   "source": "NASA – Moon Facts",
+   "brazil": false
+  },
+  {
+   "id": "cie-005",
+   "text": "Qual é o nome da força que nos mantém presos ao chão?",
+   "theme": "ciencia",
+   "subtheme": "física",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Gravidade",
+    "Magnetismo",
+    "Atrito",
+    "Eletricidade"
+   ],
+   "answer": "Gravidade",
+   "synonyms": [],
+   "explanation": "A gravidade da Terra atrai tudo para o seu centro, por isso as coisas caem.",
+   "source": "NASA Space Place – What is gravity?",
+   "brazil": false
+  },
+  {
+   "id": "cie-006",
+   "text": "Qual é o maior planeta do Sistema Solar?",
+   "theme": "ciencia",
+   "subtheme": "astronomia",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Júpiter",
+    "Saturno",
+    "Terra",
+    "Netuno"
+   ],
+   "answer": "Júpiter",
+   "synonyms": [],
+   "explanation": "Júpiter é tão grande que caberiam mais de 1.300 Terras dentro dele.",
+   "source": "NASA – Jupiter Facts",
+   "brazil": false
+  },
+  {
+   "id": "cie-007",
+   "text": "Quantos planetas existem no Sistema Solar?",
+   "theme": "ciencia",
+   "subtheme": "astronomia",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "8",
+    "9",
+    "7",
+    "10"
+   ],
+   "answer": "8",
+   "synonyms": [],
+   "explanation": "Desde 2006 Plutão é classificado como planeta-anão, então são 8 planetas.",
+   "source": "União Astronômica Internacional – Resolução B5 (2006)",
+   "brazil": false,
+   "referenceDate": "Classificação da UAI de 2006"
+  },
+  {
+   "id": "cie-008",
+   "text": "Qual é o planeta mais próximo do Sol?",
+   "theme": "ciencia",
+   "subtheme": "astronomia",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Mercúrio",
+    "Vênus",
+    "Terra",
+    "Marte"
+   ],
+   "answer": "Mercúrio",
+   "synonyms": [],
+   "explanation": "Mercúrio é também o menor planeta do Sistema Solar.",
+   "source": "NASA – Mercury Facts",
+   "brazil": false
+  },
+  {
+   "id": "cie-009",
+   "text": "Ao nível do mar, a quantos graus Celsius a água pura ferve?",
+   "theme": "ciencia",
+   "subtheme": "física",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "100 graus",
+    "50 graus",
+    "0 grau",
+    "200 graus"
+   ],
+   "answer": "100 graus",
+   "synonyms": [
+    "100",
+    "cem"
+   ],
+   "explanation": "Em lugares altos, onde a pressão do ar é menor, a água ferve abaixo de 100 °C.",
+   "source": "USGS – Water Science School",
+   "brazil": false
+  },
+  {
+   "id": "cie-010",
+   "text": "Qual gás as plantas absorvem do ar para fazer a fotossíntese?",
+   "theme": "ciencia",
+   "subtheme": "biologia",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Gás carbônico",
+    "Oxigênio",
+    "Hélio",
+    "Nitrogênio"
+   ],
+   "answer": "Gás carbônico",
+   "synonyms": [
+    "dioxido de carbono",
+    "co2",
+    "carbonico"
+   ],
+   "explanation": "Na fotossíntese, as plantas usam luz, água e gás carbônico e liberam oxigênio.",
+   "source": "Embrapa – Fotossíntese",
+   "brazil": false
+  },
+  {
+   "id": "cie-011",
+   "text": "Qual é a fórmula química da água?",
+   "theme": "ciencia",
+   "subtheme": "química",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "aberta",
+   "options": [],
+   "answer": "H2O",
+   "synonyms": [
+    "h 2 o",
+    "aga 2 o",
+    "aga dois o",
+    "h dois o"
+   ],
+   "explanation": "Cada molécula de água tem dois átomos de hidrogênio e um de oxigênio.",
+   "source": "IUPAC – Compendium of Chemical Terminology",
+   "brazil": false
+  },
+  {
+   "id": "cie-012",
+   "text": "O som se propaga mais rápido no vácuo do que no ar.",
+   "theme": "ciencia",
+   "subtheme": "física",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Falso",
+   "synonyms": [],
+   "explanation": "O som precisa de um meio material para se propagar. No vácuo não há som.",
+   "source": "NASA – Sound in space",
+   "brazil": false
+  },
+  {
+   "id": "cie-013",
+   "text": "Qual cientista formulou a teoria da relatividade?",
+   "theme": "ciencia",
+   "subtheme": "cientistas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Albert Einstein",
+    "Isaac Newton",
+    "Galileu Galilei",
+    "Marie Curie"
+   ],
+   "answer": "Albert Einstein",
+   "synonyms": [
+    "einstein"
+   ],
+   "explanation": "Einstein publicou a relatividade restrita em 1905 e a geral em 1915.",
+   "source": "Enciclopédia Britannica – verbete 'Albert Einstein'",
+   "brazil": false
+  },
+  {
+   "id": "cie-014",
+   "text": "Qual vitamina o corpo produz quando a pele recebe luz do sol?",
+   "theme": "ciencia",
+   "subtheme": "biologia",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Vitamina D",
+    "Vitamina C",
+    "Vitamina A",
+    "Vitamina B12"
+   ],
+   "answer": "Vitamina D",
+   "synonyms": [],
+   "explanation": "A radiação ultravioleta do sol ajuda a pele a produzir vitamina D, importante para os ossos.",
+   "source": "Ministério da Saúde – Vitamina D",
+   "brazil": false
+  },
+  {
+   "id": "cie-015",
+   "text": "Quem propôs a teoria da evolução por seleção natural?",
+   "theme": "ciencia",
+   "subtheme": "cientistas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Charles Darwin",
+    "Jean-Baptiste Lamarck",
+    "Gregor Mendel",
+    "Louis Pasteur"
+   ],
+   "answer": "Charles Darwin",
+   "synonyms": [
+    "darwin"
+   ],
+   "explanation": "Darwin publicou 'A Origem das Espécies' em 1859.",
+   "source": "Darwin Correspondence Project – Universidade de Cambridge",
+   "brazil": false
+  },
+  {
+   "id": "cie-016",
+   "text": "Quantos ossos tem o corpo de um ser humano adulto?",
+   "theme": "ciencia",
+   "subtheme": "corpo humano",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "206",
+    "150",
+    "300",
+    "412"
+   ],
+   "answer": "206",
+   "synonyms": [],
+   "explanation": "Os bebês nascem com cerca de 300 ossos; vários se fundem durante o crescimento.",
+   "source": "Enciclopédia Britannica – verbete 'human skeleton'",
+   "brazil": false
+  },
+  {
+   "id": "cie-017",
+   "text": "Qual é o símbolo químico do ouro?",
+   "theme": "ciencia",
+   "subtheme": "química",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Au",
+    "Ag",
+    "Fe",
+    "Pb"
+   ],
+   "answer": "Au",
+   "synonyms": [],
+   "explanation": "Au vem do latim 'aurum'. Ag é prata, Fe é ferro e Pb é chumbo.",
+   "source": "IUPAC – Tabela Periódica",
+   "brazil": false
+  },
+  {
+   "id": "cie-018",
+   "text": "Qual é a velocidade aproximada da luz no vácuo?",
+   "theme": "ciencia",
+   "subtheme": "física",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "300 mil km por segundo",
+    "300 km por segundo",
+    "30 mil km por segundo",
+    "3 milhões de km por segundo"
+   ],
+   "answer": "300 mil km por segundo",
+   "synonyms": [],
+   "explanation": "O valor exato é 299.792,458 km/s: a luz do Sol leva cerca de 8 minutos para chegar à Terra.",
+   "source": "BIPM – Sistema Internacional de Unidades (SI)",
+   "brazil": false
+  },
+  {
+   "id": "cie-019",
+   "text": "Em células eucariontes, qual estrutura guarda o material genético (DNA)?",
+   "theme": "ciencia",
+   "subtheme": "biologia",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Núcleo",
+    "Membrana plasmática",
+    "Citoplasma",
+    "Parede celular"
+   ],
+   "answer": "Núcleo",
+   "synonyms": [],
+   "explanation": "Nos eucariontes o DNA fica protegido dentro do núcleo; nas bactérias não há núcleo definido.",
+   "source": "NIH – National Human Genome Research Institute",
+   "brazil": false
+  },
+  {
+   "id": "cie-020",
+   "text": "Qual é o elemento químico mais abundante no Universo?",
+   "theme": "ciencia",
+   "subtheme": "química",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Hidrogênio",
+    "Hélio",
+    "Oxigênio",
+    "Carbono"
+   ],
+   "answer": "Hidrogênio",
+   "synonyms": [],
+   "explanation": "Cerca de 3/4 da matéria comum do Universo é hidrogênio.",
+   "source": "NASA – Universe 101",
+   "brazil": false
+  },
+  {
+   "id": "cie-021",
+   "text": "Qual é o pH da água pura a 25 °C?",
+   "theme": "ciencia",
+   "subtheme": "química",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "7",
+    "0",
+    "14",
+    "1"
+   ],
+   "answer": "7",
+   "synonyms": [],
+   "explanation": "pH 7 é neutro: abaixo disso é ácido e acima é básico.",
+   "source": "IUPAC – Compendium of Chemical Terminology",
+   "brazil": false
+  },
+  {
+   "id": "tec-001",
+   "text": "Qual personagem de videogame é um encanador de bigode e boné vermelho?",
+   "theme": "tecnologia",
+   "subtheme": "videogames",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Mario",
+    "Sonic",
+    "Pac-Man",
+    "Link"
+   ],
+   "answer": "Mario",
+   "synonyms": [
+    "super mario"
+   ],
+   "explanation": "Mario apareceu pela primeira vez em 1981, no jogo Donkey Kong, da Nintendo.",
+   "source": "Nintendo – história do Mario",
+   "brazil": false
+  },
+  {
+   "id": "tec-002",
+   "text": "Que aparelho usamos para tirar fotos?",
+   "theme": "tecnologia",
+   "subtheme": "aparelhos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Câmera",
+    "Geladeira",
+    "Liquidificador",
+    "Ventilador"
+   ],
+   "answer": "Câmera",
+   "synonyms": [
+    "camera",
+    "maquina fotografica"
+   ],
+   "explanation": "Hoje a maioria dos celulares também tem câmera.",
+   "source": "Dicionário Houaiss – verbete 'câmera'",
+   "brazil": false
+  },
+  {
+   "id": "tec-003",
+   "text": "Qual é o nome do ouriço azul supersônico dos videogames da Sega?",
+   "theme": "tecnologia",
+   "subtheme": "videogames",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Sonic",
+    "Mario",
+    "Kirby",
+    "Yoshi"
+   ],
+   "answer": "Sonic",
+   "synonyms": [],
+   "explanation": "Sonic the Hedgehog foi lançado pela Sega em 1991.",
+   "source": "Sega – Sonic the Hedgehog",
+   "brazil": false
+  },
+  {
+   "id": "tec-004",
+   "text": "O que permite conectar o celular à internet sem fio dentro de casa?",
+   "theme": "tecnologia",
+   "subtheme": "internet",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Wi-Fi",
+    "Pen drive",
+    "Fone de ouvido",
+    "Carregador"
+   ],
+   "answer": "Wi-Fi",
+   "synonyms": [
+    "wifi",
+    "uai fai",
+    "wi fi"
+   ],
+   "explanation": "O roteador Wi-Fi distribui a internet por ondas de rádio, sem cabos.",
+   "source": "Wi-Fi Alliance",
+   "brazil": false
+  },
+  {
+   "id": "tec-005",
+   "text": "O mouse é um dispositivo de entrada do computador.",
+   "theme": "tecnologia",
+   "subtheme": "computadores",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Dispositivos de entrada enviam informações ao computador, como mouse e teclado. Monitor e impressora são de saída.",
+   "source": "Enciclopédia Britannica – verbete 'input device'",
+   "brazil": false
+  },
+  {
+   "id": "tec-006",
+   "text": "Qual empresa criou o iPhone?",
+   "theme": "tecnologia",
+   "subtheme": "empresas",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "aberta",
+   "options": [],
+   "answer": "Apple",
+   "synonyms": [
+    "a apple",
+    "eipou"
+   ],
+   "explanation": "O primeiro iPhone foi apresentado por Steve Jobs em janeiro de 2007.",
+   "source": "Apple Newsroom – 2007",
+   "brazil": false
+  },
+  {
+   "id": "tec-007",
+   "text": "Qual inventor brasileiro voou com o 14-Bis em Paris, em 1906?",
+   "theme": "tecnologia",
+   "subtheme": "invenções",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Santos Dumont",
+    "Marcos Pontes",
+    "Bartolomeu de Gusmão",
+    "Oswaldo Cruz"
+   ],
+   "answer": "Santos Dumont",
+   "synonyms": [
+    "dumont",
+    "alberto santos dumont"
+   ],
+   "explanation": "Em 23 de outubro de 1906, Alberto Santos Dumont voou com o 14-Bis diante de testemunhas.",
+   "source": "Força Aérea Brasileira – Santos Dumont",
+   "brazil": true
+  },
+  {
+   "id": "tec-008",
+   "text": "Em qual jogo de fliperama de 1980 um personagem amarelo come pastilhas num labirinto fugindo de fantasmas?",
+   "theme": "tecnologia",
+   "subtheme": "videogames",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Pac-Man",
+    "Space Invaders",
+    "Donkey Kong",
+    "Tetris"
+   ],
+   "answer": "Pac-Man",
+   "synonyms": [
+    "pacman",
+    "pac man"
+   ],
+   "explanation": "Pac-Man foi criado no Japão pela Namco e virou um ícone dos fliperamas.",
+   "source": "Bandai Namco – história do Pac-Man",
+   "brazil": false
+  },
+  {
+   "id": "tec-009",
+   "text": "Qual empresa japonesa criou o console PlayStation?",
+   "theme": "tecnologia",
+   "subtheme": "empresas",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Sony",
+    "Nintendo",
+    "Sega",
+    "Microsoft"
+   ],
+   "answer": "Sony",
+   "synonyms": [],
+   "explanation": "O primeiro PlayStation foi lançado no Japão em dezembro de 1994.",
+   "source": "Sony Interactive Entertainment – história",
+   "brazil": false
+  },
+  {
+   "id": "tec-010",
+   "text": "Qual empresa é responsável pelo desenvolvimento do sistema operacional Android?",
+   "theme": "tecnologia",
+   "subtheme": "empresas",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Google",
+    "Apple",
+    "Microsoft",
+    "Amazon"
+   ],
+   "answer": "Google",
+   "synonyms": [],
+   "explanation": "O Google comprou a startup Android em 2005 e lançou o sistema em 2008.",
+   "source": "Android Developers – história do Android",
+   "brazil": false
+  },
+  {
+   "id": "tec-011",
+   "text": "Quantos bits formam um byte?",
+   "theme": "tecnologia",
+   "subtheme": "computadores",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "8",
+    "4",
+    "16",
+    "10"
+   ],
+   "answer": "8",
+   "synonyms": [],
+   "explanation": "Um byte tem 8 bits e pode representar 256 valores diferentes.",
+   "source": "IEC 80000-13 – grandezas e unidades da informação",
+   "brazil": false
+  },
+  {
+   "id": "tec-012",
+   "text": "Quem fundou a Microsoft ao lado de Paul Allen?",
+   "theme": "tecnologia",
+   "subtheme": "empresas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Bill Gates",
+    "Steve Jobs",
+    "Mark Zuckerberg",
+    "Elon Musk"
+   ],
+   "answer": "Bill Gates",
+   "synonyms": [
+    "gates"
+   ],
+   "explanation": "Bill Gates e Paul Allen fundaram a Microsoft em 1975.",
+   "source": "Microsoft – Company history",
+   "brazil": false
+  },
+  {
+   "id": "tec-013",
+   "text": "Quem foi o primeiro astronauta brasileiro a ir ao espaço?",
+   "theme": "tecnologia",
+   "subtheme": "espaço",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Marcos Pontes",
+    "Santos Dumont",
+    "César Lattes",
+    "Oswaldo Cruz"
+   ],
+   "answer": "Marcos Pontes",
+   "synonyms": [
+    "pontes"
+   ],
+   "explanation": "Marcos Pontes foi à Estação Espacial Internacional em março de 2006.",
+   "source": "Agência Espacial Brasileira – Missão Centenário",
+   "brazil": true
+  },
+  {
+   "id": "tec-014",
+   "text": "Qual destas redes sociais foi criada por Mark Zuckerberg e colegas de faculdade?",
+   "theme": "tecnologia",
+   "subtheme": "internet",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Facebook",
+    "Twitter",
+    "Orkut",
+    "TikTok"
+   ],
+   "answer": "Facebook",
+   "synonyms": [],
+   "explanation": "O Facebook foi lançado em 2004 na Universidade Harvard.",
+   "source": "Meta – Company info",
+   "brazil": false
+  },
+  {
+   "id": "tec-015",
+   "text": "Em que década foi lançado o primeiro iPhone?",
+   "theme": "tecnologia",
+   "subtheme": "celulares",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Anos 2000",
+    "Anos 1990",
+    "Anos 2010",
+    "Anos 1980"
+   ],
+   "answer": "Anos 2000",
+   "synonyms": [
+    "2000",
+    "decada de 2000"
+   ],
+   "explanation": "O primeiro iPhone chegou às lojas dos EUA em junho de 2007.",
+   "source": "Apple Newsroom – 2007",
+   "brazil": false
+  },
+  {
+   "id": "tec-016",
+   "text": "Qual é a menor unidade de informação em computação, que vale 0 ou 1?",
+   "theme": "tecnologia",
+   "subtheme": "computadores",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Bit",
+    "Byte",
+    "Pixel",
+    "Hertz"
+   ],
+   "answer": "Bit",
+   "synonyms": [],
+   "explanation": "Bit vem de 'binary digit' (dígito binário).",
+   "source": "IEC 80000-13",
+   "brazil": false
+  },
+  {
+   "id": "tec-017",
+   "text": "O que significa a sigla CPU?",
+   "theme": "tecnologia",
+   "subtheme": "computadores",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Unidade Central de Processamento",
+    "Computador Pessoal Unificado",
+    "Central de Programas Úteis",
+    "Unidade de Placa Principal"
+   ],
+   "answer": "Unidade Central de Processamento",
+   "synonyms": [
+    "processador"
+   ],
+   "explanation": "A CPU (Central Processing Unit) é o processador, que executa as instruções dos programas.",
+   "source": "Enciclopédia Britannica – verbete 'central processing unit'",
+   "brazil": false
+  },
+  {
+   "id": "tec-018",
+   "text": "Qual linguagem é usada para estruturar páginas da web?",
+   "theme": "tecnologia",
+   "subtheme": "internet",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "HTML",
+    "SQL",
+    "PDF",
+    "MP3"
+   ],
+   "answer": "HTML",
+   "synonyms": [],
+   "explanation": "HTML significa HyperText Markup Language; foi criada por Tim Berners-Lee.",
+   "source": "W3C – HTML Standard",
+   "brazil": false
+  },
+  {
+   "id": "tec-019",
+   "text": "O jogo Tetris foi criado na antiga União Soviética.",
+   "theme": "tecnologia",
+   "subtheme": "videogames",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Alexey Pajitnov criou o Tetris em 1984, em Moscou.",
+   "source": "The Tetris Company – história",
+   "brazil": false
+  },
+  {
+   "id": "tec-020",
+   "text": "Quem descreveu, em 1936, a máquina teórica de computação que hoje leva o seu nome?",
+   "theme": "tecnologia",
+   "subtheme": "computação",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Alan Turing",
+    "Charles Babbage",
+    "John von Neumann",
+    "Ada Lovelace"
+   ],
+   "answer": "Alan Turing",
+   "synonyms": [
+    "turing"
+   ],
+   "explanation": "A máquina de Turing é a base teórica da computação moderna.",
+   "source": "Enciclopédia Britannica – verbete 'Turing machine'",
+   "brazil": false
+  },
+  {
+   "id": "tec-021",
+   "text": "Qual computador eletrônico de uso geral foi apresentado nos Estados Unidos em 1946?",
+   "theme": "tecnologia",
+   "subtheme": "computação",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "ENIAC",
+    "UNIVAC",
+    "Apple I",
+    "IBM PC"
+   ],
+   "answer": "ENIAC",
+   "synonyms": [
+    "eniac",
+    "eniaque"
+   ],
+   "explanation": "O ENIAC ocupava uma sala inteira e pesava cerca de 27 toneladas.",
+   "source": "Universidade da Pensilvânia – ENIAC",
+   "brazil": false
+  },
+  {
+   "id": "cin-001",
+   "text": "Qual super-herói tem um morcego como símbolo?",
+   "theme": "cinema",
+   "subtheme": "super-heróis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Batman",
+    "Superman",
+    "Homem-Aranha",
+    "Hulk"
+   ],
+   "answer": "Batman",
+   "synonyms": [],
+   "explanation": "Batman foi criado em 1939 por Bob Kane e Bill Finger.",
+   "source": "DC Comics – Batman",
+   "brazil": false
+  },
+  {
+   "id": "cin-002",
+   "text": "Qual super-herói fica verde e muito forte quando está com raiva?",
+   "theme": "cinema",
+   "subtheme": "super-heróis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Hulk",
+    "Thor",
+    "Flash",
+    "Batman"
+   ],
+   "answer": "Hulk",
+   "synonyms": [],
+   "explanation": "O Hulk foi criado por Stan Lee e Jack Kirby em 1962.",
+   "source": "Marvel – Hulk",
+   "brazil": false
+  },
+  {
+   "id": "cin-003",
+   "text": "Qual comida feita de milho estourado é a cara do cinema?",
+   "theme": "cinema",
+   "subtheme": "cinema",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Pipoca",
+    "Pamonha",
+    "Canjica",
+    "Curau"
+   ],
+   "answer": "Pipoca",
+   "synonyms": [],
+   "explanation": "O milho de pipoca estoura porque a água dentro do grão vira vapor e rompe a casca.",
+   "source": "Embrapa – Milho-pipoca",
+   "brazil": false
+  },
+  {
+   "id": "cin-004",
+   "text": "Qual super-herói veio do planeta Krypton?",
+   "theme": "cinema",
+   "subtheme": "super-heróis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Superman",
+    "Batman",
+    "Homem-Aranha",
+    "Flash"
+   ],
+   "answer": "Superman",
+   "synonyms": [
+    "super homem"
+   ],
+   "explanation": "Superman foi criado em 1938 por Jerry Siegel e Joe Shuster.",
+   "source": "DC Comics – Superman",
+   "brazil": false
+  },
+  {
+   "id": "cin-005",
+   "text": "Qual é o nome do principal prêmio do cinema americano, cuja estatueta é dourada?",
+   "theme": "cinema",
+   "subtheme": "prêmios",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "aberta",
+   "options": [],
+   "answer": "Oscar",
+   "synonyms": [
+    "o oscar",
+    "premio oscar"
+   ],
+   "explanation": "O Oscar é entregue pela Academia de Artes e Ciências Cinematográficas desde 1929.",
+   "source": "Academy of Motion Picture Arts and Sciences",
+   "brazil": false
+  },
+  {
+   "id": "cin-006",
+   "text": "Nos filmes de Harry Potter, qual é o nome da escola de magia?",
+   "theme": "cinema",
+   "subtheme": "fantasia",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Hogwarts",
+    "Nárnia",
+    "Xavier",
+    "Olimpo"
+   ],
+   "answer": "Hogwarts",
+   "synonyms": [],
+   "explanation": "Hogwarts é a Escola de Magia e Bruxaria criada por J. K. Rowling.",
+   "source": "Wizarding World – Hogwarts",
+   "brazil": false
+  },
+  {
+   "id": "cin-007",
+   "text": "O filme Jurassic Park mostra um parque com dinossauros recriados pela ciência.",
+   "theme": "cinema",
+   "subtheme": "aventura",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Dirigido por Steven Spielberg, o filme é de 1993 e foi baseado no livro de Michael Crichton.",
+   "source": "AFI Catalog – Jurassic Park (1993)",
+   "brazil": false
+  },
+  {
+   "id": "cin-008",
+   "text": "Qual filme de 1997 conta a história de um navio que afunda após bater em um iceberg?",
+   "theme": "cinema",
+   "subtheme": "clássicos",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Titanic",
+    "Avatar",
+    "Poseidon",
+    "Piratas do Caribe"
+   ],
+   "answer": "Titanic",
+   "synonyms": [],
+   "explanation": "Titanic, de James Cameron, venceu 11 Oscars, incluindo Melhor Filme.",
+   "source": "Academy Awards Database – 70º Oscar",
+   "brazil": false
+  },
+  {
+   "id": "cin-009",
+   "text": "Em Star Wars, quem é o pai de Luke Skywalker?",
+   "theme": "cinema",
+   "subtheme": "ficção científica",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Darth Vader",
+    "Obi-Wan Kenobi",
+    "Han Solo",
+    "Yoda"
+   ],
+   "answer": "Darth Vader",
+   "synonyms": [
+    "anakin",
+    "anakin skywalker",
+    "vader"
+   ],
+   "explanation": "A revelação 'Eu sou seu pai' aparece em 'O Império Contra-Ataca' (1980). Vader é Anakin Skywalker.",
+   "source": "Lucasfilm – StarWars.com Databank",
+   "brazil": false
+  },
+  {
+   "id": "cin-010",
+   "text": "Qual filme de James Cameron, de 2009, se passa na lua Pandora?",
+   "theme": "cinema",
+   "subtheme": "ficção científica",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Avatar",
+    "Titanic",
+    "O Exterminador do Futuro",
+    "Aliens"
+   ],
+   "answer": "Avatar",
+   "synonyms": [],
+   "explanation": "Avatar está entre as maiores bilheterias da história do cinema.",
+   "source": "Box Office Mojo – All Time Worldwide",
+   "brazil": false
+  },
+  {
+   "id": "cin-011",
+   "text": "Qual é a identidade secreta do Homem-Aranha?",
+   "theme": "cinema",
+   "subtheme": "super-heróis",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Peter Parker",
+    "Bruce Wayne",
+    "Clark Kent",
+    "Tony Stark"
+   ],
+   "answer": "Peter Parker",
+   "synonyms": [
+    "parker"
+   ],
+   "explanation": "Peter Parker foi picado por uma aranha radioativa. Bruce Wayne é o Batman e Clark Kent é o Superman.",
+   "source": "Marvel – Spider-Man",
+   "brazil": false
+  },
+  {
+   "id": "cin-012",
+   "text": "Quem dirigiu os filmes 'Tubarão' (1975) e 'E.T. – O Extraterrestre' (1982)?",
+   "theme": "cinema",
+   "subtheme": "diretores",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Steven Spielberg",
+    "George Lucas",
+    "James Cameron",
+    "Martin Scorsese"
+   ],
+   "answer": "Steven Spielberg",
+   "synonyms": [
+    "spielberg"
+   ],
+   "explanation": "Spielberg também dirigiu 'Jurassic Park' e 'A Lista de Schindler'.",
+   "source": "AFI Catalog – Steven Spielberg",
+   "brazil": false
+  },
+  {
+   "id": "cin-013",
+   "text": "Qual ator interpretou o capitão Jack Sparrow em 'Piratas do Caribe'?",
+   "theme": "cinema",
+   "subtheme": "atores",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Johnny Depp",
+    "Orlando Bloom",
+    "Brad Pitt",
+    "Tom Cruise"
+   ],
+   "answer": "Johnny Depp",
+   "synonyms": [
+    "depp"
+   ],
+   "explanation": "Depp foi indicado ao Oscar pelo papel no primeiro filme da série, de 2003.",
+   "source": "Academy Awards Database – 76º Oscar",
+   "brazil": false
+  },
+  {
+   "id": "cin-014",
+   "text": "Em 'O Mágico de Oz', qual é o nome da menina que vai parar na terra de Oz?",
+   "theme": "cinema",
+   "subtheme": "clássicos",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Dorothy",
+    "Alice",
+    "Wendy",
+    "Matilda"
+   ],
+   "answer": "Dorothy",
+   "synonyms": [],
+   "explanation": "No filme de 1939, Dorothy foi interpretada por Judy Garland.",
+   "source": "AFI Catalog – The Wizard of Oz (1939)",
+   "brazil": false
+  },
+  {
+   "id": "cin-015",
+   "text": "Qual atriz interpretou Hermione Granger nos filmes de Harry Potter?",
+   "theme": "cinema",
+   "subtheme": "atores",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Emma Watson",
+    "Emma Stone",
+    "Natalie Portman",
+    "Kristen Stewart"
+   ],
+   "answer": "Emma Watson",
+   "synonyms": [],
+   "explanation": "Emma Watson tinha 9 anos quando foi escolhida para o papel.",
+   "source": "Warner Bros. – Harry Potter cast",
+   "brazil": false
+  },
+  {
+   "id": "cin-016",
+   "text": "Qual filme brasileiro de 2002, dirigido por Fernando Meirelles, retrata o crescimento do crime em um conjunto habitacional do Rio?",
+   "theme": "cinema",
+   "subtheme": "cinema brasileiro",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Cidade de Deus",
+    "Tropa de Elite",
+    "Central do Brasil",
+    "Carandiru"
+   ],
+   "answer": "Cidade de Deus",
+   "synonyms": [],
+   "explanation": "O filme recebeu 4 indicações ao Oscar de 2004, incluindo Melhor Direção.",
+   "source": "Academy Awards Database – 76º Oscar",
+   "brazil": true
+  },
+  {
+   "id": "cin-017",
+   "text": "Qual atriz brasileira foi indicada ao Oscar de Melhor Atriz por 'Central do Brasil'?",
+   "theme": "cinema",
+   "subtheme": "cinema brasileiro",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Fernanda Montenegro",
+    "Fernanda Torres",
+    "Sônia Braga",
+    "Glória Pires"
+   ],
+   "answer": "Fernanda Montenegro",
+   "synonyms": [
+    "montenegro"
+   ],
+   "explanation": "Foi a primeira indicação de uma atriz brasileira nessa categoria, no Oscar de 1999.",
+   "source": "Academy Awards Database – 71º Oscar",
+   "brazil": true
+  },
+  {
+   "id": "cin-018",
+   "text": "Qual filme brasileiro venceu o Oscar de Melhor Filme Internacional em 2025?",
+   "theme": "cinema",
+   "subtheme": "cinema brasileiro",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Ainda Estou Aqui",
+    "Central do Brasil",
+    "Cidade de Deus",
+    "O Auto da Compadecida"
+   ],
+   "answer": "Ainda Estou Aqui",
+   "synonyms": [],
+   "explanation": "Dirigido por Walter Salles, foi o primeiro filme brasileiro a vencer nessa categoria.",
+   "source": "Academy Awards Database – 97º Oscar (março de 2025)",
+   "brazil": true,
+   "referenceDate": "Oscar 2025"
+  },
+  {
+   "id": "cin-019",
+   "text": "Qual filme de 2007, dirigido por José Padilha, tem o Capitão Nascimento como protagonista?",
+   "theme": "cinema",
+   "subtheme": "cinema brasileiro",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Tropa de Elite",
+    "Cidade de Deus",
+    "Carandiru",
+    "O Som ao Redor"
+   ],
+   "answer": "Tropa de Elite",
+   "synonyms": [],
+   "explanation": "O filme ganhou o Urso de Ouro no Festival de Berlim de 2008.",
+   "source": "Berlinale – Prêmios de 2008",
+   "brazil": true
+  },
+  {
+   "id": "cin-020",
+   "text": "Qual diretor brasileiro dirigiu 'Central do Brasil' (1998)?",
+   "theme": "cinema",
+   "subtheme": "cinema brasileiro",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Walter Salles",
+    "Fernando Meirelles",
+    "José Padilha",
+    "Glauber Rocha"
+   ],
+   "answer": "Walter Salles",
+   "synonyms": [
+    "salles"
+   ],
+   "explanation": "O filme venceu o Urso de Ouro em Berlim e o Globo de Ouro de filme estrangeiro.",
+   "source": "Berlinale – Prêmios de 1998",
+   "brazil": true
+  },
+  {
+   "id": "cin-021",
+   "text": "Qual cineasta do Cinema Novo dirigiu 'Deus e o Diabo na Terra do Sol' (1964)?",
+   "theme": "cinema",
+   "subtheme": "cinema brasileiro",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Glauber Rocha",
+    "Nelson Pereira dos Santos",
+    "Cacá Diegues",
+    "Anselmo Duarte"
+   ],
+   "answer": "Glauber Rocha",
+   "synonyms": [
+    "glauber"
+   ],
+   "explanation": "Glauber é associado à frase 'uma câmera na mão e uma ideia na cabeça'.",
+   "source": "Cinemateca Brasileira – Filmografia",
+   "brazil": true
+  },
+  {
+   "id": "geo-025",
+   "text": "Em qual destes lugares costuma fazer mais frio?",
+   "theme": "geografia",
+   "subtheme": "clima",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "No Polo Sul",
+    "No deserto do Saara",
+    "Na praia de Copacabana",
+    "Na Floresta Amazônica"
+   ],
+   "answer": "No Polo Sul",
+   "synonyms": [
+    "polo sul",
+    "antartida"
+   ],
+   "explanation": "A Antártida, onde fica o Polo Sul, é o continente mais frio do planeta.",
+   "source": "NASA Earth Observatory – Antarctica",
+   "brazil": false
+  },
+  {
+   "id": "his-027",
+   "text": "Antes de existir o carro, qual animal as pessoas usavam muito para viajar?",
+   "theme": "historia",
+   "subtheme": "transportes",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Cavalo",
+    "Pinguim",
+    "Golfinho",
+    "Coelho"
+   ],
+   "answer": "Cavalo",
+   "synonyms": [],
+   "explanation": "Cavalos puxavam carroças e carruagens e eram montados para viagens longas.",
+   "source": "Museu Imperial (Petrópolis) – Transportes no século XIX",
+   "brazil": false
+  },
+  {
+   "id": "cie-022",
+   "text": "Qual estrela ilumina a Terra durante o dia?",
+   "theme": "ciencia",
+   "subtheme": "astronomia",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "O Sol",
+    "A Lua",
+    "Marte",
+    "Vênus"
+   ],
+   "answer": "O Sol",
+   "synonyms": [
+    "sol"
+   ],
+   "explanation": "O Sol é uma estrela; a Lua e os planetas não têm luz própria.",
+   "source": "NASA – Sun Facts",
+   "brazil": false
+  },
+  {
+   "id": "tec-022",
+   "text": "Qual aparelho usamos para fazer ligações e mandar mensagens?",
+   "theme": "tecnologia",
+   "subtheme": "aparelhos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Celular",
+    "Torradeira",
+    "Bicicleta",
+    "Relógio de parede"
+   ],
+   "answer": "Celular",
+   "synonyms": [
+    "telefone",
+    "smartphone",
+    "telefone celular"
+   ],
+   "explanation": "Os celulares de hoje também são computadores de bolso.",
+   "source": "Anatel – Telefonia móvel",
+   "brazil": false
+  },
+  {
+   "id": "cin-022",
+   "text": "Qual destes super-heróis solta teias, como uma aranha?",
+   "theme": "cinema",
+   "subtheme": "super-heróis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Homem-Aranha",
+    "Batman",
+    "Hulk",
+    "Superman"
+   ],
+   "answer": "Homem-Aranha",
+   "synonyms": [
+    "homem aranha",
+    "spider man",
+    "aranha"
+   ],
+   "explanation": "O Homem-Aranha foi criado por Stan Lee e Steve Ditko em 1962.",
+   "source": "Marvel – Spider-Man",
+   "brazil": false
+  },
+  {
+   "id": "inf-001",
+   "text": "Em 'Procurando Nemo', que tipo de animal é o Nemo?",
+   "theme": "filmes_infantis",
+   "subtheme": "Pixar",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Peixe-palhaço",
+    "Tubarão",
+    "Tartaruga",
+    "Polvo"
+   ],
+   "answer": "Peixe-palhaço",
+   "synonyms": [
+    "peixe",
+    "peixinho",
+    "peixe palhaco"
+   ],
+   "explanation": "Nemo é um peixe-palhaço, que vive entre as anêmonas do mar.",
+   "source": "Disney/Pixar – Procurando Nemo (2003)",
+   "brazil": false
+  },
+  {
+   "id": "inf-002",
+   "text": "Em 'Toy Story', qual é o nome do caubói de brinquedo?",
+   "theme": "filmes_infantis",
+   "subtheme": "Pixar",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Woody",
+    "Buzz Lightyear",
+    "Rex",
+    "Slinky"
+   ],
+   "answer": "Woody",
+   "synonyms": [
+    "xerife woody"
+   ],
+   "explanation": "Woody é o brinquedo favorito do menino Andy. Buzz Lightyear é o patrulheiro espacial.",
+   "source": "Disney/Pixar – Toy Story (1995)",
+   "brazil": false
+  },
+  {
+   "id": "inf-003",
+   "text": "Em 'Frozen', qual é o nome da irmã de Anna que tem poderes de gelo?",
+   "theme": "filmes_infantis",
+   "subtheme": "Disney",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Elsa",
+    "Moana",
+    "Rapunzel",
+    "Ariel"
+   ],
+   "answer": "Elsa",
+   "synonyms": [],
+   "explanation": "Elsa é a rainha de Arendelle e canta 'Livre Estou'.",
+   "source": "Disney – Frozen (2013)",
+   "brazil": false
+  },
+  {
+   "id": "inf-004",
+   "text": "Qual é o nome do leãozinho protagonista de 'O Rei Leão'?",
+   "theme": "filmes_infantis",
+   "subtheme": "Disney",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Simba",
+    "Mufasa",
+    "Scar",
+    "Nala"
+   ],
+   "answer": "Simba",
+   "synonyms": [],
+   "explanation": "Simba é filho do rei Mufasa. Scar é o tio vilão.",
+   "source": "Disney – O Rei Leão (1994)",
+   "brazil": false
+  },
+  {
+   "id": "inf-005",
+   "text": "Qual é o nome do boneco de neve falante de 'Frozen'?",
+   "theme": "filmes_infantis",
+   "subtheme": "Disney",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Olaf",
+    "Sven",
+    "Kristoff",
+    "Hans"
+   ],
+   "answer": "Olaf",
+   "synonyms": [],
+   "explanation": "Olaf adora abraços quentinhos. Sven é a rena de Kristoff.",
+   "source": "Disney – Frozen (2013)",
+   "brazil": false
+  },
+  {
+   "id": "inf-006",
+   "text": "Qual princesa perde um sapatinho de cristal ao sair correndo do baile?",
+   "theme": "filmes_infantis",
+   "subtheme": "princesas",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Cinderela",
+    "Branca de Neve",
+    "Bela",
+    "Aurora"
+   ],
+   "answer": "Cinderela",
+   "synonyms": [],
+   "explanation": "À meia-noite o encanto acaba, e o príncipe procura a dona do sapatinho.",
+   "source": "Disney – Cinderela (1950)",
+   "brazil": false
+  },
+  {
+   "id": "inf-007",
+   "text": "Em 'A Pequena Sereia', como se chama a sereia protagonista?",
+   "theme": "filmes_infantis",
+   "subtheme": "princesas",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Ariel",
+    "Jasmine",
+    "Mulan",
+    "Pocahontas"
+   ],
+   "answer": "Ariel",
+   "synonyms": [],
+   "explanation": "Ariel troca a voz por pernas num acordo com a bruxa Úrsula.",
+   "source": "Disney – A Pequena Sereia (1989)",
+   "brazil": false
+  },
+  {
+   "id": "inf-008",
+   "text": "Em 'Shrek', que tipo de criatura é o Shrek?",
+   "theme": "filmes_infantis",
+   "subtheme": "DreamWorks",
+   "difficulty": "facil",
+   "minAge": 7,
+   "format": "multipla_escolha",
+   "options": [
+    "Ogro",
+    "Dragão",
+    "Duende",
+    "Gigante"
+   ],
+   "answer": "Ogro",
+   "synonyms": [],
+   "explanation": "Shrek é um ogro verde que mora num pântano e vive aventuras com o Burro.",
+   "source": "DreamWorks – Shrek (2001)",
+   "brazil": false
+  },
+  {
+   "id": "inf-009",
+   "text": "Em 'Divertida Mente', qual emoção é a personagem amarela e sempre animada?",
+   "theme": "filmes_infantis",
+   "subtheme": "Pixar",
+   "difficulty": "facil",
+   "minAge": 7,
+   "format": "multipla_escolha",
+   "options": [
+    "Alegria",
+    "Tristeza",
+    "Raiva",
+    "Medo"
+   ],
+   "answer": "Alegria",
+   "synonyms": [],
+   "explanation": "As emoções vivem na mente da menina Riley: Alegria, Tristeza, Raiva, Medo e Nojinho.",
+   "source": "Disney/Pixar – Divertida Mente (2015)",
+   "brazil": false
+  },
+  {
+   "id": "inf-010",
+   "text": "Em 'Carros', qual é o nome do carro de corrida vermelho protagonista?",
+   "theme": "filmes_infantis",
+   "subtheme": "Pixar",
+   "difficulty": "facil",
+   "minAge": 7,
+   "format": "multipla_escolha",
+   "options": [
+    "Relâmpago McQueen",
+    "Mate",
+    "Doc Hudson",
+    "Sally"
+   ],
+   "answer": "Relâmpago McQueen",
+   "synonyms": [
+    "mcqueen",
+    "relampago",
+    "mac queen"
+   ],
+   "explanation": "Relâmpago McQueen usa o número 95. Mate é o guincho, seu melhor amigo.",
+   "source": "Disney/Pixar – Carros (2006)",
+   "brazil": false
+  },
+  {
+   "id": "inf-011",
+   "text": "Em 'Madagascar', que animal é o Alex?",
+   "theme": "filmes_infantis",
+   "subtheme": "DreamWorks",
+   "difficulty": "facil",
+   "minAge": 7,
+   "format": "multipla_escolha",
+   "options": [
+    "Leão",
+    "Zebra",
+    "Girafa",
+    "Hipopótamo"
+   ],
+   "answer": "Leão",
+   "synonyms": [],
+   "explanation": "Alex é o leão; Marty é a zebra, Melman a girafa e Glória a hipopótamo.",
+   "source": "DreamWorks – Madagascar (2005)",
+   "brazil": false
+  },
+  {
+   "id": "inf-012",
+   "text": "Em 'Up – Altas Aventuras', o que faz a casa do senhor Carl voar?",
+   "theme": "filmes_infantis",
+   "subtheme": "Pixar",
+   "difficulty": "media",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Balões",
+    "Um foguete",
+    "Asas gigantes",
+    "Um tornado"
+   ],
+   "answer": "Balões",
+   "synonyms": [
+    "baloes",
+    "bexigas",
+    "baloes de gas"
+   ],
+   "explanation": "Carl amarra milhares de balões de gás na casa para viajar até a América do Sul.",
+   "source": "Disney/Pixar – Up (2009)",
+   "brazil": false
+  },
+  {
+   "id": "inf-013",
+   "text": "Em 'Moana', qual é o nome do semideus que ajuda a heroína?",
+   "theme": "filmes_infantis",
+   "subtheme": "Disney",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Maui",
+    "Hércules",
+    "Tamatoa",
+    "Kakamora"
+   ],
+   "answer": "Maui",
+   "synonyms": [],
+   "explanation": "Maui é um semideus que muda de forma graças ao seu anzol mágico.",
+   "source": "Disney – Moana (2016)",
+   "brazil": false
+  },
+  {
+   "id": "inf-014",
+   "text": "Em 'Aladdin', como se chama o macaquinho de estimação de Aladdin?",
+   "theme": "filmes_infantis",
+   "subtheme": "Disney",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Abu",
+    "Rajah",
+    "Iago",
+    "Jafar"
+   ],
+   "answer": "Abu",
+   "synonyms": [],
+   "explanation": "Rajah é o tigre de Jasmine e Iago é o papagaio do vilão Jafar.",
+   "source": "Disney – Aladdin (1992)",
+   "brazil": false
+  },
+  {
+   "id": "inf-015",
+   "text": "No filme 'Viva – A Vida é uma Festa' (Coco), que instrumento Miguel sonha em tocar?",
+   "theme": "filmes_infantis",
+   "subtheme": "Pixar",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Violão",
+    "Piano",
+    "Bateria",
+    "Flauta"
+   ],
+   "answer": "Violão",
+   "synonyms": [
+    "guitarra"
+   ],
+   "explanation": "Miguel sonha ser músico como seu ídolo, Ernesto de la Cruz.",
+   "source": "Disney/Pixar – Viva: A Vida é uma Festa (2017)",
+   "brazil": false
+  },
+  {
+   "id": "inf-016",
+   "text": "Qual é o nome do rato cozinheiro de 'Ratatouille'?",
+   "theme": "filmes_infantis",
+   "subtheme": "Pixar",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Remy",
+    "Mickey",
+    "Jerry",
+    "Stuart"
+   ],
+   "answer": "Remy",
+   "synonyms": [
+    "remi"
+   ],
+   "explanation": "Remy sonha ser chef em Paris e cozinha escondido no chapéu de Linguini.",
+   "source": "Disney/Pixar – Ratatouille (2007)",
+   "brazil": false
+  },
+  {
+   "id": "inf-017",
+   "text": "Qual estúdio produziu 'Toy Story' (1995), o primeiro longa-metragem feito todo em computação gráfica?",
+   "theme": "filmes_infantis",
+   "subtheme": "estúdios",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Pixar",
+    "DreamWorks",
+    "Studio Ghibli",
+    "Blue Sky"
+   ],
+   "answer": "Pixar",
+   "synonyms": [],
+   "explanation": "A Pixar fez o filme em parceria com a Disney, que o distribuiu.",
+   "source": "Pixar Animation Studios – Our story",
+   "brazil": false
+  },
+  {
+   "id": "inf-018",
+   "text": "Em qual filme do Studio Ghibli uma menina entra num mundo de espíritos e seus pais viram porcos?",
+   "theme": "filmes_infantis",
+   "subtheme": "anime",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "A Viagem de Chihiro",
+    "Meu Amigo Totoro",
+    "O Castelo Animado",
+    "Ponyo"
+   ],
+   "answer": "A Viagem de Chihiro",
+   "synonyms": [
+    "chihiro",
+    "viagem de chihiro"
+   ],
+   "explanation": "O filme de Hayao Miyazaki venceu o Oscar de Melhor Animação em 2003.",
+   "source": "Academy Awards Database – 75º Oscar",
+   "brazil": false
+  },
+  {
+   "id": "inf-019",
+   "text": "Em 'Encanto', qual é o sobrenome da família mágica?",
+   "theme": "filmes_infantis",
+   "subtheme": "Disney",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Madrigal",
+    "Rivera",
+    "Flores",
+    "Montoya"
+   ],
+   "answer": "Madrigal",
+   "synonyms": [],
+   "explanation": "Cada membro da família Madrigal tem um dom mágico, menos Mirabel.",
+   "source": "Disney – Encanto (2021)",
+   "brazil": false
+  },
+  {
+   "id": "inf-020",
+   "text": "Qual foi o primeiro longa-metragem de animação da Disney, lançado em 1937?",
+   "theme": "filmes_infantis",
+   "subtheme": "Disney",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Branca de Neve e os Sete Anões",
+    "Pinóquio",
+    "Fantasia",
+    "Dumbo"
+   ],
+   "answer": "Branca de Neve e os Sete Anões",
+   "synonyms": [
+    "branca de neve"
+   ],
+   "explanation": "O filme estreou em dezembro de 1937; Pinóquio e Fantasia vieram em 1940.",
+   "source": "The Walt Disney Company – Disney History",
+   "brazil": false
+  },
+  {
+   "id": "nov-001",
+   "text": "As novelas brasileiras costumam ser exibidas em capítulos quase todos os dias.",
+   "theme": "novelas",
+   "subtheme": "formato",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "As novelas têm capítulos de segunda a sábado e duram vários meses.",
+   "source": "Memória Globo – Teledramaturgia",
+   "brazil": true
+  },
+  {
+   "id": "nov-002",
+   "text": "Qual novela infantil do SBT, de 2012, mostra o dia a dia de uma turma de alunos numa escola?",
+   "theme": "novelas",
+   "subtheme": "infantis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Carrossel",
+    "Chiquititas",
+    "Cúmplices de um Resgate",
+    "Poliana"
+   ],
+   "answer": "Carrossel",
+   "synonyms": [],
+   "explanation": "Carrossel foi uma adaptação da novela mexicana de mesmo nome, de 1989.",
+   "source": "SBT – Carrossel (2012)",
+   "brazil": true
+  },
+  {
+   "id": "nov-003",
+   "text": "Na novela 'Carrossel', qual é a profissão de Helena?",
+   "theme": "novelas",
+   "subtheme": "infantis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Professora",
+    "Médica",
+    "Cozinheira",
+    "Diretora"
+   ],
+   "answer": "Professora",
+   "synonyms": [],
+   "explanation": "A doce professora Helena é a querida da turma de alunos da escola.",
+   "source": "SBT – Carrossel (2012)",
+   "brazil": true
+  },
+  {
+   "id": "nov-004",
+   "text": "Qual destes personagens é de uma novela infantil do SBT?",
+   "theme": "novelas",
+   "subtheme": "infantis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Cirilo",
+    "Pikachu",
+    "Mickey",
+    "Garfield"
+   ],
+   "answer": "Cirilo",
+   "synonyms": [],
+   "explanation": "Cirilo é o menino apaixonado pela Maria Joaquina em 'Carrossel'.",
+   "source": "SBT – Carrossel (2012)",
+   "brazil": true
+  },
+  {
+   "id": "nov-005",
+   "text": "Qual novela infantil do SBT se passa num orfanato e teve versões em 1997 e 2013?",
+   "theme": "novelas",
+   "subtheme": "infantis",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Chiquititas",
+    "Carrossel",
+    "Cúmplices de um Resgate",
+    "Poliana Moça"
+   ],
+   "answer": "Chiquititas",
+   "synonyms": [],
+   "explanation": "As duas versões brasileiras foram adaptadas de uma novela argentina.",
+   "source": "SBT – Chiquititas",
+   "brazil": true
+  },
+  {
+   "id": "nov-006",
+   "text": "Em qual país foi produzida a novela 'Maria do Bairro', exibida várias vezes pelo SBT?",
+   "theme": "novelas",
+   "subtheme": "estrangeiras",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "México",
+    "Argentina",
+    "Colômbia",
+    "Espanha"
+   ],
+   "answer": "México",
+   "synonyms": [],
+   "explanation": "A novela da Televisa, de 1995, foi estrelada por Thalía.",
+   "source": "Televisa – María la del Barrio (1995)",
+   "brazil": false
+  },
+  {
+   "id": "nov-007",
+   "text": "Qual novela juvenil da Globo se passava numa escola e teve muitas temporadas a partir de 1995?",
+   "theme": "novelas",
+   "subtheme": "juvenis",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Malhação",
+    "Chiquititas",
+    "Rebelde",
+    "Carrossel"
+   ],
+   "answer": "Malhação",
+   "synonyms": [],
+   "explanation": "Malhação estreou em 1995 numa academia e depois passou a se passar em escolas.",
+   "source": "Memória Globo – Malhação",
+   "brazil": true
+  },
+  {
+   "id": "nov-008",
+   "text": "Qual emissora exibiu a novela 'Avenida Brasil' (2012)?",
+   "theme": "novelas",
+   "subtheme": "emissoras",
+   "difficulty": "facil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "TV Globo",
+    "SBT",
+    "Record",
+    "Band"
+   ],
+   "answer": "TV Globo",
+   "synonyms": [
+    "globo",
+    "rede globo"
+   ],
+   "explanation": "Escrita por João Emanuel Carneiro, foi exibida no horário das nove.",
+   "source": "Memória Globo – Avenida Brasil",
+   "brazil": true
+  },
+  {
+   "id": "nov-009",
+   "text": "Em 'Avenida Brasil', qual é o nome da vilã interpretada por Adriana Esteves?",
+   "theme": "novelas",
+   "subtheme": "vilãs",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Carminha",
+    "Nazaré Tedesco",
+    "Odete Roitman",
+    "Flora"
+   ],
+   "answer": "Carminha",
+   "synonyms": [],
+   "explanation": "Carminha disputava com Nina (Débora Falabella), que queria vingança.",
+   "source": "Memória Globo – Avenida Brasil",
+   "brazil": true
+  },
+  {
+   "id": "nov-010",
+   "text": "Qual vilã da novela 'Senhora do Destino' (2004) virou meme na internet?",
+   "theme": "novelas",
+   "subtheme": "vilãs",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Nazaré Tedesco",
+    "Carminha",
+    "Odete Roitman",
+    "Perpétua"
+   ],
+   "answer": "Nazaré Tedesco",
+   "synonyms": [
+    "nazare"
+   ],
+   "explanation": "Interpretada por Renata Sorrah, Nazaré virou meme mundial com a cena das contas.",
+   "source": "Memória Globo – Senhora do Destino",
+   "brazil": true
+  },
+  {
+   "id": "nov-011",
+   "text": "A novela 'O Clone' (2001) se passa em parte em qual país do norte da África?",
+   "theme": "novelas",
+   "subtheme": "cenários",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Marrocos",
+    "Egito",
+    "Tunísia",
+    "Argélia"
+   ],
+   "answer": "Marrocos",
+   "synonyms": [],
+   "explanation": "Boa parte da história de Jade e Lucas se passa na cidade de Fez, no Marrocos.",
+   "source": "Memória Globo – O Clone",
+   "brazil": true
+  },
+  {
+   "id": "nov-012",
+   "text": "Qual autor de novelas ficou famoso por suas protagonistas chamadas Helena?",
+   "theme": "novelas",
+   "subtheme": "autores",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Manoel Carlos",
+    "Walcyr Carrasco",
+    "Benedito Ruy Barbosa",
+    "Janete Clair"
+   ],
+   "answer": "Manoel Carlos",
+   "synonyms": [
+    "maneco"
+   ],
+   "explanation": "Maneco escreveu 'Laços de Família' e 'Mulheres Apaixonadas', entre outras.",
+   "source": "Memória Globo – Manoel Carlos",
+   "brazil": true
+  },
+  {
+   "id": "nov-013",
+   "text": "Na novela 'Pantanal', qual personagem tinha fama de virar onça?",
+   "theme": "novelas",
+   "subtheme": "personagens",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Juma Marruá",
+    "Irma",
+    "Madeleine",
+    "Filó"
+   ],
+   "answer": "Juma Marruá",
+   "synonyms": [
+    "juma"
+   ],
+   "explanation": "Juma foi vivida por Cristiana Oliveira (1990) e por Alanis Guillen (2022).",
+   "source": "Memória Globo – Pantanal (2022)",
+   "brazil": true
+  },
+  {
+   "id": "nov-014",
+   "text": "Quem escreveu a novela 'O Clone'?",
+   "theme": "novelas",
+   "subtheme": "autores",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Glória Perez",
+    "Manoel Carlos",
+    "Gilberto Braga",
+    "Aguinaldo Silva"
+   ],
+   "answer": "Glória Perez",
+   "synonyms": [],
+   "explanation": "Glória Perez também escreveu 'Caminho das Índias' e 'A Força do Querer'.",
+   "source": "Memória Globo – Glória Perez",
+   "brazil": true
+  },
+  {
+   "id": "nov-015",
+   "text": "Em qual emissora foi exibida a primeira versão de 'Pantanal', em 1990?",
+   "theme": "novelas",
+   "subtheme": "emissoras",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Rede Manchete",
+    "TV Globo",
+    "SBT",
+    "TV Tupi"
+   ],
+   "answer": "Rede Manchete",
+   "synonyms": [
+    "manchete"
+   ],
+   "explanation": "A novela de Benedito Ruy Barbosa foi um fenômeno da Manchete e ganhou remake na Globo em 2022.",
+   "source": "Memória Globo – Pantanal (2022); Teledramaturgia",
+   "brazil": true
+  },
+  {
+   "id": "nov-016",
+   "text": "Quem interpretou a vilã Odete Roitman na primeira versão de 'Vale Tudo' (1988)?",
+   "theme": "novelas",
+   "subtheme": "vilãs",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Beatriz Segall",
+    "Fernanda Montenegro",
+    "Regina Duarte",
+    "Glória Menezes"
+   ],
+   "answer": "Beatriz Segall",
+   "synonyms": [],
+   "explanation": "O mistério 'Quem matou Odete Roitman?' parou o país em 1989.",
+   "source": "Memória Globo – Vale Tudo (1988)",
+   "brazil": true
+  },
+  {
+   "id": "nov-017",
+   "text": "Qual novela de 1976, baseada no romance de Bernardo Guimarães, fez sucesso em dezenas de países?",
+   "theme": "novelas",
+   "subtheme": "clássicas",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "A Escrava Isaura",
+    "Roque Santeiro",
+    "Dancin' Days",
+    "Gabriela"
+   ],
+   "answer": "A Escrava Isaura",
+   "synonyms": [
+    "escrava isaura",
+    "isaura"
+   ],
+   "explanation": "Estrelada por Lucélia Santos, foi exportada para dezenas de países.",
+   "source": "Memória Globo – Escrava Isaura",
+   "brazil": true
+  },
+  {
+   "id": "nov-018",
+   "text": "Em 'Roque Santeiro' (1985), qual era o nome da viúva interpretada por Regina Duarte?",
+   "theme": "novelas",
+   "subtheme": "personagens",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Porcina",
+    "Tieta",
+    "Odete",
+    "Perpétua"
+   ],
+   "answer": "Porcina",
+   "synonyms": [
+    "viuva porcina"
+   ],
+   "explanation": "A Viúva Porcina era 'a que foi sem nunca ter sido'.",
+   "source": "Memória Globo – Roque Santeiro",
+   "brazil": true
+  },
+  {
+   "id": "nov-019",
+   "text": "Em qual novela de Walcyr Carrasco (2013) o vilão Félix, de Mateus Solano, conquistou o público?",
+   "theme": "novelas",
+   "subtheme": "vilões",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Amor à Vida",
+    "Império",
+    "Fina Estampa",
+    "A Força do Querer"
+   ],
+   "answer": "Amor à Vida",
+   "synonyms": [],
+   "explanation": "A novela terminou com o primeiro beijo entre dois homens numa novela da Globo no horário nobre.",
+   "source": "Memória Globo – Amor à Vida",
+   "brazil": true
+  },
+  {
+   "id": "nov-020",
+   "text": "Em que cidade fictícia se passava a novela 'Roque Santeiro'?",
+   "theme": "novelas",
+   "subtheme": "cenários",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Asa Branca",
+    "Sucupira",
+    "Santana do Agreste",
+    "Bole-Bole"
+   ],
+   "answer": "Asa Branca",
+   "synonyms": [],
+   "explanation": "Sucupira é de 'O Bem-Amado', Santana do Agreste de 'Tieta' e Bole-Bole de 'Saramandaia'.",
+   "source": "Memória Globo – Roque Santeiro",
+   "brazil": true
+  },
+  {
+   "id": "tv-001",
+   "text": "Qual personagem do 'Sítio do Picapau Amarelo' é uma boneca de pano falante?",
+   "theme": "televisao",
+   "subtheme": "infantis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Emília",
+    "Narizinho",
+    "Cuca",
+    "Dona Benta"
+   ],
+   "answer": "Emília",
+   "synonyms": [
+    "emilia",
+    "boneca emilia"
+   ],
+   "explanation": "Emília ganhou a fala depois de tomar uma 'pílula falante'.",
+   "source": "Memória Globo – Sítio do Picapau Amarelo",
+   "brazil": true
+  },
+  {
+   "id": "tv-002",
+   "text": "De que cor é o Bob Esponja?",
+   "theme": "televisao",
+   "subtheme": "desenhos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Amarelo",
+    "Azul",
+    "Verde",
+    "Rosa"
+   ],
+   "answer": "Amarelo",
+   "synonyms": [],
+   "explanation": "Bob Esponja mora num abacaxi no fundo do mar, na Fenda do Biquíni.",
+   "source": "Nickelodeon – SpongeBob SquarePants",
+   "brazil": false
+  },
+  {
+   "id": "tv-003",
+   "text": "No desenho 'Peppa Pig', que animal é a Peppa?",
+   "theme": "televisao",
+   "subtheme": "desenhos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Porquinha",
+    "Ovelha",
+    "Coelha",
+    "Gata"
+   ],
+   "answer": "Porquinha",
+   "synonyms": [
+    "porca",
+    "porco",
+    "porquinho",
+    "uma porquinha"
+   ],
+   "explanation": "Peppa vive com o Papai Pig, a Mamãe Pig e o irmãozinho George.",
+   "source": "Peppa Pig – site oficial",
+   "brazil": false
+  },
+  {
+   "id": "tv-004",
+   "text": "No seriado 'Chaves', onde o personagem principal costuma se esconder?",
+   "theme": "televisao",
+   "subtheme": "humor",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Num barril",
+    "Num armário",
+    "Embaixo da cama",
+    "Numa árvore"
+   ],
+   "answer": "Num barril",
+   "synonyms": [
+    "barril",
+    "no barril",
+    "dentro do barril"
+   ],
+   "explanation": "O barril fica no pátio da vila, perto da casa da Dona Florinda.",
+   "source": "Televisa – El Chavo del Ocho",
+   "brazil": false
+  },
+  {
+   "id": "tv-005",
+   "text": "Qual apresentadora ficou famosa como a 'Rainha dos Baixinhos'?",
+   "theme": "televisao",
+   "subtheme": "apresentadores",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Xuxa",
+    "Angélica",
+    "Eliana",
+    "Mara Maravilha"
+   ],
+   "answer": "Xuxa",
+   "synonyms": [
+    "xuxa meneghel"
+   ],
+   "explanation": "O 'Xou da Xuxa' estreou na Globo em 1986.",
+   "source": "Memória Globo – Xou da Xuxa",
+   "brazil": true
+  },
+  {
+   "id": "tv-006",
+   "text": "No seriado 'Chaves', qual é o nome do professor da turma?",
+   "theme": "televisao",
+   "subtheme": "humor",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Professor Girafales",
+    "Seu Madruga",
+    "Seu Barriga",
+    "Nhonho"
+   ],
+   "answer": "Professor Girafales",
+   "synonyms": [
+    "girafales",
+    "professor linguica"
+   ],
+   "explanation": "Ele é apaixonado pela Dona Florinda e leva sempre um buquê de flores.",
+   "source": "Televisa – El Chavo del Ocho",
+   "brazil": false
+  },
+  {
+   "id": "tv-007",
+   "text": "Quem é o dono da vila que vive cobrando o aluguel no seriado 'Chaves'?",
+   "theme": "televisao",
+   "subtheme": "humor",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Seu Barriga",
+    "Seu Madruga",
+    "Professor Girafales",
+    "Quico"
+   ],
+   "answer": "Seu Barriga",
+   "synonyms": [
+    "barriga",
+    "senhor barriga"
+   ],
+   "explanation": "Seu Madruga vivia devendo vários meses de aluguel ao Seu Barriga.",
+   "source": "Televisa – El Chavo del Ocho",
+   "brazil": false
+  },
+  {
+   "id": "tv-008",
+   "text": "Qual desenho mostra uma família amarela que mora em Springfield?",
+   "theme": "televisao",
+   "subtheme": "desenhos",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Os Simpsons",
+    "Family Guy",
+    "Futurama",
+    "Os Flintstones"
+   ],
+   "answer": "Os Simpsons",
+   "synonyms": [
+    "simpsons"
+   ],
+   "explanation": "Criado por Matt Groening, estreou como série em 1989.",
+   "source": "FOX – The Simpsons",
+   "brazil": false
+  },
+  {
+   "id": "tv-009",
+   "text": "Em 'Castelo Rá-Tim-Bum', como se chama o aprendiz de feiticeiro de 300 anos?",
+   "theme": "televisao",
+   "subtheme": "infantis",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Nino",
+    "Zequinha",
+    "Pedro",
+    "Biba"
+   ],
+   "answer": "Nino",
+   "synonyms": [],
+   "explanation": "Nino morava no castelo com o tio Victor e a feiticeira Morgana.",
+   "source": "TV Cultura – Castelo Rá-Tim-Bum (1994)",
+   "brazil": true
+  },
+  {
+   "id": "tv-010",
+   "text": "Qual grupo de humoristas era formado por Didi, Dedé, Mussum e Zacarias?",
+   "theme": "televisao",
+   "subtheme": "humor",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Os Trapalhões",
+    "Casseta & Planeta",
+    "Hermes e Renato",
+    "Porta dos Fundos"
+   ],
+   "answer": "Os Trapalhões",
+   "synonyms": [
+    "trapalhoes"
+   ],
+   "explanation": "Os Trapalhões ficaram décadas no ar e fizeram muitos filmes de sucesso.",
+   "source": "Memória Globo – Os Trapalhões",
+   "brazil": true
+  },
+  {
+   "id": "tv-011",
+   "text": "Qual apresentador do SBT ficou famoso por perguntar à plateia: 'Quem quer dinheiro?'.",
+   "theme": "televisao",
+   "subtheme": "apresentadores",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Silvio Santos",
+    "Faustão",
+    "Gugu",
+    "Chacrinha"
+   ],
+   "answer": "Silvio Santos",
+   "synonyms": [
+    "silvio"
+   ],
+   "explanation": "Silvio Santos fundou o SBT em 1981 e jogava aviõezinhos de dinheiro para a plateia.",
+   "source": "SBT – Silvio Santos",
+   "brazil": true
+  },
+  {
+   "id": "tv-012",
+   "text": "Qual reality show da Globo, no ar desde 2002, confina participantes numa casa vigiada por câmeras?",
+   "theme": "televisao",
+   "subtheme": "reality shows",
+   "difficulty": "facil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Big Brother Brasil",
+    "A Fazenda",
+    "No Limite",
+    "Casa dos Artistas"
+   ],
+   "answer": "Big Brother Brasil",
+   "synonyms": [
+    "bbb",
+    "big brother"
+   ],
+   "explanation": "O BBB é a versão brasileira do formato holandês Big Brother.",
+   "source": "Memória Globo – Big Brother Brasil",
+   "brazil": true
+  },
+  {
+   "id": "tv-013",
+   "text": "Qual emissora pública de São Paulo produziu 'Castelo Rá-Tim-Bum'?",
+   "theme": "televisao",
+   "subtheme": "emissoras",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "TV Cultura",
+    "TV Globo",
+    "SBT",
+    "Band"
+   ],
+   "answer": "TV Cultura",
+   "synonyms": [
+    "cultura"
+   ],
+   "explanation": "A TV Cultura também produziu 'Rá-Tim-Bum' e 'Cocoricó'.",
+   "source": "TV Cultura – Castelo Rá-Tim-Bum",
+   "brazil": true
+  },
+  {
+   "id": "tv-014",
+   "text": "Qual programa dominical da Globo é conhecido como 'o show da vida'?",
+   "theme": "televisao",
+   "subtheme": "programas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Fantástico",
+    "Domingão",
+    "Esporte Espetacular",
+    "Caldeirão"
+   ],
+   "answer": "Fantástico",
+   "synonyms": [],
+   "explanation": "O Fantástico está no ar desde 1973.",
+   "source": "Memória Globo – Fantástico",
+   "brazil": true
+  },
+  {
+   "id": "tv-015",
+   "text": "Qual apresentador gritava 'Ô loco, meu!' no programa de domingo da Globo?",
+   "theme": "televisao",
+   "subtheme": "apresentadores",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Faustão",
+    "Silvio Santos",
+    "Gugu",
+    "Luciano Huck"
+   ],
+   "answer": "Faustão",
+   "synonyms": [
+    "fausto silva",
+    "fausto"
+   ],
+   "explanation": "Fausto Silva apresentou o 'Domingão do Faustão' de 1989 a 2021.",
+   "source": "Memória Globo – Domingão do Faustão",
+   "brazil": true
+  },
+  {
+   "id": "tv-016",
+   "text": "Qual série americana mostrava seis amigos que frequentavam o café Central Perk?",
+   "theme": "televisao",
+   "subtheme": "séries",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Friends",
+    "Seinfeld",
+    "How I Met Your Mother",
+    "The Office"
+   ],
+   "answer": "Friends",
+   "synonyms": [],
+   "explanation": "Friends foi ao ar de 1994 a 2004, com dez temporadas.",
+   "source": "Warner Bros. Television – Friends",
+   "brazil": false
+  },
+  {
+   "id": "tv-017",
+   "text": "Qual telejornal da Globo estreou em 1969 e continua no ar à noite?",
+   "theme": "televisao",
+   "subtheme": "jornalismo",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Jornal Nacional",
+    "Fantástico",
+    "Jornal Hoje",
+    "Globo Repórter"
+   ],
+   "answer": "Jornal Nacional",
+   "synonyms": [
+    "jn"
+   ],
+   "explanation": "O Jornal Nacional estreou em 1º de setembro de 1969, apresentado por Cid Moreira.",
+   "source": "Memória Globo – Jornal Nacional",
+   "brazil": true,
+   "referenceDate": "Programação de 2026"
+  },
+  {
+   "id": "tv-018",
+   "text": "Qual programa de humor da Globo tinha o personagem Caco Antibes, de Miguel Falabella?",
+   "theme": "televisao",
+   "subtheme": "humor",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Sai de Baixo",
+    "Zorra Total",
+    "Os Trapalhões",
+    "A Grande Família"
+   ],
+   "answer": "Sai de Baixo",
+   "synonyms": [],
+   "explanation": "Sai de Baixo foi exibido de 1996 a 2002, gravado no teatro com plateia.",
+   "source": "Memória Globo – Sai de Baixo",
+   "brazil": true
+  },
+  {
+   "id": "tv-019",
+   "text": "Qual foi a primeira emissora de televisão do Brasil, inaugurada em 1950?",
+   "theme": "televisao",
+   "subtheme": "emissoras",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "TV Tupi",
+    "TV Globo",
+    "TV Record",
+    "TV Excelsior"
+   ],
+   "answer": "TV Tupi",
+   "synonyms": [
+    "tupi"
+   ],
+   "explanation": "A TV Tupi de São Paulo foi inaugurada em 18 de setembro de 1950.",
+   "source": "Museu da TV; Biblioteca Nacional",
+   "brazil": true
+  },
+  {
+   "id": "tv-020",
+   "text": "Qual empresário, dono dos Diários Associados, trouxe a televisão ao Brasil?",
+   "theme": "televisao",
+   "subtheme": "história da TV",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Assis Chateaubriand",
+    "Roberto Marinho",
+    "Silvio Santos",
+    "Adolpho Bloch"
+   ],
+   "answer": "Assis Chateaubriand",
+   "synonyms": [
+    "chateaubriand",
+    "chato"
+   ],
+   "explanation": "Chatô importou os equipamentos dos Estados Unidos para a primeira transmissão, em 1950.",
+   "source": "Biblioteca Nacional – Assis Chateaubriand",
+   "brazil": true
+  },
+  {
+   "id": "esp-001",
+   "text": "Qual esporte é jogado com os pés, uma bola e dois gols?",
+   "theme": "esportes",
+   "subtheme": "futebol",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Futebol",
+    "Basquete",
+    "Natação",
+    "Tênis"
+   ],
+   "answer": "Futebol",
+   "synonyms": [],
+   "explanation": "O futebol é o esporte mais popular do Brasil e do mundo.",
+   "source": "FIFA – Laws of the Game",
+   "brazil": false
+  },
+  {
+   "id": "esp-002",
+   "text": "Qual jogador brasileiro é conhecido como o 'Rei do Futebol'?",
+   "theme": "esportes",
+   "subtheme": "futebol",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Pelé",
+    "Ronaldo",
+    "Zico",
+    "Garrincha"
+   ],
+   "answer": "Pelé",
+   "synonyms": [
+    "pele",
+    "edson arantes do nascimento"
+   ],
+   "explanation": "Pelé venceu três Copas do Mundo: 1958, 1962 e 1970.",
+   "source": "FIFA – Pelé",
+   "brazil": true
+  },
+  {
+   "id": "esp-003",
+   "text": "Quantos jogadores de cada time ficam em campo numa partida de futebol?",
+   "theme": "esportes",
+   "subtheme": "futebol",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "11",
+    "10",
+    "9",
+    "12"
+   ],
+   "answer": "11",
+   "synonyms": [],
+   "explanation": "São 10 jogadores de linha e 1 goleiro em cada time.",
+   "source": "IFAB – Regras do Jogo, Regra 3",
+   "brazil": false
+  },
+  {
+   "id": "esp-004",
+   "text": "No futebol, o goleiro pode pegar a bola com as mãos dentro da sua própria grande área.",
+   "theme": "esportes",
+   "subtheme": "futebol",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Fora da grande área o goleiro não pode tocar a bola com as mãos.",
+   "source": "IFAB – Regras do Jogo, Regra 12",
+   "brazil": false
+  },
+  {
+   "id": "esp-005",
+   "text": "Normalmente, de quantos em quantos anos acontecem os Jogos Olímpicos de Verão?",
+   "theme": "esportes",
+   "subtheme": "olimpíadas",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "4",
+    "2",
+    "5",
+    "3"
+   ],
+   "answer": "4",
+   "synonyms": [],
+   "explanation": "Os Jogos de Tóquio foram adiados para 2021 por causa da pandemia, uma exceção.",
+   "source": "Comitê Olímpico Internacional",
+   "brazil": false
+  },
+  {
+   "id": "esp-006",
+   "text": "Qual luta brasileira mistura dança, música e movimentos de ataque e defesa?",
+   "theme": "esportes",
+   "subtheme": "artes marciais",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Capoeira",
+    "Jiu-jítsu",
+    "Judô",
+    "Caratê"
+   ],
+   "answer": "Capoeira",
+   "synonyms": [],
+   "explanation": "A roda de capoeira é Patrimônio Cultural Imaterial da Humanidade (UNESCO, 2014).",
+   "source": "UNESCO – Capoeira circle (2014)",
+   "brazil": true
+  },
+  {
+   "id": "esp-007",
+   "text": "Até a Copa de 2022, quantas Copas do Mundo de futebol masculino o Brasil havia vencido?",
+   "theme": "esportes",
+   "subtheme": "copas",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "5",
+    "4",
+    "3",
+    "6"
+   ],
+   "answer": "5",
+   "synonyms": [],
+   "explanation": "O Brasil venceu em 1958, 1962, 1970, 1994 e 2002.",
+   "source": "FIFA – World Cup history",
+   "brazil": true,
+   "referenceDate": "Até a Copa do Mundo de 2022"
+  },
+  {
+   "id": "esp-008",
+   "text": "Qual piloto brasileiro foi tricampeão mundial de Fórmula 1 e morreu em 1994?",
+   "theme": "esportes",
+   "subtheme": "automobilismo",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Ayrton Senna",
+    "Nelson Piquet",
+    "Emerson Fittipaldi",
+    "Rubens Barrichello"
+   ],
+   "answer": "Ayrton Senna",
+   "synonyms": [
+    "senna"
+   ],
+   "explanation": "Senna foi campeão em 1988, 1990 e 1991. Piquet também foi tricampeão.",
+   "source": "Instituto Ayrton Senna; FIA",
+   "brazil": true
+  },
+  {
+   "id": "esp-009",
+   "text": "Em que cidade brasileira foram realizados os Jogos Olímpicos de 2016?",
+   "theme": "esportes",
+   "subtheme": "olimpíadas",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Rio de Janeiro",
+    "São Paulo",
+    "Brasília",
+    "Salvador"
+   ],
+   "answer": "Rio de Janeiro",
+   "synonyms": [
+    "rio"
+   ],
+   "explanation": "Foram os primeiros Jogos Olímpicos realizados na América do Sul.",
+   "source": "Comitê Olímpico Internacional – Rio 2016",
+   "brazil": true
+  },
+  {
+   "id": "esp-010",
+   "text": "Qual seleção venceu a Copa do Mundo de 2022, no Catar?",
+   "theme": "esportes",
+   "subtheme": "copas",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Argentina",
+    "França",
+    "Brasil",
+    "Croácia"
+   ],
+   "answer": "Argentina",
+   "synonyms": [],
+   "explanation": "A Argentina venceu a França nos pênaltis, depois de um 3 a 3 na final.",
+   "source": "FIFA – Qatar 2022",
+   "brazil": false,
+   "referenceDate": "Copa de 2022"
+  },
+  {
+   "id": "esp-011",
+   "text": "No vôlei de quadra, quantos jogadores de cada equipe ficam em quadra?",
+   "theme": "esportes",
+   "subtheme": "vôlei",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "6",
+    "5",
+    "7",
+    "11"
+   ],
+   "answer": "6",
+   "synonyms": [],
+   "explanation": "No vôlei de praia são apenas 2 por equipe.",
+   "source": "FIVB – Official Volleyball Rules",
+   "brazil": false
+  },
+  {
+   "id": "esp-012",
+   "text": "No basquete, quantos pontos vale um lance livre convertido?",
+   "theme": "esportes",
+   "subtheme": "basquete",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": "1",
+   "synonyms": [],
+   "explanation": "Cestas de dentro do garrafão e da área de 2 valem 2 pontos; de trás da linha, 3.",
+   "source": "FIBA – Official Basketball Rules",
+   "brazil": false
+  },
+  {
+   "id": "esp-013",
+   "text": "Qual nadador norte-americano é o maior medalhista olímpico da história?",
+   "theme": "esportes",
+   "subtheme": "olimpíadas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Michael Phelps",
+    "Mark Spitz",
+    "Ryan Lochte",
+    "Caeleb Dressel"
+   ],
+   "answer": "Michael Phelps",
+   "synonyms": [
+    "phelps"
+   ],
+   "explanation": "Phelps ganhou 28 medalhas olímpicas, 23 delas de ouro.",
+   "source": "Comitê Olímpico Internacional – Michael Phelps",
+   "brazil": false,
+   "referenceDate": "Até os Jogos de Paris 2024"
+  },
+  {
+   "id": "esp-014",
+   "text": "Qual atleta jamaicano correu os 100 metros rasos em 9,58 segundos em 2009, estabelecendo o recorde mundial?",
+   "theme": "esportes",
+   "subtheme": "atletismo",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Usain Bolt",
+    "Carl Lewis",
+    "Asafa Powell",
+    "Justin Gatlin"
+   ],
+   "answer": "Usain Bolt",
+   "synonyms": [
+    "bolt"
+   ],
+   "explanation": "A marca foi feita no Mundial de Berlim, em 16 de agosto de 2009.",
+   "source": "World Athletics – Records",
+   "brazil": false,
+   "referenceDate": "Recorde estabelecido em 2009"
+  },
+  {
+   "id": "esp-015",
+   "text": "Qual ginasta brasileira ganhou a medalha de ouro no solo nos Jogos de Paris 2024?",
+   "theme": "esportes",
+   "subtheme": "ginástica",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Rebeca Andrade",
+    "Daiane dos Santos",
+    "Flávia Saraiva",
+    "Jade Barbosa"
+   ],
+   "answer": "Rebeca Andrade",
+   "synonyms": [
+    "rebeca"
+   ],
+   "explanation": "Rebeca superou a americana Simone Biles na final do solo.",
+   "source": "Comitê Olímpico do Brasil – Paris 2024",
+   "brazil": true,
+   "referenceDate": "Jogos de Paris 2024"
+  },
+  {
+   "id": "esp-016",
+   "text": "Em que ano o Brasil sediou uma Copa do Mundo de futebol pela segunda vez?",
+   "theme": "esportes",
+   "subtheme": "copas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "2014",
+    "1950",
+    "2010",
+    "2018"
+   ],
+   "answer": "2014",
+   "synonyms": [],
+   "explanation": "A primeira Copa no Brasil foi em 1950, com a final no Maracanã.",
+   "source": "FIFA – Brazil 2014",
+   "brazil": true
+  },
+  {
+   "id": "esp-017",
+   "text": "Qual foi o placar da derrota do Brasil para a Alemanha na semifinal da Copa de 2014?",
+   "theme": "esportes",
+   "subtheme": "copas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "7 a 1",
+    "3 a 0",
+    "2 a 1",
+    "5 a 0"
+   ],
+   "answer": "7 a 1",
+   "synonyms": [
+    "sete a um",
+    "7 x 1",
+    "7 a um"
+   ],
+   "explanation": "O jogo aconteceu no Mineirão, em Belo Horizonte, em 8 de julho de 2014.",
+   "source": "FIFA – Brazil 2014, Semi-final",
+   "brazil": true
+  },
+  {
+   "id": "esp-018",
+   "text": "Em que país surgiu o judô?",
+   "theme": "esportes",
+   "subtheme": "artes marciais",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "aberta",
+   "options": [],
+   "answer": "Japão",
+   "synonyms": [
+    "japao",
+    "o japao"
+   ],
+   "explanation": "O judô foi criado por Jigoro Kano em 1882.",
+   "source": "Federação Internacional de Judô – história",
+   "brazil": false
+  },
+  {
+   "id": "esp-019",
+   "text": "No futebol, como se chama o drible em que a bola passa por cima da cabeça do adversário?",
+   "theme": "esportes",
+   "subtheme": "futebol",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Chapéu",
+    "Caneta",
+    "Elástico",
+    "Pedalada"
+   ],
+   "answer": "Chapéu",
+   "synonyms": [
+    "chapeu",
+    "lencol"
+   ],
+   "explanation": "Caneta é quando a bola passa entre as pernas do adversário.",
+   "source": "Dicionário Houaiss – verbete 'chapéu' (futebol)",
+   "brazil": true
+  },
+  {
+   "id": "esp-020",
+   "text": "Em qual esporte o Brasil teve os campeões Gustavo Kuerten e Maria Esther Bueno?",
+   "theme": "esportes",
+   "subtheme": "tênis",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Tênis",
+    "Vôlei",
+    "Basquete",
+    "Golfe"
+   ],
+   "answer": "Tênis",
+   "synonyms": [
+    "tenis"
+   ],
+   "explanation": "Guga foi número 1 do mundo; Maria Esther Bueno venceu Wimbledon em simples três vezes.",
+   "source": "ATP Tour; International Tennis Hall of Fame",
+   "brazil": true
+  },
+  {
+   "id": "esp-021",
+   "text": "Qual país sediou a primeira Copa do Mundo de futebol, em 1930?",
+   "theme": "esportes",
+   "subtheme": "copas",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Uruguai",
+    "Brasil",
+    "Itália",
+    "França"
+   ],
+   "answer": "Uruguai",
+   "synonyms": [],
+   "explanation": "O Uruguai também foi o campeão, vencendo a Argentina na final.",
+   "source": "FIFA – Uruguay 1930",
+   "brazil": false
+  },
+  {
+   "id": "esp-022",
+   "text": "Em que ano o Brasil ganhou sua primeira Copa do Mundo?",
+   "theme": "esportes",
+   "subtheme": "copas",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "1958",
+    "1950",
+    "1962",
+    "1970"
+   ],
+   "answer": "1958",
+   "synonyms": [],
+   "explanation": "Na Suécia, o Brasil de Pelé e Garrincha venceu a anfitriã por 5 a 2 na final.",
+   "source": "FIFA – Sweden 1958",
+   "brazil": true
+  },
+  {
+   "id": "esp-023",
+   "text": "Quem era o técnico da seleção brasileira no título da Copa de 1970?",
+   "theme": "esportes",
+   "subtheme": "copas",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Zagallo",
+    "Telê Santana",
+    "Feola",
+    "Parreira"
+   ],
+   "answer": "Zagallo",
+   "synonyms": [
+    "mario zagallo",
+    "zagalo"
+   ],
+   "explanation": "Mário Jorge Lobo Zagallo foi campeão como jogador (1958 e 1962) e como técnico (1970).",
+   "source": "CBF – Seleção Brasileira; FIFA – Mexico 1970",
+   "brazil": true
+  },
+  {
+   "id": "mar-001",
+   "text": "Qual rede de lanchonetes tem um palhaço chamado Ronald como mascote?",
+   "theme": "marcas",
+   "subtheme": "lanchonetes",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "McDonald's",
+    "Burger King",
+    "Subway",
+    "Bob's"
+   ],
+   "answer": "McDonald's",
+   "synonyms": [
+    "mcdonalds",
+    "mc donalds",
+    "mequi"
+   ],
+   "explanation": "Ronald McDonald é o mascote da rede desde os anos 1960.",
+   "source": "McDonald's – história",
+   "brazil": false
+  },
+  {
+   "id": "mar-002",
+   "text": "Qual marca dinamarquesa de brinquedos é famosa pelos bloquinhos de montar?",
+   "theme": "marcas",
+   "subtheme": "brinquedos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "LEGO",
+    "Estrela",
+    "Hasbro",
+    "Mattel"
+   ],
+   "answer": "LEGO",
+   "synonyms": [],
+   "explanation": "O nome vem do dinamarquês 'leg godt', que significa 'brinque bem'.",
+   "source": "LEGO Group – Company history",
+   "brazil": false
+  },
+  {
+   "id": "mar-003",
+   "text": "Qual marca tem uma maçã mordida como logotipo?",
+   "theme": "marcas",
+   "subtheme": "logotipos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Apple",
+    "Samsung",
+    "Motorola",
+    "Positivo"
+   ],
+   "answer": "Apple",
+   "synonyms": [],
+   "explanation": "Apple significa 'maçã' em inglês.",
+   "source": "Apple – identidade visual",
+   "brazil": false
+  },
+  {
+   "id": "mar-004",
+   "text": "Qual cor predomina no logotipo da Coca-Cola?",
+   "theme": "marcas",
+   "subtheme": "logotipos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Vermelho",
+    "Azul",
+    "Verde",
+    "Amarelo"
+   ],
+   "answer": "Vermelho",
+   "synonyms": [],
+   "explanation": "A Coca-Cola usa letras brancas em fundo vermelho.",
+   "source": "The Coca-Cola Company – história da marca",
+   "brazil": false
+  },
+  {
+   "id": "mar-005",
+   "text": "Qual rede de fast-food tem um rei como mascote?",
+   "theme": "marcas",
+   "subtheme": "lanchonetes",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Burger King",
+    "McDonald's",
+    "KFC",
+    "Subway"
+   ],
+   "answer": "Burger King",
+   "synonyms": [],
+   "explanation": "O Burger King surgiu nos Estados Unidos nos anos 1950.",
+   "source": "Burger King – história",
+   "brazil": false
+  },
+  {
+   "id": "mar-006",
+   "text": "Qual montadora fabricava o Fusca, um dos carros mais famosos do Brasil?",
+   "theme": "marcas",
+   "subtheme": "carros",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "aberta",
+   "options": [],
+   "answer": "Volkswagen",
+   "synonyms": [
+    "vw",
+    "volks",
+    "volkswagen do brasil",
+    "fusca volkswagen"
+   ],
+   "explanation": "O Fusca foi fabricado no Brasil de 1959 a 1986 e de 1993 a 1996.",
+   "source": "Volkswagen do Brasil – história do Fusca",
+   "brazil": true
+  },
+  {
+   "id": "mar-007",
+   "text": "Qual marca esportiva tem um logotipo com três listras?",
+   "theme": "marcas",
+   "subtheme": "logotipos",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Adidas",
+    "Nike",
+    "Puma",
+    "Mizuno"
+   ],
+   "answer": "Adidas",
+   "synonyms": [],
+   "explanation": "A Adidas foi fundada por Adolf Dassler, na Alemanha.",
+   "source": "Adidas Group – história",
+   "brazil": false
+  },
+  {
+   "id": "mar-008",
+   "text": "Qual empresa fabrica o videogame Switch?",
+   "theme": "marcas",
+   "subtheme": "videogames",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Nintendo",
+    "Sony",
+    "Microsoft",
+    "Sega"
+   ],
+   "answer": "Nintendo",
+   "synonyms": [],
+   "explanation": "O Nintendo Switch foi lançado em 2017 e pode ser jogado na TV ou na mão.",
+   "source": "Nintendo – Switch",
+   "brazil": false
+  },
+  {
+   "id": "mar-009",
+   "text": "Qual marca de artigos esportivos usa o slogan 'Just do it'?",
+   "theme": "marcas",
+   "subtheme": "slogans",
+   "difficulty": "facil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Nike",
+    "Adidas",
+    "Puma",
+    "Olympikus"
+   ],
+   "answer": "Nike",
+   "synonyms": [],
+   "explanation": "O slogan foi criado em 1988 pela agência Wieden+Kennedy.",
+   "source": "Nike – história da marca",
+   "brazil": false
+  },
+  {
+   "id": "mar-010",
+   "text": "Qual refrigerante usou no Brasil o slogan 'Abra a felicidade'?",
+   "theme": "marcas",
+   "subtheme": "slogans",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Coca-Cola",
+    "Pepsi",
+    "Guaraná Antarctica",
+    "Fanta"
+   ],
+   "answer": "Coca-Cola",
+   "synonyms": [
+    "coca",
+    "coca cola"
+   ],
+   "explanation": "A campanha global 'Open Happiness' começou em 2009.",
+   "source": "The Coca-Cola Company – campanhas",
+   "brazil": false
+  },
+  {
+   "id": "mar-011",
+   "text": "Qual marca brasileira de sandálias usa o slogan 'Todo mundo usa'?",
+   "theme": "marcas",
+   "subtheme": "slogans",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Havaianas",
+    "Ipanema",
+    "Rider",
+    "Melissa"
+   ],
+   "answer": "Havaianas",
+   "synonyms": [],
+   "explanation": "As Havaianas foram lançadas em 1962 e hoje são vendidas no mundo todo.",
+   "source": "Havaianas – história",
+   "brazil": true
+  },
+  {
+   "id": "mar-012",
+   "text": "Qual empresa de tecnologia tem um logotipo com quatro quadradinhos coloridos?",
+   "theme": "marcas",
+   "subtheme": "logotipos",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Microsoft",
+    "Google",
+    "Apple",
+    "Samsung"
+   ],
+   "answer": "Microsoft",
+   "synonyms": [],
+   "explanation": "Os quadrados são vermelho, verde, azul e amarelo.",
+   "source": "Microsoft – identidade visual",
+   "brazil": false
+  },
+  {
+   "id": "mar-013",
+   "text": "O achocolatado Nescau pertence a qual empresa?",
+   "theme": "marcas",
+   "subtheme": "empresas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Nestlé",
+    "Unilever",
+    "Kraft",
+    "Danone"
+   ],
+   "answer": "Nestlé",
+   "synonyms": [
+    "nestle"
+   ],
+   "explanation": "O Nescau é uma marca da Nestlé vendida no Brasil desde os anos 1930.",
+   "source": "Nestlé Brasil – marcas",
+   "brazil": true
+  },
+  {
+   "id": "mar-014",
+   "text": "Qual marca de esponja de aço ficou famosa pelo slogan '1001 utilidades'?",
+   "theme": "marcas",
+   "subtheme": "slogans",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Bombril",
+    "Assolan",
+    "Ypê",
+    "Scotch-Brite"
+   ],
+   "answer": "Bombril",
+   "synonyms": [],
+   "explanation": "O garoto-propaganda Carlos Moreno fez comerciais da Bombril por décadas.",
+   "source": "Bombril – história",
+   "brazil": true
+  },
+  {
+   "id": "mar-015",
+   "text": "Qual fabricante brasileira de brinquedos lançou o jogo 'Banco Imobiliário'?",
+   "theme": "marcas",
+   "subtheme": "brinquedos",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Estrela",
+    "Grow",
+    "Mattel",
+    "Hasbro"
+   ],
+   "answer": "Estrela",
+   "synonyms": [],
+   "explanation": "A Estrela lança o Banco Imobiliário desde 1944.",
+   "source": "Estrela – história",
+   "brazil": true
+  },
+  {
+   "id": "mar-016",
+   "text": "Qual bebida energética usa o slogan 'te dá asas'?",
+   "theme": "marcas",
+   "subtheme": "slogans",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Red Bull",
+    "Monster",
+    "TNT",
+    "Burn"
+   ],
+   "answer": "Red Bull",
+   "synonyms": [],
+   "explanation": "A Red Bull é austríaca e foi inspirada numa bebida tailandesa.",
+   "source": "Red Bull – company",
+   "brazil": false
+  },
+  {
+   "id": "mar-017",
+   "text": "Qual marca de tênis tem uma estrela no logotipo do modelo 'All Star'?",
+   "theme": "marcas",
+   "subtheme": "logotipos",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Converse",
+    "Vans",
+    "Nike",
+    "Reebok"
+   ],
+   "answer": "Converse",
+   "synonyms": [],
+   "explanation": "O Chuck Taylor All Star foi lançado como tênis de basquete no começo do século XX.",
+   "source": "Converse – história",
+   "brazil": false
+  },
+  {
+   "id": "mar-018",
+   "text": "Qual marca de sabão em pó usa o slogan 'Se sujar faz bem'?",
+   "theme": "marcas",
+   "subtheme": "slogans",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Omo",
+    "Ariel",
+    "Tixan",
+    "Brilhante"
+   ],
+   "answer": "Omo",
+   "synonyms": [],
+   "explanation": "A campanha 'Dirt is Good' (sujar faz bem) é usada pela marca em vários países.",
+   "source": "Unilever – Omo",
+   "brazil": true
+  },
+  {
+   "id": "mar-019",
+   "text": "O guaraná, usado no Guaraná Antarctica, é um fruto originário de qual região brasileira?",
+   "theme": "marcas",
+   "subtheme": "origem",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Amazônia",
+    "Pampa",
+    "Caatinga",
+    "Pantanal"
+   ],
+   "answer": "Amazônia",
+   "synonyms": [
+    "amazonia",
+    "norte"
+   ],
+   "explanation": "O guaraná é nativo da Amazônia e foi domesticado pelos indígenas Sateré-Mawé.",
+   "source": "Embrapa – Guaraná",
+   "brazil": true
+  },
+  {
+   "id": "mar-020",
+   "text": "Qual iogurte infantil ficou famoso nos anos 1980 com o slogan 'Vale por um bifinho'?",
+   "theme": "marcas",
+   "subtheme": "slogans",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Danoninho",
+    "Chamyto",
+    "Activia",
+    "Yakult"
+   ],
+   "answer": "Danoninho",
+   "synonyms": [],
+   "explanation": "A campanha marcou época na publicidade brasileira e é lembrada até hoje.",
+   "source": "Danone Brasil – história do Danoninho",
+   "brazil": true
+  },
+  {
+   "id": "tv-021",
+   "text": "No desenho 'Patrulha Canina', que animais são os heróis?",
+   "theme": "televisao",
+   "subtheme": "desenhos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Cachorros",
+    "Gatos",
+    "Coelhos",
+    "Pássaros"
+   ],
+   "answer": "Cachorros",
+   "synonyms": [
+    "caes",
+    "cachorrinhos",
+    "filhotes",
+    "cachorro"
+   ],
+   "explanation": "Os filhotes de cachorro são liderados pelo menino Ryder.",
+   "source": "Nickelodeon – Patrulha Canina",
+   "brazil": false
+  },
+  {
+   "id": "esp-024",
+   "text": "Em qual esporte os atletas competem dentro de uma piscina?",
+   "theme": "esportes",
+   "subtheme": "natação",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Natação",
+    "Futebol",
+    "Ciclismo",
+    "Corrida"
+   ],
+   "answer": "Natação",
+   "synonyms": [
+    "natacao",
+    "nadar"
+   ],
+   "explanation": "Na natação há quatro estilos: crawl, costas, peito e borboleta.",
+   "source": "World Aquatics – Swimming rules",
+   "brazil": false
+  },
+  {
+   "id": "mar-021",
+   "text": "Qual destas marcas é de bonecas?",
+   "theme": "marcas",
+   "subtheme": "brinquedos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Barbie",
+    "Nescau",
+    "Havaianas",
+    "Omo"
+   ],
+   "answer": "Barbie",
+   "synonyms": [],
+   "explanation": "A Barbie foi lançada pela Mattel em 1959.",
+   "source": "Mattel – Barbie",
+   "brazil": false
+  },
+  {
+   "id": "mus-001",
+   "text": "Qual instrumento tem teclas brancas e pretas?",
+   "theme": "musica",
+   "subtheme": "instrumentos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Piano",
+    "Violão",
+    "Tambor",
+    "Flauta"
+   ],
+   "answer": "Piano",
+   "synonyms": [],
+   "explanation": "Um piano comum tem 88 teclas: 52 brancas e 36 pretas.",
+   "source": "Enciclopédia Britannica – verbete 'piano'",
+   "brazil": false
+  },
+  {
+   "id": "mus-002",
+   "text": "Qual instrumento a gente toca batendo com baquetas?",
+   "theme": "musica",
+   "subtheme": "instrumentos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Bateria",
+    "Violino",
+    "Flauta",
+    "Harpa"
+   ],
+   "answer": "Bateria",
+   "synonyms": [],
+   "explanation": "A bateria é um conjunto de tambores e pratos tocados com baquetas.",
+   "source": "Enciclopédia Britannica – verbete 'drum kit'",
+   "brazil": false
+  },
+  {
+   "id": "mus-003",
+   "text": "Qual destes é um instrumento de sopro?",
+   "theme": "musica",
+   "subtheme": "instrumentos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Flauta",
+    "Bateria",
+    "Violino",
+    "Piano"
+   ],
+   "answer": "Flauta",
+   "synonyms": [],
+   "explanation": "Nos instrumentos de sopro, o som nasce do ar soprado pelo músico.",
+   "source": "Enciclopédia Britannica – verbete 'wind instrument'",
+   "brazil": false
+  },
+  {
+   "id": "mus-004",
+   "text": "Quantas notas tem a escala tradicional dó, ré, mi, fá, sol, lá, si?",
+   "theme": "musica",
+   "subtheme": "teoria musical",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "7",
+    "5",
+    "8",
+    "12"
+   ],
+   "answer": "7",
+   "synonyms": [],
+   "explanation": "São 7 notas naturais; com os sustenidos e bemóis, a escala cromática tem 12 sons.",
+   "source": "Bohumil Med – Teoria da Música",
+   "brazil": false
+  },
+  {
+   "id": "mus-005",
+   "text": "Qual ritmo brasileiro é o principal dos desfiles de Carnaval no Sambódromo do Rio?",
+   "theme": "musica",
+   "subtheme": "ritmos brasileiros",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Samba",
+    "Frevo",
+    "Forró",
+    "Funk"
+   ],
+   "answer": "Samba",
+   "synonyms": [],
+   "explanation": "Cada escola desfila com um samba-enredo e sua bateria.",
+   "source": "IPHAN – Matrizes do Samba no Rio de Janeiro",
+   "brazil": true
+  },
+  {
+   "id": "mus-006",
+   "text": "Quantas cordas tem um violão comum?",
+   "theme": "musica",
+   "subtheme": "instrumentos",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "6",
+    "4",
+    "5",
+    "12"
+   ],
+   "answer": "6",
+   "synonyms": [],
+   "explanation": "O violão de 7 cordas também é muito usado no choro e no samba.",
+   "source": "Enciclopédia Britannica – verbete 'guitar'",
+   "brazil": false
+  },
+  {
+   "id": "mus-007",
+   "text": "Qual banda britânica era formada por John, Paul, George e Ringo?",
+   "theme": "musica",
+   "subtheme": "rock",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "The Beatles",
+    "Rolling Stones",
+    "Queen",
+    "The Who"
+   ],
+   "answer": "The Beatles",
+   "synonyms": [
+    "beatles",
+    "os beatles"
+   ],
+   "explanation": "Os Beatles surgiram em Liverpool, na Inglaterra, nos anos 1960.",
+   "source": "Enciclopédia Britannica – verbete 'the Beatles'",
+   "brazil": false
+  },
+  {
+   "id": "mus-008",
+   "text": "Qual cantor brasileiro, chamado de 'Rei', gravou 'Detalhes' e 'Emoções'?",
+   "theme": "musica",
+   "subtheme": "MPB",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Roberto Carlos",
+    "Erasmo Carlos",
+    "Caetano Veloso",
+    "Tim Maia"
+   ],
+   "answer": "Roberto Carlos",
+   "synonyms": [
+    "roberto"
+   ],
+   "explanation": "Roberto Carlos foi um dos líderes da Jovem Guarda nos anos 1960.",
+   "source": "Dicionário Cravo Albin da Música Popular Brasileira",
+   "brazil": true
+  },
+  {
+   "id": "mus-009",
+   "text": "Qual cantor norte-americano dos anos 1950 ganhou o apelido de 'Rei do Rock'?",
+   "theme": "musica",
+   "subtheme": "rock",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Elvis Presley",
+    "Chuck Berry",
+    "Little Richard",
+    "Buddy Holly"
+   ],
+   "answer": "Elvis Presley",
+   "synonyms": [
+    "elvis"
+   ],
+   "explanation": "Elvis morava em Graceland, em Memphis, que hoje é um museu.",
+   "source": "Enciclopédia Britannica – verbete 'Elvis Presley'",
+   "brazil": false
+  },
+  {
+   "id": "mus-010",
+   "text": "Quem lançou o álbum 'Thriller', o mais vendido de todos os tempos?",
+   "theme": "musica",
+   "subtheme": "pop",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Michael Jackson",
+    "Prince",
+    "Madonna",
+    "Whitney Houston"
+   ],
+   "answer": "Michael Jackson",
+   "synonyms": [
+    "michael"
+   ],
+   "explanation": "Thriller (1982) é reconhecido pelo Guinness como o álbum mais vendido da história.",
+   "source": "Guinness World Records – Best-selling album",
+   "brazil": false,
+   "referenceDate": "Guinness World Records, 2025"
+  },
+  {
+   "id": "mus-011",
+   "text": "Qual gênero musical surgiu no fim dos anos 1950 com João Gilberto e Tom Jobim?",
+   "theme": "musica",
+   "subtheme": "MPB",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Bossa nova",
+    "Samba-enredo",
+    "Axé",
+    "Sertanejo"
+   ],
+   "answer": "Bossa nova",
+   "synonyms": [
+    "bossa"
+   ],
+   "explanation": "O disco 'Chega de Saudade' (1959), de João Gilberto, é o marco da bossa nova.",
+   "source": "Dicionário Cravo Albin da Música Popular Brasileira",
+   "brazil": true
+  },
+  {
+   "id": "mus-012",
+   "text": "Qual compositor alemão continuou compondo mesmo depois de ficar surdo?",
+   "theme": "musica",
+   "subtheme": "clássica",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Ludwig van Beethoven",
+    "Wolfgang Amadeus Mozart",
+    "Johann Sebastian Bach",
+    "Frédéric Chopin"
+   ],
+   "answer": "Ludwig van Beethoven",
+   "synonyms": [
+    "beethoven"
+   ],
+   "explanation": "Beethoven compôs a 9ª Sinfonia quando já estava praticamente surdo.",
+   "source": "Beethoven-Haus Bonn",
+   "brazil": false
+  },
+  {
+   "id": "mus-013",
+   "text": "Qual estado brasileiro é o berço do frevo?",
+   "theme": "musica",
+   "subtheme": "ritmos brasileiros",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Pernambuco",
+    "Bahia",
+    "Ceará",
+    "Maranhão"
+   ],
+   "answer": "Pernambuco",
+   "synonyms": [],
+   "explanation": "O frevo nasceu no Recife e é Patrimônio Imaterial da Humanidade (UNESCO, 2012).",
+   "source": "UNESCO – Frevo, performing arts of the Carnival of Recife (2012)",
+   "brazil": true
+  },
+  {
+   "id": "mus-014",
+   "text": "Qual banda britânica gravou 'Bohemian Rhapsody'?",
+   "theme": "musica",
+   "subtheme": "rock",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Queen",
+    "The Beatles",
+    "Pink Floyd",
+    "Led Zeppelin"
+   ],
+   "answer": "Queen",
+   "synonyms": [],
+   "explanation": "A música de Freddie Mercury foi lançada em 1975.",
+   "source": "Queen – site oficial",
+   "brazil": false
+  },
+  {
+   "id": "mus-015",
+   "text": "Qual música de Tom Jobim e Vinicius de Moraes fala de uma moça 'num doce balanço, a caminho do mar'?",
+   "theme": "musica",
+   "subtheme": "MPB",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Garota de Ipanema",
+    "Águas de Março",
+    "Chega de Saudade",
+    "Wave"
+   ],
+   "answer": "Garota de Ipanema",
+   "synonyms": [],
+   "explanation": "Composta em 1962, é uma das canções mais gravadas do mundo.",
+   "source": "Instituto Antonio Carlos Jobim",
+   "brazil": true
+  },
+  {
+   "id": "mus-016",
+   "text": "Qual cantora ficou conhecida como a 'Rainha do Rock brasileiro'?",
+   "theme": "musica",
+   "subtheme": "rock",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Rita Lee",
+    "Pitty",
+    "Elis Regina",
+    "Cássia Eller"
+   ],
+   "answer": "Rita Lee",
+   "synonyms": [],
+   "explanation": "Rita Lee começou nos Mutantes e fez sucesso solo com 'Lança Perfume' e 'Ovelha Negra'.",
+   "source": "Dicionário Cravo Albin da Música Popular Brasileira",
+   "brazil": true
+  },
+  {
+   "id": "mus-017",
+   "text": "Quem gravou 'Asa Branca' e ficou conhecido como o Rei do Baião?",
+   "theme": "musica",
+   "subtheme": "forró",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Luiz Gonzaga",
+    "Dominguinhos",
+    "Jackson do Pandeiro",
+    "Gilberto Gil"
+   ],
+   "answer": "Luiz Gonzaga",
+   "synonyms": [
+    "gonzagao",
+    "gonzaga"
+   ],
+   "explanation": "'Asa Branca' (1947) é de Luiz Gonzaga e Humberto Teixeira.",
+   "source": "Dicionário Cravo Albin da Música Popular Brasileira",
+   "brazil": true
+  },
+  {
+   "id": "mus-018",
+   "text": "Qual dupla sertaneja lançou o sucesso 'É o Amor', em 1991?",
+   "theme": "musica",
+   "subtheme": "sertanejo",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Zezé Di Camargo & Luciano",
+    "Chitãozinho & Xororó",
+    "Leandro & Leonardo",
+    "Bruno & Marrone"
+   ],
+   "answer": "Zezé Di Camargo & Luciano",
+   "synonyms": [
+    "zeze di camargo e luciano",
+    "zeze e luciano",
+    "zeze di camargo"
+   ],
+   "explanation": "A música foi composta por Zezé Di Camargo e estava no primeiro disco da dupla.",
+   "source": "Dicionário Cravo Albin da Música Popular Brasileira",
+   "brazil": true
+  },
+  {
+   "id": "mus-019",
+   "text": "Qual compositor austríaco escreveu a ópera 'A Flauta Mágica'?",
+   "theme": "musica",
+   "subtheme": "clássica",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Wolfgang Amadeus Mozart",
+    "Ludwig van Beethoven",
+    "Joseph Haydn",
+    "Franz Schubert"
+   ],
+   "answer": "Wolfgang Amadeus Mozart",
+   "synonyms": [
+    "mozart"
+   ],
+   "explanation": "A ópera estreou em Viena em 1791, poucos meses antes da morte de Mozart.",
+   "source": "Mozarteum Salzburg",
+   "brazil": false
+  },
+  {
+   "id": "mus-020",
+   "text": "Qual instrumento de percussão do samba é pequeno, redondo e tocado com uma baqueta fina?",
+   "theme": "musica",
+   "subtheme": "samba",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Tamborim",
+    "Tuba",
+    "Harpa",
+    "Gaita"
+   ],
+   "answer": "Tamborim",
+   "synonyms": [],
+   "explanation": "O tamborim dá o som agudo e marcado da bateria das escolas de samba.",
+   "source": "IPHAN – Matrizes do Samba no Rio de Janeiro",
+   "brazil": true
+  },
+  {
+   "id": "mus-021",
+   "text": "Qual cantora, apelidada de 'Pimentinha', gravou 'Como Nossos Pais'?",
+   "theme": "musica",
+   "subtheme": "MPB",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Elis Regina",
+    "Gal Costa",
+    "Maria Bethânia",
+    "Nara Leão"
+   ],
+   "answer": "Elis Regina",
+   "synonyms": [
+    "elis"
+   ],
+   "explanation": "A canção é de Belchior; a gravação de Elis é de 1976.",
+   "source": "Dicionário Cravo Albin da Música Popular Brasileira",
+   "brazil": true
+  },
+  {
+   "id": "mus-022",
+   "text": "Quem compôs 'Aquarela do Brasil' (1939)?",
+   "theme": "musica",
+   "subtheme": "samba",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Ary Barroso",
+    "Noel Rosa",
+    "Cartola",
+    "Pixinguinha"
+   ],
+   "answer": "Ary Barroso",
+   "synonyms": [],
+   "explanation": "A canção ficou famosa no mundo todo como 'Brazil' e é um marco do samba-exaltação.",
+   "source": "Dicionário Cravo Albin da Música Popular Brasileira",
+   "brazil": true
+  },
+  {
+   "id": "lit-001",
+   "text": "Na história da Chapeuzinho Vermelho, quem se disfarça de vovó para enganar a menina?",
+   "theme": "literatura",
+   "subtheme": "contos de fadas",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "O Lobo Mau",
+    "O Caçador",
+    "O Gato",
+    "O Urso"
+   ],
+   "answer": "O Lobo Mau",
+   "synonyms": [
+    "lobo",
+    "lobo mau"
+   ],
+   "explanation": "Na versão dos Irmãos Grimm, o caçador salva a menina e a avó.",
+   "source": "Irmãos Grimm – Contos de Grimm (1812)",
+   "brazil": false
+  },
+  {
+   "id": "lit-002",
+   "text": "Em 'Os Três Porquinhos', qual casa o lobo não conseguiu derrubar?",
+   "theme": "literatura",
+   "subtheme": "contos de fadas",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "A de tijolos",
+    "A de palha",
+    "A de madeira",
+    "A de papel"
+   ],
+   "answer": "A de tijolos",
+   "synonyms": [
+    "tijolo",
+    "tijolos",
+    "casa de tijolos"
+   ],
+   "explanation": "A casa de tijolos era a mais trabalhosa de construir, mas a mais forte.",
+   "source": "Joseph Jacobs – English Fairy Tales (1890)",
+   "brazil": false
+  },
+  {
+   "id": "lit-003",
+   "text": "Qual menino nunca quer crescer e mora na Terra do Nunca?",
+   "theme": "literatura",
+   "subtheme": "clássicos infantis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Peter Pan",
+    "Pinóquio",
+    "Aladim",
+    "Mogli"
+   ],
+   "answer": "Peter Pan",
+   "synonyms": [
+    "peter"
+   ],
+   "explanation": "Peter Pan foi criado pelo escritor escocês J. M. Barrie.",
+   "source": "J. M. Barrie – Peter Pan (1904/1911)",
+   "brazil": false
+  },
+  {
+   "id": "lit-004",
+   "text": "Qual boneco de madeira tem o nariz que cresce quando ele mente?",
+   "theme": "literatura",
+   "subtheme": "clássicos infantis",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Pinóquio",
+    "Peter Pan",
+    "Aladim",
+    "Gepeto"
+   ],
+   "answer": "Pinóquio",
+   "synonyms": [
+    "pinoquio"
+   ],
+   "explanation": "Pinóquio foi criado pelo italiano Carlo Collodi. Gepeto é o carpinteiro que o fez.",
+   "source": "Carlo Collodi – As Aventuras de Pinóquio (1883)",
+   "brazil": false
+  },
+  {
+   "id": "lit-005",
+   "text": "Quem escreveu as histórias do 'Sítio do Picapau Amarelo'?",
+   "theme": "literatura",
+   "subtheme": "literatura infantil",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Monteiro Lobato",
+    "Ziraldo",
+    "Ruth Rocha",
+    "Mauricio de Sousa"
+   ],
+   "answer": "Monteiro Lobato",
+   "synonyms": [
+    "lobato"
+   ],
+   "explanation": "O primeiro livro, 'A Menina do Narizinho Arrebitado', é de 1920.",
+   "source": "Biblioteca Nacional – Monteiro Lobato",
+   "brazil": true
+  },
+  {
+   "id": "lit-006",
+   "text": "Quem escreveu a peça 'Romeu e Julieta'?",
+   "theme": "literatura",
+   "subtheme": "teatro",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "aberta",
+   "options": [],
+   "answer": "William Shakespeare",
+   "synonyms": [
+    "shakespeare",
+    "xequispir"
+   ],
+   "explanation": "A tragédia do dramaturgo inglês é do fim do século XVI.",
+   "source": "Folger Shakespeare Library",
+   "brazil": false
+  },
+  {
+   "id": "lit-007",
+   "text": "Qual escritora criou a saga 'Harry Potter'?",
+   "theme": "literatura",
+   "subtheme": "fantasia",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "J. K. Rowling",
+    "Agatha Christie",
+    "Suzanne Collins",
+    "Stephenie Meyer"
+   ],
+   "answer": "J. K. Rowling",
+   "synonyms": [
+    "rowling",
+    "jk rowling",
+    "j k rowling"
+   ],
+   "explanation": "O primeiro livro, 'Harry Potter e a Pedra Filosofal', saiu em 1997.",
+   "source": "Bloomsbury Publishing – Harry Potter",
+   "brazil": false
+  },
+  {
+   "id": "lit-008",
+   "text": "Quem escreveu 'Dom Casmurro'?",
+   "theme": "literatura",
+   "subtheme": "romance",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Machado de Assis",
+    "José de Alencar",
+    "Jorge Amado",
+    "Graciliano Ramos"
+   ],
+   "answer": "Machado de Assis",
+   "synonyms": [
+    "machado"
+   ],
+   "explanation": "Machado foi o primeiro presidente da Academia Brasileira de Letras.",
+   "source": "Academia Brasileira de Letras – Machado de Assis",
+   "brazil": true
+  },
+  {
+   "id": "lit-009",
+   "text": "Quem escreveu 'O Pequeno Príncipe'?",
+   "theme": "literatura",
+   "subtheme": "clássicos",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Antoine de Saint-Exupéry",
+    "Júlio Verne",
+    "Victor Hugo",
+    "Albert Camus"
+   ],
+   "answer": "Antoine de Saint-Exupéry",
+   "synonyms": [
+    "saint exupery",
+    "exupery"
+   ],
+   "explanation": "Saint-Exupéry era aviador, e o livro foi publicado em 1943.",
+   "source": "Fondation Antoine de Saint-Exupéry",
+   "brazil": false
+  },
+  {
+   "id": "lit-010",
+   "text": "Quem escreveu 'Dom Quixote'?",
+   "theme": "literatura",
+   "subtheme": "clássicos",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Miguel de Cervantes",
+    "William Shakespeare",
+    "Luís de Camões",
+    "Dante Alighieri"
+   ],
+   "answer": "Miguel de Cervantes",
+   "synonyms": [
+    "cervantes"
+   ],
+   "explanation": "A primeira parte do livro foi publicada em 1605, na Espanha.",
+   "source": "Instituto Cervantes",
+   "brazil": false
+  },
+  {
+   "id": "lit-011",
+   "text": "Qual escritor baiano escreveu 'Capitães da Areia' e 'Gabriela, Cravo e Canela'?",
+   "theme": "literatura",
+   "subtheme": "romance",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Jorge Amado",
+    "João Ubaldo Ribeiro",
+    "Castro Alves",
+    "Graciliano Ramos"
+   ],
+   "answer": "Jorge Amado",
+   "synonyms": [
+    "amado"
+   ],
+   "explanation": "Os livros de Jorge Amado foram traduzidos para dezenas de idiomas.",
+   "source": "Fundação Casa de Jorge Amado",
+   "brazil": true
+  },
+  {
+   "id": "lit-012",
+   "text": "Qual poeta mineiro escreveu 'No meio do caminho tinha uma pedra'?",
+   "theme": "literatura",
+   "subtheme": "poesia",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Carlos Drummond de Andrade",
+    "Manuel Bandeira",
+    "Vinicius de Moraes",
+    "Cecília Meireles"
+   ],
+   "answer": "Carlos Drummond de Andrade",
+   "synonyms": [
+    "drummond",
+    "carlos drummond"
+   ],
+   "explanation": "O poema 'No Meio do Caminho' foi publicado em 1928 e causou polêmica na época.",
+   "source": "Instituto Moreira Salles – Drummond",
+   "brazil": true
+  },
+  {
+   "id": "lit-013",
+   "text": "Qual poeta português escreveu 'Os Lusíadas'?",
+   "theme": "literatura",
+   "subtheme": "poesia",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Luís de Camões",
+    "Fernando Pessoa",
+    "Eça de Queirós",
+    "Bocage"
+   ],
+   "answer": "Luís de Camões",
+   "synonyms": [
+    "camoes"
+   ],
+   "explanation": "O poema épico de 1572 narra a viagem de Vasco da Gama à Índia.",
+   "source": "Biblioteca Nacional de Portugal",
+   "brazil": false
+  },
+  {
+   "id": "lit-014",
+   "text": "Qual escritor britânico criou o detetive Sherlock Holmes?",
+   "theme": "literatura",
+   "subtheme": "policial",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Arthur Conan Doyle",
+    "Agatha Christie",
+    "Charles Dickens",
+    "Edgar Allan Poe"
+   ],
+   "answer": "Arthur Conan Doyle",
+   "synonyms": [
+    "conan doyle",
+    "doyle"
+   ],
+   "explanation": "Sherlock Holmes apareceu pela primeira vez em 'Um Estudo em Vermelho' (1887).",
+   "source": "Arthur Conan Doyle Encyclopedia",
+   "brazil": false
+  },
+  {
+   "id": "lit-015",
+   "text": "Qual livro de José de Alencar tem como protagonista a 'virgem dos lábios de mel'?",
+   "theme": "literatura",
+   "subtheme": "romantismo",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Iracema",
+    "O Guarani",
+    "Senhora",
+    "Lucíola"
+   ],
+   "answer": "Iracema",
+   "synonyms": [],
+   "explanation": "Iracema (1865) é um anagrama de 'América'.",
+   "source": "Academia Brasileira de Letras – José de Alencar",
+   "brazil": true
+  },
+  {
+   "id": "lit-016",
+   "text": "Em 'Dom Casmurro', qual personagem tem 'olhos de ressaca'?",
+   "theme": "literatura",
+   "subtheme": "realismo",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Capitu",
+    "Iracema",
+    "Gabriela",
+    "Lucíola"
+   ],
+   "answer": "Capitu",
+   "synonyms": [
+    "capitolina"
+   ],
+   "explanation": "Até hoje os leitores discutem se Capitu traiu ou não Bentinho.",
+   "source": "Machado de Assis – Dom Casmurro (1899)",
+   "brazil": true
+  },
+  {
+   "id": "lit-017",
+   "text": "Qual escritora brasileira escreveu 'A Hora da Estrela'?",
+   "theme": "literatura",
+   "subtheme": "modernismo",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Clarice Lispector",
+    "Cecília Meireles",
+    "Rachel de Queiroz",
+    "Lygia Fagundes Telles"
+   ],
+   "answer": "Clarice Lispector",
+   "synonyms": [
+    "clarice"
+   ],
+   "explanation": "O livro de 1977 conta a história da nordestina Macabéa.",
+   "source": "Instituto Moreira Salles – Clarice Lispector",
+   "brazil": true
+  },
+  {
+   "id": "lit-018",
+   "text": "Qual poeta escreveu 'Canção do Exílio' ('Minha terra tem palmeiras onde canta o sabiá')?",
+   "theme": "literatura",
+   "subtheme": "romantismo",
+   "difficulty": "dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Gonçalves Dias",
+    "Castro Alves",
+    "Olavo Bilac",
+    "Álvares de Azevedo"
+   ],
+   "answer": "Gonçalves Dias",
+   "synonyms": [],
+   "explanation": "O poema foi escrito em 1843, quando o autor estudava em Coimbra.",
+   "source": "Academia Brasileira de Letras – Gonçalves Dias",
+   "brazil": true
+  },
+  {
+   "id": "lit-019",
+   "text": "Em 'O Pequeno Príncipe', de qual asteroide vem o principezinho?",
+   "theme": "literatura",
+   "subtheme": "clássicos",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "B 612",
+    "B 52",
+    "X 9",
+    "K 7"
+   ],
+   "answer": "B 612",
+   "synonyms": [
+    "b612",
+    "be 612",
+    "b seiscentos e doze"
+   ],
+   "explanation": "O narrador conta que o asteroide B 612 foi visto uma única vez por um astrônomo turco.",
+   "source": "Antoine de Saint-Exupéry – O Pequeno Príncipe (1943)",
+   "brazil": false
+  },
+  {
+   "id": "lit-020",
+   "text": "Quem escreveu 'Grande Sertão: Veredas'?",
+   "theme": "literatura",
+   "subtheme": "modernismo",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "João Guimarães Rosa",
+    "Graciliano Ramos",
+    "Euclides da Cunha",
+    "Rachel de Queiroz"
+   ],
+   "answer": "João Guimarães Rosa",
+   "synonyms": [
+    "guimaraes rosa"
+   ],
+   "explanation": "O romance de 1956 é narrado por Riobaldo, um ex-jagunço.",
+   "source": "Academia Brasileira de Letras – Guimarães Rosa",
+   "brazil": true
+  },
+  {
+   "id": "nat-001",
+   "text": "Quantas patas tem uma aranha?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "8",
+    "6",
+    "4",
+    "10"
+   ],
+   "answer": "8",
+   "synonyms": [],
+   "explanation": "Aranhas são aracnídeos, não insetos: têm 8 patas.",
+   "source": "Instituto Butantan – Aranhas",
+   "brazil": false
+  },
+  {
+   "id": "nat-002",
+   "text": "Qual animal australiano carrega o filhote numa bolsa na barriga?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Canguru",
+    "Panda",
+    "Elefante",
+    "Zebra"
+   ],
+   "answer": "Canguru",
+   "synonyms": [],
+   "explanation": "O canguru é um marsupial: o filhote se desenvolve dentro da bolsa da mãe.",
+   "source": "Australian Museum – Kangaroos",
+   "brazil": false
+  },
+  {
+   "id": "nat-003",
+   "text": "Depois de sair do casulo, em qual destes insetos a lagarta se transforma?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Borboleta",
+    "Abelha",
+    "Joaninha",
+    "Formiga"
+   ],
+   "answer": "Borboleta",
+   "synonyms": [],
+   "explanation": "Essa transformação se chama metamorfose. A fase do casulo é a pupa (crisálida).",
+   "source": "Museu de Zoologia da USP",
+   "brazil": false
+  },
+  {
+   "id": "nat-004",
+   "text": "Quantas patas tem um inseto?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "6",
+    "8",
+    "4",
+    "10"
+   ],
+   "answer": "6",
+   "synonyms": [],
+   "explanation": "Todos os insetos adultos têm 6 patas e o corpo dividido em cabeça, tórax e abdome.",
+   "source": "Museu de Zoologia da USP",
+   "brazil": false
+  },
+  {
+   "id": "nat-005",
+   "text": "Qual destes animais é um mamífero que voa?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Morcego",
+    "Pinguim",
+    "Galinha",
+    "Avestruz"
+   ],
+   "answer": "Morcego",
+   "synonyms": [],
+   "explanation": "O morcego é o único mamífero capaz de voar de verdade, batendo as asas.",
+   "source": "Enciclopédia Britannica – verbete 'bat'",
+   "brazil": false
+  },
+  {
+   "id": "nat-006",
+   "text": "A baleia é um peixe.",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Falso",
+   "synonyms": [],
+   "explanation": "A baleia é um mamífero: respira ar pelos pulmões e amamenta os filhotes.",
+   "source": "Projeto Baleia Jubarte – Instituto Baleia Jubarte",
+   "brazil": false
+  },
+  {
+   "id": "nat-007",
+   "text": "Qual animal muda de cor para se camuflar?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Camaleão",
+    "Hipopótamo",
+    "Cavalo",
+    "Pato"
+   ],
+   "answer": "Camaleão",
+   "synonyms": [],
+   "explanation": "O camaleão muda de cor graças a células especiais da pele.",
+   "source": "National Geographic – Chameleons",
+   "brazil": false
+  },
+  {
+   "id": "nat-008",
+   "text": "Qual gás precisamos respirar para viver?",
+   "theme": "natureza",
+   "subtheme": "planeta",
+   "difficulty": "facil",
+   "minAge": 7,
+   "format": "multipla_escolha",
+   "options": [
+    "Oxigênio",
+    "Hélio",
+    "Gás carbônico",
+    "Neônio"
+   ],
+   "answer": "Oxigênio",
+   "synonyms": [
+    "oxigenio"
+   ],
+   "explanation": "O oxigênio é levado pelo sangue a todas as células do corpo.",
+   "source": "Ministério da Saúde – Biblioteca Virtual em Saúde",
+   "brazil": false
+  },
+  {
+   "id": "nat-009",
+   "text": "Qual é o maior animal do planeta?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Baleia-azul",
+    "Elefante-africano",
+    "Tubarão-baleia",
+    "Girafa"
+   ],
+   "answer": "Baleia-azul",
+   "synonyms": [
+    "baleia azul",
+    "baleia"
+   ],
+   "explanation": "A baleia-azul pode passar de 30 metros e é o maior animal que já existiu.",
+   "source": "NOAA Fisheries – Blue Whale",
+   "brazil": false
+  },
+  {
+   "id": "nat-010",
+   "text": "Qual é o maior roedor do mundo, comum no Brasil?",
+   "theme": "natureza",
+   "subtheme": "fauna brasileira",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "aberta",
+   "options": [],
+   "answer": "Capivara",
+   "synonyms": [
+    "a capivara",
+    "capivaras"
+   ],
+   "explanation": "A capivara pode pesar mais de 60 kg e vive perto de rios e lagos.",
+   "source": "ICMBio – Fauna brasileira",
+   "brazil": true
+  },
+  {
+   "id": "nat-011",
+   "text": "Qual árvore deu nome ao Brasil?",
+   "theme": "natureza",
+   "subtheme": "flora brasileira",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "aberta",
+   "options": [],
+   "answer": "Pau-brasil",
+   "synonyms": [
+    "pau brasil",
+    "o pau brasil"
+   ],
+   "explanation": "A madeira vermelha como brasa era usada para tingir tecidos na Europa.",
+   "source": "Jardim Botânico do Rio de Janeiro – Pau-brasil",
+   "brazil": true
+  },
+  {
+   "id": "nat-012",
+   "text": "Qual destes animais costuma hibernar no inverno em regiões frias?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Urso",
+    "Leão",
+    "Camelo",
+    "Papagaio"
+   ],
+   "answer": "Urso",
+   "synonyms": [],
+   "explanation": "Muitos ursos passam o inverno em tocas, num sono profundo, gastando a gordura acumulada.",
+   "source": "National Park Service – Bear hibernation",
+   "brazil": false
+  },
+  {
+   "id": "nat-013",
+   "text": "Qual bioma ocupa a maior parte do território brasileiro?",
+   "theme": "natureza",
+   "subtheme": "biomas",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Amazônia",
+    "Cerrado",
+    "Mata Atlântica",
+    "Caatinga"
+   ],
+   "answer": "Amazônia",
+   "synonyms": [
+    "amazonia",
+    "floresta amazonica"
+   ],
+   "explanation": "A Amazônia ocupa cerca de 49% do território brasileiro.",
+   "source": "IBGE – Biomas e Sistema Costeiro-Marinho do Brasil (2019)",
+   "brazil": true
+  },
+  {
+   "id": "nat-014",
+   "text": "Qual é o animal terrestre mais rápido do mundo?",
+   "theme": "natureza",
+   "subtheme": "animais",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Guepardo",
+    "Leão",
+    "Cavalo",
+    "Antílope"
+   ],
+   "answer": "Guepardo",
+   "synonyms": [
+    "chita"
+   ],
+   "explanation": "O guepardo (ou chita) passa de 100 km/h em corridas curtas.",
+   "source": "Smithsonian's National Zoo – Cheetah",
+   "brazil": false
+  },
+  {
+   "id": "nat-015",
+   "text": "Qual é o maior felino das Américas?",
+   "theme": "natureza",
+   "subtheme": "fauna brasileira",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Onça-pintada",
+    "Puma",
+    "Jaguatirica",
+    "Lince"
+   ],
+   "answer": "Onça-pintada",
+   "synonyms": [
+    "onca",
+    "onca pintada"
+   ],
+   "explanation": "A onça-pintada vive em vários biomas brasileiros e é ótima nadadora.",
+   "source": "ICMBio – Plano de Ação Nacional para a Onça-pintada",
+   "brazil": true
+  },
+  {
+   "id": "nat-016",
+   "text": "Qual bioma brasileiro, típico do sertão nordestino, tem vegetação adaptada à seca?",
+   "theme": "natureza",
+   "subtheme": "biomas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Caatinga",
+    "Pampa",
+    "Mata Atlântica",
+    "Pantanal"
+   ],
+   "answer": "Caatinga",
+   "synonyms": [],
+   "explanation": "Caatinga significa 'mata branca' em tupi, pela cor da vegetação na seca.",
+   "source": "Ministério do Meio Ambiente – Caatinga",
+   "brazil": true
+  },
+  {
+   "id": "nat-017",
+   "text": "Qual é a maior planície alagável do mundo, que fica no Brasil, na Bolívia e no Paraguai?",
+   "theme": "natureza",
+   "subtheme": "biomas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Pantanal",
+    "Amazônia",
+    "Cerrado",
+    "Chaco"
+   ],
+   "answer": "Pantanal",
+   "synonyms": [],
+   "explanation": "O Pantanal é Patrimônio Natural da Humanidade e Reserva da Biosfera pela UNESCO.",
+   "source": "Ministério do Meio Ambiente – Pantanal",
+   "brazil": true
+  },
+  {
+   "id": "nat-018",
+   "text": "Em qual bioma vive o mico-leão-dourado?",
+   "theme": "natureza",
+   "subtheme": "fauna brasileira",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Mata Atlântica",
+    "Pantanal",
+    "Caatinga",
+    "Pampa"
+   ],
+   "answer": "Mata Atlântica",
+   "synonyms": [],
+   "explanation": "O mico-leão-dourado vive só em florestas do estado do Rio de Janeiro.",
+   "source": "Associação Mico-Leão-Dourado; ICMBio",
+   "brazil": true
+  },
+  {
+   "id": "nat-019",
+   "text": "Qual ave símbolo do Pantanal tem pescoço preto e uma faixa vermelha?",
+   "theme": "natureza",
+   "subtheme": "fauna brasileira",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Tuiuiú",
+    "Tucano",
+    "Ema",
+    "Flamingo"
+   ],
+   "answer": "Tuiuiú",
+   "synonyms": [
+    "tuiuiu",
+    "jaburu"
+   ],
+   "explanation": "O tuiuiú pode medir cerca de 1,4 metro de altura.",
+   "source": "ICMBio – Fauna do Pantanal",
+   "brazil": true
+  },
+  {
+   "id": "nat-020",
+   "text": "Como se chama a viagem que muitas aves fazem conforme a estação do ano?",
+   "theme": "natureza",
+   "subtheme": "comportamento",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Migração",
+    "Hibernação",
+    "Metamorfose",
+    "Polinização"
+   ],
+   "answer": "Migração",
+   "synonyms": [
+    "migracao"
+   ],
+   "explanation": "Aves migratórias viajam em busca de comida e clima favorável para se reproduzir.",
+   "source": "ICMBio – CEMAVE, Aves migratórias",
+   "brazil": false
+  },
+  {
+   "id": "nat-021",
+   "text": "Qual árvore do Sul do Brasil produz o pinhão?",
+   "theme": "natureza",
+   "subtheme": "flora brasileira",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Araucária",
+    "Ipê-roxo",
+    "Jequitibá",
+    "Pau-brasil"
+   ],
+   "answer": "Araucária",
+   "synonyms": [
+    "araucaria",
+    "pinheiro do parana"
+   ],
+   "explanation": "A araucária, ou pinheiro-do-paraná, está ameaçada de extinção.",
+   "source": "Embrapa Florestas – Araucária",
+   "brazil": true
+  },
+  {
+   "id": "nat-022",
+   "text": "Qual é a maior ave do Brasil?",
+   "theme": "natureza",
+   "subtheme": "fauna brasileira",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Ema",
+    "Tuiuiú",
+    "Arara-azul",
+    "Gavião-real"
+   ],
+   "answer": "Ema",
+   "synonyms": [],
+   "explanation": "A ema não voa, mas corre a até 60 km/h.",
+   "source": "ICMBio – Fauna brasileira",
+   "brazil": true
+  },
+  {
+   "id": "nat-023",
+   "text": "Em qual bioma brasileiro se concentra a maior parte da população de arara-azul-grande?",
+   "theme": "natureza",
+   "subtheme": "fauna brasileira",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Pantanal",
+    "Pampa",
+    "Mata Atlântica",
+    "Caatinga"
+   ],
+   "answer": "Pantanal",
+   "synonyms": [],
+   "explanation": "O Projeto Arara Azul ajudou a espécie a se recuperar no Pantanal.",
+   "source": "Instituto Arara Azul",
+   "brazil": true
+  },
+  {
+   "id": "nat-024",
+   "text": "Qual peixe gigante da Amazônia respira ar e é chamado de 'bacalhau da Amazônia'?",
+   "theme": "natureza",
+   "subtheme": "fauna brasileira",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Pirarucu",
+    "Tambaqui",
+    "Tucunaré",
+    "Piranha"
+   ],
+   "answer": "Pirarucu",
+   "synonyms": [],
+   "explanation": "O pirarucu pode passar de 2 metros e precisa subir à superfície para respirar.",
+   "source": "Embrapa – Pirarucu",
+   "brazil": true
+  },
+  {
+   "id": "cul-001",
+   "text": "Qual festa de junho tem quadrilha, fogueira e comidas de milho?",
+   "theme": "cultura_brasileira",
+   "subtheme": "festas",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Festa Junina",
+    "Carnaval",
+    "Réveillon",
+    "Oktoberfest"
+   ],
+   "answer": "Festa Junina",
+   "synonyms": [
+    "festa de sao joao",
+    "sao joao",
+    "junina"
+   ],
+   "explanation": "As festas juninas homenageiam santos como Santo Antônio, São João e São Pedro.",
+   "source": "IPHAN – Festas juninas",
+   "brazil": true
+  },
+  {
+   "id": "cul-002",
+   "text": "Qual personagem do folclore tem uma perna só e usa gorro vermelho?",
+   "theme": "cultura_brasileira",
+   "subtheme": "folclore",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Saci-Pererê",
+    "Curupira",
+    "Boitatá",
+    "Mula sem cabeça"
+   ],
+   "answer": "Saci-Pererê",
+   "synonyms": [
+    "saci",
+    "saci perere"
+   ],
+   "explanation": "O Saci adora fazer travessuras e aparece em redemoinhos de vento.",
+   "source": "Câmara Cascudo – Dicionário do Folclore Brasileiro",
+   "brazil": true
+  },
+  {
+   "id": "cul-003",
+   "text": "Quais são as cores da bandeira do Brasil?",
+   "theme": "cultura_brasileira",
+   "subtheme": "símbolos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Verde, amarelo, azul e branco",
+    "Verde, vermelho e branco",
+    "Azul, branco e vermelho",
+    "Amarelo, preto e verde"
+   ],
+   "answer": "Verde, amarelo, azul e branco",
+   "synonyms": [
+    "verde amarelo azul branco"
+   ],
+   "explanation": "A bandeira tem um losango amarelo, um círculo azul com estrelas e a faixa branca.",
+   "source": "Lei nº 5.700/1971 – Símbolos Nacionais",
+   "brazil": true
+  },
+  {
+   "id": "cul-004",
+   "text": "Qual doce de festa é feito de chocolate e coberto com granulado?",
+   "theme": "cultura_brasileira",
+   "subtheme": "culinária",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Brigadeiro",
+    "Beijinho",
+    "Cajuzinho",
+    "Quindim"
+   ],
+   "answer": "Brigadeiro",
+   "synonyms": [],
+   "explanation": "O beijinho é de coco e o quindim leva gema de ovo e coco.",
+   "source": "Dicionário Houaiss – verbete 'brigadeiro'",
+   "brazil": true
+  },
+  {
+   "id": "cul-005",
+   "text": "Qual é a língua oficial do Brasil?",
+   "theme": "cultura_brasileira",
+   "subtheme": "língua",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Português",
+    "Espanhol",
+    "Inglês",
+    "Francês"
+   ],
+   "answer": "Português",
+   "synonyms": [
+    "portugues",
+    "lingua portuguesa"
+   ],
+   "explanation": "A Constituição define o português como idioma oficial. A Libras também é reconhecida por lei.",
+   "source": "Constituição Federal de 1988, art. 13; Lei nº 10.436/2002",
+   "brazil": true
+  },
+  {
+   "id": "cul-006",
+   "text": "Qual personagem do folclore tem os pés virados para trás e protege as florestas?",
+   "theme": "cultura_brasileira",
+   "subtheme": "folclore",
+   "difficulty": "facil",
+   "minAge": 7,
+   "format": "multipla_escolha",
+   "options": [
+    "Curupira",
+    "Saci-Pererê",
+    "Iara",
+    "Cuca"
+   ],
+   "answer": "Curupira",
+   "synonyms": [],
+   "explanation": "Com os pés ao contrário, o Curupira deixa pegadas que confundem os caçadores.",
+   "source": "Câmara Cascudo – Dicionário do Folclore Brasileiro",
+   "brazil": true
+  },
+  {
+   "id": "cul-007",
+   "text": "Qual é o nome da sereia do folclore brasileiro que vive nos rios?",
+   "theme": "cultura_brasileira",
+   "subtheme": "folclore",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Iara",
+    "Cuca",
+    "Mula sem cabeça",
+    "Boitatá"
+   ],
+   "answer": "Iara",
+   "synonyms": [
+    "yara",
+    "mae d agua"
+   ],
+   "explanation": "Iara, a Mãe-d'Água, encanta os pescadores com seu canto.",
+   "source": "Câmara Cascudo – Dicionário do Folclore Brasileiro",
+   "brazil": true
+  },
+  {
+   "id": "cul-008",
+   "text": "Qual prato típico brasileiro é feito com feijão-preto e carnes de porco?",
+   "theme": "cultura_brasileira",
+   "subtheme": "culinária",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Feijoada",
+    "Acarajé",
+    "Moqueca",
+    "Vatapá"
+   ],
+   "answer": "Feijoada",
+   "synonyms": [],
+   "explanation": "A feijoada costuma ser servida com arroz, couve, farofa e laranja.",
+   "source": "Câmara Cascudo – História da Alimentação no Brasil",
+   "brazil": true
+  },
+  {
+   "id": "cul-009",
+   "text": "Qual é o lema escrito na bandeira do Brasil?",
+   "theme": "cultura_brasileira",
+   "subtheme": "símbolos",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Ordem e Progresso",
+    "Paz e Amor",
+    "Liberdade e Igualdade",
+    "Deus e Pátria"
+   ],
+   "answer": "Ordem e Progresso",
+   "synonyms": [],
+   "explanation": "O lema foi inspirado no pensamento do filósofo francês Auguste Comte.",
+   "source": "Lei nº 5.700/1971 – Símbolos Nacionais",
+   "brazil": true
+  },
+  {
+   "id": "cul-010",
+   "text": "Em que cidade fica o Sambódromo da Marquês de Sapucaí?",
+   "theme": "cultura_brasileira",
+   "subtheme": "carnaval",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Rio de Janeiro",
+    "Salvador",
+    "São Paulo",
+    "Recife"
+   ],
+   "answer": "Rio de Janeiro",
+   "synonyms": [
+    "rio"
+   ],
+   "explanation": "O Sambódromo, projetado por Oscar Niemeyer, foi inaugurado em 1984.",
+   "source": "Prefeitura do Rio de Janeiro – Sambódromo",
+   "brazil": true
+  },
+  {
+   "id": "cul-011",
+   "text": "Qual monumento do Rio de Janeiro foi eleito, em 2007, uma das Novas Sete Maravilhas do Mundo?",
+   "theme": "cultura_brasileira",
+   "subtheme": "monumentos",
+   "difficulty": "facil",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Cristo Redentor",
+    "Pão de Açúcar",
+    "Arcos da Lapa",
+    "Theatro Municipal"
+   ],
+   "answer": "Cristo Redentor",
+   "synonyms": [
+    "cristo"
+   ],
+   "explanation": "A estátua, inaugurada em 1931, fica no alto do morro do Corcovado.",
+   "source": "New7Wonders Foundation (2007)",
+   "brazil": true
+  },
+  {
+   "id": "cul-012",
+   "text": "Qual bolinho baiano é feito de massa de feijão-fradinho frita no azeite de dendê?",
+   "theme": "cultura_brasileira",
+   "subtheme": "culinária",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Acarajé",
+    "Coxinha",
+    "Pastel",
+    "Bolinho de chuva"
+   ],
+   "answer": "Acarajé",
+   "synonyms": [
+    "acaraje"
+   ],
+   "explanation": "O ofício das baianas de acarajé é patrimônio imaterial do Brasil (IPHAN, 2004).",
+   "source": "IPHAN – Ofício das Baianas de Acarajé",
+   "brazil": true
+  },
+  {
+   "id": "cul-013",
+   "text": "Qual bebida quente, tomada numa cuia com bomba, é tradição no Rio Grande do Sul?",
+   "theme": "cultura_brasileira",
+   "subtheme": "costumes",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Chimarrão",
+    "Tereré",
+    "Café",
+    "Chocolate quente"
+   ],
+   "answer": "Chimarrão",
+   "synonyms": [
+    "chimarrao",
+    "mate"
+   ],
+   "explanation": "O chimarrão é feito com erva-mate. O tereré é a versão gelada, comum no Mato Grosso do Sul.",
+   "source": "Embrapa Florestas – Erva-mate",
+   "brazil": true
+  },
+  {
+   "id": "cul-014",
+   "text": "Qual ritmo nordestino é dançado em pares nas festas de São João, ao som da sanfona?",
+   "theme": "cultura_brasileira",
+   "subtheme": "festas",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "multipla_escolha",
+   "options": [
+    "Forró",
+    "Tango",
+    "Valsa",
+    "Frevo"
+   ],
+   "answer": "Forró",
+   "synonyms": [
+    "forro"
+   ],
+   "explanation": "As matrizes tradicionais do forró são patrimônio cultural do Brasil (IPHAN, 2021).",
+   "source": "IPHAN – Matrizes Tradicionais do Forró",
+   "brazil": true
+  },
+  {
+   "id": "cul-015",
+   "text": "Qual arquiteto projetou os principais prédios de Brasília, como o Congresso Nacional?",
+   "theme": "cultura_brasileira",
+   "subtheme": "arquitetura",
+   "difficulty": "media",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Oscar Niemeyer",
+    "Lúcio Costa",
+    "Roberto Burle Marx",
+    "Lina Bo Bardi"
+   ],
+   "answer": "Oscar Niemeyer",
+   "synonyms": [
+    "niemeyer"
+   ],
+   "explanation": "Lúcio Costa fez o plano urbanístico (o Plano Piloto); Niemeyer projetou os edifícios.",
+   "source": "Fundação Oscar Niemeyer",
+   "brazil": true
+  },
+  {
+   "id": "cul-016",
+   "text": "Em qual cidade do Amazonas acontece a disputa entre os bois Garantido e Caprichoso?",
+   "theme": "cultura_brasileira",
+   "subtheme": "festas",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Parintins",
+    "Manaus",
+    "Belém",
+    "Santarém"
+   ],
+   "answer": "Parintins",
+   "synonyms": [],
+   "explanation": "O Festival Folclórico de Parintins acontece no fim de junho, no Bumbódromo.",
+   "source": "IPHAN – Complexo Cultural do Boi Bumbá do Médio Amazonas e Parintins",
+   "brazil": true
+  },
+  {
+   "id": "cul-017",
+   "text": "Qual pintora modernista brasileira pintou o quadro 'Abaporu' (1928)?",
+   "theme": "cultura_brasileira",
+   "subtheme": "artes",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Tarsila do Amaral",
+    "Anita Malfatti",
+    "Di Cavalcanti",
+    "Candido Portinari"
+   ],
+   "answer": "Tarsila do Amaral",
+   "synonyms": [
+    "tarsila"
+   ],
+   "explanation": "O Abaporu inspirou o Movimento Antropofágico e hoje está no MALBA, em Buenos Aires.",
+   "source": "Tarsila do Amaral – catálogo raisonné; MALBA",
+   "brazil": true
+  },
+  {
+   "id": "cul-018",
+   "text": "Em que ano aconteceu a Semana de Arte Moderna, em São Paulo?",
+   "theme": "cultura_brasileira",
+   "subtheme": "artes",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "1922",
+    "1930",
+    "1889",
+    "1950"
+   ],
+   "answer": "1922",
+   "synonyms": [],
+   "explanation": "A Semana ocupou o Theatro Municipal de São Paulo em fevereiro de 1922.",
+   "source": "Theatro Municipal de São Paulo; IEB-USP",
+   "brazil": true
+  },
+  {
+   "id": "cul-019",
+   "text": "Qual prato paraense leva tucupi, jambu, goma de tapioca e camarão seco?",
+   "theme": "cultura_brasileira",
+   "subtheme": "culinária",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Tacacá",
+    "Vatapá",
+    "Baião de dois",
+    "Arroz carreteiro"
+   ],
+   "answer": "Tacacá",
+   "synonyms": [
+    "tacaca"
+   ],
+   "explanation": "O tacacá é servido bem quente numa cuia; o jambu deixa a boca 'tremendo'.",
+   "source": "IPHAN – Patrimônio alimentar do Pará",
+   "brazil": true
+  },
+  {
+   "id": "cul-020",
+   "text": "Como era conhecido Antônio Francisco Lisboa, artista barroco autor dos profetas de Congonhas (MG)?",
+   "theme": "cultura_brasileira",
+   "subtheme": "artes",
+   "difficulty": "muito_dificil",
+   "minAge": 16,
+   "format": "multipla_escolha",
+   "options": [
+    "Aleijadinho",
+    "Mestre Valentim",
+    "Mestre Ataíde",
+    "Debret"
+   ],
+   "answer": "Aleijadinho",
+   "synonyms": [],
+   "explanation": "Os 12 profetas em pedra-sabão ficam no Santuário de Bom Jesus de Matosinhos, Patrimônio Mundial da UNESCO.",
+   "source": "UNESCO – Sanctuary of Bom Jesus do Congonhas",
+   "brazil": true
+  },
+  {
+   "id": "cur-001",
+   "text": "Quantos minutos tem uma hora?",
+   "theme": "curiosidades",
+   "subtheme": "tempo",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "60",
+    "100",
+    "30",
+    "24"
+   ],
+   "answer": "60",
+   "synonyms": [],
+   "explanation": "E cada minuto tem 60 segundos.",
+   "source": "Bureau International des Poids et Mesures – Unidades de tempo",
+   "brazil": false
+  },
+  {
+   "id": "cur-002",
+   "text": "Qual dia da semana vem depois do domingo?",
+   "theme": "curiosidades",
+   "subtheme": "calendário",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Segunda-feira",
+    "Sábado",
+    "Terça-feira",
+    "Sexta-feira"
+   ],
+   "answer": "Segunda-feira",
+   "synonyms": [
+    "segunda"
+   ],
+   "explanation": "Os nomes 'segunda-feira', 'terça-feira' etc. vêm do latim usado na liturgia cristã.",
+   "source": "Dicionário Houaiss – verbete 'segunda-feira'",
+   "brazil": false
+  },
+  {
+   "id": "cur-003",
+   "text": "Quantas pessoas formam um trio?",
+   "theme": "curiosidades",
+   "subtheme": "números",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "3",
+    "2",
+    "4",
+    "5"
+   ],
+   "answer": "3",
+   "synonyms": [],
+   "explanation": "Dupla tem 2, trio tem 3 e quarteto tem 4.",
+   "source": "Dicionário Houaiss – verbete 'trio'",
+   "brazil": false
+  },
+  {
+   "id": "cur-004",
+   "text": "Quantas cores tem o arco-íris na divisão tradicional?",
+   "theme": "curiosidades",
+   "subtheme": "natureza",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "7",
+    "5",
+    "6",
+    "9"
+   ],
+   "answer": "7",
+   "synonyms": [],
+   "explanation": "Vermelho, laranja, amarelo, verde, azul, anil e violeta: divisão popularizada por Isaac Newton.",
+   "source": "Enciclopédia Britannica – verbete 'rainbow'",
+   "brazil": false
+  },
+  {
+   "id": "cur-005",
+   "text": "Quanto é 7 vezes 8?",
+   "theme": "curiosidades",
+   "subtheme": "matemática",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "56",
+    "54",
+    "64",
+    "48"
+   ],
+   "answer": "56",
+   "synonyms": [],
+   "explanation": "Dica: 5, 6, 7, 8 → 56 = 7 × 8.",
+   "source": "Tabuada",
+   "brazil": false
+  },
+  {
+   "id": "cur-006",
+   "text": "Qual animal guarda gordura na corcova e aguenta muitos dias sem beber água?",
+   "theme": "curiosidades",
+   "subtheme": "animais",
+   "difficulty": "facil",
+   "minAge": 8,
+   "format": "multipla_escolha",
+   "options": [
+    "Camelo",
+    "Cavalo",
+    "Girafa",
+    "Leão"
+   ],
+   "answer": "Camelo",
+   "synonyms": [],
+   "explanation": "A corcova guarda gordura, não água, e serve de reserva de energia.",
+   "source": "San Diego Zoo – Camel",
+   "brazil": false
+  },
+  {
+   "id": "cur-007",
+   "text": "Quantos dias tem um ano bissexto?",
+   "theme": "curiosidades",
+   "subtheme": "calendário",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "366",
+    "365",
+    "364",
+    "360"
+   ],
+   "answer": "366",
+   "synonyms": [],
+   "explanation": "No ano bissexto, fevereiro ganha o dia 29.",
+   "source": "Observatório Nacional – Calendário",
+   "brazil": false
+  },
+  {
+   "id": "cur-008",
+   "text": "Quantos lados tem um hexágono?",
+   "theme": "curiosidades",
+   "subtheme": "geometria",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "6",
+    "5",
+    "8",
+    "7"
+   ],
+   "answer": "6",
+   "synonyms": [],
+   "explanation": "Os favos das colmeias têm formato de hexágono.",
+   "source": "Dicionário Houaiss – verbete 'hexágono'",
+   "brazil": false
+  },
+  {
+   "id": "cur-009",
+   "text": "Quantos anos tem um século?",
+   "theme": "curiosidades",
+   "subtheme": "tempo",
+   "difficulty": "facil",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "100",
+    "10",
+    "1000",
+    "50"
+   ],
+   "answer": "100",
+   "synonyms": [],
+   "explanation": "Uma década tem 10 anos e um milênio tem 1.000 anos.",
+   "source": "Dicionário Houaiss – verbete 'século'",
+   "brazil": false
+  },
+  {
+   "id": "cur-010",
+   "text": "Quantos zeros tem o número um milhão?",
+   "theme": "curiosidades",
+   "subtheme": "números",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "6",
+    "5",
+    "7",
+    "9"
+   ],
+   "answer": "6",
+   "synonyms": [],
+   "explanation": "Um milhão se escreve 1.000.000.",
+   "source": "Sistema de numeração decimal",
+   "brazil": false
+  },
+  {
+   "id": "cur-011",
+   "text": "O que pesa mais: um quilo de algodão ou um quilo de ferro?",
+   "theme": "curiosidades",
+   "subtheme": "objetos",
+   "difficulty": "media",
+   "minAge": 9,
+   "format": "multipla_escolha",
+   "options": [
+    "Os dois pesam o mesmo",
+    "O ferro",
+    "O algodão"
+   ],
+   "answer": "Os dois pesam o mesmo",
+   "synonyms": [
+    "o mesmo",
+    "iguais",
+    "pesam igual",
+    "os dois",
+    "nenhum",
+    "mesmo peso"
+   ],
+   "explanation": "Um quilo é um quilo! O algodão só ocupa mais espaço.",
+   "source": "Inmetro – Sistema Internacional de Unidades",
+   "brazil": false
+  },
+  {
+   "id": "cur-012",
+   "text": "O polvo tem três corações.",
+   "theme": "curiosidades",
+   "subtheme": "animais",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "verdadeiro_falso",
+   "options": [
+    "Verdadeiro",
+    "Falso"
+   ],
+   "answer": "Verdadeiro",
+   "synonyms": [],
+   "explanation": "Dois corações bombeiam sangue para as brânquias e um para o resto do corpo.",
+   "source": "Smithsonian Ocean – Octopus",
+   "brazil": false
+  },
+  {
+   "id": "cur-013",
+   "text": "Qual é o nome do símbolo @, usado nos endereços de e-mail?",
+   "theme": "curiosidades",
+   "subtheme": "internet",
+   "difficulty": "media",
+   "minAge": 10,
+   "format": "aberta",
+   "options": [],
+   "answer": "Arroba",
+   "synonyms": [
+    "a arroba"
+   ],
+   "explanation": "Arroba também é uma antiga unidade de peso, cerca de 15 kg.",
+   "source": "Dicionário Houaiss – verbete 'arroba'",
+   "brazil": false
+  },
+  {
+   "id": "cur-014",
+   "text": "Qual país deu a Estátua da Liberdade de presente aos Estados Unidos?",
+   "theme": "curiosidades",
+   "subtheme": "monumentos",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "França",
+    "Inglaterra",
+    "Espanha",
+    "Itália"
+   ],
+   "answer": "França",
+   "synonyms": [],
+   "explanation": "A estátua foi inaugurada em Nova York em 1886.",
+   "source": "National Park Service – Statue of Liberty",
+   "brazil": false
+  },
+  {
+   "id": "cur-015",
+   "text": "Quantas casas tem um tabuleiro de xadrez?",
+   "theme": "curiosidades",
+   "subtheme": "jogos",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "64",
+    "32",
+    "100",
+    "81"
+   ],
+   "answer": "64",
+   "synonyms": [],
+   "explanation": "São 8 fileiras com 8 casas cada, alternando claras e escuras.",
+   "source": "FIDE – Laws of Chess, artigo 2",
+   "brazil": false
+  },
+  {
+   "id": "cur-016",
+   "text": "Qual é o maior órgão do corpo humano?",
+   "theme": "curiosidades",
+   "subtheme": "corpo humano",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Pele",
+    "Fígado",
+    "Coração",
+    "Intestino"
+   ],
+   "answer": "Pele",
+   "synonyms": [],
+   "explanation": "A pele de um adulto cobre cerca de 2 metros quadrados.",
+   "source": "Sociedade Brasileira de Dermatologia",
+   "brazil": false
+  },
+  {
+   "id": "cur-017",
+   "text": "Qual é o nome completo da ONU?",
+   "theme": "curiosidades",
+   "subtheme": "siglas",
+   "difficulty": "media",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Organização das Nações Unidas",
+    "Ordem das Nações Unificadas",
+    "Organização Nacional da União",
+    "Ordem Normativa Universal"
+   ],
+   "answer": "Organização das Nações Unidas",
+   "synonyms": [
+    "nacoes unidas"
+   ],
+   "explanation": "A ONU foi criada em 1945, logo depois da Segunda Guerra Mundial.",
+   "source": "Nações Unidas – Carta da ONU (1945)",
+   "brazil": false
+  },
+  {
+   "id": "cur-018",
+   "text": "Qual é o osso mais longo do corpo humano?",
+   "theme": "curiosidades",
+   "subtheme": "corpo humano",
+   "difficulty": "dificil",
+   "minAge": 12,
+   "format": "multipla_escolha",
+   "options": [
+    "Fêmur",
+    "Tíbia",
+    "Úmero",
+    "Rádio"
+   ],
+   "answer": "Fêmur",
+   "synonyms": [
+    "femur"
+   ],
+   "explanation": "O fêmur fica na coxa e é também um dos ossos mais fortes.",
+   "source": "Enciclopédia Britannica – verbete 'femur'",
+   "brazil": false
+  },
+  {
+   "id": "cur-019",
+   "text": "Quantas peças cada jogador tem no início de uma partida de xadrez?",
+   "theme": "curiosidades",
+   "subtheme": "jogos",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "16",
+    "12",
+    "20",
+    "8"
+   ],
+   "answer": "16",
+   "synonyms": [],
+   "explanation": "São 8 peões, 2 torres, 2 cavalos, 2 bispos, 1 dama e 1 rei.",
+   "source": "FIDE – Laws of Chess, artigo 2",
+   "brazil": false
+  },
+  {
+   "id": "cur-020",
+   "text": "Qual é a língua com mais falantes nativos no mundo?",
+   "theme": "curiosidades",
+   "subtheme": "línguas",
+   "difficulty": "dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Mandarim",
+    "Inglês",
+    "Espanhol",
+    "Hindi"
+   ],
+   "answer": "Mandarim",
+   "synonyms": [],
+   "explanation": "O inglês tem mais falantes no total (somando quem aprende), mas o mandarim tem mais nativos.",
+   "source": "Ethnologue – Most spoken languages (2025)",
+   "brazil": false,
+   "referenceDate": "Ethnologue 2025"
+  },
+  {
+   "id": "cur-021",
+   "text": "Em qual planeta um dia dura mais do que um ano?",
+   "theme": "curiosidades",
+   "subtheme": "astronomia",
+   "difficulty": "muito_dificil",
+   "minAge": 14,
+   "format": "multipla_escolha",
+   "options": [
+    "Vênus",
+    "Mercúrio",
+    "Marte",
+    "Júpiter"
+   ],
+   "answer": "Vênus",
+   "synonyms": [
+    "venus"
+   ],
+   "explanation": "Vênus leva cerca de 243 dias terrestres para girar em torno de si e 225 para dar a volta no Sol.",
+   "source": "NASA – Venus Facts",
+   "brazil": false
+  },
+  {
+   "id": "mus-023",
+   "text": "Qual instrumento redondo, com platinelas, a gente segura numa mão e bate com a outra?",
+   "theme": "musica",
+   "subtheme": "instrumentos",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "Pandeiro",
+    "Piano",
+    "Violino",
+    "Trompete"
+   ],
+   "answer": "Pandeiro",
+   "synonyms": [],
+   "explanation": "O pandeiro é essencial no samba, no choro e na capoeira.",
+   "source": "IPHAN – Matrizes do Samba no Rio de Janeiro",
+   "brazil": true
+  },
+  {
+   "id": "lit-021",
+   "text": "Na história 'Cachinhos Dourados', quantos ursos moram na casa?",
+   "theme": "literatura",
+   "subtheme": "contos de fadas",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "3",
+    "2",
+    "5",
+    "7"
+   ],
+   "answer": "3",
+   "synonyms": [
+    "tres ursos"
+   ],
+   "explanation": "Papai Urso, Mamãe Ursa e o Ursinho: e cada um tem sua tigela de mingau.",
+   "source": "Robert Southey – The Story of the Three Bears (1837)",
+   "brazil": false
+  },
+  {
+   "id": "cur-022",
+   "text": "Quantos dias tem uma semana?",
+   "theme": "curiosidades",
+   "subtheme": "calendário",
+   "difficulty": "facil",
+   "minAge": 6,
+   "format": "multipla_escolha",
+   "options": [
+    "7",
+    "5",
+    "6",
+    "10"
+   ],
+   "answer": "7",
+   "synonyms": [],
+   "explanation": "De domingo a sábado são 7 dias.",
+   "source": "Dicionário Houaiss – verbete 'semana'",
+   "brazil": false
+  }
+ ]
+}

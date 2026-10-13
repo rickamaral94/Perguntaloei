@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""Monta e valida o banco de perguntas do PERGUNTÁ-LO-EI.
+
+As perguntas são escritas em parte1.py, parte2.py e parte3.py (dados Python compactos).
+Este script valida tudo e gera app/src/main/assets/questions.json.
+
+Uso: python3 tools/questions/build_questions.py
+"""
+import json
+import os
+import re
+import sys
+import unicodedata
+from collections import Counter, defaultdict
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
+OUT = os.path.join(ROOT, "app", "src", "main", "assets", "questions.json")
+sys.path.insert(0, HERE)
+
+from qdsl import QUESTIONS  # noqa: E402
+
+
+# ---------------------------------------------------------------- normalização (igual ao app)
+STOP = set("""a o as os um uma uns umas de do da dos das e em no na nos nas por para pra pelo pela com que qual quais
+quem como se ao aos the foi eh sao seu sua seus suas este esta esse essa isso isto ou mais muito onde quando quanto
+quantos quantas chamado chamada conhecido conhecida""".split())
+
+
+def norm(s):
+    s = unicodedata.normalize("NFD", s.lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def stem(t):
+    if len(t) > 4 and t.endswith("s"):
+        t = t[:-1]
+    if len(t) > 4 and (t.endswith("a") or t.endswith("o")):
+        t = t[:-1]
+    return t
+
+
+def content(s):
+    return {stem(t) for t in norm(s).split() if t not in STOP and len(t) > 1}
+
+
+def jaccard(a, b):
+    ta, tb = content(a), content(b)
+    if not ta and not tb:
+        return 1.0
+    u = len(ta | tb)
+    return len(ta & tb) / u if u else 0.0
+
+
+def lev(a, b):
+    if a == b:
+        return 0
+    prev = list(range(len(b) + 1))
+    for i in range(1, len(a) + 1):
+        cur = [i] + [0] * len(b)
+        for j in range(1, len(b) + 1):
+            cur[j] = min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] != b[j - 1]))
+        prev = cur
+    return prev[-1]
+
+
+def similarity(a, b):
+    na, nb = norm(a), norm(b)
+    m = max(len(na), len(nb))
+    return 1.0 if m == 0 else 1 - lev(na, nb) / m
+
+
+def near_dup(a, b):
+    j = jaccard(a["text"], b["text"])
+    if j >= 0.8 or similarity(a["text"], b["text"]) >= 0.85:
+        return True
+    return norm(a["answer"]) == norm(b["answer"]) and j >= 0.55
+
+
+# ---------------------------------------------------------------- validação
+
+def validate(qs):
+    problems = []
+    ids = Counter(q["id"] for q in qs)
+    problems += [f"id duplicado {i}" for i, n in ids.items() if n > 1]
+    for q in qs:
+        tag = q["id"]
+        for f in ("text", "answer", "explanation", "source", "subtheme"):
+            if not q[f].strip():
+                problems.append(f"{tag}: campo vazio {f}")
+        if q["format"] == "multipla_escolha":
+            if not 3 <= len(q["options"]) <= 4:
+                problems.append(f"{tag}: precisa de 3 ou 4 alternativas")
+            if q["answer"] not in q["options"]:
+                problems.append(f"{tag}: resposta fora das alternativas")
+            n = [norm(o) for o in q["options"]]
+            if len(set(n)) != len(n):
+                problems.append(f"{tag}: alternativas duplicadas")
+        if q["format"] in ("multipla_escolha", "aberta"):
+            a = norm(q["answer"])
+            if len(a) >= 3 and f" {a} " in f" {norm(q['text'])} ":
+                problems.append(f"{tag}: enunciado entrega a resposta")
+        if q["format"] == "aberta" and not q["synonyms"]:
+            problems.append(f"{tag}: pergunta aberta sem sinônimos")
+        if not q["text"].rstrip().endswith(("?", ".")):
+            problems.append(f"{tag}: enunciado sem pontuação final")
+    for i in range(len(qs)):
+        for j in range(i + 1, len(qs)):
+            if near_dup(qs[i], qs[j]):
+                problems.append(f"quase-duplicatas: {qs[i]['id']} ~ {qs[j]['id']}: {qs[i]['text']} | {qs[j]['text']}")
+    return problems
+
+
+def report(qs):
+    by_theme = defaultdict(list)
+    for q in qs:
+        by_theme[q["theme"]].append(q)
+    print(f"Total: {len(qs)} perguntas")
+    print(f"{'tema':20} total fac med dif mdf kids<=7 kids<=9 brasil aberta v/f")
+    for t, lst in by_theme.items():
+        c = Counter(q["difficulty"] for q in lst)
+        kids7 = sum(1 for q in lst if q["difficulty"] == "facil" and q["minAge"] <= 7)
+        kids9 = sum(1 for q in lst if q["difficulty"] == "facil" and q["minAge"] <= 9)
+        br = sum(1 for q in lst if q["brazil"])
+        ab = sum(1 for q in lst if q["format"] == "aberta")
+        vf = sum(1 for q in lst if q["format"] == "verdadeiro_falso")
+        print(f"{t:20} {len(lst):5} {c['facil']:3} {c['media']:3} {c['dificil']:3} {c['muito_dificil']:3} {kids7:7} {kids9:7} {br:6} {ab:6} {vf:3}")
+
+
+if __name__ == "__main__":
+    import parte1  # noqa: F401
+    import parte2  # noqa: F401
+    import parte3  # noqa: F401
+
+    problems = validate(QUESTIONS)
+    report(QUESTIONS)
+    if problems:
+        print("\nPROBLEMAS:")
+        for p in problems:
+            print(" -", p)
+        sys.exit(1)
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump({"version": 1, "questions": QUESTIONS}, f, ensure_ascii=False, indent=1)
+    print(f"\nOK: {OUT}")
