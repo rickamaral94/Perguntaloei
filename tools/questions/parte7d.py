@@ -51,7 +51,7 @@ mc(L, "autores brasileiros", 2, 12, "Qual escritora cearense escreveu 'O Quinze'
    "Academia Brasileira de Letras", br=True)
 mc(L, "poesia", 2, 14, "Qual poeta baiano escreveu 'O Navio Negreiro' e ficou conhecido como o 'poeta dos escravos'?",
    ["Castro Alves", "Gonçalves Dias", "Álvares de Azevedo", "Olavo Bilac"], "Castro Alves",
-   "O poema de 1869 denuncia o horror do tráfico de pessoas escravizadas.",
+   "O poema, escrito em 1868, denuncia o horror do tráfico de pessoas escravizadas.",
    "Academia Brasileira de Letras", br=True)
 mc(L, "teatro", 2, 14, "Em qual peça de Shakespeare aparece a frase 'Ser ou não ser, eis a questão'?",
    ["Hamlet", "Macbeth", "Otelo", "Rei Lear"], "Hamlet",
@@ -85,7 +85,7 @@ mc(L, "poesia", 4, 16, "Qual poeta português criou heterônimos como Alberto Ca
    "Cada heterônimo tinha biografia e estilo próprios.",
    "Enciclopédia Britannica – verbete 'Fernando Pessoa'")
 op(L, "poesia", 4, 16, "Qual poeta paraibano publicou um único livro, chamado 'Eu', com versos sombrios como os de 'Versos Íntimos'?", "Augusto dos Anjos",
-   ["augusto dos anjos", "augusto"],
+   ["augusto dos anjos"],
    "O livro saiu em 1912, e o poeta morreu dois anos depois.",
    "Academia Brasileira de Letras", br=True)
 
@@ -142,7 +142,7 @@ mc(P, "figuras de linguagem", 2, 12, "Qual figura de linguagem aparece em 'Minha
    ["Metáfora", "Onomatopeia", "Eufemismo", "Ironia"], "Metáfora",
    "A metáfora faz uma comparação implícita: a casa é muito quente, como um forno.",
    "Evanildo Bechara – Moderna Gramática Portuguesa")
-tf(P, "ortografia", 2, 12, "As palavras 'mal' e 'mau' têm o mesmo significado.", False,
+tf(P, "ortografia", 2, 12, "As palavras 'mau', o contrário de bom, e 'mal', o contrário de bem, são sinônimas.", False,
    "'Mau' é adjetivo, contrário de bom; 'mal' é advérbio ou substantivo, contrário de bem.",
    "Academia Brasileira de Letras")
 mc(P, "figuras de linguagem", 3, 14, "Qual figura de linguagem suaviza uma ideia triste, como dizer 'ele partiu' em vez de 'ele morreu'?",
@@ -154,7 +154,7 @@ mc(P, "figuras de linguagem", 3, 14, "Qual figura de linguagem diz o contrário 
    "Na ironia, o sentido verdadeiro é o oposto do que as palavras dizem.",
    "Evanildo Bechara – Moderna Gramática Portuguesa")
 mc(P, "origem das palavras", 3, 14, "De qual língua indígena vêm palavras como 'abacaxi', 'pipoca' e 'jabuticaba'?",
-   ["Tupi", "Quíchua", "Guarani", "Nheengatu"], "Tupi",
+   ["Tupi", "Quíchua", "Iorubá", "Latim"], "Tupi",
    "O tupi deixou milhares de palavras no português do Brasil, sobretudo nomes de plantas, animais e lugares.",
    "Dicionário Houaiss da Língua Portuguesa – etimologias", br=True)
 mc(P, "origem das palavras", 3, 14, "Palavras como 'almofada', 'alface' e 'açúcar' chegaram ao português vindas de qual língua?",
@@ -203,10 +203,6 @@ mc(A, "gêneros de pintura", 2, 10, "Como se chama a pintura que mostra frutas, 
    ["Natureza-morta", "Paisagem", "Retrato", "Marinha"], "Natureza-morta",
    "O gênero foi muito popular entre os pintores holandeses do século XVII.",
    "Enciclopédia Britannica – verbete 'still-life painting'")
-mc(A, "música erudita", 2, 12, "Qual compositor russo criou o balé 'O Quebra-Nozes'?",
-   ["Piotr Tchaikovsky", "Igor Stravinsky", "Serguei Rachmaninov", "Nikolai Rimsky-Korsakov"], "Piotr Tchaikovsky",
-   "O balé estreou em 1892 e virou tradição de Natal no mundo todo.",
-   "Enciclopédia Britannica – verbete 'The Nutcracker'")
 mc(A, "museus", 2, 12, "Em qual cidade fica o Museu do Prado, com obras de Velázquez e Goya?",
    ["Madri", "Barcelona", "Lisboa", "Roma"], "Madri",
    "O Prado, aberto em 1819, é um dos maiores museus de pintura do mundo.",
@@ -346,7 +342,7 @@ mc(M, "mitologia asteca", 4, 16, "Na mitologia asteca, qual deus era a 'serpente
    ["Quetzalcóatl", "Huitzilopochtli", "Tlaloc", "Tezcatlipoca"], "Quetzalcóatl",
    "Ele era ligado ao vento, à sabedoria e ao planeta Vênus.",
    "Enciclopédia Britannica – verbete 'Quetzalcóatl'")
-op(M, "mitologia nórdica", 4, 16, "Na mitologia nórdica, como se chama o reino dos deuses, ligado ao mundo dos humanos por uma ponte de arco-íris?", "Asgard",
+op(M, "mitologia nórdica", 3, 14, "Na mitologia nórdica, como se chama o reino dos deuses, ligado ao mundo dos humanos por uma ponte de arco-íris?", "Asgard",
    ["asgard", "asgardh", "asgardr", "ásgard"],
    "A ponte de arco-íris se chama Bifrost e é vigiada pelo deus Heimdall.",
    "Enciclopédia Britannica – verbete 'Asgard'")
@@ -365,10 +361,6 @@ mc(C, "objetos", 1, 7, "Qual objeto usamos para medir a temperatura do corpo qua
    ["Termômetro", "Relógio", "Balança", "Régua"], "Termômetro",
    "A temperatura normal do corpo fica por volta de 36 a 37 graus Celsius.",
    "Ministério da Saúde", br=True)
-mc(C, "objetos", 1, 9, "Qual instrumento tem uma agulha que aponta para o norte e ajuda a não se perder?",
-   ["Bússola", "Lupa", "Telescópio", "Cronômetro"], "Bússola",
-   "A agulha imantada da bússola se alinha com o campo magnético da Terra.",
-   "Enciclopédia Britannica – verbete 'compass'")
 mc(C, "medidas de tempo", 1, 9, "Como se chama um período de dez anos?",
    ["Década", "Século", "Milênio", "Semestre"], "Década",
    "Dez anos formam uma década; cem anos, um século.",

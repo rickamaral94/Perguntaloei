@@ -142,7 +142,7 @@ mc(P, "cidadania", 1, 6, "Onde o pedestre deve atravessar a rua?",
    ["Na faixa de pedestres", "No meio dos carros", "Na curva", "Em qualquer lugar"], "Na faixa de pedestres",
    "Onde houver semáforo para pedestres, é preciso esperar o boneco verde.",
    "Código de Trânsito Brasileiro", br=True)
-tf(P, "cidadania", 1, 8, "Pelas leis de trânsito, crianças menores de 10 anos devem viajar no banco de trás do carro.", True,
+tf(P, "cidadania", 1, 8, "Pelas leis de trânsito, crianças menores de 10 anos que ainda não chegaram a 1,45 metro de altura devem viajar no banco de trás.", True,
    "O Código de Trânsito também exige cadeirinha ou assento de elevação conforme a idade.",
    "Código de Trânsito Brasileiro", br=True)
 mc(P, "eleições", 1, 8, "Quem escolhe o prefeito de uma cidade?",
@@ -156,19 +156,19 @@ mc(P, "cidadania", 1, 9, "Como se chama a pessoa que tem direitos e deveres gara
 op(P, "mandatos", 2, 10, "Quantos anos dura o mandato de um prefeito no Brasil?", "4 anos",
    ["4", "quatro", "4 anos", "quatro anos"],
    "Prefeitos e vereadores são eleitos juntos, na mesma eleição municipal.",
-   "Constituição Federal de 1988", br=True)
+   "Constituição Federal de 1988", br=True, ref="2026-10-13")
 mc(P, "mandatos", 2, 12, "Quanto tempo dura o mandato de um deputado federal?",
    ["4 anos", "5 anos", "6 anos", "8 anos"], "4 anos",
    "Já os senadores têm mandato de 8 anos.",
-   "Câmara dos Deputados", br=True)
+   "Câmara dos Deputados", br=True, ref="2026-10-13")
 mc(P, "leis", 2, 12, "Como se chama a proposta que os parlamentares discutem e votam antes de ela virar lei?",
    ["Projeto de lei", "Sentença", "Alvará", "Certidão"], "Projeto de lei",
    "Qualquer cidadão pode acompanhar a tramitação dos projetos nos sites do Congresso.",
    "Câmara dos Deputados", br=True)
 mc(P, "documentos", 2, 12, "O que significa a sigla RG, nome popular da carteira de identidade?",
    ["Registro Geral", "Registro Governamental", "Relação Geral", "Registro de Garantia"], "Registro Geral",
-   "O RG é emitido pelo órgão de identificação de cada estado.",
-   "Governo Federal – gov.br", br=True)
+   "O RG está sendo substituído pela Carteira de Identidade Nacional, que usa o número do CPF.",
+   "Governo Federal – gov.br", br=True, ref="2026-10-13")
 mc(P, "direitos", 2, 12, "Qual é o número do Disque Direitos Humanos, que recebe denúncias de violações de direitos?",
    ["100", "180", "188", "192"], "100",
    "A ligação é gratuita, funciona 24 horas e pode ser anônima.",

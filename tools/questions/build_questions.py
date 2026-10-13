@@ -159,6 +159,10 @@ if __name__ == "__main__":
     import parte6b  # noqa: F401
     import parte6c  # noqa: F401
     import parte6d  # noqa: F401
+    import parte7a  # noqa: F401
+    import parte7b  # noqa: F401
+    import parte7c  # noqa: F401
+    import parte7d  # noqa: F401
 
     problems = validate(QUESTIONS)
     report(QUESTIONS)
