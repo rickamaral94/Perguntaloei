@@ -171,7 +171,7 @@ mc(H, "guerra fria", 2, 12, "Qual muro caiu em 1989, tornando-se símbolo do fim
    ["Muro de Berlim", "Muralha da China", "Muro das Lamentações", "Muralha de Adriano"], "Muro de Berlim",
    "O Muro de Berlim dividiu a cidade de 1961 até 9 de novembro de 1989.",
    "Enciclopédia Britannica – verbete 'Berlin Wall'", syn=["berlim"])
-mc(H, "capitais", 2, 10, "Qual cidade era a capital do Brasil antes de Brasília?",
+mc(H, "capitais", 2, 10, "Qual cidade foi a capital do Brasil de 1763 a 1960?",
    ["Rio de Janeiro", "Salvador", "São Paulo", "Recife"], "Rio de Janeiro",
    "O Rio de Janeiro foi capital de 1763 até 1960.",
    "IBGE – Histórico das capitais", br=True)

@@ -72,11 +72,29 @@ def similarity(a, b):
     return 1.0 if m == 0 else 1 - lev(na, nb) / m
 
 
+_cache = {}
+
+
+def _prep(q):
+    """Texto normalizado, palavras de conteúdo e resposta normalizada (calculados uma vez)."""
+    key = q["id"]
+    if key not in _cache:
+        _cache[key] = (norm(q["text"]), content(q["text"]), norm(q["answer"]))
+    return _cache[key]
+
+
 def near_dup(a, b):
-    j = jaccard(a["text"], b["text"])
-    if j >= 0.8 or similarity(a["text"], b["text"]) >= 0.85:
+    na, ta, ra = _prep(a)
+    nb, tb, rb = _prep(b)
+    u = len(ta | tb)
+    j = 1.0 if u == 0 else len(ta & tb) / u
+    if j >= 0.8:
         return True
-    return norm(a["answer"]) == norm(b["answer"]) and j >= 0.55
+    # Similaridade >= 0.85 exige tamanhos parecidos: evita calcular a distância à toa.
+    m = max(len(na), len(nb))
+    if m and abs(len(na) - len(nb)) / m <= 0.15 and 1 - lev(na, nb) / m >= 0.85:
+        return True
+    return ra == rb and j >= 0.55
 
 
 # ---------------------------------------------------------------- validação
@@ -133,6 +151,9 @@ if __name__ == "__main__":
     import parte1  # noqa: F401
     import parte2  # noqa: F401
     import parte3  # noqa: F401
+    import parte4  # noqa: F401
+    import parte4b  # noqa: F401
+    import parte5  # noqa: F401
 
     problems = validate(QUESTIONS)
     report(QUESTIONS)

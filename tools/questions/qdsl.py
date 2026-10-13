@@ -6,6 +6,8 @@ THEMES = {
     "geo": "geografia", "his": "historia", "cie": "ciencia", "tec": "tecnologia", "cin": "cinema",
     "inf": "filmes_infantis", "nov": "novelas", "tv": "televisao", "esp": "esportes", "mar": "marcas",
     "mus": "musica", "lit": "literatura", "nat": "natureza", "cul": "cultura_brasileira", "cur": "curiosidades",
+    "por": "portugues", "mat": "matematica", "pol": "politica", "art": "artes", "mit": "mitologia",
+    "ast": "astronomia", "cor": "corpo_humano", "gas": "culinaria",
 }
 TF = ["Verdadeiro", "Falso"]
 

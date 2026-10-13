@@ -37,7 +37,15 @@ enum class Theme(val label: String) {
     @SerialName("literatura") LITERATURA("Literatura"),
     @SerialName("natureza") NATUREZA("Natureza"),
     @SerialName("cultura_brasileira") CULTURA_BRASILEIRA("Cultura brasileira"),
-    @SerialName("curiosidades") CURIOSIDADES("Curiosidades");
+    @SerialName("curiosidades") CURIOSIDADES("Curiosidades"),
+    @SerialName("portugues") PORTUGUES("Língua portuguesa"),
+    @SerialName("matematica") MATEMATICA("Matemática"),
+    @SerialName("politica") POLITICA("Política e cidadania"),
+    @SerialName("artes") ARTES("Artes"),
+    @SerialName("mitologia") MITOLOGIA("Mitologia e lendas"),
+    @SerialName("astronomia") ASTRONOMIA("Astronomia e espaço"),
+    @SerialName("corpo_humano") CORPO_HUMANO("Corpo humano e saúde"),
+    @SerialName("culinaria") CULINARIA("Culinária");
 }
 
 /**

@@ -13,11 +13,19 @@ android {
         applicationId = "br.com.perguntaloei"
         minSdk = 24
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.2.0"
         vectorDrawables { useSupportLibrary = true }
-        // Voz neural: bibliotecas nativas só para celulares ARM (todos os aparelhos Android atuais).
-        ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
+    }
+    // Voz neural: bibliotecas nativas só para celulares ARM. Um APK por arquitetura deixa cada
+    // arquivo menor: arm64-v8a serve para praticamente todos os celulares atuais; armeabi-v7a, para os antigos de 32 bits.
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("arm64-v8a", "armeabi-v7a")
+            isUniversalApk = false
+        }
     }
     androidResources {
         // O modelo de voz já é binário compacto; não comprimir acelera a leitura.
@@ -67,7 +75,6 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.material:material-icons-extended")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
     // Voz neural offline (Piper/VITS) — Apache 2.0.
     implementation("com.github.k2-fsa.sherpa-onnx:sherpa-onnx:v1.13.8")

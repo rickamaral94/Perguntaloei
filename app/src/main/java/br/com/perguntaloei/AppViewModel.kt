@@ -99,6 +99,15 @@ sealed interface UiEvent {
     data object OpenTtsSettings : UiEvent
 }
 
+/** Quem tinha todos os 15 temas originais marcados passa a ter também os temas novos. */
+internal fun migrateThemes(s: AppSettings): AppSettings {
+    val original = br.com.perguntaloei.model.Theme.entries.take(15)
+    val themes = s.lastConfig.themes
+    return if (themes.containsAll(original) && themes.size < br.com.perguntaloei.model.Theme.entries.size) {
+        s.copy(lastConfig = s.lastConfig.copy(themes = br.com.perguntaloei.model.Theme.entries))
+    } else s
+}
+
 class AppViewModel @JvmOverloads constructor(
     app: Application,
     deps: VoiceDeps = VoiceDeps(
@@ -129,7 +138,7 @@ class AppViewModel @JvmOverloads constructor(
         private set
     var players by mutableStateOf(store.loadPlayers())
         private set
-    var settings by mutableStateOf(store.loadSettings())
+    var settings by mutableStateOf(migrateThemes(store.loadSettings()))
         private set
     var game by mutableStateOf<GameState?>(store.loadGame())
         private set

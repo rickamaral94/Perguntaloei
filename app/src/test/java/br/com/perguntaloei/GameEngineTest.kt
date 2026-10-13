@@ -496,4 +496,12 @@ class GameEngineTest {
         assertNull(LocalStore(dir).loadGame())
         dir.deleteRecursively()
     }
+
+    @Test
+    fun usersWithAllOriginalThemesGetTheNewOnes() {
+        val old = br.com.perguntaloei.data.AppSettings(lastConfig = GameConfig(themes = Theme.entries.take(15)))
+        assertEquals(Theme.entries, migrateThemes(old).lastConfig.themes)
+        val partial = br.com.perguntaloei.data.AppSettings(lastConfig = GameConfig(themes = listOf(Theme.GEOGRAFIA)))
+        assertEquals(listOf(Theme.GEOGRAFIA), migrateThemes(partial).lastConfig.themes)
+    }
 }

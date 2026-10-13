@@ -47,6 +47,14 @@ object Arcade {
         QuizTheme.NATUREZA -> Color(0xFF8BE36B)
         QuizTheme.CULTURA_BRASILEIRA -> Color(0xFFFFD60A)
         QuizTheme.CURIOSIDADES -> Color(0xFF7DF9FF)
+        QuizTheme.PORTUGUES -> Color(0xFFF4A261)
+        QuizTheme.MATEMATICA -> Color(0xFF90E0EF)
+        QuizTheme.POLITICA -> Color(0xFFADB5FF)
+        QuizTheme.ARTES -> Color(0xFFFF8FAB)
+        QuizTheme.MITOLOGIA -> Color(0xFFE9C46A)
+        QuizTheme.ASTRONOMIA -> Color(0xFFA0C4FF)
+        QuizTheme.CORPO_HUMANO -> Color(0xFFFFADAD)
+        QuizTheme.CULINARIA -> Color(0xFFCAFFBF)
     }
 
     fun themeIcon(t: QuizTheme): String = when (t) {
@@ -65,6 +73,14 @@ object Arcade {
         QuizTheme.NATUREZA -> "🌿"
         QuizTheme.CULTURA_BRASILEIRA -> "🇧🇷"
         QuizTheme.CURIOSIDADES -> "💡"
+        QuizTheme.PORTUGUES -> "✍️"
+        QuizTheme.MATEMATICA -> "➗"
+        QuizTheme.POLITICA -> "🗳️"
+        QuizTheme.ARTES -> "🎨"
+        QuizTheme.MITOLOGIA -> "⚡"
+        QuizTheme.ASTRONOMIA -> "🚀"
+        QuizTheme.CORPO_HUMANO -> "🫀"
+        QuizTheme.CULINARIA -> "🍲"
     }
 }
 
