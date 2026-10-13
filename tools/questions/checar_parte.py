@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_questions import near_dup, validate  # noqa: E402
 from qdsl import QUESTIONS  # noqa: E402
 
-for m in ["parte1", "parte2", "parte3", "parte4", "parte4b", "parte5", "parte6a", "parte6b", "parte6c", "parte6d"]:
+for m in ["parte1", "parte2", "parte3", "parte4", "parte4b", "parte5", "parte6a", "parte6b", "parte6c", "parte6d", "parte7a", "parte7b", "parte7c", "parte7d"]:
     importlib.import_module(m)
 antes = len(QUESTIONS)
 for m in sys.argv[1:]:
