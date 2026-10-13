@@ -244,7 +244,7 @@ mc(E, "olimpíadas", 3, 14, "Em qual esporte o Brasil ganhou suas primeiras meda
 tf(E, "basquete", 3, 14, "A seleção brasileira masculina de basquete já foi campeã mundial.", True,
    "O Brasil venceu os Mundiais de 1959, no Chile, e de 1963, no Rio de Janeiro.", "FIBA", br=True)
 mc(E, "olimpíadas", 4, 16, "Qual velejador brasileiro ganhou o ouro olímpico na classe Laser em 1996 e 2004?",
-   ["Robert Scheidt", "Lars Grael", "Bruno Prada"], "Robert Scheidt",
+   ["Robert Scheidt", "Lars Grael", "Bruno Prada", "Torben Grael"], "Robert Scheidt",
    "Scheidt ganhou cinco medalhas olímpicas, duas delas de ouro.", "Comitê Olímpico do Brasil", br=True)
 
 # =========================================================== MARCAS

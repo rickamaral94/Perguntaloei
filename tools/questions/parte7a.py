@@ -26,8 +26,8 @@ mc(G, "capitais", 1, 9, "Qual é a capital da Alemanha?",
    ["Berlim", "Munique", "Viena", "Hamburgo"], "Berlim",
    "Berlim ficou dividida por um muro entre 1961 e 1989.",
    "Enciclopédia Britannica – verbete 'Berlin'")
-mc(G, "estados", 2, 10, "Qual cidade é a capital do estado do Paraná?",
-   ["Curitiba", "Londrina", "Maringá", "Florianópolis"], "Curitiba",
+mc(G, "estados", 2, 10, "Curitiba é a capital de qual estado brasileiro?",
+   ["Paraná", "Santa Catarina", "São Paulo", "Mato Grosso do Sul"], "Paraná",
    "Curitiba é conhecida pelo Jardim Botânico e pelas estações-tubo de ônibus.",
    "IBGE – Cidades", br=True)
 tf(G, "regiões", 2, 10, "O estado do Rio de Janeiro fica na região Sudeste.", True,
