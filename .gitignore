@@ -9,3 +9,5 @@ build/
 .cxx
 /app/release/
 tools/voz-neural/build/
+__pycache__/
+*.pyc
