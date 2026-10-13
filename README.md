@@ -16,7 +16,7 @@ Tablet (pergunta e placar lado a lado): ![](docs/telas/09-tablet-pergunta.png)
 
 | Arquivo | Uso |
 |---|---|
-| [`apk/PERGUNTALOEI-1.6.0.apk`](apk/PERGUNTALOEI-1.6.0.apk) (1,5 MB) | **Otimizado** (*release*, minificado pelo R8): menor e mais rápido. Mesmo código, mas a versão minificada ainda não foi executada em aparelho. |
+| [`apk/PERGUNTALOEI-1.6.0.apk`](apk/PERGUNTALOEI-1.6.0.apk) (1,5 MB) | **Recomendado.** Otimizado (*release*, minificado pelo R8): menor e mais rápido. Instalado e usado num celular real sem problemas. |
 | [`apk/PERGUNTALOEI-1.6.0-teste.apk`](apk/PERGUNTALOEI-1.6.0-teste.apk) (11 MB) | **De teste** (*debug*): exatamente o código coberto pelos testes; use se o otimizado der qualquer problema. |
 
 Os dois têm a mesma assinatura: um instala por cima do outro, mantendo jogadores e histórico.
@@ -127,7 +127,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py`, confira um arquivo no
 - **Não foi testado em aparelho físico nem em emulador** (o ambiente de desenvolvimento não tem aceleração de hardware para emulador). A interface foi executada com Robolectric; a voz e o microfone foram testados com implementações falsas que seguem o contrato do TextToSpeech/SpeechRecognizer. Vale um teste real de voz: sotaques, ruído da sala e o comportamento do serviço de reconhecimento variam de aparelho para aparelho.
 - **Tamanho:** o APK de teste (*debug*) tem ~11 MB; o otimizado (*release*), ~1,5 MB.
 - O reconhecimento de fala depende do serviço instalado (normalmente Google). O app pede processamento no aparelho, mas não consegue garantir que o serviço não use a internet — por isso o aviso e o consentimento. Sem voz em português instalada, o app avisa e segue no modo tela/toque.
-- O APK otimizado (*release*) não foi executado em aparelho nem emulador; conferi que o R8 manteve as classes de gravação dos dados (serializadores). Se algo estranho acontecer só nele, use o APK de teste.
+- O APK otimizado (*release*) foi instalado e usado num celular real sem problemas, mas não passa pelos testes automáticos (eles rodam o código sem minificação). Conferi que o R8 manteve as classes de gravação dos dados (serializadores). Se algo estranho acontecer só nele, use o APK de teste.
 - As perguntas foram escritas e revisadas com cuidado, e as fontes indicam onde checar cada fato. As 425 perguntas da versão 1.5.0 passaram por uma segunda revisão independente de cada resposta (que corrigiu 3 respostas ambíguas e algumas explicações), mas só parte das referências foi consultada online. Recomendo uma revisão humana, especialmente de novelas, marcas/slogans e datas.
 - O desempate usa apenas perguntas inéditas; se acabarem, a opção é aceitar o empate.
 - "Desfazer último ponto" vale para o resultado exibido na hora (antes de tocar em Continuar). Para resultados anteriores, o histórico mostra tudo, mas não edita.
