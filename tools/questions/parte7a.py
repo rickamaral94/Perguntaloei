@@ -18,7 +18,7 @@ mc(G, "capitais", 1, 8, "Qual cidade é a capital da Inglaterra?",
    ["Londres", "Paris", "Dublin", "Lisboa"], "Londres",
    "Londres é cortada pelo rio Tâmisa.",
    "Enciclopédia Britannica – verbete 'London'")
-mc(G, "estados", 1, 9, "Qual é a capital do Ceará?",
+mc(G, "estados", 1, 9, "Qual cidade é a capital do estado do Ceará?",
    ["Fortaleza", "Natal", "Teresina", "São Luís"], "Fortaleza",
    "Fortaleza é uma das cidades mais populosas do Nordeste.",
    "IBGE – Cidades", br=True)
@@ -26,7 +26,7 @@ mc(G, "capitais", 1, 9, "Qual é a capital da Alemanha?",
    ["Berlim", "Munique", "Viena", "Hamburgo"], "Berlim",
    "Berlim ficou dividida por um muro entre 1961 e 1989.",
    "Enciclopédia Britannica – verbete 'Berlin'")
-mc(G, "estados", 2, 10, "Qual é a capital do Paraná?",
+mc(G, "estados", 2, 10, "Qual cidade é a capital do estado do Paraná?",
    ["Curitiba", "Londrina", "Maringá", "Florianópolis"], "Curitiba",
    "Curitiba é conhecida pelo Jardim Botânico e pelas estações-tubo de ônibus.",
    "IBGE – Cidades", br=True)

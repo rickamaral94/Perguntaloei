@@ -163,8 +163,8 @@ mc(C, "Lua", 1, 8, "Como se chama a fase em que praticamente não conseguimos ve
    ["Lua nova", "Lua cheia", "Quarto crescente", "Quarto minguante"], "Lua nova",
    "Na lua nova, a face iluminada pelo Sol fica voltada para o lado oposto ao da Terra.",
    "NASA")
-mc(C, "planetas", 2, 12, "Qual planeta azul tem os ventos mais fortes já medidos no Sistema Solar?",
-   ["Netuno", "Saturno", "Terra", "Mercúrio"], "Netuno",
+mc(C, "planetas", 2, 12, "Qual planeta tem os ventos mais fortes já medidos no Sistema Solar?",
+   ["Netuno", "Saturno", "Júpiter", "Mercúrio"], "Netuno",
    "Os ventos de Netuno passam de dois mil quilômetros por hora, mais rápidos que em qualquer outro planeta.",
    "NASA")
 mc(C, "corpos celestes", 2, 10, "Qual corpo celeste feito de gelo e poeira forma uma cauda brilhante ao se aproximar do Sol?",
@@ -186,7 +186,7 @@ op(C, "astrônomos", 2, 12, "Qual cientista italiano apontou um telescópio para
 mc(C, "exploração espacial", 2, 12, "Qual estação espacial é habitada sem interrupção, desde o ano 2000, por astronautas de vários países?",
    ["Estação Espacial Internacional", "Mir", "Skylab", "Tiangong"], "Estação Espacial Internacional",
    "A Estação Espacial Internacional recebe tripulações desde novembro de 2000.",
-   "NASA")
+   "NASA", ref="2026-10-13")
 tf(C, "planetas", 3, 14, "Vênus gira em torno de si mesmo no sentido contrário ao da maioria dos planetas.", True,
    "Vênus tem rotação retrógrada e muito lenta, de modo que em Vênus o Sol nasceria no oeste.",
    "NASA")
@@ -253,7 +253,7 @@ mc(C, "nutrição", 2, 12, "Qual mineral, presente no feijão e na carne, ajuda 
    "Ministério da Saúde")
 mc(C, "ossos", 3, 14, "Qual osso do rosto se move quando abrimos a boca para mastigar?",
    ["Mandíbula", "Maxila", "Osso hioide", "Osso zigomático"], "Mandíbula",
-   "A mandíbula é o único osso do crânio que se articula de forma móvel; a maxila, de cima, fica fixa.",
+   "A mandíbula é o único osso da face que se move; a maxila, de cima, fica fixa.",
    "Enciclopédia Britannica – verbete 'Mandible'")
 tf(C, "respiração", 3, 12, "Os dois pulmões humanos têm exatamente o mesmo tamanho.", False,
    "O pulmão esquerdo é menor, com dois lobos em vez de três, porque divide espaço com o coração.",
