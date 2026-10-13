@@ -43,6 +43,7 @@ import br.com.perguntaloei.voice.DownloadResult
 import br.com.perguntaloei.voice.EngineOption
 import br.com.perguntaloei.voice.NeuralVoicePack
 import br.com.perguntaloei.voice.NeuralSpeaker
+import br.com.perguntaloei.voice.RemoteNeuralSpeaker
 import br.com.perguntaloei.voice.VoiceDeps
 import br.com.perguntaloei.voice.VoiceHost
 import kotlinx.coroutines.Dispatchers
@@ -109,8 +110,8 @@ fun defaultVoiceDeps(app: Application): VoiceDeps {
     val pack = NeuralVoicePack(File(app.filesDir, "voz-neural"))
     return VoiceDeps(
         speaker = { engine, onStatus ->
-            if (engine == NeuralSpeaker.ENGINE_ID && pack.isInstalled() && NeuralSpeaker.isSupported()) {
-                NeuralSpeaker(app, pack.dir, onStatus)
+            if (engine == NeuralSpeaker.ENGINE_ID && pack.isInstalled() && NeuralSpeaker.isSupported(app)) {
+                RemoteNeuralSpeaker(app, pack.dir, onStatus)
             } else {
                 VoiceHost(app, engine?.takeIf { it != NeuralSpeaker.ENGINE_ID }?.ifBlank { null }, onStatus)
             }
@@ -267,9 +268,19 @@ class AppViewModel @JvmOverloads constructor(
     private fun onTtsStatus(status: TtsStatus) {
         viewModelScope.launch(Dispatchers.Main) {
             // Voz neural não carregou neste aparelho: volta para a voz do sistema, sem travar o jogo.
+            // Fica gravado para não tentar de novo a cada abertura; o jogador pode reativar em Configurações.
             if (status == TtsStatus.UNAVAILABLE && host.engine == NeuralSpeaker.ENGINE_ID) {
                 host.shutdown()
+                updateSettings { it.copy(ttsEngine = SYSTEM_VOICE, ttsVoice = null) }
+                ttsStatus = TtsStatus.INITIALIZING
                 host = speakerFactory(SYSTEM_VOICE) { onTtsStatus(it) }
+                if (dialog == null) {
+                    dialog = AppDialog.Message(
+                        "Voz neural",
+                        "A voz neural não conseguiu funcionar agora neste aparelho (pode faltar memória). " +
+                            "O jogo voltou para a voz padrão. Você pode tentar de novo em Configurações.",
+                    )
+                }
                 return@launch
             }
             ttsStatus = status
@@ -291,7 +302,7 @@ class AppViewModel @JvmOverloads constructor(
     var neuralProgress by mutableStateOf<Float?>(null)
         private set
     val neuralSizeMb: Int get() = ((voicePack?.totalBytes ?: 0L) / (1024 * 1024)).toInt()
-    val neuralSupported: Boolean get() = voicePack != null && NeuralSpeaker.isSupported()
+    val neuralSupported: Boolean by lazy { voicePack != null && NeuralSpeaker.isSupported(getApplication()) }
     @Volatile private var cancelDownload = false
 
     /** Botão "Baixar voz neural": primeiro explica e pede confirmação. */
@@ -362,7 +373,7 @@ class AppViewModel @JvmOverloads constructor(
 
     fun chooseEngine(packageName: String) {
         if (packageName == currentEngine) return
-        if (packageName == NeuralSpeaker.ENGINE_ID && (!NeuralSpeaker.isSupported() || !neuralInstalled)) {
+        if (packageName == NeuralSpeaker.ENGINE_ID && (!neuralSupported || !neuralInstalled)) {
             dialog = AppDialog.Message("Voz neural", "Baixe a voz neural primeiro (ou este aparelho não é compatível com ela).")
             return
         }

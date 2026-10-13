@@ -149,6 +149,41 @@ class VoiceFlowTest {
     }
 
     @Test
+    fun ifTheNeuralVoiceFailsTheGameGoesBackToTheDefaultVoiceAndRemembers() {
+        val abis = android.os.Build.SUPPORTED_ABIS
+        org.robolectric.util.ReflectionHelpers.setStaticField(android.os.Build::class.java, "SUPPORTED_ABIS", arrayOf("arm64-v8a"))
+        try {
+        val base = java.io.File(app.filesDir, "voz-teste-falha")
+        val pack = br.com.perguntaloei.voice.NeuralVoicePack(base, files = listOf(br.com.perguntaloei.voice.VoiceFile("m", 1, "x")))
+        pack.dir.mkdirs()
+        java.io.File(pack.dir, "m").writeText("1")
+        java.io.File(pack.dir, ".instalado").writeText("ok")
+        val neural = br.com.perguntaloei.voice.NeuralSpeaker.ENGINE_ID
+        val asked = mutableListOf<String?>()
+        val vm = AppViewModel(app, VoiceDeps({ e, s ->
+            asked += e
+            if (e == neural) {
+                object : Speaker by FakeSpeaker(s) {
+                    override val engine = neural
+                    override val status = TtsStatus.UNAVAILABLE
+                    init { android.os.Handler(Looper.getMainLooper()).post { s(TtsStatus.UNAVAILABLE) } }
+                }
+            } else FakeSpeaker(s)
+        }, FakeListener(true), SilentSounds(), { true }, pack))
+        idle(50)
+        assertTrue(vm.neuralInstalled)
+        vm.chooseEngine(neural)
+        idle(50)
+        assertEquals(listOf(null, neural, SYSTEM_VOICE), asked)
+        assertEquals(SYSTEM_VOICE, vm.settings.ttsEngine)
+        assertEquals(TtsStatus.READY, vm.ttsStatus)
+        assertTrue((vm.dialog as? AppDialog.Message)?.text.orEmpty().contains("voz padrão"))
+        } finally {
+            org.robolectric.util.ReflectionHelpers.setStaticField(android.os.Build::class.java, "SUPPORTED_ABIS", abis)
+        }
+    }
+
+    @Test
     fun theDefaultVoiceIsTheSystemOneAndTheNeuralVoiceNeedsToBeDownloaded() {
         val asked = mutableListOf<String?>()
         val pack = br.com.perguntaloei.voice.NeuralVoicePack(java.io.File(app.filesDir, "voz-teste-padrao"))

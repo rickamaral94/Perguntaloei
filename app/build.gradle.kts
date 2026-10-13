@@ -13,8 +13,8 @@ android {
         applicationId = "br.com.perguntaloei"
         minSdk = 24
         targetSdk = 35
-        versionCode = 4
-        versionName = "1.3.0"
+        versionCode = 5
+        versionName = "1.3.1"
         vectorDrawables { useSupportLibrary = true }
     }
     // Voz neural: bibliotecas nativas só para celulares ARM. Um APK por arquitetura deixa cada

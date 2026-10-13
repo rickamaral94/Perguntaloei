@@ -7,6 +7,7 @@ import android.media.AudioFormat
 import android.media.AudioTrack
 import android.os.Handler
 import android.os.Looper
+import android.os.Process
 import android.speech.tts.TextToSpeech
 import br.com.perguntaloei.game.Speech
 import com.k2fsa.sherpa.onnx.OfflineTts
@@ -47,8 +48,16 @@ class NeuralSpeaker(
 
     private val app = context.applicationContext
     private val main = Handler(Looper.getMainLooper())
-    private val synthThread: ExecutorService = Executors.newSingleThreadExecutor { Thread(it, "voz-neural-sintese") }
-    private val playThread: ExecutorService = Executors.newSingleThreadExecutor { Thread(it, "voz-neural-som") }
+    private val synthThread: ExecutorService = Executors.newSingleThreadExecutor { r ->
+        Thread({ priority(Process.THREAD_PRIORITY_BACKGROUND + Process.THREAD_PRIORITY_MORE_FAVORABLE); r.run() }, "voz-neural-sintese")
+    }
+    private val playThread: ExecutorService = Executors.newSingleThreadExecutor { r ->
+        Thread({ priority(Process.THREAD_PRIORITY_AUDIO); r.run() }, "voz-neural-som")
+    }
+
+    private fun priority(p: Int) {
+        runCatching { Process.setThreadPriority(p) }
+    }
     private val token = AtomicInteger(0)
 
     @Volatile private var tts: Synth? = null
@@ -149,9 +158,17 @@ class NeuralSpeaker(
             }.distinctBy { it.packageName }
         }.getOrDefault(emptyList())
 
-        /** O app tem o modelo e a biblioteca nativa para este aparelho? */
-        fun isSupported(): Boolean =
-            android.os.Build.SUPPORTED_ABIS.any { it == "arm64-v8a" || it == "armeabi-v7a" }
+        /** Memória mínima do aparelho para a voz neural (o modelo ocupa algumas centenas de MB). */
+        const val MIN_TOTAL_RAM = 2_500L * 1024 * 1024
+
+        /** O app tem a biblioteca nativa para este aparelho, e ele tem memória suficiente? */
+        fun isSupported(context: Context): Boolean {
+            if (android.os.Build.SUPPORTED_ABIS.none { it == "arm64-v8a" || it == "armeabi-v7a" }) return false
+            val am = context.getSystemService(Context.ACTIVITY_SERVICE) as? android.app.ActivityManager ?: return true
+            if (am.isLowRamDevice) return false
+            val info = android.app.ActivityManager.MemoryInfo().also { am.getMemoryInfo(it) }
+            return info.totalMem == 0L || info.totalMem >= MIN_TOTAL_RAM
+        }
     }
 }
 
@@ -167,7 +184,8 @@ private fun sherpaSynth(modelDir: File): Synth {
                 noiseScaleW = 0.8f,
                 lengthScale = 1.0f,
             ),
-            numThreads = (Runtime.getRuntime().availableProcessors() / 2).coerceIn(1, 4),
+            // 2 threads, como nos apps de exemplo do sherpa-onnx: deixa CPU livre para o resto do aparelho.
+            numThreads = 2,
             debug = false,
             provider = "cpu",
         ),

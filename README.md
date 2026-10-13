@@ -16,12 +16,12 @@ Tablet (pergunta e placar lado a lado): ![](docs/telas/09-tablet-pergunta.png)
 
 | Arquivo | Uso |
 |---|---|
-| [`apk/PERGUNTALOEI-1.3.0-teste-arm64.apk`](apk/PERGUNTALOEI-1.3.0-teste-arm64.apk) (24 MB) | **Para testar.** Build *debug* para celulares arm64 (praticamente todos os aparelhos atuais). É exatamente o código coberto pelos testes. |
+| [`apk/PERGUNTALOEI-1.3.1-teste-arm64.apk`](apk/PERGUNTALOEI-1.3.1-teste-arm64.apk) (24 MB) | **Para testar.** Build *debug* para celulares arm64 (praticamente todos os aparelhos atuais). É exatamente o código coberto pelos testes. |
 
 A voz neural **não vem dentro do APK**: é um download opcional (~61 MB) feito em Configurações, só se o jogador quiser. Sem ela, o jogo usa a voz padrão (vozes do sistema Android).
 Para celulares antigos de 32 bits, gere o APK `armeabi-v7a` com `./gradlew assembleDebug` (sai em `app/build/outputs/apk/debug/`).
 
-Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.3.0-teste-arm64.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
+Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.3.1-teste-arm64.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
 
 ## Estrutura do projeto
 
@@ -54,7 +54,7 @@ Requisitos: JDK 17+ e Android SDK (platform 35, build-tools 35).
 
 ```bash
 echo "sdk.dir=/caminho/do/android-sdk" > local.properties
-./gradlew testDebugUnitTest      # 79 testes
+./gradlew testDebugUnitTest      # 86 testes
 ./gradlew assembleDebug          # app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
 ./gradlew assembleRelease        # app/build/outputs/apk/release/app-arm64-v8a-release.apk
 ```
@@ -76,7 +76,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 
 **Voz padrão** — o jogo já vem pronto com a voz do sistema Android (detalhes abaixo).
 
-**Voz neural (download opcional)** — em Configurações › Voz do apresentador há o botão "Baixar voz neural". Antes de baixar, o app explica o tamanho (~61 MB), de onde vem (Hugging Face, versão fixa do repositório público do modelo) e que nada sobre os jogadores é enviado; só baixa se o jogador confirmar. Há barra de progresso e "Cancelar" (o download pode ser retomado sem rebaixar o que já veio). Cada arquivo só é aceito se o tamanho e o SHA-256 baterem com os valores fixados no app. Depois de baixada, a voz (modelo Piper "faber", rodando no próprio celular com o sherpa-onnx) é bem mais natural e **funciona sem internet**; dá para alternar entre "Usar a voz neural" e "Usar a voz padrão" e "Apagar voz neural (liberar espaço)" a qualquer momento. Cada frase é gerada em segundo plano enquanto a anterior toca, e o aviso de "fim da leitura" só vem quando o último som termina — o microfone continua abrindo só depois da leitura. Se a voz neural não carregar no aparelho, o app volta sozinho para a voz do sistema. Amostras em [`docs/vozes/`](docs/vozes/).
+**Voz neural (download opcional)** — em Configurações › Voz do apresentador há o botão "Baixar voz neural". Antes de baixar, o app explica o tamanho (~61 MB), de onde vem (Hugging Face, versão fixa do repositório público do modelo) e que nada sobre os jogadores é enviado; só baixa se o jogador confirmar. Há barra de progresso e "Cancelar" (o download pode ser retomado sem rebaixar o que já veio). Cada arquivo só é aceito se o tamanho e o SHA-256 baterem com os valores fixados no app. Depois de baixada, a voz (modelo Piper "faber", rodando no próprio celular com o sherpa-onnx) é bem mais natural e **funciona sem internet**; dá para alternar entre "Usar a voz neural" e "Usar a voz padrão" e "Apagar voz neural (liberar espaço)" a qualquer momento. A voz neural roda num **processo separado** do jogo (`NeuralVoiceService`), com 2 threads e prioridade baixa: se ela travar, demorar mais de 45 s para carregar, parar de responder no meio de uma fala ou o aparelho ficar sem memória, a tela continua respondendo, a fala em andamento termina com aviso e o jogo volta sozinho para a voz padrão (e avisa). Aparelhos com pouca memória (menos de ~2,5 GB) não oferecem a voz neural. Cada frase é gerada em segundo plano enquanto a anterior toca, e o aviso de "fim da leitura" só vem quando o último som termina — o microfone continua abrindo só depois da leitura. Se a voz neural não carregar no aparelho, o app volta sozinho para a voz do sistema. Amostras em [`docs/vozes/`](docs/vozes/).
 
 **Vozes do sistema (padrão)** — o app escolhe automaticamente a voz em português mais natural instalada no aparelho (maior qualidade informada pelo mecanismo, preferindo pt-BR e vozes que funcionam sem internet). Em Configurações › Voz do apresentador dá para trocar o mecanismo (ex.: Google, Samsung), escolher a voz (a mais natural vem marcada com ★), ajustar tom e velocidade, ouvir um exemplo e abrir a instalação de vozes de alta qualidade do Android. Vozes online, que costumam ser ainda mais naturais, só aparecem se você ativar "Permitir vozes online", com o aviso de que o texto falado (perguntas e nomes) vai para o provedor. As falas variam ("Paula, é com você!", "Valendo!", "Isso mesmo!") para soar menos mecânico.
 
@@ -99,7 +99,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 
 ## Validação feita
 
-79 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
+86 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
 
 | Requisito | Como foi verificado |
 |---|---|
@@ -112,7 +112,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 | Modo por toque sem microfone | `touchOnlyGameWorksWithoutAnySpeechRecognizer` (ViewModel) e `TouchUiTest` (partida completa por toques, celular e tablet). |
 | Permissões na primeira abertura | `permissionsAreRequestedOnceAtFirstLaunch`, `decliningAtLaunchKeepsTheGameTouchOnly`. |
 | Jogadores salvos que não jogam | `inactivePlayersStaySavedButDoNotPlay` e `TouchUiTest` (desliga um jogador pela tela; a partida segue só com os demais, na ordem). |
-| Voz mais natural | `NeuralSpeakerTest` (fila, ordem, fim só após o último som, interrupção, falha do modelo), `NeuralVoicePackTest` (download contra servidor local: hashes conferidos, arquivo adulterado ou grande demais rejeitado, erro do servidor, cancelar e retomar, apagar), `theDefaultVoiceIsTheSystemOneAndTheNeuralVoiceNeedsToBeDownloaded` e `tools/voz-neural/verificar.sh`, que baixa os arquivos reais e gera áudio de verdade; `theMostNaturalOfflineVoiceIsChosenAndCanBeChanged` para as vozes do sistema. |
+| Voz mais natural | `NeuralSpeakerTest` (fila, ordem, fim só após o último som, interrupção, falha do modelo), `RemoteNeuralSpeakerTest` (voz em processo separado: fala completa, interrupção, processo da voz morrendo no meio da fala, prazo de carregamento, fala travada, modelo quebrado), `ifTheNeuralVoiceFailsTheGameGoesBackToTheDefaultVoiceAndRemembers`, `NeuralVoicePackTest` (download contra servidor local: hashes conferidos, arquivo adulterado ou grande demais rejeitado, erro do servidor, cancelar e retomar, apagar), `theDefaultVoiceIsTheSystemOneAndTheNeuralVoiceNeedsToBeDownloaded` e `tools/voz-neural/verificar.sh`, que baixa os arquivos reais e gera áudio de verdade; `theMostNaturalOfflineVoiceIsChosenAndCanBeChanged` para as vozes do sistema. |
 | Banco de perguntas | `QuestionBankTest` (788 perguntas válidas, sem quase-duplicatas, cobertura por tema/idade) e `everyBankAnswerIsRecognizedWhenSpokenExactly` (as 788 respostas faladas são entendidas). |
 | Microfone só ao esperar resposta | `microphoneOpensOnlyAfterTheQuestionAndOptionsAreRead`, `lateCallbackFromAnInterruptedReadingNeverOpensTheMicrophone`, `microphoneNeverOpensOutsideAQuestion`, `speechNeedsConsentAndPermissionFirst`. |
 

@@ -354,7 +354,7 @@ private fun NeuralVoiceCard(vm: AppViewModel) {
         val progress = vm.neuralProgress
         when {
             !vm.neuralSupported -> Text(
-                "Este aparelho não é compatível com a voz neural. O jogo continua com a voz padrão.",
+                "Este aparelho não é compatível com a voz neural (processador ou memória insuficiente). O jogo continua com a voz padrão.",
                 color = Arcade.Muted, fontSize = 14.sp,
             )
             progress != null -> {

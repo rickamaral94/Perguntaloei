@@ -39,5 +39,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Voz neural opcional em processo separado: se ela travar ou faltar memória, a tela do jogo não congela. -->
+        <service
+            android:name=".voice.NeuralVoiceService"
+            android:exported="false"
+            android:process=":voz" />
     </application>
 </manifest>
