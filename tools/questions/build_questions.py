@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Monta e valida o banco de perguntas do PERGUNTÁ-LO-EI.
 
-As perguntas são escritas em parte1.py, parte2.py e parte3.py (dados Python compactos).
+As perguntas são escritas em parte*.py (dados Python compactos, ver qdsl.py).
+Para conferir um arquivo novo rapidamente, sem gerar o JSON: checar_parte.py.
 Este script valida tudo e gera app/src/main/assets/questions.json.
 
 Uso: python3 tools/questions/build_questions.py
