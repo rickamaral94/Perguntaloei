@@ -14,10 +14,6 @@ mc(L, "fábulas", 1, 7, "Na famosa fábula, qual inseto passa o verão cantando 
 tf(L, "contos de fadas", 1, 7, "No conto dos Irmãos Grimm, Rapunzel joga seus longos cabelos pela janela da torre para que alguém suba.", True,
    "A bruxa e depois o príncipe sobem na torre segurando as tranças de Rapunzel.",
    "Enciclopédia Britannica – verbete 'Rapunzel'")
-mc(L, "literatura infantil", 1, 8, "No Sítio do Picapau Amarelo, qual é o nome da cozinheira famosa pelos seus bolinhos?",
-   ["Tia Nastácia", "Dona Benta", "Narizinho", "Emília"], "Tia Nastácia",
-   "Foi Tia Nastácia quem costurou a boneca Emília.",
-   "Monteiro Lobato – Reinações de Narizinho", br=True)
 op(L, "literatura infantil", 1, 9, "No Sítio do Picapau Amarelo, como se chama a avó de Narizinho e Pedrinho, dona do sítio?", "Dona Benta",
    ["dona benta", "benta", "vovo benta", "vovó benta", "dona benta encerrabodes de oliveira"],
    "Dona Benta adora contar histórias aos netos na varanda do sítio.",

@@ -311,10 +311,6 @@ mc(C, "computadores", 2, 10, "Qual tecla do teclado apaga a letra que está à e
    ["Backspace", "Enter", "Shift", "Tab"], "Backspace",
    "A tecla Backspace volta uma posição e apaga o caractere anterior ao cursor.",
    "Enciclopédia Britannica – verbete 'Computer keyboard'")
-mc(C, "invenções", 2, 12, "Qual invenção de Johannes Gutenberg, por volta de 1450, revolucionou a produção de livros?",
-   ["Prensa de tipos móveis", "Máquina de escrever", "Papel", "Caneta-tinteiro"], "Prensa de tipos móveis",
-   "A prensa de Gutenberg permitiu imprimir muitas cópias de um livro de forma rápida e barata.",
-   "Enciclopédia Britannica – verbete 'Johannes Gutenberg'")
 mc(C, "computação", 2, 12, "Como se chama o sistema de numeração de base dois, usado pelos computadores?",
    ["Binário", "Decimal", "Hexadecimal", "Romano"], "Binário",
    "No sistema binário só existem os algarismos zero e um, que representam os estados dos circuitos.",
