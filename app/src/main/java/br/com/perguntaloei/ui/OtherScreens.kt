@@ -220,7 +220,7 @@ fun SettingsScreen(vm: AppViewModel) {
                 Spacer(Modifier.height(6.dp))
                 Text("${vm.bank.questions.size} perguntas no aparelho · ${vm.historyCount} já usadas em partidas.", color = Arcade.White, fontSize = 16.sp)
                 Spacer(Modifier.height(6.dp))
-                // Contagem calculada em segundo plano (com 788 perguntas, fazer isso na tela travava o app).
+                // Contagem calculada em segundo plano (com mais de mil perguntas, fazer isso na tela travava o app).
                 LaunchedEffect(vm.historyCount) { vm.refreshThemeStats() }
                 val stats = vm.themeStats
                 if (stats == null) Text("Contando perguntas inéditas…", color = Arcade.Muted, fontSize = 15.sp)

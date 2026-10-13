@@ -16,10 +16,10 @@ Tablet (pergunta e placar lado a lado): ![](docs/telas/09-tablet-pergunta.png)
 
 | Arquivo | Uso |
 |---|---|
-| [`apk/PERGUNTALOEI-1.4.0-teste.apk`](apk/PERGUNTALOEI-1.4.0-teste.apk) (11 MB) | **Para testar.** Build *debug*, serve para qualquer celular Android. É exatamente o código coberto pelos testes. |
+| [`apk/PERGUNTALOEI-1.5.0-teste.apk`](apk/PERGUNTALOEI-1.5.0-teste.apk) (11 MB) | **Para testar.** Build *debug*, serve para qualquer celular Android. É exatamente o código coberto pelos testes. |
 
 
-Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.4.0-teste.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
+Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.5.0-teste.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
 
 ## Estrutura do projeto
 
@@ -56,7 +56,7 @@ echo "sdk.dir=/caminho/do/android-sdk" > local.properties
 ./gradlew assembleRelease        # app/build/outputs/apk/release/app-release.apk
 ```
 
-Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/questions/build_questions.py`
+Para alterar perguntas: edite `tools/questions/parte*.py`, confira um arquivo novo com `python3 tools/questions/checar_parte.py parteX` (menos de 1 s) e gere o banco com `python3 tools/questions/build_questions.py`
 (valida tudo e regrava o `questions.json`; falha se houver erro). Ícones: `python3 tools/make_icons.py`.
 
 ## O que foi implementado
@@ -84,7 +84,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 - "repete", "não entendi" → relê (não é resposta); "passo", "não sei" → pede confirmação antes de pular/encerrar a vez;
 - silêncio → "Não ouvi", nenhum ponto. A fala é sempre atribuída ao jogador da vez.
 
-**Banco de perguntas** — **788 perguntas** em **23 temas**: Geografia, História, Ciência, Tecnologia, Cinema, Filmes infantis, Novelas, Televisão, Esportes, Marcas e slogans, Música, Literatura, Natureza, Cultura brasileira, Curiosidades, Língua portuguesa, Matemática, Política e cidadania, Artes, Mitologia e lendas, Astronomia e espaço, Corpo humano e saúde e Culinária. São 331 fáceis, 272 médias, 146 difíceis e 39 muito difíceis; 253 são sobre o Brasil. Cada uma tem id, texto, tema, subtema, dificuldade, faixa etária, formato, alternativas, resposta, sinônimos, explicação, fonte e, quando o fato pode mudar, data de referência (ex.: "Censo 2022", "Até a Copa de 2022"). O validador recusa alternativas duplicadas, resposta fora das alternativas, enunciado que contém a resposta e quase-duplicatas; uma auditoria extra procurou perguntas que entregassem a resposta de outra do mesmo assunto. Todos os temas têm pelo menos 4 perguntas para crianças de 6 anos. Política e cidadania trata só de instituições e regras (Constituição, eleições, Poderes), sem temas partidários.
+**Banco de perguntas** — **1213 perguntas** em **23 temas**: Geografia, História, Ciência, Tecnologia, Cinema, Filmes infantis, Novelas, Televisão, Esportes, Marcas e slogans, Música, Literatura, Natureza, Cultura brasileira, Curiosidades, Língua portuguesa, Matemática, Política e cidadania, Artes, Mitologia e lendas, Astronomia e espaço, Corpo humano e saúde e Culinária. São 465 fáceis, 427 médias, 246 difíceis e 75 muito difíceis; 412 são sobre o Brasil. Cada uma tem id, texto, tema, subtema, dificuldade, faixa etária, formato, alternativas, resposta, sinônimos, explicação, fonte e, quando o fato pode mudar, data de referência (ex.: "Censo 2022", "Até a Copa de 2022"). O validador recusa alternativas duplicadas, resposta fora das alternativas, enunciado que contém a resposta e quase-duplicatas; uma auditoria extra procurou perguntas que entregassem a resposta de outra do mesmo assunto. Todos os temas têm pelo menos 4 perguntas para crianças de 6 anos. Política e cidadania trata só de instituições e regras (Constituição, eleições, Poderes), sem temas partidários.
 
 **Inéditas e histórico** — nenhuma pergunta (nem quase igual) se repete na partida; o histórico fica no aparelho e é consultado na seleção (por id e por "impressão digital" do enunciado, que pega pequenas reescritas). As perguntas de cada rodada são escolhidas antes de ela começar. Quando as inéditas de um tema acabam, o app avisa e marca "Já usada em partida anterior" — nunca diz "Inédita" sem consultar o histórico. Em Configurações: inéditas por tema (contadas em segundo plano, sem travar a tela) e "Limpar histórico de perguntas". Também em Configurações, "Apagar histórico de partidas" apaga as "Últimas partidas" e o último resultado, com confirmação; jogadores, partida em andamento e histórico de perguntas não mudam.
 
@@ -110,7 +110,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 | Permissões na primeira abertura | `permissionsAreRequestedOnceAtFirstLaunch`, `decliningAtLaunchKeepsTheGameTouchOnly`. |
 | Jogadores salvos que não jogam | `inactivePlayersStaySavedButDoNotPlay` e `TouchUiTest` (desliga um jogador pela tela; a partida segue só com os demais, na ordem). |
 | Voz mais natural | `theMostNaturalOfflineVoiceIsChosenAndCanBeChanged` (vozes do sistema). |
-| Banco de perguntas | `QuestionBankTest` (788 perguntas válidas, sem quase-duplicatas, cobertura por tema/idade) e `everyBankAnswerIsRecognizedWhenSpokenExactly` (as 788 respostas faladas são entendidas). |
+| Banco de perguntas | `QuestionBankTest` (1213 perguntas válidas, sem quase-duplicatas, cobertura por tema/idade) e `everyBankAnswerIsRecognizedWhenSpokenExactly` (as 1213 respostas faladas são entendidas). |
 | Microfone só ao esperar resposta | `microphoneOpensOnlyAfterTheQuestionAndOptionsAreRead`, `lateCallbackFromAnInterruptedReadingNeverOpensTheMicrophone`, `microphoneNeverOpensOutsideAQuestion`, `speechNeedsConsentAndPermissionFirst`. |
 
 ## Limitações conhecidas
@@ -119,7 +119,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 - **Tamanho:** o APK de teste (*debug*) tem ~11 MB; o *release* minificado, ~1,5 MB (não executado em aparelho).
 - O reconhecimento de fala depende do serviço instalado (normalmente Google). O app pede processamento no aparelho, mas não consegue garantir que o serviço não use a internet — por isso o aviso e o consentimento. Sem voz em português instalada, o app avisa e segue no modo tela/toque.
 - O APK *release* minificado não foi executado; use o APK de teste (*debug*) para avaliação.
-- As perguntas foram escritas e revisadas com cuidado, e as fontes indicam onde checar cada fato, mas as referências não foram consultadas online nesta sessão. Recomendo uma revisão humana, especialmente de novelas, marcas/slogans e datas.
+- As perguntas foram escritas e revisadas com cuidado, e as fontes indicam onde checar cada fato. As 425 perguntas da versão 1.5.0 passaram por uma segunda revisão independente de cada resposta (que corrigiu 3 respostas ambíguas e algumas explicações), mas só parte das referências foi consultada online. Recomendo uma revisão humana, especialmente de novelas, marcas/slogans e datas.
 - O desempate usa apenas perguntas inéditas; se acabarem, a opção é aceitar o empate.
 - "Desfazer último ponto" vale para o resultado exibido na hora (antes de tocar em Continuar). Para resultados anteriores, o histórico mostra tudo, mas não edita.
 - A dificuldade é adaptada pela idade; não há ajuste manual de nível por jogador.
