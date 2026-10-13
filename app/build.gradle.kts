@@ -13,8 +13,8 @@ android {
         applicationId = "br.com.perguntaloei"
         minSdk = 24
         targetSdk = 35
-        versionCode = 3
-        versionName = "1.2.0"
+        versionCode = 4
+        versionName = "1.3.0"
         vectorDrawables { useSupportLibrary = true }
     }
     // Voz neural: bibliotecas nativas só para celulares ARM. Um APK por arquitetura deixa cada
@@ -26,10 +26,6 @@ android {
             include("arm64-v8a", "armeabi-v7a")
             isUniversalApk = false
         }
-    }
-    androidResources {
-        // O modelo de voz já é binário compacto; não comprimir acelera a leitura.
-        noCompress += "onnx"
     }
 
     buildTypes {

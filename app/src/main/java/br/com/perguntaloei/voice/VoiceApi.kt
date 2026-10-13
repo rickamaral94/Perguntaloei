@@ -67,4 +67,6 @@ class VoiceDeps(
     val listener: Listener,
     val sounds: SoundPlayer,
     val micPermission: () -> Boolean,
+    /** Voz neural opcional, baixada sob demanda. */
+    val voicePack: NeuralVoicePack? = null,
 )

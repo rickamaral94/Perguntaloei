@@ -1,5 +1,6 @@
 package br.com.perguntaloei.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -29,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.perguntaloei.AppDialog
 import br.com.perguntaloei.AppViewModel
+import br.com.perguntaloei.SYSTEM_VOICE
 import br.com.perguntaloei.Screen
 import br.com.perguntaloei.game.GameAction
 import br.com.perguntaloei.game.Outcome
@@ -39,6 +42,7 @@ import br.com.perguntaloei.ui.components.PixelPanel
 import br.com.perguntaloei.ui.components.PixelText
 import br.com.perguntaloei.ui.components.ScreenScaffold
 import br.com.perguntaloei.ui.theme.Arcade
+import br.com.perguntaloei.voice.NeuralSpeaker
 
 // ====================================================================== HISTÓRICO DA PARTIDA
 
@@ -170,6 +174,8 @@ fun SettingsScreen(vm: AppViewModel) {
             PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Purple) {
                 PixelText("VOZ DO APRESENTADOR", size = 11.sp, color = Arcade.Purple, shadow = Color.Transparent)
                 Spacer(Modifier.height(6.dp))
+                NeuralVoiceCard(vm)
+                Spacer(Modifier.height(10.dp))
                 VoicePicker(vm)
                 Spacer(Modifier.height(10.dp))
                 if (!vm.usingNeuralVoice) {
@@ -248,6 +254,7 @@ fun SettingsScreen(vm: AppViewModel) {
 
 const val PRIVACY_TEXT =
     "Nomes, idades, respostas, placar e histórico ficam somente neste aparelho e não são enviados para servidores. " +
+        "O app só usa a internet se você pedir para baixar a voz neural opcional, e nesse download nada sobre os jogadores é enviado. " +
         "O app não grava nem guarda áudio. Para entender respostas faladas, o app usa o serviço de reconhecimento de fala " +
         "do próprio Android (geralmente do Google). Dependendo do aparelho, esse serviço pode processar o áudio na internet. " +
         "O app pede para usar o processamento no aparelho quando disponível. Se preferir, recuse e respondam tocando na tela."
@@ -311,6 +318,21 @@ fun Dialogs(vm: AppViewModel) {
             confirmButton = { TextButton({ vm.onPermissionsChoice(true) }) { Text("Permitir microfone", color = Arcade.Green) } },
             dismissButton = { TextButton({ vm.onPermissionsChoice(false) }) { Text("Agora não (só toque)", color = Arcade.Orange) } },
         )
+        AppDialog.ConfirmVoiceDownload -> AlertDialog(
+            onDismissRequest = { vm.dialog = null },
+            title = { Text("Baixar a voz neural?") },
+            text = {
+                Text(
+                    "A voz neural é mais natural que a voz padrão, mas é um arquivo grande (cerca de ${vm.neuralSizeMb} MB). " +
+                        "Ela será baixada uma única vez do Hugging Face (huggingface.co), onde o modelo de voz é publicado. " +
+                        "Prefira usar Wi-Fi.\n\nO download só busca os arquivos da voz: nenhum nome, idade, resposta ou histórico é enviado. " +
+                        "Depois de baixada, a voz funciona sem internet, e você pode voltar para a voz padrão ou apagá-la quando quiser.",
+                    fontSize = 16.sp,
+                )
+            },
+            confirmButton = { TextButton({ vm.startNeuralDownload() }) { Text("Baixar", color = Arcade.Green) } },
+            dismissButton = { TextButton({ vm.dialog = null }) { Text("Agora não") } },
+        )
         AppDialog.ConfirmEndGame -> AlertDialog(
             onDismissRequest = { vm.dialog = null },
             title = { Text("Encerrar partida?") },
@@ -321,13 +343,56 @@ fun Dialogs(vm: AppViewModel) {
     }
 }
 
+/** Voz neural opcional: baixar (com confirmação), acompanhar o download, usar ou apagar. */
+@Composable
+private fun NeuralVoiceCard(vm: AppViewModel) {
+    Column(
+        Modifier.fillMaxWidth().background(Arcade.PanelLight).padding(10.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text("Voz neural (opcional)", color = Arcade.Yellow, fontSize = 17.sp, fontWeight = FontWeight.Bold)
+        val progress = vm.neuralProgress
+        when {
+            !vm.neuralSupported -> Text(
+                "Este aparelho não é compatível com a voz neural. O jogo continua com a voz padrão.",
+                color = Arcade.Muted, fontSize = 14.sp,
+            )
+            progress != null -> {
+                Text("Baixando a voz… ${(progress * 100).toInt()}%", color = Arcade.White, fontSize = 15.sp)
+                LinearProgressIndicator(
+                    progress = { progress }, Modifier.fillMaxWidth().height(10.dp),
+                    color = Arcade.Green, trackColor = Arcade.Panel,
+                )
+                ArcadeButton("Cancelar download", { vm.cancelNeuralDownload() }, Modifier.fillMaxWidth(), color = Arcade.Orange, fontSize = 15.sp)
+            }
+            !vm.neuralInstalled -> {
+                Text(
+                    "Uma voz mais natural, que funciona sem internet depois de baixada (cerca de ${vm.neuralSizeMb} MB). " +
+                        "Sem ela, o jogo usa a voz padrão.",
+                    color = Arcade.Muted, fontSize = 14.sp,
+                )
+                ArcadeButton("Baixar voz neural (${vm.neuralSizeMb} MB)", { vm.askNeuralDownload() }, Modifier.fillMaxWidth(), color = Arcade.Green, fontSize = 15.sp)
+            }
+            else -> {
+                Text("Voz neural baixada (${vm.neuralSizeMb} MB).", color = Arcade.White, fontSize = 15.sp)
+                if (vm.usingNeuralVoice) {
+                    ArcadeButton("Usar a voz padrão", { vm.chooseEngine(SYSTEM_VOICE) }, Modifier.fillMaxWidth(), color = Arcade.Cyan, fontSize = 15.sp)
+                } else {
+                    ArcadeButton("Usar a voz neural", { vm.chooseEngine(NeuralSpeaker.ENGINE_ID) }, Modifier.fillMaxWidth(), color = Arcade.Green, fontSize = 15.sp)
+                }
+                ArcadeButton("Apagar voz neural (liberar espaço)", { vm.deleteNeuralVoice() }, Modifier.fillMaxWidth(), color = Arcade.Red, fontSize = 15.sp)
+            }
+        }
+    }
+}
+
 /** Escolha do mecanismo e da voz, com exemplo e atalho para instalar vozes melhores. */
 @Composable
 private fun VoicePicker(vm: AppViewModel) {
     val s = vm.settings
     Text(
-        if (vm.usingNeuralVoice) "Usando a voz neural embutida no jogo: natural, em português do Brasil e 100% offline."
-        else "Usando as vozes do sistema. Para a voz mais natural, escolha \"Voz neural do jogo\" abaixo.",
+        if (vm.usingNeuralVoice) "Usando a voz neural baixada: natural, em português do Brasil e funciona sem internet."
+        else "Usando a voz padrão do jogo (vozes do sistema Android).",
         color = Arcade.Muted, fontSize = 14.sp,
     )
     if (vm.engineOptions.isNotEmpty()) {

@@ -20,8 +20,8 @@ import java.util.concurrent.Future
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
- * Voz neural embutida no app (modelo Piper "faber", pt-BR, via sherpa-onnx). Roda 100% no
- * aparelho, sem internet. Cada trecho é sintetizado em segundo plano — o próximo já é
+ * Voz neural opcional (modelo Piper "faber", pt-BR, via sherpa-onnx), baixada pelo jogador em
+ * Configurações. Depois de baixada, roda 100% no aparelho, sem internet. Cada trecho é sintetizado em segundo plano — o próximo já é
  * preparado enquanto o atual toca — e o aviso de fim só vem quando o último som termina de
  * tocar, para o microfone nunca abrir durante a leitura.
  */
@@ -39,8 +39,9 @@ fun interface PcmPlayer {
 
 class NeuralSpeaker(
     context: Context,
+    modelDir: File,
     private val onStatus: (TtsStatus) -> Unit,
-    private val synthFactory: (Context) -> Synth = ::sherpaSynth,
+    private val synthFactory: () -> Synth = { sherpaSynth(modelDir) },
     private val player: PcmPlayer = AudioTrackPlayer,
 ) : Speaker {
 
@@ -63,7 +64,7 @@ class NeuralSpeaker(
     init {
         synthThread.execute {
             val result = runCatching {
-                tts = synthFactory(app)
+                tts = synthFactory()
                 // Aquece o modelo para a primeira pergunta sair sem atraso.
                 tts?.generate("Olá.", 1.0f)
             }
@@ -79,7 +80,7 @@ class NeuralSpeaker(
 
 
     override fun voices(): List<VoiceOption> =
-        listOf(VoiceOption(VOICE_NAME, "Voz neural embutida (faber, Brasil) · offline", 500, needsNetwork = false, installed = true))
+        listOf(VoiceOption(VOICE_NAME, "Voz neural (faber, Brasil) · offline", 500, needsNetwork = false, installed = true))
 
     override fun selectVoice(name: String?, allowNetwork: Boolean): String = VOICE_NAME
 
@@ -140,31 +141,6 @@ class NeuralSpeaker(
     companion object {
         const val ENGINE_ID = "perguntaloei.voz-neural"
         const val VOICE_NAME = "neural-pt-br-faber"
-        const val ASSET_DIR = "tts"
-        const val MODEL_FILE = "pt_BR-faber-medium.onnx"
-        private const val DATA_VERSION = 1
-
-        /** O espeak-ng precisa dos dados de fonética como pasta de verdade: copia dos assets uma vez. */
-        fun copyPhonemeData(app: Context): File {
-            val target = File(app.filesDir, "voz-neural/espeak-ng-data-$DATA_VERSION")
-            val marker = File(target, ".ok")
-            if (marker.exists()) return target
-            target.deleteRecursively()
-            fun copy(assetPath: String, dest: File) {
-                val children = app.assets.list(assetPath).orEmpty()
-                if (children.isEmpty()) {
-                    dest.parentFile?.mkdirs()
-                    app.assets.open(assetPath).use { input -> dest.outputStream().use { input.copyTo(it) } }
-                } else {
-                    dest.mkdirs()
-                    children.forEach { copy("$assetPath/$it", File(dest, it)) }
-                }
-            }
-            copy("$ASSET_DIR/espeak-ng-data", target)
-            marker.writeText("ok")
-            return target
-        }
-
         /** Mecanismos de voz do sistema instalados (Google, Samsung...). */
         fun systemEngines(context: Context): List<EngineOption> = runCatching {
             val pm = context.packageManager
@@ -179,15 +155,14 @@ class NeuralSpeaker(
     }
 }
 
-/** Síntese real: modelo Piper pt-BR "faber" lido dos assets pelo sherpa-onnx. */
-private fun sherpaSynth(app: Context): Synth {
-    val dataDir = NeuralSpeaker.copyPhonemeData(app)
+/** Síntese real: modelo Piper pt-BR "faber" (baixado) lido do disco pelo sherpa-onnx. */
+private fun sherpaSynth(modelDir: File): Synth {
     val config = OfflineTtsConfig(
         model = OfflineTtsModelConfig(
             vits = OfflineTtsVitsModelConfig(
-                model = "${NeuralSpeaker.ASSET_DIR}/${NeuralSpeaker.MODEL_FILE}",
-                tokens = "${NeuralSpeaker.ASSET_DIR}/tokens.txt",
-                dataDir = dataDir.absolutePath,
+                model = File(modelDir, NeuralVoicePack.MODEL_FILE).absolutePath,
+                tokens = File(modelDir, "tokens.txt").absolutePath,
+                dataDir = File(modelDir, "espeak-ng-data").absolutePath,
                 noiseScale = 0.667f,
                 noiseScaleW = 0.8f,
                 lengthScale = 1.0f,
@@ -197,7 +172,8 @@ private fun sherpaSynth(app: Context): Synth {
             provider = "cpu",
         ),
     )
-    val tts = OfflineTts(app.assets, config)
+    // Sem AssetManager: os caminhos são arquivos de verdade na pasta do app.
+    val tts = OfflineTts(null, config)
     return object : Synth {
         override val sampleRate: Int = tts.sampleRate()
         override fun generate(text: String, speed: Float): FloatArray = tts.generate(text, 0, speed).samples

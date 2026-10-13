@@ -149,6 +149,25 @@ class VoiceFlowTest {
     }
 
     @Test
+    fun theDefaultVoiceIsTheSystemOneAndTheNeuralVoiceNeedsToBeDownloaded() {
+        val asked = mutableListOf<String?>()
+        val pack = br.com.perguntaloei.voice.NeuralVoicePack(java.io.File(app.filesDir, "voz-teste-padrao"))
+        val vm = AppViewModel(app, VoiceDeps({ e, s -> asked += e; FakeSpeaker(s) }, FakeListener(true), SilentSounds(), { true }, pack))
+        idle(50)
+        assertEquals(listOf<String?>(null), asked)
+        assertFalse(vm.usingNeuralVoice)
+        assertFalse(vm.neuralInstalled)
+        assertTrue(vm.engineOptions.none { it.packageName == br.com.perguntaloei.voice.NeuralSpeaker.ENGINE_ID })
+        vm.chooseEngine(br.com.perguntaloei.voice.NeuralSpeaker.ENGINE_ID)
+        assertEquals("sem baixar, a voz neural não é usada", 1, asked.size)
+        assertTrue(vm.dialog is AppDialog.Message)
+        vm.dialog = null
+        vm.askNeuralDownload()
+        assertEquals("o download só começa depois da confirmação", AppDialog.ConfirmVoiceDownload, vm.dialog)
+        assertEquals(null, vm.neuralProgress)
+    }
+
+    @Test
     fun microphoneOpensOnlyAfterTheQuestionAndOptionsAreRead() {
         startAsking()
         val reading = speaker.lastText()

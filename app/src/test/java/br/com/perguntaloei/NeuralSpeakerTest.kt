@@ -62,7 +62,7 @@ class NeuralSpeakerTest {
 
     private fun ready(synth: Synth, player: PcmPlayer): NeuralSpeaker {
         var status: TtsStatus? = null
-        val speaker = NeuralSpeaker(app, { status = it }, { synth }, player)
+        val speaker = NeuralSpeaker(app, File(app.filesDir, "voz-teste"), { status = it }, { synth }, player)
         waitUntil { status != null }
         assertEquals(TtsStatus.READY, status)
         return speaker
@@ -131,27 +131,11 @@ class NeuralSpeakerTest {
     @Test
     fun aBrokenModelReportsUnavailableInsteadOfCrashing() {
         var status: TtsStatus? = null
-        val speaker = NeuralSpeaker(app, { status = it }, { error("sem biblioteca nativa") }, FakePlayer())
+        val speaker = NeuralSpeaker(app, File(app.filesDir, "voz-teste"), { status = it }, { error("sem biblioteca nativa") }, FakePlayer())
         waitUntil { status != null }
         assertEquals(TtsStatus.UNAVAILABLE, status)
         var result: SpeakResult? = null
         speaker.speak(listOf(Speech("Oi.", 0)), 1f) { result = it }
         assertEquals(SpeakResult.UNAVAILABLE, result)
-    }
-
-    @Test
-    fun phonemeDataIsCopiedFromTheAppAssets() {
-        val dir = NeuralSpeaker.copyPhonemeData(app)
-        for (f in listOf("phontab", "phonindex", "phondata", "intonations", "pt_dict", "lang/roa/pt-BR")) {
-            assertTrue("falta $f", File(dir, f).length() > 0)
-        }
-    }
-
-    @Test
-    fun voiceModelIsBundled() {
-        val names = app.assets.list(NeuralSpeaker.ASSET_DIR).orEmpty().toSet()
-        assertTrue(NeuralSpeaker.MODEL_FILE in names)
-        assertTrue("tokens.txt" in names)
-        app.assets.open("${NeuralSpeaker.ASSET_DIR}/${NeuralSpeaker.MODEL_FILE}").use { assertTrue(it.available() > 50_000_000 || it.skip(50_000_000) == 50_000_000L) }
     }
 }

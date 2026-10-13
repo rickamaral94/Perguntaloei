@@ -39,7 +39,9 @@ import br.com.perguntaloei.voice.SpeakResult
 import br.com.perguntaloei.voice.SpeechEvent
 import br.com.perguntaloei.voice.SpeechInput
 import br.com.perguntaloei.voice.TtsStatus
+import br.com.perguntaloei.voice.DownloadResult
 import br.com.perguntaloei.voice.EngineOption
+import br.com.perguntaloei.voice.NeuralVoicePack
 import br.com.perguntaloei.voice.NeuralSpeaker
 import br.com.perguntaloei.voice.VoiceDeps
 import br.com.perguntaloei.voice.VoiceHost
@@ -90,6 +92,9 @@ sealed interface AppDialog {
 
     /** Primeira abertura: explica e pede microfone + consentimento de uma vez. */
     data object Permissions : AppDialog
+
+    /** Confirma o download da voz neural (usa internet). */
+    data object ConfirmVoiceDownload : AppDialog
 }
 
 sealed interface UiEvent {
@@ -97,6 +102,26 @@ sealed interface UiEvent {
 
     /** Abre as configurações de voz do Android (instalar vozes de alta qualidade). */
     data object OpenTtsSettings : UiEvent
+}
+
+/** Dependências reais de áudio. Padrão: voz do sistema; a neural só se o jogador baixou e escolheu. */
+fun defaultVoiceDeps(app: Application): VoiceDeps {
+    val pack = NeuralVoicePack(File(app.filesDir, "voz-neural"))
+    return VoiceDeps(
+        speaker = { engine, onStatus ->
+            if (engine == NeuralSpeaker.ENGINE_ID && pack.isInstalled() && NeuralSpeaker.isSupported()) {
+                NeuralSpeaker(app, pack.dir, onStatus)
+            } else {
+                VoiceHost(app, engine?.takeIf { it != NeuralSpeaker.ENGINE_ID }?.ifBlank { null }, onStatus)
+            }
+        },
+        listener = SpeechInput(app),
+        sounds = SoundFx(),
+        micPermission = {
+            ContextCompat.checkSelfPermission(app, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
+        },
+        voicePack = pack,
+    )
 }
 
 /** Quem tinha todos os 15 temas originais marcados passa a ter também os temas novos. */
@@ -110,21 +135,7 @@ internal fun migrateThemes(s: AppSettings): AppSettings {
 
 class AppViewModel @JvmOverloads constructor(
     app: Application,
-    deps: VoiceDeps = VoiceDeps(
-        speaker = { engine, onStatus ->
-            // Padrão: voz neural embutida; "" = voz padrão do sistema; outro valor = mecanismo do sistema.
-            if ((engine == null || engine == NeuralSpeaker.ENGINE_ID) && NeuralSpeaker.isSupported()) {
-                NeuralSpeaker(app, onStatus)
-            } else {
-                VoiceHost(app, engine?.takeIf { it != NeuralSpeaker.ENGINE_ID }?.ifBlank { null }, onStatus)
-            }
-        },
-        listener = SpeechInput(app),
-        sounds = SoundFx(),
-        micPermission = {
-            ContextCompat.checkSelfPermission(app, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
-        },
-    ),
+    deps: VoiceDeps = defaultVoiceDeps(app),
 ) : AndroidViewModel(app) {
 
     private val store = LocalStore(File(app.filesDir, "dados"))
@@ -263,13 +274,84 @@ class AppViewModel @JvmOverloads constructor(
             }
             ttsStatus = status
             if (status == TtsStatus.READY) applyVoice()
-            engineOptions = listOf(EngineOption(NeuralSpeaker.ENGINE_ID, "Voz neural do jogo (offline, mais natural)")) +
+            engineOptions = (if (neuralInstalled) listOf(EngineOption(NeuralSpeaker.ENGINE_ID, "Voz neural (baixada, mais natural)")) else emptyList()) +
                 host.engines().filter { it.packageName != NeuralSpeaker.ENGINE_ID }
             currentEngine = host.engine
         }
     }
 
     val usingNeuralVoice: Boolean get() = currentEngine == NeuralSpeaker.ENGINE_ID
+
+    // ---------------------------------------------------------------- voz neural (download opcional)
+
+    private val voicePack = deps.voicePack
+    var neuralInstalled by mutableStateOf(voicePack?.isInstalled() == true)
+        private set
+    /** Progresso do download (0..1) ou null quando não está baixando. */
+    var neuralProgress by mutableStateOf<Float?>(null)
+        private set
+    val neuralSizeMb: Int get() = ((voicePack?.totalBytes ?: 0L) / (1024 * 1024)).toInt()
+    val neuralSupported: Boolean get() = voicePack != null && NeuralSpeaker.isSupported()
+    @Volatile private var cancelDownload = false
+
+    /** Botão "Baixar voz neural": primeiro explica e pede confirmação. */
+    fun askNeuralDownload() {
+        if (neuralProgress != null || neuralInstalled) return
+        dialog = AppDialog.ConfirmVoiceDownload
+    }
+
+    fun startNeuralDownload() {
+        dialog = null
+        val pack = voicePack ?: return
+        if (neuralProgress != null) return
+        if (!pack.hasSpaceFor()) {
+            dialog = AppDialog.Message("Pouco espaço", "A voz neural precisa de cerca de $neuralSizeMb MB livres. Libere espaço e tente de novo.")
+            return
+        }
+        cancelDownload = false
+        neuralProgress = 0f
+        viewModelScope.launch(Dispatchers.IO) {
+            var last = -1
+            val result = pack.download(
+                onProgress = { done, total ->
+                    val pct = (done * 100 / total.coerceAtLeast(1)).toInt()
+                    if (pct != last) {
+                        last = pct
+                        viewModelScope.launch(Dispatchers.Main) { if (neuralProgress != null) neuralProgress = pct / 100f }
+                    }
+                },
+                isCancelled = { cancelDownload },
+            )
+            launch(Dispatchers.Main) {
+                neuralProgress = null
+                when (result) {
+                    DownloadResult.Done -> {
+                        neuralInstalled = true
+                        dialog = AppDialog.Message("Voz neural pronta!", "A voz neural foi baixada e já está em uso. Ela funciona sem internet. Você pode voltar para a voz do sistema quando quiser.")
+                        chooseEngine(NeuralSpeaker.ENGINE_ID)
+                    }
+                    DownloadResult.Cancelled -> Unit
+                    is DownloadResult.Failed -> dialog = AppDialog.Message("Download não concluído", result.message)
+                }
+            }
+        }
+    }
+
+    fun cancelNeuralDownload() {
+        cancelDownload = true
+    }
+
+    /** Apaga a voz baixada; se estava em uso, volta para a voz do sistema. */
+    fun deleteNeuralVoice() {
+        if (usingNeuralVoice) chooseEngine(SYSTEM_VOICE)
+        viewModelScope.launch(Dispatchers.IO) {
+            voicePack?.delete()
+            launch(Dispatchers.Main) {
+                neuralInstalled = false
+                engineOptions = engineOptions.filter { it.packageName != NeuralSpeaker.ENGINE_ID }
+            }
+        }
+    }
 
     /** Aplica a voz escolhida (ou a mais natural) e atualiza as listas da tela. */
     private fun applyVoice() {
@@ -280,8 +362,8 @@ class AppViewModel @JvmOverloads constructor(
 
     fun chooseEngine(packageName: String) {
         if (packageName == currentEngine) return
-        if (packageName == NeuralSpeaker.ENGINE_ID && !NeuralSpeaker.isSupported()) {
-            dialog = AppDialog.Message("Voz neural", "Este aparelho não é compatível com a voz neural embutida.")
+        if (packageName == NeuralSpeaker.ENGINE_ID && (!NeuralSpeaker.isSupported() || !neuralInstalled)) {
+            dialog = AppDialog.Message("Voz neural", "Baixe a voz neural primeiro (ou este aparelho não é compatível com ela).")
             return
         }
         updateSettings { it.copy(ttsEngine = packageName, ttsVoice = null) }

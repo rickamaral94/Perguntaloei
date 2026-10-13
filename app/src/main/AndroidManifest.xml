@@ -4,7 +4,9 @@
     <!-- Usado somente enquanto o jogo espera a resposta do jogador da vez. Nenhum áudio é gravado. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <!-- O app NÃO declara a permissão INTERNET: nomes, idades, respostas e histórico não saem do aparelho. -->
+    <!-- Usada somente se o jogador pedir para baixar a voz neural opcional (arquivos públicos do Hugging Face).
+         Nomes, idades, respostas e histórico nunca saem do aparelho. -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.microphone" android:required="false" />
 
