@@ -25,6 +25,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import kotlinx.coroutines.launch
 import org.junit.runner.RunWith
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
@@ -34,6 +35,19 @@ import java.time.Duration
 class FakeSpeaker(onStatus: (TtsStatus) -> Unit) : Speaker {
     override val status = TtsStatus.READY
     override var isSpeaking = false
+    override val engine: String? = null
+    override var currentVoice: String? = null
+    val voiceList = listOf(
+        br.com.perguntaloei.voice.VoiceOption("pt-br-x-neural", "Voz neural", 500, needsNetwork = false, installed = true),
+        br.com.perguntaloei.voice.VoiceOption("pt-br-x-online", "Voz online", 500, needsNetwork = true, installed = true),
+        br.com.perguntaloei.voice.VoiceOption("pt-br-x-basica", "Voz básica", 300, needsNetwork = false, installed = true),
+    )
+    override fun voices() = voiceList
+    override fun selectVoice(name: String?, allowNetwork: Boolean): String? {
+        val usable = voiceList.filter { allowNetwork || !it.needsNetwork }
+        currentVoice = (usable.firstOrNull { it.name == name } ?: usable.first()).name
+        return currentVoice
+    }
     val readings = mutableListOf<Pair<List<Speech>, (SpeakResult) -> Unit>>()
     var stops = 0
 
@@ -95,7 +109,8 @@ class VoiceFlowTest {
 
     private fun newVm(micAvailable: Boolean = true, permission: Boolean = true): AppViewModel {
         listener = FakeListener(micAvailable)
-        return AppViewModel(app, VoiceDeps({ s -> FakeSpeaker(s).also { speaker = it } }, listener, SilentSounds(), { permission }))
+        return AppViewModel(app, VoiceDeps({ _, s -> FakeSpeaker(s).also { speaker = it } }, listener, SilentSounds(), { permission }))
+            .also { idle(50) }
     }
 
     private fun idle(ms: Long = 800) = shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(ms))
@@ -114,7 +129,7 @@ class VoiceFlowTest {
     fun setUp() {
         app = ApplicationProvider.getApplicationContext()
         vm = newVm()
-        vm.addSuggestedPlayers()
+        listOf("Paula" to 45, "Katharina" to 39, "Ricardo" to 32, "Vilma" to 63).forEach { (n, a) -> vm.addPlayer(n, a) }
         vm.updateSettings { it.copy(speechConsent = true, autoListen = true) }
     }
 
@@ -137,7 +152,7 @@ class VoiceFlowTest {
     fun microphoneOpensOnlyAfterTheQuestionAndOptionsAreRead() {
         startAsking()
         val reading = speaker.lastText()
-        assertTrue(reading.contains("Vez de Paula"))
+        assertTrue("anuncia a vez", reading.contains("Paula"))
         assertTrue(reading.contains(q.text))
         q.options.forEach { assertTrue("alternativa lida: $it", reading.contains(it)) }
         assertFalse("a leitura não pode revelar a resposta", q.format == QuestionFormat.OPEN && reading.contains(q.explanation))
@@ -352,5 +367,64 @@ class VoiceFlowTest {
         assertEquals(Phase.ASKING, vm.game!!.phase)
         assertTrue(vm.voice.readingDone)
         assertNotNull(vm.game!!.notice)
+    }
+
+    @Test
+    fun permissionsAreRequestedOnceAtFirstLaunch() {
+        vm = newVm(permission = false)
+        vm.updateSettings { it.copy(permissionsAsked = false, speechConsent = null) }
+        vm.onAppStart()
+        assertEquals(AppDialog.Permissions, vm.dialog)
+        val events = mutableListOf<UiEvent>()
+        val job = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Main.immediate).launch { vm.events.collect { events += it } }
+        idle()
+        vm.onPermissionsChoice(true)
+        idle()
+        assertEquals(listOf<UiEvent>(UiEvent.RequestMicPermission), events)
+        assertEquals(true, vm.settings.speechConsent)
+        assertTrue(vm.settings.permissionsAsked)
+        vm.onAppStart()
+        assertEquals("não pergunta de novo", null, vm.dialog)
+        job.cancel()
+    }
+
+    @Test
+    fun decliningAtLaunchKeepsTheGameTouchOnly() {
+        vm.updateSettings { it.copy(permissionsAsked = false, speechConsent = null) }
+        vm.onAppStart()
+        vm.onPermissionsChoice(false)
+        assertEquals(false, vm.settings.speechConsent)
+        startAsking()
+        speaker.finishLast()
+        idle()
+        assertEquals("sem consentimento o microfone não abre", 0, listener.starts)
+        assertTrue(vm.voice.readingDone)
+    }
+
+    @Test
+    fun inactivePlayersStaySavedButDoNotPlay() {
+        val ricardo = vm.players.first { it.name == "Ricardo" }
+        vm.setPlayerActive(ricardo.id, false)
+        assertEquals(4, vm.players.size)
+        vm.startNewGame(GameConfig(rounds = 1))
+        assertEquals(listOf("Paula", "Katharina", "Vilma"), vm.game!!.players.map { it.name })
+        // Todos desligados: não começa.
+        vm.leaveFinishedGame()
+        vm.players.forEach { vm.setPlayerActive(it.id, false) }
+        vm.startNewGame(GameConfig(rounds = 1))
+        assertTrue(vm.dialog is AppDialog.Message)
+        assertEquals(null, vm.game)
+    }
+
+    @Test
+    fun theMostNaturalOfflineVoiceIsChosenAndCanBeChanged() {
+        idle()
+        assertEquals("pt-br-x-neural", vm.currentVoice)
+        assertTrue("vozes online ficam ocultas sem permissão", vm.voiceOptions.none { it.needsNetwork })
+        vm.chooseVoice("pt-br-x-basica")
+        assertEquals("pt-br-x-basica", vm.currentVoice)
+        assertEquals("pt-br-x-basica", vm.settings.ttsVoice)
+        vm.setAllowNetworkVoices(true)
+        assertTrue(vm.voiceOptions.any { it.needsNetwork })
     }
 }

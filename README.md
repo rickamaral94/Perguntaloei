@@ -16,10 +16,10 @@ Tablet (pergunta e placar lado a lado): ![](docs/telas/09-tablet-pergunta.png)
 
 | Arquivo | Uso |
 |---|---|
-| [`apk/PERGUNTALOEI-1.0.0-teste.apk`](apk/PERGUNTALOEI-1.0.0-teste.apk) (18 MB) | **Recomendado para testar.** Build *debug*: é exatamente o código coberto pelos testes. |
-| [`apk/PERGUNTALOEI-1.0.0-release-minificado.apk`](apk/PERGUNTALOEI-1.0.0-release-minificado.apk) (1,4 MB) | Build *release* com R8 (minificado), assinado com a chave de debug. Compila e passa na verificação de assinatura, mas não foi executado em aparelho. |
+| [`apk/PERGUNTALOEI-1.1.0-teste.apk`](apk/PERGUNTALOEI-1.1.0-teste.apk) (17 MB) | **Recomendado para testar.** Build *debug*: é exatamente o código coberto pelos testes. |
+| [`apk/PERGUNTALOEI-1.1.0-release-minificado.apk`](apk/PERGUNTALOEI-1.1.0-release-minificado.apk) (1,4 MB) | Build *release* com R8 (minificado), assinado com a chave de debug. Compila e passa na verificação de assinatura, mas não foi executado em aparelho. |
 
-Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.0.0-teste.apk`. Android 7.0 (API 24) ou superior.
+Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.1.0-teste.apk`. Android 7.0 (API 24) ou superior.
 
 ## Estrutura do projeto
 
@@ -50,7 +50,7 @@ Requisitos: JDK 17+ e Android SDK (platform 35, build-tools 35).
 
 ```bash
 echo "sdk.dir=/caminho/do/android-sdk" > local.properties
-./gradlew testDebugUnitTest      # 61 testes
+./gradlew testDebugUnitTest      # 65 testes
 ./gradlew assembleDebug          # app/build/outputs/apk/debug/app-debug.apk
 ./gradlew assembleRelease        # app/build/outputs/apk/release/app-release.apk
 ```
@@ -62,13 +62,15 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 
 **Identidade visual** — tema arcade de alto contraste, fonte pixel (Silkscreen, OFL) só em títulos e texto comum grande nas perguntas; botões grandes com sombra pixelada; céu estrelado, título pulando e "APERTE START" piscando (respeitam "Remover animações" do Android); ícone adaptativo original (balão + "?" em pixel art) com versão monocromática e PNGs mdpi→xxxhdpi; efeitos sonoros originais sintetizados (onda quadrada, volume baixo, podem ser desligados).
 
-**Jogadores** — cadastrar, editar, remover, reordenar (▲▼) ou sortear; idade opcional; nomes repetidos são recusados (o apresentador chama pelo nome). Botão opcional "Usar sugeridos" adiciona Paula 45, Katharina 39, Ricardo 32 e Vilma 63.
+**Jogadores** — cadastrar, editar, remover, reordenar (▲▼) ou sortear; idade opcional; nomes repetidos são recusados (o apresentador chama pelo nome). Os jogadores ficam salvos e cada um tem a chave **"Joga"** (em Jogadores e em Nova partida) para participar ou ficar fora da próxima partida sem apagar o cadastro. O app começa sem jogadores pré-cadastrados.
 
 **Modos** — Rodadas por tema; Número de perguntas (por jogador, temas alternados); Melhor de três (vence a partida quem fizer mais pontos nela; campeão quem vencer 2 partidas; se após 3 partidas ninguém tiver 2 vitórias, os líderes vão ao desempate — a regra aparece na tela); Conhecimentos do Brasil. Temas e dificuldades escolhidos antes da partida.
 
 **Idades** — até 9 anos: perguntas fáceis; 10–12: fáceis e médias; 13–15: até difíceis; adultos/idade não informada: as dificuldades escolhidas. A faixa etária da pergunta nunca é ultrapassada. Todos recebem o tema da rodada e o acerto vale 1 ponto para todos.
 
 **Condução** — rodada, tema, jogador da vez, ordem (com "PRÓXIMO") e placar sempre visíveis. Uma pergunta por vez; não avança sem avaliação, pulo ou fim da vez. Botões: Repetir, Ouvir resposta, Responder tocando, Pular, Encerrar a vez, Anular pergunta (áudio/interrupção, jogador errado, repetida — troca sem mexer no placar) e Desfazer último ponto. Depois de cada resposta: certo/errado, resposta certa, explicação, fonte, placar e próximo jogador. Empate no fim: pergunta de desempate inédita (não altera o placar) ou empate aceito. "Encerrar" termina a partida com o placar atual.
+
+**Voz do apresentador** — o app escolhe automaticamente a voz em português mais natural instalada no aparelho (maior qualidade informada pelo mecanismo, preferindo pt-BR e vozes que funcionam sem internet). Em Configurações › Voz do apresentador dá para trocar o mecanismo (ex.: Google, Samsung), escolher a voz (a mais natural vem marcada com ★), ajustar tom e velocidade, ouvir um exemplo e abrir a instalação de vozes de alta qualidade do Android. Vozes online, que costumam ser ainda mais naturais, só aparecem se você ativar "Permitir vozes online", com o aviso de que o texto falado (perguntas e nomes) vai para o provedor. As falas variam ("Paula, é com você!", "Valendo!", "Isso mesmo!") para soar menos mecânico.
 
 **Apresentador por voz** — anuncia a vez, tema e dificuldade, lê a pergunta e todas as alternativas com pausas; o microfone só abre quando a fala termina (cada leitura tem uma ficha: aviso atrasado de leitura antiga é ignorado). Indicador vermelho "MICROFONE ATIVO" com Parar e Cancelar; mostra a transcrição parcial e final. Interpretação das respostas:
 - "letra B", "alternativa C", "a segunda", o texto da alternativa, "verdadeiro/falso", números falados ("mil oitocentos e vinte e dois");
@@ -83,11 +85,13 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 
 **Placar e integridade** — o placar é sempre calculado a partir do registro de perguntas avaliadas (não existe outro caminho para mudar pontos). Histórico da partida com jogador, pergunta, resposta dada, forma (voz/toque/digitada/grupo), resultado e ponto; itens desfeitos aparecem riscados. A partida é salva a cada ação (escrita atômica) e retomada após o app ser fechado ou interrompido.
 
-**Privacidade** — o app **não pede permissão de INTERNET**; nomes, idades, respostas e histórico ficam no aparelho; backup em nuvem desativado. Não grava nem guarda áudio. O microfone é pedido só ao tentar responder falando, com explicação antes. Como o reconhecimento de fala do Android pode usar serviço online (geralmente Google), o app mostra um aviso e pede consentimento; recusando, tudo funciona por toque. Também há modo sem voz.
+**Permissões** — na primeira abertura o app explica e pede, de uma vez, o microfone e o consentimento para o reconhecimento de fala ("Permitir microfone" ou "Agora não (só toque)"). Não pergunta de novo a cada partida; dá para mudar depois em Configurações.
+
+**Privacidade** — o app **não pede permissão de INTERNET**; nomes, idades, respostas e histórico ficam no aparelho; backup em nuvem desativado. Não grava nem guarda áudio. O microfone é pedido na primeira abertura, com explicação, e só é usado quando o jogo espera a resposta. Como o reconhecimento de fala do Android pode usar serviço online (geralmente Google), o app mostra um aviso e pede consentimento; recusando, tudo funciona por toque. Também há modo sem voz.
 
 ## Validação feita
 
-61 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
+65 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
 
 | Requisito | Como foi verificado |
 |---|---|
@@ -98,11 +102,15 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 | Perguntas usadas não voltam | `usedQuestionsDoNotReturnInLaterGames`, `rewordedQuestionIsDetectedThroughHistoryFingerprint`, `whenFreshQuestionsRunOutTheReuseIsFlagged`, sem repetição/quase-duplicata na simulação. |
 | Crianças recebem perguntas adequadas | `childrenReceiveAgeAppropriateQuestions` (criança de 6 anos em todos os temas, mesmo com adultos em "muito difícil") e checagem em todas as simulações. |
 | Modo por toque sem microfone | `touchOnlyGameWorksWithoutAnySpeechRecognizer` (ViewModel) e `TouchUiTest` (partida completa por toques, celular e tablet). |
+| Permissões na primeira abertura | `permissionsAreRequestedOnceAtFirstLaunch`, `decliningAtLaunchKeepsTheGameTouchOnly`. |
+| Jogadores salvos que não jogam | `inactivePlayersStaySavedButDoNotPlay` e `TouchUiTest` (desliga um jogador pela tela; a partida segue só com os demais, na ordem). |
+| Voz mais natural | `theMostNaturalOfflineVoiceIsChosenAndCanBeChanged`. |
 | Microfone só ao esperar resposta | `microphoneOpensOnlyAfterTheQuestionAndOptionsAreRead`, `lateCallbackFromAnInterruptedReadingNeverOpensTheMicrophone`, `microphoneNeverOpensOutsideAQuestion`, `speechNeedsConsentAndPermissionFirst`. |
 
 ## Limitações conhecidas
 
 - **Não foi testado em aparelho físico nem em emulador** (o ambiente de desenvolvimento não tem aceleração de hardware para emulador). A interface foi executada com Robolectric; a voz e o microfone foram testados com implementações falsas que seguem o contrato do TextToSpeech/SpeechRecognizer. Vale um teste real de voz: sotaques, ruído da sala e o comportamento do serviço de reconhecimento variam de aparelho para aparelho.
+- **Naturalidade da voz:** o app usa as vozes do próprio Android, então o resultado depende do aparelho. Se ainda soar robótica, instale vozes de alta qualidade do Google (Configurações › Voz do apresentador › Instalar vozes) e escolha a marcada com ★. Uma voz neural embutida no app soaria natural em qualquer aparelho, mas aumentaria o APK em ~60–80 MB; fica como opção futura.
 - O reconhecimento de fala depende do serviço instalado (normalmente Google). O app pede processamento no aparelho, mas não consegue garantir que o serviço não use a internet — por isso o aviso e o consentimento. Sem voz em português instalada, o app avisa e segue no modo tela/toque.
 - O APK *release* minificado não foi executado; use o APK de teste (*debug*) para avaliação.
 - As perguntas foram escritas e revisadas com cuidado, e as fontes indicam onde checar cada fato, mas as referências não foram consultadas online nesta sessão. Recomendo uma revisão humana, especialmente de novelas, marcas/slogans e datas.

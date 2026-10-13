@@ -74,6 +74,8 @@ data class Player(
     val id: String,
     val name: String,
     val age: Int? = null,
+    /** Participa das próximas partidas. Jogadores desligados continuam salvos. */
+    val active: Boolean = true,
 )
 
 @Serializable

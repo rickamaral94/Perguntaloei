@@ -1,6 +1,10 @@
 package br.com.perguntaloei
 
 import android.Manifest
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.provider.Settings
+import android.speech.tts.TextToSpeech
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
@@ -43,9 +47,12 @@ class MainActivity : ComponentActivity() {
                     vm.events.collect { e ->
                         when (e) {
                             UiEvent.RequestMicPermission -> micPermission.launch(Manifest.permission.RECORD_AUDIO)
+                            UiEvent.OpenTtsSettings -> openTtsSettings()
                         }
                     }
                 }
+                // Primeira abertura: pede as permissões de uma vez, com explicação.
+                LaunchedEffect(Unit) { vm.onAppStart() }
                 LaunchedEffect(vm.screen) {
                     // Durante a partida a tela fica acesa.
                     if (vm.screen == Screen.GAME) window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -66,6 +73,23 @@ class MainActivity : ComponentActivity() {
                     }
                     Dialogs(vm)
                 }
+            }
+        }
+    }
+
+    /** Configurações de voz do Android (onde se instalam vozes de alta qualidade). */
+    private fun openTtsSettings() {
+        val attempts = listOf(
+            Intent("com.android.settings.TTS_SETTINGS"),
+            Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA).apply { vm.currentEngine?.let { setPackage(it) } },
+            Intent(Settings.ACTION_SETTINGS),
+        )
+        for (intent in attempts) {
+            try {
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                return
+            } catch (_: ActivityNotFoundException) {
+            } catch (_: SecurityException) {
             }
         }
     }

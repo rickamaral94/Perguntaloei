@@ -168,8 +168,12 @@ fun SettingsScreen(vm: AppViewModel) {
     ScreenScaffold("CONFIGURAÇÕES", onBack = { vm.go(Screen.HOME) }) {
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Purple) {
-                PixelText("VOZ", size = 11.sp, color = Arcade.Purple, shadow = Color.Transparent)
+                PixelText("VOZ DO APRESENTADOR", size = 11.sp, color = Arcade.Purple, shadow = Color.Transparent)
                 Spacer(Modifier.height(6.dp))
+                VoicePicker(vm)
+                Spacer(Modifier.height(10.dp))
+                Text("Tom da voz: ${"%.2f".format(s.voicePitch)}", color = Arcade.White, fontSize = 17.sp)
+                Slider(value = s.voicePitch, onValueChange = { v -> vm.setVoicePitch((v * 20).toInt() / 20f) }, valueRange = 0.8f..1.2f, colors = sliderColors())
                 Text("Velocidade da fala: ${"%.1f".format(s.speechRate)}x", color = Arcade.White, fontSize = 17.sp)
                 Slider(value = s.speechRate, onValueChange = { v -> vm.updateSettings { it.copy(speechRate = (v * 10).toInt() / 10f) } }, valueRange = 0.6f..1.4f, colors = sliderColors())
                 SwitchRow("Abrir o microfone sozinho após a leitura", s.autoListen) { v -> vm.updateSettings { it.copy(autoListen = v) } }
@@ -291,6 +295,20 @@ fun Dialogs(vm: AppViewModel) {
             },
             confirmButton = { TextButton({ vm.dialog = null }) { Text("Cancelar") } },
         )
+        AppDialog.Permissions -> AlertDialog(
+            onDismissRequest = { },
+            title = { Text("Bem-vindos ao PERGUNTÁ-LO-EI!") },
+            text = {
+                Text(
+                    "Para responder falando, o app precisa do microfone. Ele só fica ligado quando o jogo espera a " +
+                        "resposta do jogador da vez, com o aviso MICROFONE ATIVO na tela, e nada é gravado.\n\n" + PRIVACY_TEXT +
+                        "\n\nPermitir agora? Você pode mudar depois em Configurações.",
+                    fontSize = 16.sp,
+                )
+            },
+            confirmButton = { TextButton({ vm.onPermissionsChoice(true) }) { Text("Permitir microfone", color = Arcade.Green) } },
+            dismissButton = { TextButton({ vm.onPermissionsChoice(false) }) { Text("Agora não (só toque)", color = Arcade.Orange) } },
+        )
         AppDialog.ConfirmEndGame -> AlertDialog(
             onDismissRequest = { vm.dialog = null },
             title = { Text("Encerrar partida?") },
@@ -299,4 +317,58 @@ fun Dialogs(vm: AppViewModel) {
             dismissButton = { TextButton({ vm.dialog = null }) { Text("Continuar jogando") } },
         )
     }
+}
+
+/** Escolha do mecanismo e da voz, com exemplo e atalho para instalar vozes melhores. */
+@Composable
+private fun VoicePicker(vm: AppViewModel) {
+    val s = vm.settings
+    Text(
+        "Para uma voz mais natural, escolha uma voz de \"alta qualidade\" ou \"muito alta\". " +
+            "No Google, instale vozes melhores em: Configurações de voz › Instalar dados de voz › Português (Brasil).",
+        color = Arcade.Muted, fontSize = 14.sp,
+    )
+    if (vm.engineOptions.size > 1) {
+        Spacer(Modifier.height(8.dp))
+        Text("Mecanismo de voz", color = Arcade.White, fontSize = 17.sp, fontWeight = FontWeight.Bold)
+        vm.engineOptions.forEach { e ->
+            val on = e.packageName == vm.currentEngine
+            ArcadeButton(
+                (if (on) "◉ " else "○ ") + e.label, { vm.chooseEngine(e.packageName) },
+                Modifier.fillMaxWidth().padding(vertical = 3.dp),
+                color = if (on) Arcade.Purple else Arcade.PanelLight, textColor = if (on) Arcade.Ink else Arcade.White,
+                minHeight = 44.dp, fontSize = 15.sp,
+            )
+        }
+    }
+    Spacer(Modifier.height(8.dp))
+    Text("Voz", color = Arcade.White, fontSize = 17.sp, fontWeight = FontWeight.Bold)
+    if (vm.voiceOptions.isEmpty()) {
+        Text(
+            if (vm.ttsStatus == br.com.perguntaloei.voice.TtsStatus.READY) "Nenhuma voz em português encontrada neste mecanismo."
+            else "Carregando vozes…",
+            color = Arcade.Muted, fontSize = 14.sp,
+        )
+    }
+    vm.voiceOptions.take(12).forEachIndexed { i, v ->
+        val on = v.name == vm.currentVoice
+        ArcadeButton(
+            (if (on) "◉ " else "○ ") + v.label + (if (i == 0) " ★ mais natural" else "") + (if (v.needsNetwork) " · online" else ""),
+            { vm.chooseVoice(v.name) },
+            Modifier.fillMaxWidth().padding(vertical = 3.dp),
+            color = if (on) Arcade.Yellow else Arcade.PanelLight, textColor = if (on) Arcade.Ink else Arcade.White,
+            minHeight = 44.dp, fontSize = 14.sp,
+        )
+    }
+    Spacer(Modifier.height(8.dp))
+    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        ArcadeButton("▶ Ouvir exemplo", { vm.previewVoice() }, Modifier.weight(1f), color = Arcade.Green, fontSize = 15.sp)
+        ArcadeButton("Instalar vozes", { vm.openTtsSettings() }, Modifier.weight(1f), color = Arcade.Cyan, fontSize = 15.sp)
+    }
+    SwitchRow("Permitir vozes online (mais naturais)", s.allowNetworkVoices) { vm.setAllowNetworkVoices(it) }
+    Text(
+        "Vozes online enviam ao provedor de voz (ex.: Google) o texto falado, que inclui as perguntas e os nomes dos jogadores. " +
+            "Desligado, o app usa só vozes instaladas no aparelho.",
+        color = Arcade.Muted, fontSize = 13.sp,
+    )
 }

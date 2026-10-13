@@ -30,6 +30,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -155,30 +157,35 @@ fun PlayersScreen(vm: AppViewModel) {
                 }
             }
 
-            ArcadeButton(
-                "Usar sugeridos: Paula 45, Katharina 39, Ricardo 32, Vilma 63",
-                { vm.addSuggestedPlayers() }, Modifier.fillMaxWidth(), color = Arcade.Cyan, fontSize = 15.sp,
-            )
-
             PixelPanel(Modifier.fillMaxWidth()) {
                 PixelText("ORDEM DAS VEZES", size = 11.sp, color = Arcade.Cyan, shadow = Color.Transparent)
                 Spacer(Modifier.height(4.dp))
-                Text("A partida segue exatamente esta ordem. Use as setas para ajustar.", color = Arcade.Muted, fontSize = 14.sp)
+                Text(
+                    "A partida segue exatamente esta ordem. Use as setas para ajustar. " +
+                        "Desligue \"Joga\" para quem não vai participar agora (o cadastro continua salvo).",
+                    color = Arcade.Muted, fontSize = 14.sp,
+                )
                 Spacer(Modifier.height(8.dp))
                 if (vm.players.isEmpty()) Text("Nenhum jogador cadastrado.", color = Arcade.White)
                 vm.players.forEachIndexed { i, p ->
                     Row(
-                        Modifier.fillMaxWidth().padding(vertical = 6.dp),
+                        Modifier.fillMaxWidth().padding(top = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text("${i + 1}.", color = Arcade.Yellow, fontWeight = FontWeight.Bold, fontSize = 20.sp, modifier = Modifier.widthIn(min = 34.dp))
+                        Text("${i + 1}.", color = if (p.active) Arcade.Yellow else Arcade.Muted, fontWeight = FontWeight.Bold, fontSize = 20.sp, modifier = Modifier.widthIn(min = 34.dp))
                         Column(Modifier.weight(1f)) {
-                            Text(p.name, color = Arcade.White, fontWeight = FontWeight.Bold, fontSize = 19.sp)
+                            Text(p.name, color = if (p.active) Arcade.White else Arcade.Muted, fontWeight = FontWeight.Bold, fontSize = 19.sp)
                             Text(
                                 (p.age?.let { "$it anos · " } ?: "idade não informada · ") + AgePolicy.groupLabel(p.age),
                                 color = Arcade.Muted, fontSize = 13.sp,
                             )
                         }
+                        PlayerActiveSwitch(p.active) { vm.setPlayerActive(p.id, it) }
+                    }
+                    Row(
+                        Modifier.fillMaxWidth().padding(start = 34.dp, bottom = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
                         SmallButton("▲", enabled = i > 0) { vm.movePlayer(p.id, -1) }
                         SmallButton("▼", enabled = i < vm.players.size - 1) { vm.movePlayer(p.id, 1) }
                         SmallButton("✎") { editing = p; name = p.name; age = p.age?.toString() ?: "" }
@@ -226,9 +233,19 @@ fun SetupScreen(vm: AppViewModel) {
                 if (vm.players.isEmpty()) {
                     Text("Cadastre os jogadores primeiro.", color = Arcade.White)
                 } else {
-                    vm.players.forEachIndexed { i, p ->
-                        Text("${i + 1}. ${p.name}" + (p.age?.let { " ($it)" } ?: "") + " — ${AgePolicy.groupLabel(p.age)}", color = Arcade.White, fontSize = 17.sp)
+                    Text("Quem joga esta partida, na ordem das vezes:", color = Arcade.Muted, fontSize = 14.sp)
+                    var n = 0
+                    vm.players.forEach { p ->
+                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                            val label = if (p.active) "${++n}. ${p.name}" else "– ${p.name}"
+                            Column(Modifier.weight(1f)) {
+                                Text(label + (p.age?.let { " ($it)" } ?: ""), color = if (p.active) Arcade.White else Arcade.Muted, fontSize = 17.sp, fontWeight = FontWeight.Bold)
+                                Text(if (p.active) AgePolicy.groupLabel(p.age) else "fora desta partida", color = Arcade.Muted, fontSize = 13.sp)
+                            }
+                            PlayerActiveSwitch(p.active) { vm.setPlayerActive(p.id, it) }
+                        }
                     }
+                    if (vm.activePlayers.isEmpty()) Text("Ligue pelo menos um jogador.", color = Arcade.Orange, fontSize = 14.sp)
                 }
                 Spacer(Modifier.height(8.dp))
                 ArcadeButton("Editar jogadores e ordem", { vm.go(Screen.PLAYERS) }, Modifier.fillMaxWidth(), color = Arcade.Cyan, fontSize = 15.sp)
@@ -270,7 +287,7 @@ fun SetupScreen(vm: AppViewModel) {
                     val label = if (config.mode == GameMode.QUESTION_COUNT) "Perguntas por jogador" else "Rodadas"
                     Text("$label: ${config.rounds}", color = Arcade.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
                     Text(
-                        "Total: ${config.rounds * vm.players.size.coerceAtLeast(1)} perguntas para ${vm.players.size} jogador(es).",
+                        "Total: ${config.rounds * vm.activePlayers.size.coerceAtLeast(1)} perguntas para ${vm.activePlayers.size} jogador(es).",
                         color = Arcade.Muted, fontSize = 14.sp,
                     )
                     Slider(
@@ -354,12 +371,12 @@ fun SetupScreen(vm: AppViewModel) {
                 )
             }
 
-            val canStart = vm.players.isNotEmpty() && config.themes.any { it in availableThemes }
+            val canStart = vm.activePlayers.isNotEmpty() && config.themes.any { it in availableThemes }
             ArcadeButton(
                 "COMEÇAR!", { vm.startNewGame(config) }, Modifier.fillMaxWidth(),
                 enabled = canStart, color = Arcade.Green, icon = "🕹️", minHeight = 64.dp, fontSize = 20.sp,
             )
-            if (!canStart) Text("Escolha pelo menos um tema e cadastre jogadores.", color = Arcade.Orange, fontSize = 14.sp)
+            if (!canStart) Text("Escolha pelo menos um tema e ligue pelo menos um jogador.", color = Arcade.Orange, fontSize = 14.sp)
             Spacer(Modifier.height(24.dp))
         }
     }
@@ -378,3 +395,15 @@ fun sliderColors() = SliderDefaults.colors(thumbColor = Arcade.Yellow, activeTra
 
 @Composable
 fun ThemeTag(t: Theme) = Tag("${Arcade.themeIcon(t)} ${t.label}", Arcade.themeColor(t))
+
+/** Chave "Joga": o jogador participa (ou não) da partida, sem apagar o cadastro. */
+@Composable
+fun PlayerActiveSwitch(active: Boolean, onChange: (Boolean) -> Unit) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Switch(
+            checked = active, onCheckedChange = onChange,
+            modifier = Modifier.semantics { contentDescription = if (active) "Joga: sim" else "Joga: não" },
+        )
+        Text("Joga", color = if (active) Arcade.Green else Arcade.Muted, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+    }
+}

@@ -6,6 +6,7 @@ import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
@@ -75,11 +76,19 @@ class TouchUiTest {
 
     private fun setupPlayers(config: GameConfig) {
         val v = vm // fora da thread principal: obter a Activity espera a interface ficar ociosa
+        settle()
+        // Primeira abertura: o app pede as permissões (só uma vez); aqui seguimos só com toque.
+        if (v.dialog == AppDialog.Permissions) {
+            shot("00-permissoes")
+            rule.onNodeWithText("Agora não (só toque)").performClick()
+            settle()
+        }
+        assertTrue(v.settings.permissionsAsked)
         rule.runOnUiThread {
-            v.addSuggestedPlayers()
-            v.addPlayer("Lia", 6)
-            v.addPlayer("Theo", 9)
-            v.addPlayer("Bruno", 13)
+            listOf("Paula" to 45, "Katharina" to 39, "Ricardo" to 32, "Vilma" to 63, "Lia" to 6, "Theo" to 9, "Bruno" to 13)
+                .filter { (n, _) -> v.players.none { it.name == n } }
+                .forEach { (n, a) -> v.addPlayer(n, a) }
+            v.players.forEach { v.setPlayerActive(it.id, true) }
             v.updateSettings { it.copy(lastConfig = config) }
         }
         settle()
@@ -91,6 +100,10 @@ class TouchUiTest {
         setupPlayers(GameConfig(mode = GameMode.THEMED_ROUNDS, rounds = 2, voiceHost = false, voiceAnswers = false))
         shot("01-inicio")
         tap("Jogadores (7)")
+        // Bruno fica fora desta partida, mas continua cadastrado.
+        rule.onAllNodes(hasContentDescription("Joga: sim"))[6].performScrollTo().performClick()
+        settle()
+        assertEquals(listOf(true, true, true, true, true, true, false), vm.players.map { it.active })
         shot("02-jogadores")
         tap("Configurar partida ▶")
         shot("03-configuracao")
@@ -98,7 +111,9 @@ class TouchUiTest {
         assertEquals(Screen.GAME, vm.screen)
         shot("04-rodada")
 
-        val order = vm.players.map { it.name }
+        val order = vm.players.filter { it.active }.map { it.name }
+        assertEquals(6, vm.game!!.players.size)
+        assertTrue("Bruno não joga", vm.game!!.players.none { it.name == "Bruno" })
         var turns = 0
         var guard = 0
         var shotAsk = false

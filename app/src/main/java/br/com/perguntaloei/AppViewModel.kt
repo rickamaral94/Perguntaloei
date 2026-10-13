@@ -82,16 +82,22 @@ sealed interface AppDialog {
     data object MicRationale : AppDialog
     data object AnnulReasons : AppDialog
     data object ConfirmEndGame : AppDialog
+
+    /** Primeira abertura: explica e pede microfone + consentimento de uma vez. */
+    data object Permissions : AppDialog
 }
 
 sealed interface UiEvent {
     data object RequestMicPermission : UiEvent
+
+    /** Abre as configurações de voz do Android (instalar vozes de alta qualidade). */
+    data object OpenTtsSettings : UiEvent
 }
 
 class AppViewModel @JvmOverloads constructor(
     app: Application,
     deps: VoiceDeps = VoiceDeps(
-        speaker = { onStatus -> VoiceHost(app, onStatus) },
+        speaker = { engine, onStatus -> VoiceHost(app, engine, onStatus) },
         listener = SpeechInput(app),
         sounds = SoundFx(),
         micPermission = {
@@ -129,8 +135,19 @@ class AppViewModel @JvmOverloads constructor(
     val events: SharedFlow<UiEvent> = _events
 
     private val sfx = deps.sounds.also { it.enabled = settings.soundEffects }
-    private val host = deps.speaker { ttsStatus = it }
+    private val speakerFactory = deps.speaker
+    private var host = speakerFactory(settings.ttsEngine) { onTtsStatus(it) }
     private val speech = deps.listener
+
+    /** Vozes e mecanismos disponíveis (para a tela de Configurações). */
+    var voiceOptions by mutableStateOf(emptyList<br.com.perguntaloei.voice.VoiceOption>())
+        private set
+    var engineOptions by mutableStateOf(emptyList<br.com.perguntaloei.voice.EngineOption>())
+        private set
+    var currentVoice by mutableStateOf<String?>(null)
+        private set
+    var currentEngine by mutableStateOf<String?>(null)
+        private set
     private val micPermission = deps.micPermission
     val recognitionAvailable: Boolean = speech.isAvailable()
 
@@ -192,14 +209,11 @@ class AppViewModel @JvmOverloads constructor(
 
     fun shufflePlayers() = updatePlayers(players.shuffled())
 
-    /** Participantes sugeridos (opcional): adiciona os que ainda não estão na lista. */
-    fun addSuggestedPlayers() {
-        val suggested = listOf("Paula" to 45, "Katharina" to 39, "Ricardo" to 32, "Vilma" to 63)
-        val existing = players.map { TextNormalizer.normalize(it.name) }.toSet()
-        val toAdd = suggested.filter { TextNormalizer.normalize(it.first) !in existing }
-            .map { Player(UUID.randomUUID().toString(), it.first, it.second) }
-        updatePlayers(players + toAdd)
-    }
+    /** Liga/desliga a participação do jogador nas próximas partidas (ele continua salvo). */
+    fun setPlayerActive(id: String, active: Boolean) =
+        updatePlayers(players.map { if (it.id == id) it.copy(active = active) else it })
+
+    val activePlayers: List<Player> get() = players.filter { it.active }
 
     private fun updatePlayers(list: List<Player>) {
         players = list
@@ -215,6 +229,82 @@ class AppViewModel @JvmOverloads constructor(
         viewModelScope.launch(ioWriter) { store.saveSettings(s) }
     }
 
+    // ---------------------------------------------------------------- voz do apresentador
+
+    /** Postado na thread principal: o aviso pode chegar antes de o apresentador terminar de ser criado. */
+    private fun onTtsStatus(status: TtsStatus) {
+        viewModelScope.launch(Dispatchers.Main) {
+            ttsStatus = status
+            if (status == TtsStatus.READY) applyVoice()
+            engineOptions = host.engines()
+            currentEngine = host.engine
+        }
+    }
+
+    /** Aplica a voz escolhida (ou a mais natural) e atualiza as listas da tela. */
+    private fun applyVoice() {
+        host.setPitch(settings.voicePitch)
+        currentVoice = host.selectVoice(settings.ttsVoice, settings.allowNetworkVoices)
+        voiceOptions = host.voices().filter { it.installed && (settings.allowNetworkVoices || !it.needsNetwork) }
+    }
+
+    fun chooseEngine(packageName: String) {
+        if (packageName == currentEngine) return
+        updateSettings { it.copy(ttsEngine = packageName, ttsVoice = null) }
+        silenceIO()
+        host.shutdown()
+        ttsStatus = TtsStatus.INITIALIZING
+        voiceOptions = emptyList()
+        host = speakerFactory(packageName) { onTtsStatus(it) }
+    }
+
+    fun chooseVoice(name: String) {
+        updateSettings { it.copy(ttsVoice = name) }
+        applyVoice()
+        previewVoice()
+    }
+
+    fun setAllowNetworkVoices(allow: Boolean) {
+        updateSettings { it.copy(allowNetworkVoices = allow, ttsVoice = if (allow) it.ttsVoice else null) }
+        applyVoice()
+    }
+
+    fun setVoicePitch(pitch: Float) {
+        updateSettings { it.copy(voicePitch = pitch) }
+        host.setPitch(pitch)
+    }
+
+    /** Fala uma frase de exemplo com a voz atual. */
+    fun previewVoice() {
+        if (ttsStatus != TtsStatus.READY) return
+        host.speak(
+            listOf(
+                Speech("Olá! Eu sou o apresentador do Perguntá-lo-ei.", 300),
+                Speech("Atenção, família: valendo um ponto!", 0),
+            ),
+            settings.speechRate,
+        ) { }
+    }
+
+    fun openTtsSettings() {
+        viewModelScope.launch { _events.emit(UiEvent.OpenTtsSettings) }
+    }
+
+    // ---------------------------------------------------------------- permissões na abertura
+
+    /** Chamado ao abrir o app: na primeira vez, pede tudo de uma vez, com explicação. */
+    fun onAppStart() {
+        if (!settings.permissionsAsked && dialog == null) dialog = AppDialog.Permissions
+    }
+
+    fun onPermissionsChoice(allow: Boolean) {
+        dialog = null
+        updateSettings { it.copy(permissionsAsked = true, speechConsent = allow) }
+        if (allow && !hasMicPermission()) viewModelScope.launch { _events.emit(UiEvent.RequestMicPermission) }
+    }
+
+    val micGranted: Boolean get() = hasMicPermission()
+
     fun clearQuestionHistory() {
         questionHistory = QuestionHistory()
         historyCount = 0
@@ -226,13 +316,17 @@ class AppViewModel @JvmOverloads constructor(
     // ================================================================== início da partida
 
     fun startNewGame(config: GameConfig) {
-        if (players.isEmpty()) {
-            dialog = AppDialog.Message("Sem jogadores", "Cadastre pelo menos um jogador antes de começar.")
+        if (activePlayers.isEmpty()) {
+            dialog = AppDialog.Message(
+                "Sem jogadores",
+                if (players.isEmpty()) "Cadastre pelo menos um jogador antes de começar."
+                else "Marque quem vai jogar esta partida (chave \"Joga\" ao lado do nome).",
+            )
             return
         }
         updateSettings { it.copy(lastConfig = config) }
         val state = try {
-            engine.newGame(config, players)
+            engine.newGame(config, activePlayers)
         } catch (e: NotEnoughQuestionsException) {
             dialog = AppDialog.Message("Faltam perguntas", e.message ?: "Não há perguntas suficientes.")
             return

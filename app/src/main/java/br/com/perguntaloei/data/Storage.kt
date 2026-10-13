@@ -63,6 +63,15 @@ data class AppSettings(
     /** null = ainda não perguntado; true/false = resposta do usuário ao aviso do reconhecimento de fala. */
     val speechConsent: Boolean? = null,
     val lastConfig: GameConfig = GameConfig(),
+    /** Já mostramos o pedido de permissões da primeira abertura. */
+    val permissionsAsked: Boolean = false,
+    /** Mecanismo de voz escolhido (null = padrão do aparelho). */
+    val ttsEngine: String? = null,
+    /** Voz escolhida (null = a mais natural disponível). */
+    val ttsVoice: String? = null,
+    /** Permite vozes que precisam de internet (enviam o texto falado ao provedor). */
+    val allowNetworkVoices: Boolean = false,
+    val voicePitch: Float = 1.0f,
 )
 
 @Serializable

@@ -27,41 +27,56 @@ object PresenterScript {
         return listOf(Speech(title, 300), Speech(theme, 300), Speech("Ordem: $order.", 500))
     }
 
+    /** Escolha determinística entre variações, para o apresentador não soar repetitivo. */
+    private fun pick(seed: String, options: List<String>): String = options[Math.floorMod(seed.hashCode(), options.size)]
+
     /** Anúncio da vez + tema + dificuldade + pergunta + alternativas. */
     fun questionReading(playerName: String, q: Question, includeTurn: Boolean = true): List<Speech> {
         val parts = mutableListOf<Speech>()
-        if (includeTurn) parts += Speech("Vez de $playerName!", 450)
-        parts += Speech("Tema: ${q.theme.label}. Dificuldade: ${q.difficulty.label}.", 500)
-        parts += Speech(q.text, 700)
+        val seed = q.id + playerName
+        if (includeTurn) {
+            parts += Speech(
+                pick(seed, listOf("Vez de $playerName!", "$playerName, é com você!", "Agora é a vez de $playerName!", "Atenção, $playerName!")),
+                450,
+            )
+        }
+        parts += Speech("Tema, ${q.theme.label}. Nível ${q.difficulty.label.lowercase()}.", 550)
+        parts += Speech(q.text, 750)
         when (q.format) {
             QuestionFormat.MULTIPLE_CHOICE -> q.options.forEachIndexed { i, opt ->
-                parts += Speech("${'A' + i}: $opt.", 450)
+                // Vírgula em vez de dois-pontos: a leitura sai mais fluida.
+                parts += Speech("${'A' + i}, $opt.", 420)
             }
-            QuestionFormat.TRUE_FALSE -> parts += Speech("Verdadeiro ou falso?", 450)
-            QuestionFormat.OPEN -> parts += Speech("Responda com suas palavras.", 450)
+            QuestionFormat.TRUE_FALSE -> parts += Speech("Verdadeiro, ou falso?", 450)
+            QuestionFormat.OPEN -> parts += Speech("Pode responder com suas palavras.", 450)
         }
-        parts += Speech("$playerName, pode responder.", 0)
+        parts += Speech(pick(seed + "fim", listOf("Valendo, $playerName!", "$playerName, pode responder.", "Qual é a sua resposta, $playerName?")), 0)
         return parts
     }
 
     fun result(state: GameState, record: TurnRecord, q: Question): List<Speech> {
         val parts = mutableListOf<Speech>()
         val name = record.playerName
+        val seed = q.id + name
         val answer = if (q.format == QuestionFormat.MULTIPLE_CHOICE) "${'A' + q.correctIndex}, ${q.answer}" else q.answer
         when (record.outcome) {
             Outcome.CORRECT -> parts += Speech(
-                if (record.kind == RoundKind.REGULAR) "Certa resposta, $name! Mais um ponto." else "Certa resposta, $name!",
+                pick(seed, listOf("Acertou, $name!", "Isso mesmo, $name!", "Resposta certa, $name!", "Muito bem, $name!")) +
+                    if (record.kind == RoundKind.REGULAR) " Mais um ponto." else "",
                 400,
             )
-            Outcome.WRONG -> parts += Speech("Não foi dessa vez, $name. A resposta certa é: $answer.", 400)
-            Outcome.SKIPPED -> parts += Speech("Pergunta pulada. A resposta era: $answer.", 400)
-            Outcome.NO_ANSWER -> parts += Speech("Sem resposta, sem ponto. A resposta era: $answer.", 400)
+            Outcome.WRONG -> parts += Speech(
+                pick(seed, listOf("Não foi dessa vez, $name.", "Ih, quase, $name!", "Que pena, $name.")) + " A resposta certa é $answer.",
+                400,
+            )
+            Outcome.SKIPPED -> parts += Speech("Pergunta pulada. A resposta era $answer.", 400)
+            Outcome.NO_ANSWER -> parts += Speech("Sem resposta, sem ponto. A resposta era $answer.", 400)
             Outcome.ANNULLED, Outcome.REPLACED_REPEATED -> return listOf(Speech("Pergunta anulada. O placar não mudou.", 300))
         }
         parts += Speech(q.explanation, 500)
         if (record.kind == RoundKind.REGULAR) {
             val pts = state.score(record.playerId)
-            parts += Speech("$name tem $pts ${if (pts == 1) "ponto" else "pontos"}.", 400)
+            parts += Speech("$name está com $pts ${if (pts == 1) "ponto" else "pontos"}.", 400)
         }
         state.nextPlayer?.let { parts += Speech("Próxima vez: ${it.name}.", 0) }
         return parts
