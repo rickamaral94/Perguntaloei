@@ -13,8 +13,8 @@ android {
         applicationId = "br.com.perguntaloei"
         minSdk = 24
         targetSdk = 35
-        versionCode = 8
-        versionName = "1.6.0"
+        versionCode = 9
+        versionName = "1.7.0"
         vectorDrawables { useSupportLibrary = true }
     }
     buildTypes {
