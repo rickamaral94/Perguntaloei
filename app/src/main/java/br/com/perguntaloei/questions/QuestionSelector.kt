@@ -13,6 +13,9 @@ data class UsageHistory(
     val usedIds: Set<String> = emptySet(),
     val usedFingerprints: Set<String> = emptySet(),
 ) {
+    /** Palavras de cada impressão digital usada, separadas uma única vez. */
+    val usedTokens: List<Set<String>> by lazy { usedFingerprints.map { it.split(' ').toSet() } }
+
     companion object { val EMPTY = UsageHistory() }
 }
 
@@ -74,15 +77,11 @@ class QuestionSelector(private val bank: QuestionBank) {
     fun usedInHistory(q: Question, history: UsageHistory): Boolean {
         if (q.id in history.usedIds) return true
         if (bank.nearDuplicates[q.id].orEmpty().any { it in history.usedIds }) return true
+        if (history.usedFingerprints.isEmpty()) return false
         val fp = bank.fingerprints[q.id] ?: TextNormalizer.fingerprint(q.text)
         if (fp in history.usedFingerprints) return true
-        val tokens = fp.split(' ').toSet()
-        return history.usedFingerprints.any { other -> tokenJaccard(tokens, other.split(' ').toSet()) >= 0.8 }
-    }
-
-    private fun tokenJaccard(a: Set<String>, b: Set<String>): Double {
-        val union = a.union(b).size
-        return if (union == 0) 1.0 else a.intersect(b).size.toDouble() / union
+        val tokens = bank.fingerprintTokens[q.id] ?: fp.split(' ').toSet()
+        return history.usedTokens.any { other -> TextNormalizer.jaccardOf(tokens, other) >= 0.8 }
     }
 
     fun pool(config: GameConfig, theme: Theme?): List<Question> = bank.questions.filter {

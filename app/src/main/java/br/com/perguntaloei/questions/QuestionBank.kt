@@ -9,28 +9,25 @@ import kotlinx.serialization.json.Json
 @Serializable
 private data class QuestionFile(val version: Int, val questions: List<Question>)
 
-/** Banco de perguntas embutido no app. Imutável depois de carregado. */
-class QuestionBank(val questions: List<Question>) {
+/**
+ * Banco de perguntas embutido no app. Imutável depois de carregado.
+ *
+ * [nearDuplicates]: para cada pergunta, os ids de outras perguntas essencialmente iguais. O banco
+ * embutido é conferido sem nenhuma quase-duplicata na hora de gerar o arquivo (teste
+ * `bankHasNoNearDuplicates`), então o aparelho não precisa fazer essa comparação pesada
+ * (centenas de milhares de pares) — ela chegou a travar a tela em celulares.
+ */
+class QuestionBank(
+    val questions: List<Question>,
+    val nearDuplicates: Map<String, Set<String>> = emptyMap(),
+) {
 
     val byId: Map<String, Question> = questions.associateBy { it.id }
 
-    /** Para cada pergunta, os ids de outras perguntas consideradas essencialmente iguais. */
-    val nearDuplicates: Map<String, Set<String>> by lazy {
-        val result = HashMap<String, MutableSet<String>>()
-        for (i in questions.indices) {
-            for (j in i + 1 until questions.size) {
-                val a = questions[i]
-                val b = questions[j]
-                if (TextNormalizer.isNearDuplicate(a.text, a.answer, b.text, b.answer)) {
-                    result.getOrPut(a.id) { mutableSetOf() }.add(b.id)
-                    result.getOrPut(b.id) { mutableSetOf() }.add(a.id)
-                }
-            }
-        }
-        result
-    }
-
     val fingerprints: Map<String, String> by lazy { questions.associate { it.id to TextNormalizer.fingerprint(it.text) } }
+
+    /** Palavras de cada impressão digital, calculadas uma única vez. */
+    val fingerprintTokens: Map<String, Set<String>> by lazy { fingerprints.mapValues { (_, fp) -> fp.split(' ').toSet() } }
 
     fun themesWithQuestions(brazilOnly: Boolean): List<Theme> =
         Theme.entries.filter { t -> questions.any { it.theme == t && (!brazilOnly || it.brazil) } }
@@ -81,5 +78,25 @@ class QuestionBank(val questions: List<Question>) {
         private val json = Json { ignoreUnknownKeys = true }
 
         fun fromJson(text: String): QuestionBank = QuestionBank(json.decodeFromString<QuestionFile>(text).questions)
+
+        /**
+         * Compara todas as perguntas entre si (usado nos testes e na geração do banco).
+         * Normaliza cada texto uma vez e só calcula a distância de edição quando os tamanhos permitem.
+         */
+        fun findNearDuplicates(questions: List<Question>): Map<String, Set<String>> {
+            val norm = questions.map { TextNormalizer.normalize(it.text) }
+            val tokens = questions.map { TextNormalizer.contentTokens(it.text) }
+            val answers = questions.map { TextNormalizer.normalize(it.answer) }
+            val result = HashMap<String, MutableSet<String>>()
+            for (i in questions.indices) {
+                for (j in i + 1 until questions.size) {
+                    if (TextNormalizer.isNearDuplicatePrepared(norm[i], tokens[i], answers[i], norm[j], tokens[j], answers[j])) {
+                        result.getOrPut(questions[i].id) { mutableSetOf() }.add(questions[j].id)
+                        result.getOrPut(questions[j].id) { mutableSetOf() }.add(questions[i].id)
+                    }
+                }
+            }
+            return result
+        }
     }
 }

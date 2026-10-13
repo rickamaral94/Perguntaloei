@@ -79,7 +79,9 @@ data class HistoryEntry(val fingerprint: String, val timesUsed: Int, val lastUse
 
 @Serializable
 data class QuestionHistory(val entries: Map<String, HistoryEntry> = emptyMap()) {
-    fun toUsage(): UsageHistory = UsageHistory(entries.keys, entries.values.map { it.fingerprint }.toSet())
+    /** Calculado uma vez por versão do histórico (não é salvo no arquivo). */
+    private val usage: UsageHistory by lazy { UsageHistory(entries.keys, entries.values.map { it.fingerprint }.toSet()) }
+    fun toUsage(): UsageHistory = usage
 }
 
 @Serializable

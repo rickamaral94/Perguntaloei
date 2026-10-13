@@ -82,11 +82,29 @@ object TextNormalizer {
      * Duas perguntas são "essencialmente iguais" quando os enunciados quase coincidem,
      * ou quando pedem a mesma resposta com enunciados muito parecidos.
      */
-    fun isNearDuplicate(textA: String, answerA: String, textB: String, answerB: String): Boolean {
-        val j = jaccard(textA, textB)
+    fun isNearDuplicate(textA: String, answerA: String, textB: String, answerB: String): Boolean =
+        isNearDuplicatePrepared(normalize(textA), contentTokens(textA), normalize(answerA), normalize(textB), contentTokens(textB), normalize(answerB))
+
+    /** Mesma regra de [isNearDuplicate], com textos já normalizados (para comparar muitos pares). */
+    fun isNearDuplicatePrepared(
+        normA: String, tokensA: Set<String>, answerA: String,
+        normB: String, tokensB: Set<String>, answerB: String,
+    ): Boolean {
+        val j = jaccardOf(tokensA, tokensB)
         if (j >= 0.8) return true
-        if (similarity(textA, textB) >= 0.85) return true
-        val sameAnswer = normalize(answerA) == normalize(answerB)
-        return sameAnswer && j >= 0.55
+        // Similaridade ≥ 0,85 exige tamanhos parecidos: a distância nunca é menor que a diferença de tamanho.
+        val max = maxOf(normA.length, normB.length)
+        if (max == 0) return true
+        if (kotlin.math.abs(normA.length - normB.length) <= 0.15 * max) {
+            if (1.0 - levenshtein(normA, normB).toDouble() / max >= 0.85) return true
+        }
+        return answerA == answerB && j >= 0.55
+    }
+
+    fun jaccardOf(ta: Set<String>, tb: Set<String>): Double {
+        if (ta.isEmpty() && tb.isEmpty()) return 1.0
+        val inter = ta.count { it in tb }.toDouble()
+        val union = (ta.size + tb.size - inter)
+        return if (union == 0.0) 0.0 else inter / union
     }
 }

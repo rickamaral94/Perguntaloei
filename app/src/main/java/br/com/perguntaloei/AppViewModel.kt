@@ -194,8 +194,8 @@ class AppViewModel @JvmOverloads constructor(
     private var pendingListenJob: Job? = null
 
     init {
-        // Pré-calcula a detecção de quase-duplicatas fora da thread principal.
-        viewModelScope.launch(Dispatchers.Default) { bank.nearDuplicates.size }
+        // Prepara as impressões digitais das perguntas fora da thread principal.
+        viewModelScope.launch(Dispatchers.Default) { bank.fingerprintTokens.size }
     }
 
     // ================================================================== navegação
