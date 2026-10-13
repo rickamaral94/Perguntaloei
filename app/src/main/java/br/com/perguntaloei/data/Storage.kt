@@ -82,7 +82,20 @@ data class QuestionHistory(val entries: Map<String, HistoryEntry> = emptyMap()) 
     /** Calculado uma vez por versão do histórico (não é salvo no arquivo). */
     private val usage: UsageHistory by lazy { UsageHistory(entries.keys, entries.values.map { it.fingerprint }.toSet()) }
     fun toUsage(): UsageHistory = usage
+
+    /** Histórico sem as perguntas indicadas (para zerar um tema). */
+    fun without(ids: Set<String>): QuestionHistory = QuestionHistory(entries.filterKeys { it !in ids })
 }
+
+/** Pergunta marcada pelo jogador como errada ou confusa. Sai do jogo até ser devolvida. */
+@Serializable
+data class QuestionReport(
+    val questionId: String,
+    val text: String,
+    val answer: String,
+    val reason: String,
+    val reportedAt: Long,
+)
 
 @Serializable
 data class GameSummary(
@@ -101,6 +114,7 @@ class LocalStore(dir: File) {
     private val historyFile = AtomicJsonFile(File(dir, "historico_perguntas.json"), QuestionHistory.serializer())
     private val gameFile = AtomicJsonFile(File(dir, "partida_atual.json"), GameState.serializer())
     private val summariesFile = AtomicJsonFile(File(dir, "partidas_anteriores.json"), ListSerializer(GameSummary.serializer()))
+    private val reportsFile = AtomicJsonFile(File(dir, "perguntas_reportadas.json"), ListSerializer(QuestionReport.serializer()))
 
     fun loadPlayers(): List<Player> = playersFile.read() ?: emptyList()
     fun savePlayers(players: List<Player>) = playersFile.write(players)
@@ -121,4 +135,7 @@ class LocalStore(dir: File) {
         summariesFile.write((listOf(summary) + list).take(30))
     }
     fun clearSummaries() = summariesFile.delete()
+
+    fun loadReports(): List<QuestionReport> = reportsFile.read() ?: emptyList()
+    fun saveReports(reports: List<QuestionReport>) = reportsFile.write(reports)
 }

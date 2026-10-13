@@ -12,14 +12,17 @@ Tablet (pergunta e placar lado a lado): ![](docs/telas/09-tablet-pergunta.png)
 
 > As capturas foram geradas automaticamente pelo teste de interface (`TouchUiTest`), com as animações desligadas.
 
-## APK de teste
+## APKs
 
 | Arquivo | Uso |
 |---|---|
-| [`apk/PERGUNTALOEI-1.5.0-teste.apk`](apk/PERGUNTALOEI-1.5.0-teste.apk) (11 MB) | **Para testar.** Build *debug*, serve para qualquer celular Android. É exatamente o código coberto pelos testes. |
+| [`apk/PERGUNTALOEI-1.6.0.apk`](apk/PERGUNTALOEI-1.6.0.apk) (1,5 MB) | **Otimizado** (*release*, minificado pelo R8): menor e mais rápido. Mesmo código, mas a versão minificada ainda não foi executada em aparelho. |
+| [`apk/PERGUNTALOEI-1.6.0-teste.apk`](apk/PERGUNTALOEI-1.6.0-teste.apk) (11 MB) | **De teste** (*debug*): exatamente o código coberto pelos testes; use se o otimizado der qualquer problema. |
+
+Os dois têm a mesma assinatura: um instala por cima do outro, mantendo jogadores e histórico.
 
 
-Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.5.0-teste.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
+Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.6.0.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
 
 ## Estrutura do projeto
 
@@ -51,7 +54,7 @@ Requisitos: JDK 17+ e Android SDK (platform 35, build-tools 35).
 
 ```bash
 echo "sdk.dir=/caminho/do/android-sdk" > local.properties
-./gradlew testDebugUnitTest      # 72 testes
+./gradlew testDebugUnitTest      # 80 testes
 ./gradlew assembleDebug          # app/build/outputs/apk/debug/app-debug.apk
 ./gradlew assembleRelease        # app/build/outputs/apk/release/app-release.apk
 ```
@@ -86,7 +89,13 @@ Para alterar perguntas: edite `tools/questions/parte*.py`, confira um arquivo no
 
 **Banco de perguntas** — **1213 perguntas** em **23 temas**: Geografia, História, Ciência, Tecnologia, Cinema, Filmes infantis, Novelas, Televisão, Esportes, Marcas e slogans, Música, Literatura, Natureza, Cultura brasileira, Curiosidades, Língua portuguesa, Matemática, Política e cidadania, Artes, Mitologia e lendas, Astronomia e espaço, Corpo humano e saúde e Culinária. São 465 fáceis, 427 médias, 246 difíceis e 75 muito difíceis; 412 são sobre o Brasil. Cada uma tem id, texto, tema, subtema, dificuldade, faixa etária, formato, alternativas, resposta, sinônimos, explicação, fonte e, quando o fato pode mudar, data de referência (ex.: "Censo 2022", "Até a Copa de 2022"). O validador recusa alternativas duplicadas, resposta fora das alternativas, enunciado que contém a resposta e quase-duplicatas; uma auditoria extra procurou perguntas que entregassem a resposta de outra do mesmo assunto. Todos os temas têm pelo menos 4 perguntas para crianças de 6 anos. Política e cidadania trata só de instituições e regras (Constituição, eleições, Poderes), sem temas partidários.
 
-**Inéditas e histórico** — nenhuma pergunta (nem quase igual) se repete na partida; o histórico fica no aparelho e é consultado na seleção (por id e por "impressão digital" do enunciado, que pega pequenas reescritas). As perguntas de cada rodada são escolhidas antes de ela começar. Quando as inéditas de um tema acabam, o app avisa e marca "Já usada em partida anterior" — nunca diz "Inédita" sem consultar o histórico. Em Configurações: inéditas por tema (contadas em segundo plano, sem travar a tela) e "Limpar histórico de perguntas". Também em Configurações, "Apagar histórico de partidas" apaga as "Últimas partidas" e o último resultado, com confirmação; jogadores, partida em andamento e histórico de perguntas não mudam.
+**Inéditas e histórico** — nenhuma pergunta (nem quase igual) se repete na partida; o histórico fica no aparelho e é consultado na seleção (por id e por "impressão digital" do enunciado, que pega pequenas reescritas). As perguntas de cada rodada são escolhidas antes de ela começar. Quando as inéditas de um tema acabam, o app avisa e marca "Já usada em partida anterior" — nunca diz "Inédita" sem consultar o histórico. Em Configurações: inéditas por tema (contadas em segundo plano, sem travar a tela) e "Limpar histórico de perguntas". Também em Configurações, "Apagar histórico de partidas" apaga as "Últimas partidas" e o último resultado, com confirmação; jogadores, partida em andamento e histórico de perguntas não mudam. Cada tema com perguntas já usadas tem o botão "Zerar", que devolve só aquele tema às inéditas.
+
+**Perguntas reportadas** — depois de cada resposta há "⚑ Reportar pergunta" (resposta errada, confusa, mais de uma certa, fácil/difícil demais). A pergunta sai do jogo na hora (nunca mais é sorteada, nem quando as inéditas acabam), sem mexer no placar. Em Configurações › Perguntas reportadas: a lista, "Devolver ao jogo" e "Compartilhar lista" (abre o Compartilhar do Android com id, pergunta, resposta e motivo — nada sobre os jogadores).
+
+**Diagnóstico** — registro técnico só no aparelho (até ~200 KB): telas, início/fim de partida, tempos de carregamento, travamentos da tela com o ponto do código onde ela parou (um vigia detecta a tela parada por mais de 2,5 s), falhas e, no Android 11+, os motivos de encerramento informados pelo sistema (inclusive o trecho da thread principal do relatório de "não está respondendo"). Sem nomes, idades, respostas ou perguntas. Em Configurações › Diagnóstico: "Compartilhar diagnóstico" e "Apagar".
+
+**Desempenho** — as perguntas são lidas em segundo plano (a tela inicial mostra "Carregando perguntas…" por instantes); a escolha de perguntas usa um índice de palavras do histórico e guarda o resultado de cada pergunta enquanto o histórico não muda (teste: menos de 20 ms por escolha com 400 perguntas no histórico); a contagem de inéditas por tema roda fora da thread da tela.
 
 **Placar e integridade** — o placar é sempre calculado a partir do registro de perguntas avaliadas (não existe outro caminho para mudar pontos). Histórico da partida com jogador, pergunta, resposta dada, forma (voz/toque/digitada/grupo), resultado e ponto; itens desfeitos aparecem riscados. A partida é salva a cada ação (escrita atômica) e retomada após o app ser fechado ou interrompido.
 
@@ -96,7 +105,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py`, confira um arquivo no
 
 ## Validação feita
 
-72 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
+80 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
 
 | Requisito | Como foi verificado |
 |---|---|
@@ -116,9 +125,9 @@ Para alterar perguntas: edite `tools/questions/parte*.py`, confira um arquivo no
 ## Limitações conhecidas
 
 - **Não foi testado em aparelho físico nem em emulador** (o ambiente de desenvolvimento não tem aceleração de hardware para emulador). A interface foi executada com Robolectric; a voz e o microfone foram testados com implementações falsas que seguem o contrato do TextToSpeech/SpeechRecognizer. Vale um teste real de voz: sotaques, ruído da sala e o comportamento do serviço de reconhecimento variam de aparelho para aparelho.
-- **Tamanho:** o APK de teste (*debug*) tem ~11 MB; o *release* minificado, ~1,5 MB (não executado em aparelho).
+- **Tamanho:** o APK de teste (*debug*) tem ~11 MB; o otimizado (*release*), ~1,5 MB.
 - O reconhecimento de fala depende do serviço instalado (normalmente Google). O app pede processamento no aparelho, mas não consegue garantir que o serviço não use a internet — por isso o aviso e o consentimento. Sem voz em português instalada, o app avisa e segue no modo tela/toque.
-- O APK *release* minificado não foi executado; use o APK de teste (*debug*) para avaliação.
+- O APK otimizado (*release*) não foi executado em aparelho nem emulador; conferi que o R8 manteve as classes de gravação dos dados (serializadores). Se algo estranho acontecer só nele, use o APK de teste.
 - As perguntas foram escritas e revisadas com cuidado, e as fontes indicam onde checar cada fato. As 425 perguntas da versão 1.5.0 passaram por uma segunda revisão independente de cada resposta (que corrigiu 3 respostas ambíguas e algumas explicações), mas só parte das referências foi consultada online. Recomendo uma revisão humana, especialmente de novelas, marcas/slogans e datas.
 - O desempate usa apenas perguntas inéditas; se acabarem, a opção é aceitar o empate.
 - "Desfazer último ponto" vale para o resultado exibido na hora (antes de tocar em Continuar). Para resultados anteriores, o histórico mostra tudo, mas não edita.

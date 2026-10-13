@@ -13,8 +13,8 @@ android {
         applicationId = "br.com.perguntaloei"
         minSdk = 24
         targetSdk = 35
-        versionCode = 7
-        versionName = "1.5.0"
+        versionCode = 8
+        versionName = "1.6.0"
         vectorDrawables { useSupportLibrary = true }
     }
     buildTypes {
@@ -32,7 +32,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
-    buildFeatures { compose = true }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
     testOptions {
         unitTests.isReturnDefaultValues = true
         // Robolectric precisa dos recursos e assets (banco de perguntas) nos testes de unidade.

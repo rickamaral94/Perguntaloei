@@ -82,14 +82,19 @@ fun HomeScreen(vm: AppViewModel) {
             Spacer(Modifier.height(24.dp))
             Column(Modifier.widthIn(max = 480.dp).fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(14.dp)) {
                 val saved = vm.game
-                if (saved != null && !saved.finished) {
-                    ArcadeButton("Continuar partida", { vm.go(Screen.GAME) }, Modifier.fillMaxWidth(), color = Arcade.Green, icon = "▶")
+                if (!vm.bankReady) {
+                    // As perguntas carregam em segundo plano (instantes); até lá, só o que não depende delas.
+                    Text("Carregando perguntas…", color = Arcade.Muted, fontSize = 16.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+                } else {
+                    if (saved != null && !saved.finished) {
+                        ArcadeButton("Continuar partida", { vm.go(Screen.GAME) }, Modifier.fillMaxWidth(), color = Arcade.Green, icon = "▶")
+                    }
+                    ArcadeButton("Novo jogo", { vm.go(Screen.SETUP) }, Modifier.fillMaxWidth(), color = Arcade.Yellow, icon = "🕹️")
                 }
-                ArcadeButton("Novo jogo", { vm.go(Screen.SETUP) }, Modifier.fillMaxWidth(), color = Arcade.Yellow, icon = "🕹️")
                 ArcadeButton("Jogadores (${vm.players.size})", { vm.go(Screen.PLAYERS) }, Modifier.fillMaxWidth(), color = Arcade.Cyan, icon = "👥")
                 ArcadeButton("Como jogar", { vm.go(Screen.RULES) }, Modifier.fillMaxWidth(), color = Arcade.Purple, icon = "📜")
                 ArcadeButton("Configurações", { vm.go(Screen.SETTINGS) }, Modifier.fillMaxWidth(), color = Arcade.Orange, icon = "⚙️")
-                if (saved != null && saved.finished) {
+                if (vm.bankReady && saved != null && saved.finished) {
                     ArcadeButton("Ver último resultado", { vm.go(Screen.GAME) }, Modifier.fillMaxWidth(), color = Arcade.Magenta, icon = "🏆")
                 }
             }

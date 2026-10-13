@@ -283,6 +283,25 @@ class GameEngineTest {
     }
 
     @Test
+    fun reportedQuestionsAreNeverPickedEvenWhenReusingHistory() {
+        // Metade do banco reportada e o resto já usado: só pode sair pergunta não reportada.
+        val blocked = bank.questions.filterIndexed { i, _ -> i % 2 == 0 }.map { it.id }.toSet()
+        history = UsageHistory(bank.questions.map { it.id }.toSet(), emptySet(), blocked)
+        repeat(5) { seed ->
+            var s = engine.newGame(GameConfig(rounds = 3), TestSupport.family, 900L + seed)
+            while (!s.finished) {
+                s = when (s.phase) {
+                    Phase.ROUND_INTRO -> engine.reduce(s, GameAction.BeginRound)
+                    Phase.ASKING -> engine.answer(s, true)
+                    Phase.REVEAL -> engine.reduce(s, GameAction.Next)
+                    else -> engine.reduce(s, GameAction.AcceptTie)
+                }
+            }
+            assertTrue("reportada saiu: ${s.usedQuestionIds.intersect(blocked)}", s.usedQuestionIds.none { it in blocked })
+        }
+    }
+
+    @Test
     fun whenFreshQuestionsRunOutTheReuseIsFlagged() {
         // Histórico com TODAS as perguntas: o jogo continua, mas marca como já usada (nunca como inédita).
         history = UsageHistory(bank.questions.map { it.id }.toSet(), emptySet())

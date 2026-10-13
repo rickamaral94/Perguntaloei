@@ -97,6 +97,20 @@ class QuestionBankTest {
         val start = System.nanoTime()
         repeat(20) { selector.pick(player, null, config, emptySet(), history, kotlin.random.Random(it)) }
         val perPickMs = (System.nanoTime() - start) / 20 / 1_000_000.0
-        assertTrue("escolha levou $perPickMs ms", perPickMs < 50)
+        assertTrue("escolha levou $perPickMs ms", perPickMs < 20)
+    }
+
+    /** O índice de palavras dá exatamente o mesmo resultado de comparar com todo o histórico. */
+    @Test
+    fun indexedHistoryLookupMatchesTheFullComparison() {
+        val used = bank.questions.filterIndexed { i, _ -> i % 3 == 0 }
+        val history = UsageHistory(used.map { it.id }.toSet(), used.map { TextNormalizer.fingerprint(it.text) }.toSet())
+        val extra = listOf("capital brasil", "", "maior planeta sistema solar", "quem escreveu dom casmurro machado")
+        val candidates = bank.questions.map { TextNormalizer.fingerprint(it.text) } + extra
+        for (fp in candidates) {
+            val tokens = if (fp.isEmpty()) emptySet() else fp.split(' ').toSet()
+            val brute = history.usedTokens.any { TextNormalizer.jaccardOf(tokens, it) >= 0.8 }
+            assertEquals(fp, brute, history.hasSimilarUsed(tokens))
+        }
     }
 }

@@ -421,7 +421,7 @@ class GameEngine(
                 notice = "O tema ${order.first().label} não tem perguntas suficientes para todos agora. Tema desta rodada: ${theme.label}."
             }
             if (slots.any { it.reusedFromHistory }) {
-                notice = listOfNotNull(notice, "Algumas perguntas já apareceram em partidas anteriores (as inéditas deste tema acabaram).").joinToString(" ")
+                notice = listOfNotNull(notice, "Algumas perguntas já apareceram em partidas anteriores (as inéditas deste tema acabaram; em Configurações dá para zerar o histórico só deste tema).").joinToString(" ")
             }
             round = RoundState(RoundKind.REGULAR, number, theme, slots)
             chosenThemes = listOf(theme)

@@ -48,6 +48,7 @@ class MainActivity : ComponentActivity() {
                         when (e) {
                             UiEvent.RequestMicPermission -> micPermission.launch(Manifest.permission.RECORD_AUDIO)
                             UiEvent.OpenTtsSettings -> openTtsSettings()
+                            is UiEvent.ShareText -> share(e.subject, e.text)
                         }
                     }
                 }
@@ -98,5 +99,15 @@ class MainActivity : ComponentActivity() {
         super.onStop()
         // Interrupção (ligação, tela bloqueada, troca de app): fala e microfone param; a partida já está salva.
         vm.onAppPaused()
+    }
+
+    /** "Compartilhar" do Android: o jogador escolhe o app (WhatsApp, e-mail...). O app não envia nada sozinho. */
+    private fun share(subject: String, text: String) {
+        val send = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, text)
+        }
+        runCatching { startActivity(Intent.createChooser(send, subject)) }
     }
 }

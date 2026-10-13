@@ -12,9 +12,31 @@ import kotlin.random.Random
 data class UsageHistory(
     val usedIds: Set<String> = emptySet(),
     val usedFingerprints: Set<String> = emptySet(),
+    /** Perguntas reportadas pelo jogador: nunca são escolhidas. */
+    val blocked: Set<String> = emptySet(),
 ) {
     /** Palavras de cada impressão digital usada, separadas uma única vez. */
     val usedTokens: List<Set<String>> by lazy { usedFingerprints.map { it.split(' ').toSet() } }
+
+    /** Para cada palavra, quais impressões usadas a contêm: só essas precisam ser comparadas. */
+    private val tokenIndex: Map<String, IntArray> by lazy {
+        val index = HashMap<String, MutableList<Int>>()
+        usedTokens.forEachIndexed { i, set -> set.forEach { index.getOrPut(it) { mutableListOf() }.add(i) } }
+        index.mapValues { it.value.toIntArray() }
+    }
+
+    /** Resultado por pergunta, guardado enquanto este histórico valer (ele é imutável). */
+    private val verdicts = java.util.concurrent.ConcurrentHashMap<String, Boolean>()
+
+    internal fun verdict(id: String, compute: () -> Boolean): Boolean = verdicts.getOrPut(id, compute)
+
+    /** Alguma pergunta usada tem palavras quase iguais (Jaccard ≥ 0,8)? Mesmo resultado de comparar com todas. */
+    fun hasSimilarUsed(tokens: Set<String>): Boolean {
+        if (tokens.isEmpty()) return usedTokens.any { it.isEmpty() }
+        val shared = HashMap<Int, Int>()
+        for (t in tokens) tokenIndex[t]?.forEach { i -> shared[i] = (shared[i] ?: 0) + 1 }
+        return shared.any { (i, inter) -> inter.toDouble() / (tokens.size + usedTokens[i].size - inter) >= 0.8 }
+    }
 
     companion object { val EMPTY = UsageHistory() }
 }
@@ -74,14 +96,17 @@ class QuestionSelector(private val bank: QuestionBank) {
         q.id in gameUsed || bank.nearDuplicates[q.id].orEmpty().any { it in gameUsed }
 
     /** Usada (ou quase igual a uma usada) em partidas anteriores, segundo o histórico salvo. */
-    fun usedInHistory(q: Question, history: UsageHistory): Boolean {
+    fun usedInHistory(q: Question, history: UsageHistory): Boolean =
+        history.verdict(q.id) { computeUsedInHistory(q, history) }
+
+    private fun computeUsedInHistory(q: Question, history: UsageHistory): Boolean {
         if (q.id in history.usedIds) return true
         if (bank.nearDuplicates[q.id].orEmpty().any { it in history.usedIds }) return true
         if (history.usedFingerprints.isEmpty()) return false
         val fp = bank.fingerprints[q.id] ?: TextNormalizer.fingerprint(q.text)
         if (fp in history.usedFingerprints) return true
         val tokens = bank.fingerprintTokens[q.id] ?: fp.split(' ').toSet()
-        return history.usedTokens.any { other -> TextNormalizer.jaccardOf(tokens, other) >= 0.8 }
+        return history.hasSimilarUsed(tokens)
     }
 
     fun pool(config: GameConfig, theme: Theme?): List<Question> = bank.questions.filter {
@@ -102,7 +127,9 @@ class QuestionSelector(private val bank: QuestionBank) {
         random: Random,
         allowHistoryReuse: Boolean = true,
     ): Pick? {
-        val base = pool(config, theme).filter { AgePolicy.ageAllows(it, player.age) && !usedInGame(it, gameUsed) }
+        val base = pool(config, theme).filter {
+            it.id !in history.blocked && AgePolicy.ageAllows(it, player.age) && !usedInGame(it, gameUsed)
+        }
         val preferred = AgePolicy.preferredDifficulties(player.age, config.difficulties)
         val fallback = AgePolicy.fallbackDifficulties(player.age)
         val fresh = base.filter { !usedInHistory(it, history) }

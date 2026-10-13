@@ -155,6 +155,73 @@ class VoiceFlowTest {
     }
 
     @Test
+    fun questionsLoadInTheBackgroundAndTheHomeScreenWaitsForThem() {
+        waitFor { vm.bankReady }
+        assertTrue(vm.bankReady)
+        assertTrue(vm.bank.questions.size > 1000)
+    }
+
+    @Test
+    fun aReportedQuestionLeavesTheGameAndCanComeBack() {
+        startAsking(GameConfig(rounds = 1, voiceHost = false, voiceAnswers = false))
+        val id = q.id
+        vm.dialog = AppDialog.ReportQuestion(id)
+        vm.reportQuestion(id, "Resposta errada")
+        assertEquals(null, vm.dialog)
+        assertTrue(vm.isReported(id))
+        assertEquals("Resposta errada", vm.reports.single().reason)
+        vm.reportQuestion(id, "Pergunta confusa")
+        assertEquals("não duplica", 1, vm.reports.size)
+        vm.refreshThemeStats()
+        waitFor { vm.themeStats != null }
+        assertEquals("reportada sai da contagem", vm.bank.questions.size - 1, vm.themeStats!!.values.sumOf { it.second })
+
+        var shared: UiEvent? = null
+        val job = kotlinx.coroutines.MainScope().launch { vm.events.collect { shared = it } }
+        idle(20) // o coletor precisa estar ouvindo antes do evento
+        vm.shareReports()
+        waitFor { shared != null }
+        job.cancel()
+        val text = (shared as UiEvent.ShareText).text
+        assertTrue(text.contains(id) && text.contains("Resposta errada"))
+        assertTrue("só a pergunta, nenhum nome de jogador", vm.players.none { text.contains(it.name) })
+
+        Thread.sleep(300)
+        assertTrue("guardado no aparelho", newVm().isReported(id))
+        vm.restoreReported(id)
+        assertTrue(vm.reports.isEmpty())
+    }
+
+    @Test
+    fun clearingOneThemeKeepsTheHistoryOfTheOthers() {
+        vm.startNewGame(GameConfig(rounds = 4, voiceHost = false, voiceAnswers = false))
+        idle()
+        while (!vm.game!!.finished) {
+            when (vm.game!!.phase) {
+                Phase.ROUND_INTRO -> vm.dispatch(GameAction.BeginRound)
+                Phase.ASKING -> vm.dispatch(GameAction.Skip)
+                Phase.REVEAL -> vm.dispatch(GameAction.Next)
+                else -> vm.dispatch(GameAction.AcceptTie)
+            }
+            idle(20)
+        }
+        val usedThemes = vm.game!!.usedQuestionIds.map { vm.bank.byId.getValue(it).theme }.toSet()
+        assertTrue("a partida passou por mais de um tema", usedThemes.size > 1)
+        val target = usedThemes.first()
+        val before = vm.historyCount
+        val inTarget = vm.game!!.usedQuestionIds.count { vm.bank.byId.getValue(it).theme == target }
+        vm.dialog = AppDialog.ConfirmClearTheme(target)
+        vm.clearThemeHistory(target)
+        assertEquals(null, vm.dialog)
+        assertEquals(before - inTarget, vm.historyCount)
+        vm.refreshThemeStats()
+        waitFor { vm.themeStats != null }
+        val stats = vm.themeStats!!
+        assertEquals("tema zerado: tudo inédito", stats.getValue(target).second, stats.getValue(target).first)
+        assertTrue("os outros temas continuam com histórico", (usedThemes - target).all { stats.getValue(it).first < stats.getValue(it).second })
+    }
+
+    @Test
     fun clearingTheMatchHistoryKeepsPlayersAndQuestionHistory() {
         vm.startNewGame(GameConfig(rounds = 1, voiceHost = false, voiceAnswers = false))
         idle()

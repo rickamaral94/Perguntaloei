@@ -13,6 +13,9 @@ import br.com.perguntaloei.audio.Sfx
 import br.com.perguntaloei.audio.SoundFx
 import br.com.perguntaloei.data.AppSettings
 import br.com.perguntaloei.data.GameSummary
+import br.com.perguntaloei.data.QuestionReport
+import br.com.perguntaloei.diag.Diagnostics
+import br.com.perguntaloei.questions.UsageHistory
 import br.com.perguntaloei.data.HistoryEntry
 import br.com.perguntaloei.data.LocalStore
 import br.com.perguntaloei.data.QuestionHistory
@@ -45,6 +48,9 @@ import br.com.perguntaloei.voice.VoiceDeps
 import br.com.perguntaloei.voice.VoiceHost
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -96,6 +102,12 @@ sealed interface AppDialog {
 
     /** Confirma apagar o histórico de partidas (últimos resultados). */
     data object ConfirmClearMatches : AppDialog
+
+    /** Confirma zerar o histórico de perguntas de um só tema. */
+    data class ConfirmClearTheme(val theme: Theme) : AppDialog
+
+    /** Reportar a pergunta mostrada (escolha do motivo). */
+    data class ReportQuestion(val questionId: String) : AppDialog
 }
 
 sealed interface UiEvent {
@@ -103,6 +115,9 @@ sealed interface UiEvent {
 
     /** Abre as configurações de voz do Android (instalar vozes de alta qualidade). */
     data object OpenTtsSettings : UiEvent
+
+    /** Abre o "Compartilhar" do Android com um texto (o jogador escolhe para onde mandar). */
+    data class ShareText(val subject: String, val text: String) : UiEvent
 }
 
 /** Dependências reais de áudio: voz do sistema Android. */
@@ -136,9 +151,45 @@ class AppViewModel @JvmOverloads constructor(
     private val store = LocalStore(File(app.filesDir, "dados"))
     private val ioWriter = Dispatchers.IO.limitedParallelism(1)
 
-    val bank: QuestionBank = app.assets.open("questions.json").use { QuestionBank.fromJson(it.reader(Charsets.UTF_8).readText()) }
+    /** O banco (mais de mil perguntas) é lido em segundo plano, sem atrasar a primeira tela. */
+    private val bankLoad = viewModelScope.async(Dispatchers.IO) {
+        val bank = Diagnostics.timed("banco", "ler perguntas") {
+            app.assets.open("questions.json").use { QuestionBank.fromJson(it.reader(Charsets.UTF_8).readText()) }
+        }
+        Diagnostics.timed("banco", "preparar comparação de perguntas") { bank.fingerprintTokens.size }
+        bank
+    }
+
+    /** Pronto em segundo plano; se alguém pedir antes disso, espera (é coisa de instantes). */
+    val bank: QuestionBank by lazy { runBlocking { bankLoad.await() } }
+
+    /** Perguntas carregadas: a tela inicial só libera "Novo jogo" depois disso. */
+    var bankReady by mutableStateOf(false)
+        private set
+
     private var questionHistory: QuestionHistory = store.loadHistory()
-    val engine = GameEngine(bank, { questionHistory.toUsage() })
+        set(value) {
+            field = value
+            usageCache = null
+            historyVersion++
+        }
+
+    /** Muda a cada alteração do histórico (para a tela recontar as inéditas). */
+    var historyVersion by mutableStateOf(0)
+        private set
+
+    /** Perguntas reportadas pelo jogador (ficam fora do jogo até serem devolvidas). */
+    var reports by mutableStateOf(store.loadReports())
+        private set
+
+    @Volatile private var usageCache: UsageHistory? = null
+
+    /** Histórico + perguntas reportadas, como a escolha de perguntas usa (recalculado só quando muda). */
+    private fun usage(): UsageHistory = usageCache ?: questionHistory.toUsage()
+        .copy(blocked = reports.map { it.questionId }.toSet())
+        .also { usageCache = it }
+
+    val engine: GameEngine by lazy { GameEngine(bank, { usage() }) }
 
     var screen by mutableStateOf(Screen.HOME)
         private set
@@ -188,14 +239,18 @@ class AppViewModel @JvmOverloads constructor(
     private var pendingListenJob: Job? = null
 
     init {
-        // Prepara as impressões digitais das perguntas fora da thread principal.
-        viewModelScope.launch(Dispatchers.Default) { bank.fingerprintTokens.size }
+        viewModelScope.launch {
+            runCatching { bankLoad.await() }
+                .onSuccess { bankReady = true; Diagnostics.log("banco", "${it.questions.size} perguntas prontas") }
+                .onFailure { Diagnostics.log("banco", "falha ao ler perguntas: $it") }
+        }
     }
 
     // ================================================================== navegação
 
     fun go(to: Screen) {
         val from = screen
+        if (from != to) Diagnostics.log("tela", "$from → $to")
         if (from == Screen.GAME && to != Screen.GAME) onAppPaused()
         screen = to
         // Voltando do histórico da partida, não relê nada: o grupo decide se quer Repetir.
@@ -261,6 +316,7 @@ class AppViewModel @JvmOverloads constructor(
     /** Postado na thread principal: o aviso pode chegar antes de o apresentador terminar de ser criado. */
     private fun onTtsStatus(status: TtsStatus) {
         viewModelScope.launch(Dispatchers.Main) {
+            if (status != ttsStatus) Diagnostics.log("voz", "apresentador: $status (${host.engine ?: "padrão"})")
             ttsStatus = status
             if (status == TtsStatus.READY) applyVoice()
             engineOptions = host.engines()
@@ -344,21 +400,80 @@ class AppViewModel @JvmOverloads constructor(
      */
     var themeStats by mutableStateOf<Map<Theme, Pair<Int, Int>>?>(null)
         private set
-    private var themeStatsFor: QuestionHistory? = null
+    private var themeStatsFor: UsageHistory? = null
 
     fun refreshThemeStats() {
-        val history = questionHistory
-        if (history === themeStatsFor) return
-        themeStatsFor = history
+        val usage = usage()
+        if (usage === themeStatsFor) return
+        themeStatsFor = usage
         viewModelScope.launch(Dispatchers.Default) {
-            val usage = history.toUsage()
-            val stats = Theme.entries.associateWith { t ->
-                val all = bank.questions.filter { it.theme == t }
-                all.count { !engine.selector.usedInHistory(it, usage) } to all.size
+            val stats = Diagnostics.timed("tela", "contar inéditas por tema", slowMs = 300) {
+                Theme.entries.associateWith { t ->
+                    val all = bank.questions.filter { it.theme == t && it.id !in usage.blocked }
+                    all.count { !engine.selector.usedInHistory(it, usage) } to all.size
+                }
             }
-            launch(Dispatchers.Main) { if (themeStatsFor === history) themeStats = stats }
+            launch(Dispatchers.Main) { if (themeStatsFor === usage) themeStats = stats }
         }
     }
+
+    /** Zera o histórico só das perguntas de um tema (elas voltam a ser inéditas). */
+    fun clearThemeHistory(theme: Theme) {
+        dialog = null
+        val ids = bank.questions.filter { it.theme == theme }.map { it.id }.toSet()
+        questionHistory = questionHistory.without(ids)
+        historyCount = questionHistory.entries.size
+        val snapshot = questionHistory
+        Diagnostics.log("histórico", "tema $theme zerado")
+        viewModelScope.launch(ioWriter) { store.saveHistory(snapshot) }
+    }
+
+    // ---------------------------------------------------------------- perguntas reportadas
+
+    fun isReported(questionId: String): Boolean = reports.any { it.questionId == questionId }
+
+    /** Tira a pergunta do jogo e guarda o motivo, para revisão. */
+    fun reportQuestion(questionId: String, reason: String) {
+        dialog = null
+        if (isReported(questionId)) return
+        val q = bank.byId[questionId] ?: return
+        updateReports(reports + QuestionReport(q.id, q.text, q.answer, reason, System.currentTimeMillis()))
+        Diagnostics.log("pergunta", "reportada $questionId ($reason)")
+    }
+
+    /** Devolve uma pergunta reportada ao jogo. */
+    fun restoreReported(questionId: String) = updateReports(reports.filterNot { it.questionId == questionId })
+
+    fun clearReports() = updateReports(emptyList())
+
+    private fun updateReports(list: List<QuestionReport>) {
+        reports = list
+        usageCache = null
+        viewModelScope.launch(ioWriter) { store.saveReports(list) }
+    }
+
+    /** Lista das reportadas, para mandar a quem cuida das perguntas. */
+    fun shareReports() {
+        if (reports.isEmpty()) return
+        val text = buildString {
+            append("PERGUNTÁ-LO-EI ${BuildConfig.VERSION_NAME} — perguntas reportadas (${reports.size})\n\n")
+            reports.forEach { r ->
+                append("• [${r.questionId}] ${r.text}\n  Resposta do jogo: ${r.answer}\n  Motivo: ${r.reason}\n\n")
+            }
+        }
+        viewModelScope.launch { _events.emit(UiEvent.ShareText("Perguntas reportadas", text)) }
+    }
+
+    // ---------------------------------------------------------------- diagnóstico
+
+    fun shareDiagnostics() {
+        viewModelScope.launch {
+            val text = withContext(Dispatchers.IO) { Diagnostics.export() }
+            _events.emit(UiEvent.ShareText("Diagnóstico do PERGUNTÁ-LO-EI", text))
+        }
+    }
+
+    fun clearDiagnostics() = Diagnostics.clear()
 
     /** Apaga as "Últimas partidas" e o último resultado. Partida em andamento, jogadores e perguntas ficam. */
     fun clearMatchHistory() {
@@ -397,6 +512,7 @@ class AppViewModel @JvmOverloads constructor(
         voice = VoiceUi()
         game = state
         persist(state)
+        Diagnostics.log("partida", "nova: ${config.mode} · ${config.rounds} rodadas · ${activePlayers.size} jogadores · ${config.themes.size} temas")
         screen = Screen.GAME
         react(null, state)
     }
@@ -509,6 +625,7 @@ class AppViewModel @JvmOverloads constructor(
     }
 
     private fun saveSummary(state: GameState) {
+        Diagnostics.log("partida", "terminada · ${state.log.size} perguntas")
         val summary = GameSummary(
             id = state.id,
             finishedAt = System.currentTimeMillis(),

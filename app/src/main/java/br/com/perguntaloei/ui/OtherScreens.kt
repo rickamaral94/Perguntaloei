@@ -24,6 +24,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
@@ -218,16 +220,25 @@ fun SettingsScreen(vm: AppViewModel) {
             PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Green) {
                 PixelText("BANCO DE PERGUNTAS", size = 11.sp, color = Arcade.Green, shadow = Color.Transparent)
                 Spacer(Modifier.height(6.dp))
-                Text("${vm.bank.questions.size} perguntas no aparelho · ${vm.historyCount} já usadas em partidas.", color = Arcade.White, fontSize = 16.sp)
+                if (vm.bankReady) {
+                    Text("${vm.bank.questions.size} perguntas no aparelho · ${vm.historyCount} já usadas em partidas.", color = Arcade.White, fontSize = 16.sp)
+                }
                 Spacer(Modifier.height(6.dp))
                 // Contagem calculada em segundo plano (com mais de mil perguntas, fazer isso na tela travava o app).
-                LaunchedEffect(vm.historyCount) { vm.refreshThemeStats() }
+                LaunchedEffect(vm.bankReady, vm.historyVersion, vm.reports) { if (vm.bankReady) vm.refreshThemeStats() }
                 val stats = vm.themeStats
                 if (stats == null) Text("Contando perguntas inéditas…", color = Arcade.Muted, fontSize = 15.sp)
                 stats?.forEach { (t, counts) ->
-                    Row(Modifier.fillMaxWidth().padding(vertical = 1.dp)) {
+                    Row(Modifier.fillMaxWidth().padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text("${Arcade.themeIcon(t)} ${t.label}", color = Arcade.White, fontSize = 15.sp, modifier = Modifier.weight(1f))
                         Text("${counts.first} inéditas / ${counts.second}", color = Arcade.Muted, fontSize = 15.sp)
+                        if (counts.first < counts.second) {
+                            Spacer(Modifier.width(8.dp))
+                            ArcadeButton(
+                                "Zerar", { vm.dialog = AppDialog.ConfirmClearTheme(t) },
+                                color = Arcade.Orange, minHeight = 34.dp, fontSize = 13.sp, description = "Zerar ${t.label}",
+                            )
+                        }
                     }
                 }
                 Spacer(Modifier.height(10.dp))
@@ -246,6 +257,41 @@ fun SettingsScreen(vm: AppViewModel) {
                     "Apagar histórico de partidas", { vm.dialog = AppDialog.ConfirmClearMatches }, Modifier.fillMaxWidth(),
                     color = Arcade.Magenta, fontSize = 15.sp,
                 )
+            }
+            PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Orange) {
+                PixelText("PERGUNTAS REPORTADAS", size = 11.sp, color = Arcade.Orange, shadow = Color.Transparent)
+                Spacer(Modifier.height(6.dp))
+                if (vm.reports.isEmpty()) {
+                    Text(
+                        "Nenhuma. Se uma pergunta parecer errada ou confusa, toque em \"Reportar pergunta\" depois da resposta: ela sai do jogo e aparece aqui.",
+                        color = Arcade.White, fontSize = 15.sp,
+                    )
+                } else {
+                    Text("${vm.reports.size} fora do jogo. Mande a lista para quem cuida das perguntas.", color = Arcade.White, fontSize = 15.sp)
+                    vm.reports.forEach { r ->
+                        Column(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+                            Text(r.text, color = Arcade.White, fontSize = 15.sp)
+                            Text("Resposta do jogo: ${r.answer} · ${r.reason}", color = Arcade.Muted, fontSize = 13.sp)
+                            TextButton({ vm.restoreReported(r.questionId) }) { Text("Devolver ao jogo", color = Arcade.Cyan) }
+                        }
+                    }
+                    Spacer(Modifier.height(6.dp))
+                    ArcadeButton("Compartilhar lista", { vm.shareReports() }, Modifier.fillMaxWidth(), color = Arcade.Orange, fontSize = 15.sp)
+                }
+            }
+            PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Cyan) {
+                PixelText("DIAGNÓSTICO", size = 11.sp, color = Arcade.Cyan, shadow = Color.Transparent)
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    "Se o app travar ou fechar sozinho, compartilhe o diagnóstico com quem cuida do app. Ele tem só dados técnicos " +
+                        "(telas, tempos, travamentos e o modelo do celular): nada de nomes, idades, respostas ou perguntas. Só sai do aparelho se você compartilhar.",
+                    color = Arcade.White, fontSize = 15.sp,
+                )
+                Spacer(Modifier.height(8.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    ArcadeButton("Compartilhar diagnóstico", { vm.shareDiagnostics() }, Modifier.weight(1f), color = Arcade.Cyan, fontSize = 14.sp)
+                    ArcadeButton("Apagar", { vm.clearDiagnostics() }, color = Arcade.PanelLight, textColor = Arcade.White, fontSize = 14.sp, description = "Apagar diagnóstico")
+                }
             }
             Text("Fonte dos títulos: Silkscreen, de Jason Kottke (SIL Open Font License). Sons sintetizados pelo próprio app.", color = Arcade.Muted, fontSize = 13.sp)
             Spacer(Modifier.height(24.dp))
@@ -326,6 +372,26 @@ fun Dialogs(vm: AppViewModel) {
             },
             confirmButton = { TextButton({ vm.onPermissionsChoice(true) }) { Text("Permitir microfone", color = Arcade.Green) } },
             dismissButton = { TextButton({ vm.onPermissionsChoice(false) }) { Text("Agora não (só toque)", color = Arcade.Orange) } },
+        )
+        is AppDialog.ConfirmClearTheme -> AlertDialog(
+            onDismissRequest = { vm.dialog = null },
+            title = { Text("Zerar ${d.theme.label}?") },
+            text = { Text("As perguntas deste tema voltam a ser inéditas. Os outros temas, jogadores e partidas não mudam.", fontSize = 16.sp) },
+            confirmButton = { TextButton({ vm.clearThemeHistory(d.theme) }) { Text("Zerar", color = Arcade.Orange) } },
+            dismissButton = { TextButton({ vm.dialog = null }) { Text("Cancelar") } },
+        )
+        is AppDialog.ReportQuestion -> AlertDialog(
+            onDismissRequest = { vm.dialog = null },
+            title = { Text("Reportar pergunta") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text("A pergunta sai do jogo e vai para a lista em Configurações. O placar não muda.", fontSize = 15.sp)
+                    listOf("Resposta errada", "Pergunta confusa", "Mais de uma resposta certa", "Fácil ou difícil demais").forEach { reason ->
+                        ArcadeButton(reason, { vm.reportQuestion(d.questionId, reason) }, Modifier.fillMaxWidth(), color = Arcade.Orange, fontSize = 15.sp)
+                    }
+                }
+            },
+            confirmButton = { TextButton({ vm.dialog = null }) { Text("Cancelar") } },
         )
         AppDialog.ConfirmClearMatches -> AlertDialog(
             onDismissRequest = { vm.dialog = null },

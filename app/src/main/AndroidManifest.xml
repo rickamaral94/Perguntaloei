@@ -19,6 +19,7 @@
     </queries>
 
     <application
+        android:name=".PerguntaloeiApp"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:dataExtractionRules="@xml/data_extraction_rules"

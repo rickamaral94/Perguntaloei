@@ -6,6 +6,9 @@ import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.hasAnyAncestor
+import androidx.compose.ui.test.isDialog
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -78,6 +81,10 @@ class TouchUiTest {
     private fun setupPlayers(config: GameConfig) {
         val v = vm // fora da thread principal: obter a Activity espera a interface ficar ociosa
         settle()
+        // As perguntas carregam em segundo plano; "Novo jogo" aparece quando terminam.
+        val until = System.currentTimeMillis() + 10_000
+        while (!v.bankReady && System.currentTimeMillis() < until) { Thread.sleep(20); settle() }
+        assertTrue("perguntas não carregaram", v.bankReady)
         // Primeira abertura: o app pede as permissões (só uma vez); aqui seguimos só com toque.
         if (v.dialog == AppDialog.Permissions) {
             shot("00-permissoes")
@@ -150,7 +157,18 @@ class TouchUiTest {
                     turns++
                 }
                 Phase.REVEAL -> {
-                    if (!shotReveal) { shot("06-resultado"); shotReveal = true }
+                    if (!shotReveal) {
+                        shot("06-resultado")
+                        shotReveal = true
+                        // Reportar a pergunta pela tela: sai do jogo, sem mexer no placar.
+                        val before = vm.game!!.players.sumOf { vm.game!!.score(it.id) }
+                        rule.onNodeWithText("⚑ Reportar pergunta (errada ou confusa)").performScrollTo().performClick()
+                        settle()
+                        tap("Resposta errada")
+                        assertEquals(1, vm.reports.size)
+                        assertEquals(before, vm.game!!.players.sumOf { vm.game!!.score(it.id) })
+                        rule.onNodeWithText("⚑ Pergunta reportada: ela não volta mais ao jogo.").assertExists()
+                    }
                     tap("Continuar ▶")
                 }
                 else -> tap("Aceitar empate")
@@ -187,7 +205,7 @@ class TouchUiTest {
         shot("09-configuracoes")
         rule.onNodeWithText("Apagar histórico de partidas").performClick()
         settle()
-        rule.onNodeWithText("Apagar").performClick()
+        rule.onNode(hasText("Apagar") and hasAnyAncestor(isDialog())).performClick()
         settle()
         assertTrue(v.summaries.isEmpty())
         rule.onNodeWithText("Nenhuma partida terminada guardada.").assertExists()

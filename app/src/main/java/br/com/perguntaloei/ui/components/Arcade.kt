@@ -112,6 +112,8 @@ fun ArcadeButton(
     icon: String? = null,
     minHeight: Dp = 56.dp,
     fontSize: TextUnit = 17.sp,
+    /** Nome lido pelo leitor de tela (padrão: o texto do botão). */
+    description: String = text,
 ) {
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
@@ -122,7 +124,7 @@ fun ArcadeButton(
     Box(
         modifier = modifier
             .heightIn(min = minHeight)
-            .semantics { contentDescription = text }
+            .semantics { contentDescription = description }
             .clickable(interaction, indication = null, enabled = enabled, role = Role.Button, onClick = onClick),
         propagateMinConstraints = true,
     ) {

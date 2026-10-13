@@ -28,6 +28,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -463,6 +464,14 @@ private fun Reveal(vm: AppViewModel, state: GameState) {
             )
             Spacer(Modifier.height(12.dp))
             ArcadeButton("Continuar ▶", { vm.dispatch(GameAction.Next) }, Modifier.fillMaxWidth(), color = Arcade.Green, minHeight = 60.dp, fontSize = 19.sp)
+            Spacer(Modifier.height(6.dp))
+            if (vm.isReported(q.id)) {
+                Text("⚑ Pergunta reportada: ela não volta mais ao jogo.", color = Arcade.Orange, fontSize = 14.sp)
+            } else {
+                TextButton({ vm.dialog = AppDialog.ReportQuestion(q.id) }, Modifier.fillMaxWidth()) {
+                    Text("⚑ Reportar pergunta (errada ou confusa)", color = Arcade.Muted, fontSize = 14.sp)
+                }
+            }
         }
     }
     Spacer(Modifier.height(12.dp))
