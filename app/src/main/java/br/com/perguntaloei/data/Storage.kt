@@ -120,4 +120,5 @@ class LocalStore(dir: File) {
         val list = loadSummaries().filter { it.id != summary.id }
         summariesFile.write((listOf(summary) + list).take(30))
     }
+    fun clearSummaries() = summariesFile.delete()
 }

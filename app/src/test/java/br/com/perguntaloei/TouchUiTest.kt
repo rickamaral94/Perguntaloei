@@ -16,6 +16,7 @@ import br.com.perguntaloei.game.Phase
 import br.com.perguntaloei.model.GameConfig
 import br.com.perguntaloei.model.GameMode
 import br.com.perguntaloei.model.QuestionFormat
+import br.com.perguntaloei.game.GameAction
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -162,6 +163,34 @@ class TouchUiTest {
         shot("07-fim")
         tap("📋 Histórico")
         shot("08-historico")
+    }
+
+    /** Configurações abre sem travar (contagem em segundo plano) e apaga o histórico de partidas. */
+    @Test
+    @Config(qualifiers = "w411dp-h891dp-xxhdpi")
+    fun settingsOpensAndDeletesTheMatchHistory() {
+        setupPlayers(GameConfig(mode = GameMode.THEMED_ROUNDS, rounds = 1, voiceHost = false, voiceAnswers = false))
+        val v = vm
+        rule.runOnUiThread { v.startNewGame(v.settings.lastConfig) }
+        settle()
+        rule.runOnUiThread { v.dispatch(GameAction.EndEarly) }
+        rule.waitUntil(5000) { v.summaries.isNotEmpty() }
+        rule.runOnUiThread { v.go(Screen.HOME) }
+        settle()
+        val start = System.currentTimeMillis()
+        tap("Configurações")
+        assertTrue("abrir Configurações levou ${System.currentTimeMillis() - start} ms", System.currentTimeMillis() - start < 5000)
+        val until = System.currentTimeMillis() + 10_000
+        while (v.themeStats == null && System.currentTimeMillis() < until) { Thread.sleep(20); settle() }
+        assertTrue("contagem por tema não chegou", v.themeStats != null)
+        rule.onNodeWithText("Apagar histórico de partidas").performScrollTo()
+        shot("09-configuracoes")
+        rule.onNodeWithText("Apagar histórico de partidas").performClick()
+        settle()
+        rule.onNodeWithText("Apagar").performClick()
+        settle()
+        assertTrue(v.summaries.isEmpty())
+        rule.onNodeWithText("Nenhuma partida terminada guardada.").assertExists()
     }
 
     @Test

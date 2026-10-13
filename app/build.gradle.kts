@@ -13,21 +13,10 @@ android {
         applicationId = "br.com.perguntaloei"
         minSdk = 24
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.3.1"
+        versionCode = 6
+        versionName = "1.4.0"
         vectorDrawables { useSupportLibrary = true }
     }
-    // Voz neural: bibliotecas nativas só para celulares ARM. Um APK por arquitetura deixa cada
-    // arquivo menor: arm64-v8a serve para praticamente todos os celulares atuais; armeabi-v7a, para os antigos de 32 bits.
-    splits {
-        abi {
-            isEnable = true
-            reset()
-            include("arm64-v8a", "armeabi-v7a")
-            isUniversalApk = false
-        }
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -56,8 +45,6 @@ android {
     }
     packaging {
         resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" }
-        // Bibliotecas nativas comprimidas no APK: download bem menor (extraídas na instalação).
-        jniLibs { useLegacyPackaging = true }
     }
 }
 
@@ -72,8 +59,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
-    // Voz neural offline (Piper/VITS) — Apache 2.0.
-    implementation("com.github.k2-fsa.sherpa-onnx:sherpa-onnx:v1.13.8")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
     testImplementation("junit:junit:4.13.2")

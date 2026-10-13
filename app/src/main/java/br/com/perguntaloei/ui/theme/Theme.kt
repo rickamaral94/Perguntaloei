@@ -79,7 +79,7 @@ object Arcade {
         QuizTheme.ARTES -> "🎨"
         QuizTheme.MITOLOGIA -> "⚡"
         QuizTheme.ASTRONOMIA -> "🚀"
-        QuizTheme.CORPO_HUMANO -> "🫀"
+        QuizTheme.CORPO_HUMANO -> "💪"
         QuizTheme.CULINARIA -> "🍲"
     }
 }

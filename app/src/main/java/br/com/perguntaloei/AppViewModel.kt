@@ -33,17 +33,14 @@ import br.com.perguntaloei.game.Speech
 import br.com.perguntaloei.model.GameConfig
 import br.com.perguntaloei.model.Player
 import br.com.perguntaloei.model.Question
+import br.com.perguntaloei.model.Theme
 import br.com.perguntaloei.questions.QuestionBank
 import br.com.perguntaloei.questions.TextNormalizer
 import br.com.perguntaloei.voice.SpeakResult
 import br.com.perguntaloei.voice.SpeechEvent
 import br.com.perguntaloei.voice.SpeechInput
 import br.com.perguntaloei.voice.TtsStatus
-import br.com.perguntaloei.voice.DownloadResult
 import br.com.perguntaloei.voice.EngineOption
-import br.com.perguntaloei.voice.NeuralVoicePack
-import br.com.perguntaloei.voice.NeuralSpeaker
-import br.com.perguntaloei.voice.RemoteNeuralSpeaker
 import br.com.perguntaloei.voice.VoiceDeps
 import br.com.perguntaloei.voice.VoiceHost
 import kotlinx.coroutines.Dispatchers
@@ -55,8 +52,11 @@ import kotlinx.coroutines.launch
 import java.io.File
 import java.util.UUID
 
-/** Mecanismo "voz padrão do sistema" (usado quando a voz neural não está disponível). */
+/** Mecanismo "voz padrão do sistema". */
 const val SYSTEM_VOICE = ""
+
+/** Id da voz neural experimental (removida na 1.4.0); quem a usava volta para a voz do sistema. */
+private const val OLD_NEURAL_ENGINE = "perguntaloei.voz-neural"
 
 enum class Screen { HOME, PLAYERS, SETUP, GAME, LOG, RULES, SETTINGS }
 
@@ -94,8 +94,8 @@ sealed interface AppDialog {
     /** Primeira abertura: explica e pede microfone + consentimento de uma vez. */
     data object Permissions : AppDialog
 
-    /** Confirma o download da voz neural (usa internet). */
-    data object ConfirmVoiceDownload : AppDialog
+    /** Confirma apagar o histórico de partidas (últimos resultados). */
+    data object ConfirmClearMatches : AppDialog
 }
 
 sealed interface UiEvent {
@@ -105,23 +105,17 @@ sealed interface UiEvent {
     data object OpenTtsSettings : UiEvent
 }
 
-/** Dependências reais de áudio. Padrão: voz do sistema; a neural só se o jogador baixou e escolheu. */
+/** Dependências reais de áudio: voz do sistema Android. */
 fun defaultVoiceDeps(app: Application): VoiceDeps {
-    val pack = NeuralVoicePack(File(app.filesDir, "voz-neural"))
+    // A voz neural experimental foi removida: apaga o que tiver sido baixado (cerca de 60 MB).
+    Thread { runCatching { File(app.filesDir, "voz-neural").deleteRecursively() } }.start()
     return VoiceDeps(
-        speaker = { engine, onStatus ->
-            if (engine == NeuralSpeaker.ENGINE_ID && pack.isInstalled() && NeuralSpeaker.isSupported(app)) {
-                RemoteNeuralSpeaker(app, pack.dir, onStatus)
-            } else {
-                VoiceHost(app, engine?.takeIf { it != NeuralSpeaker.ENGINE_ID }?.ifBlank { null }, onStatus)
-            }
-        },
+        speaker = { engine, onStatus -> VoiceHost(app, engine?.takeIf { it != OLD_NEURAL_ENGINE }?.ifBlank { null }, onStatus) },
         listener = SpeechInput(app),
         sounds = SoundFx(),
         micPermission = {
             ContextCompat.checkSelfPermission(app, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
         },
-        voicePack = pack,
     )
 }
 
@@ -150,7 +144,7 @@ class AppViewModel @JvmOverloads constructor(
         private set
     var players by mutableStateOf(store.loadPlayers())
         private set
-    var settings by mutableStateOf(migrateThemes(store.loadSettings()))
+    var settings by mutableStateOf(migrateThemes(store.loadSettings()).let { if (it.ttsEngine == OLD_NEURAL_ENGINE) it.copy(ttsEngine = null, ttsVoice = null) else it })
         private set
     var game by mutableStateOf<GameState?>(store.loadGame())
         private set
@@ -267,100 +261,10 @@ class AppViewModel @JvmOverloads constructor(
     /** Postado na thread principal: o aviso pode chegar antes de o apresentador terminar de ser criado. */
     private fun onTtsStatus(status: TtsStatus) {
         viewModelScope.launch(Dispatchers.Main) {
-            // Voz neural não carregou neste aparelho: volta para a voz do sistema, sem travar o jogo.
-            // Fica gravado para não tentar de novo a cada abertura; o jogador pode reativar em Configurações.
-            if (status == TtsStatus.UNAVAILABLE && host.engine == NeuralSpeaker.ENGINE_ID) {
-                host.shutdown()
-                updateSettings { it.copy(ttsEngine = SYSTEM_VOICE, ttsVoice = null) }
-                ttsStatus = TtsStatus.INITIALIZING
-                host = speakerFactory(SYSTEM_VOICE) { onTtsStatus(it) }
-                if (dialog == null) {
-                    dialog = AppDialog.Message(
-                        "Voz neural",
-                        "A voz neural não conseguiu funcionar agora neste aparelho (pode faltar memória). " +
-                            "O jogo voltou para a voz padrão. Você pode tentar de novo em Configurações.",
-                    )
-                }
-                return@launch
-            }
             ttsStatus = status
             if (status == TtsStatus.READY) applyVoice()
-            engineOptions = (if (neuralInstalled) listOf(EngineOption(NeuralSpeaker.ENGINE_ID, "Voz neural (baixada, mais natural)")) else emptyList()) +
-                host.engines().filter { it.packageName != NeuralSpeaker.ENGINE_ID }
+            engineOptions = host.engines()
             currentEngine = host.engine
-        }
-    }
-
-    val usingNeuralVoice: Boolean get() = currentEngine == NeuralSpeaker.ENGINE_ID
-
-    // ---------------------------------------------------------------- voz neural (download opcional)
-
-    private val voicePack = deps.voicePack
-    var neuralInstalled by mutableStateOf(voicePack?.isInstalled() == true)
-        private set
-    /** Progresso do download (0..1) ou null quando não está baixando. */
-    var neuralProgress by mutableStateOf<Float?>(null)
-        private set
-    val neuralSizeMb: Int get() = ((voicePack?.totalBytes ?: 0L) / (1024 * 1024)).toInt()
-    val neuralSupported: Boolean by lazy { voicePack != null && NeuralSpeaker.isSupported(getApplication()) }
-    @Volatile private var cancelDownload = false
-
-    /** Botão "Baixar voz neural": primeiro explica e pede confirmação. */
-    fun askNeuralDownload() {
-        if (neuralProgress != null || neuralInstalled) return
-        dialog = AppDialog.ConfirmVoiceDownload
-    }
-
-    fun startNeuralDownload() {
-        dialog = null
-        val pack = voicePack ?: return
-        if (neuralProgress != null) return
-        if (!pack.hasSpaceFor()) {
-            dialog = AppDialog.Message("Pouco espaço", "A voz neural precisa de cerca de $neuralSizeMb MB livres. Libere espaço e tente de novo.")
-            return
-        }
-        cancelDownload = false
-        neuralProgress = 0f
-        viewModelScope.launch(Dispatchers.IO) {
-            var last = -1
-            val result = pack.download(
-                onProgress = { done, total ->
-                    val pct = (done * 100 / total.coerceAtLeast(1)).toInt()
-                    if (pct != last) {
-                        last = pct
-                        viewModelScope.launch(Dispatchers.Main) { if (neuralProgress != null) neuralProgress = pct / 100f }
-                    }
-                },
-                isCancelled = { cancelDownload },
-            )
-            launch(Dispatchers.Main) {
-                neuralProgress = null
-                when (result) {
-                    DownloadResult.Done -> {
-                        neuralInstalled = true
-                        dialog = AppDialog.Message("Voz neural pronta!", "A voz neural foi baixada e já está em uso. Ela funciona sem internet. Você pode voltar para a voz do sistema quando quiser.")
-                        chooseEngine(NeuralSpeaker.ENGINE_ID)
-                    }
-                    DownloadResult.Cancelled -> Unit
-                    is DownloadResult.Failed -> dialog = AppDialog.Message("Download não concluído", result.message)
-                }
-            }
-        }
-    }
-
-    fun cancelNeuralDownload() {
-        cancelDownload = true
-    }
-
-    /** Apaga a voz baixada; se estava em uso, volta para a voz do sistema. */
-    fun deleteNeuralVoice() {
-        if (usingNeuralVoice) chooseEngine(SYSTEM_VOICE)
-        viewModelScope.launch(Dispatchers.IO) {
-            voicePack?.delete()
-            launch(Dispatchers.Main) {
-                neuralInstalled = false
-                engineOptions = engineOptions.filter { it.packageName != NeuralSpeaker.ENGINE_ID }
-            }
         }
     }
 
@@ -373,10 +277,6 @@ class AppViewModel @JvmOverloads constructor(
 
     fun chooseEngine(packageName: String) {
         if (packageName == currentEngine) return
-        if (packageName == NeuralSpeaker.ENGINE_ID && (!neuralSupported || !neuralInstalled)) {
-            dialog = AppDialog.Message("Voz neural", "Baixe a voz neural primeiro (ou este aparelho não é compatível com ela).")
-            return
-        }
         updateSettings { it.copy(ttsEngine = packageName, ttsVoice = null) }
         silenceIO()
         host.shutdown()
@@ -438,7 +338,39 @@ class AppViewModel @JvmOverloads constructor(
         viewModelScope.launch(ioWriter) { store.saveHistory(QuestionHistory()) }
     }
 
-    fun usedInHistory(q: Question): Boolean = engine.selector.usedInHistory(q, questionHistory.toUsage())
+    /**
+     * Perguntas inéditas por tema (inéditas, total), para a tela de Configurações. Calculado fora da
+     * thread principal e só quando o histórico muda: feito na tela, chegou a travar o app.
+     */
+    var themeStats by mutableStateOf<Map<Theme, Pair<Int, Int>>?>(null)
+        private set
+    private var themeStatsFor: QuestionHistory? = null
+
+    fun refreshThemeStats() {
+        val history = questionHistory
+        if (history === themeStatsFor) return
+        themeStatsFor = history
+        viewModelScope.launch(Dispatchers.Default) {
+            val usage = history.toUsage()
+            val stats = Theme.entries.associateWith { t ->
+                val all = bank.questions.filter { it.theme == t }
+                all.count { !engine.selector.usedInHistory(it, usage) } to all.size
+            }
+            launch(Dispatchers.Main) { if (themeStatsFor === history) themeStats = stats }
+        }
+    }
+
+    /** Apaga as "Últimas partidas" e o último resultado. Partida em andamento, jogadores e perguntas ficam. */
+    fun clearMatchHistory() {
+        dialog = null
+        summaries = emptyList()
+        val finishedGame = game?.finished == true
+        if (finishedGame) game = null
+        viewModelScope.launch(ioWriter) {
+            store.clearSummaries()
+            if (finishedGame) store.clearGame()
+        }
+    }
 
     // ================================================================== início da partida
 

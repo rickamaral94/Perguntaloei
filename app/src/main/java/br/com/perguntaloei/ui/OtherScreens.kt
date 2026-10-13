@@ -14,11 +14,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.perguntaloei.AppDialog
 import br.com.perguntaloei.AppViewModel
-import br.com.perguntaloei.SYSTEM_VOICE
 import br.com.perguntaloei.Screen
 import br.com.perguntaloei.game.GameAction
 import br.com.perguntaloei.game.Outcome
@@ -42,7 +41,6 @@ import br.com.perguntaloei.ui.components.PixelPanel
 import br.com.perguntaloei.ui.components.PixelText
 import br.com.perguntaloei.ui.components.ScreenScaffold
 import br.com.perguntaloei.ui.theme.Arcade
-import br.com.perguntaloei.voice.NeuralSpeaker
 
 // ====================================================================== HISTÓRICO DA PARTIDA
 
@@ -174,14 +172,10 @@ fun SettingsScreen(vm: AppViewModel) {
             PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Purple) {
                 PixelText("VOZ DO APRESENTADOR", size = 11.sp, color = Arcade.Purple, shadow = Color.Transparent)
                 Spacer(Modifier.height(6.dp))
-                NeuralVoiceCard(vm)
-                Spacer(Modifier.height(10.dp))
                 VoicePicker(vm)
                 Spacer(Modifier.height(10.dp))
-                if (!vm.usingNeuralVoice) {
-                    Text("Tom da voz: ${"%.2f".format(s.voicePitch)}", color = Arcade.White, fontSize = 17.sp)
-                    Slider(value = s.voicePitch, onValueChange = { v -> vm.setVoicePitch((v * 20).toInt() / 20f) }, valueRange = 0.8f..1.2f, colors = sliderColors())
-                }
+                Text("Tom da voz: ${"%.2f".format(s.voicePitch)}", color = Arcade.White, fontSize = 17.sp)
+                Slider(value = s.voicePitch, onValueChange = { v -> vm.setVoicePitch((v * 20).toInt() / 20f) }, valueRange = 0.8f..1.2f, colors = sliderColors())
                 Text("Velocidade da fala: ${"%.1f".format(s.speechRate)}x", color = Arcade.White, fontSize = 17.sp)
                 Slider(value = s.speechRate, onValueChange = { v -> vm.updateSettings { it.copy(speechRate = (v * 10).toInt() / 10f) } }, valueRange = 0.6f..1.4f, colors = sliderColors())
                 SwitchRow("Abrir o microfone sozinho após a leitura", s.autoListen) { v -> vm.updateSettings { it.copy(autoListen = v) } }
@@ -226,16 +220,32 @@ fun SettingsScreen(vm: AppViewModel) {
                 Spacer(Modifier.height(6.dp))
                 Text("${vm.bank.questions.size} perguntas no aparelho · ${vm.historyCount} já usadas em partidas.", color = Arcade.White, fontSize = 16.sp)
                 Spacer(Modifier.height(6.dp))
-                Theme.entries.forEach { t ->
-                    val all = vm.bank.questions.filter { it.theme == t }
-                    val used = all.count { vm.usedInHistory(it) }
+                // Contagem calculada em segundo plano (com 788 perguntas, fazer isso na tela travava o app).
+                LaunchedEffect(vm.historyCount) { vm.refreshThemeStats() }
+                val stats = vm.themeStats
+                if (stats == null) Text("Contando perguntas inéditas…", color = Arcade.Muted, fontSize = 15.sp)
+                stats?.forEach { (t, counts) ->
                     Row(Modifier.fillMaxWidth().padding(vertical = 1.dp)) {
                         Text("${Arcade.themeIcon(t)} ${t.label}", color = Arcade.White, fontSize = 15.sp, modifier = Modifier.weight(1f))
-                        Text("${all.size - used} inéditas / ${all.size}", color = Arcade.Muted, fontSize = 15.sp)
+                        Text("${counts.first} inéditas / ${counts.second}", color = Arcade.Muted, fontSize = 15.sp)
                     }
                 }
                 Spacer(Modifier.height(10.dp))
                 ArcadeButton("Limpar histórico de perguntas", { confirmClear = true }, Modifier.fillMaxWidth(), color = Arcade.Orange, fontSize = 15.sp)
+            }
+            PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Magenta) {
+                PixelText("HISTÓRICO DE PARTIDAS", size = 11.sp, color = Arcade.Magenta, shadow = Color.Transparent)
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    if (vm.summaries.isEmpty() && vm.game?.finished != true) "Nenhuma partida terminada guardada."
+                    else "${vm.summaries.size} partida(s) guardada(s) em \"Últimas partidas\".",
+                    color = Arcade.White, fontSize = 16.sp,
+                )
+                Spacer(Modifier.height(10.dp))
+                ArcadeButton(
+                    "Apagar histórico de partidas", { vm.dialog = AppDialog.ConfirmClearMatches }, Modifier.fillMaxWidth(),
+                    color = Arcade.Magenta, fontSize = 15.sp,
+                )
             }
             Text("Fonte dos títulos: Silkscreen, de Jason Kottke (SIL Open Font License). Sons sintetizados pelo próprio app.", color = Arcade.Muted, fontSize = 13.sp)
             Spacer(Modifier.height(24.dp))
@@ -254,7 +264,6 @@ fun SettingsScreen(vm: AppViewModel) {
 
 const val PRIVACY_TEXT =
     "Nomes, idades, respostas, placar e histórico ficam somente neste aparelho e não são enviados para servidores. " +
-        "O app só usa a internet se você pedir para baixar a voz neural opcional, e nesse download nada sobre os jogadores é enviado. " +
         "O app não grava nem guarda áudio. Para entender respostas faladas, o app usa o serviço de reconhecimento de fala " +
         "do próprio Android (geralmente do Google). Dependendo do aparelho, esse serviço pode processar o áudio na internet. " +
         "O app pede para usar o processamento no aparelho quando disponível. Se preferir, recuse e respondam tocando na tela."
@@ -318,20 +327,18 @@ fun Dialogs(vm: AppViewModel) {
             confirmButton = { TextButton({ vm.onPermissionsChoice(true) }) { Text("Permitir microfone", color = Arcade.Green) } },
             dismissButton = { TextButton({ vm.onPermissionsChoice(false) }) { Text("Agora não (só toque)", color = Arcade.Orange) } },
         )
-        AppDialog.ConfirmVoiceDownload -> AlertDialog(
+        AppDialog.ConfirmClearMatches -> AlertDialog(
             onDismissRequest = { vm.dialog = null },
-            title = { Text("Baixar a voz neural?") },
+            title = { Text("Apagar histórico de partidas?") },
             text = {
                 Text(
-                    "A voz neural é mais natural que a voz padrão, mas é um arquivo grande (cerca de ${vm.neuralSizeMb} MB). " +
-                        "Ela será baixada uma única vez do Hugging Face (huggingface.co), onde o modelo de voz é publicado. " +
-                        "Prefira usar Wi-Fi.\n\nO download só busca os arquivos da voz: nenhum nome, idade, resposta ou histórico é enviado. " +
-                        "Depois de baixada, a voz funciona sem internet, e você pode voltar para a voz padrão ou apagá-la quando quiser.",
+                    "Some a lista de \"Últimas partidas\" e o último resultado. Jogadores, configurações, " +
+                        "a partida em andamento e o histórico de perguntas não mudam.",
                     fontSize = 16.sp,
                 )
             },
-            confirmButton = { TextButton({ vm.startNeuralDownload() }) { Text("Baixar", color = Arcade.Green) } },
-            dismissButton = { TextButton({ vm.dialog = null }) { Text("Agora não") } },
+            confirmButton = { TextButton({ vm.clearMatchHistory() }) { Text("Apagar", color = Arcade.Red) } },
+            dismissButton = { TextButton({ vm.dialog = null }) { Text("Cancelar") } },
         )
         AppDialog.ConfirmEndGame -> AlertDialog(
             onDismissRequest = { vm.dialog = null },
@@ -343,56 +350,12 @@ fun Dialogs(vm: AppViewModel) {
     }
 }
 
-/** Voz neural opcional: baixar (com confirmação), acompanhar o download, usar ou apagar. */
-@Composable
-private fun NeuralVoiceCard(vm: AppViewModel) {
-    Column(
-        Modifier.fillMaxWidth().background(Arcade.PanelLight).padding(10.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        Text("Voz neural (opcional)", color = Arcade.Yellow, fontSize = 17.sp, fontWeight = FontWeight.Bold)
-        val progress = vm.neuralProgress
-        when {
-            !vm.neuralSupported -> Text(
-                "Este aparelho não é compatível com a voz neural (processador ou memória insuficiente). O jogo continua com a voz padrão.",
-                color = Arcade.Muted, fontSize = 14.sp,
-            )
-            progress != null -> {
-                Text("Baixando a voz… ${(progress * 100).toInt()}%", color = Arcade.White, fontSize = 15.sp)
-                LinearProgressIndicator(
-                    progress = { progress }, Modifier.fillMaxWidth().height(10.dp),
-                    color = Arcade.Green, trackColor = Arcade.Panel,
-                )
-                ArcadeButton("Cancelar download", { vm.cancelNeuralDownload() }, Modifier.fillMaxWidth(), color = Arcade.Orange, fontSize = 15.sp)
-            }
-            !vm.neuralInstalled -> {
-                Text(
-                    "Uma voz mais natural, que funciona sem internet depois de baixada (cerca de ${vm.neuralSizeMb} MB). " +
-                        "Sem ela, o jogo usa a voz padrão.",
-                    color = Arcade.Muted, fontSize = 14.sp,
-                )
-                ArcadeButton("Baixar voz neural (${vm.neuralSizeMb} MB)", { vm.askNeuralDownload() }, Modifier.fillMaxWidth(), color = Arcade.Green, fontSize = 15.sp)
-            }
-            else -> {
-                Text("Voz neural baixada (${vm.neuralSizeMb} MB).", color = Arcade.White, fontSize = 15.sp)
-                if (vm.usingNeuralVoice) {
-                    ArcadeButton("Usar a voz padrão", { vm.chooseEngine(SYSTEM_VOICE) }, Modifier.fillMaxWidth(), color = Arcade.Cyan, fontSize = 15.sp)
-                } else {
-                    ArcadeButton("Usar a voz neural", { vm.chooseEngine(NeuralSpeaker.ENGINE_ID) }, Modifier.fillMaxWidth(), color = Arcade.Green, fontSize = 15.sp)
-                }
-                ArcadeButton("Apagar voz neural (liberar espaço)", { vm.deleteNeuralVoice() }, Modifier.fillMaxWidth(), color = Arcade.Red, fontSize = 15.sp)
-            }
-        }
-    }
-}
-
 /** Escolha do mecanismo e da voz, com exemplo e atalho para instalar vozes melhores. */
 @Composable
 private fun VoicePicker(vm: AppViewModel) {
     val s = vm.settings
     Text(
-        if (vm.usingNeuralVoice) "Usando a voz neural baixada: natural, em português do Brasil e funciona sem internet."
-        else "Usando a voz padrão do jogo (vozes do sistema Android).",
+        "Usando as vozes do sistema Android. Para uma voz mais natural, toque em \"Instalar vozes\" e baixe a voz em português de alta qualidade.",
         color = Arcade.Muted, fontSize = 14.sp,
     )
     if (vm.engineOptions.isNotEmpty()) {
@@ -430,9 +393,8 @@ private fun VoicePicker(vm: AppViewModel) {
     Spacer(Modifier.height(8.dp))
     Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
         ArcadeButton("▶ Ouvir exemplo", { vm.previewVoice() }, Modifier.weight(1f), color = Arcade.Green, fontSize = 15.sp)
-        if (!vm.usingNeuralVoice) ArcadeButton("Instalar vozes", { vm.openTtsSettings() }, Modifier.weight(1f), color = Arcade.Cyan, fontSize = 15.sp)
+        ArcadeButton("Instalar vozes", { vm.openTtsSettings() }, Modifier.weight(1f), color = Arcade.Cyan, fontSize = 15.sp)
     }
-    if (vm.usingNeuralVoice) return
     SwitchRow("Permitir vozes online (mais naturais)", s.allowNetworkVoices) { vm.setAllowNetworkVoices(it) }
     Text(
         "Vozes online enviam ao provedor de voz (ex.: Google) o texto falado, que inclui as perguntas e os nomes dos jogadores. " +

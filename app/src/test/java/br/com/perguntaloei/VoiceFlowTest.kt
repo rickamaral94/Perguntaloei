@@ -148,58 +148,51 @@ class VoiceFlowTest {
         assertTrue("microfone deveria estar aberto", vm.voice.listening)
     }
 
-    @Test
-    fun ifTheNeuralVoiceFailsTheGameGoesBackToTheDefaultVoiceAndRemembers() {
-        val abis = android.os.Build.SUPPORTED_ABIS
-        org.robolectric.util.ReflectionHelpers.setStaticField(android.os.Build::class.java, "SUPPORTED_ABIS", arrayOf("arm64-v8a"))
-        try {
-        val base = java.io.File(app.filesDir, "voz-teste-falha")
-        val pack = br.com.perguntaloei.voice.NeuralVoicePack(base, files = listOf(br.com.perguntaloei.voice.VoiceFile("m", 1, "x")))
-        pack.dir.mkdirs()
-        java.io.File(pack.dir, "m").writeText("1")
-        java.io.File(pack.dir, ".instalado").writeText("ok")
-        val neural = br.com.perguntaloei.voice.NeuralSpeaker.ENGINE_ID
-        val asked = mutableListOf<String?>()
-        val vm = AppViewModel(app, VoiceDeps({ e, s ->
-            asked += e
-            if (e == neural) {
-                object : Speaker by FakeSpeaker(s) {
-                    override val engine = neural
-                    override val status = TtsStatus.UNAVAILABLE
-                    init { android.os.Handler(Looper.getMainLooper()).post { s(TtsStatus.UNAVAILABLE) } }
-                }
-            } else FakeSpeaker(s)
-        }, FakeListener(true), SilentSounds(), { true }, pack))
-        idle(50)
-        assertTrue(vm.neuralInstalled)
-        vm.chooseEngine(neural)
-        idle(50)
-        assertEquals(listOf(null, neural, SYSTEM_VOICE), asked)
-        assertEquals(SYSTEM_VOICE, vm.settings.ttsEngine)
-        assertEquals(TtsStatus.READY, vm.ttsStatus)
-        assertTrue((vm.dialog as? AppDialog.Message)?.text.orEmpty().contains("voz padrão"))
-        } finally {
-            org.robolectric.util.ReflectionHelpers.setStaticField(android.os.Build::class.java, "SUPPORTED_ABIS", abis)
-        }
+    private fun waitFor(cond: () -> Boolean) {
+        val end = System.currentTimeMillis() + 5000
+        while (!cond() && System.currentTimeMillis() < end) { idle(20); Thread.sleep(10) }
+        idle(20)
     }
 
     @Test
-    fun theDefaultVoiceIsTheSystemOneAndTheNeuralVoiceNeedsToBeDownloaded() {
-        val asked = mutableListOf<String?>()
-        val pack = br.com.perguntaloei.voice.NeuralVoicePack(java.io.File(app.filesDir, "voz-teste-padrao"))
-        val vm = AppViewModel(app, VoiceDeps({ e, s -> asked += e; FakeSpeaker(s) }, FakeListener(true), SilentSounds(), { true }, pack))
-        idle(50)
-        assertEquals(listOf<String?>(null), asked)
-        assertFalse(vm.usingNeuralVoice)
-        assertFalse(vm.neuralInstalled)
-        assertTrue(vm.engineOptions.none { it.packageName == br.com.perguntaloei.voice.NeuralSpeaker.ENGINE_ID })
-        vm.chooseEngine(br.com.perguntaloei.voice.NeuralSpeaker.ENGINE_ID)
-        assertEquals("sem baixar, a voz neural não é usada", 1, asked.size)
-        assertTrue(vm.dialog is AppDialog.Message)
-        vm.dialog = null
-        vm.askNeuralDownload()
-        assertEquals("o download só começa depois da confirmação", AppDialog.ConfirmVoiceDownload, vm.dialog)
-        assertEquals(null, vm.neuralProgress)
+    fun clearingTheMatchHistoryKeepsPlayersAndQuestionHistory() {
+        vm.startNewGame(GameConfig(rounds = 1, voiceHost = false, voiceAnswers = false))
+        idle()
+        vm.dispatch(GameAction.EndEarly)
+        waitFor { vm.summaries.isNotEmpty() }
+        assertTrue(vm.game!!.finished)
+        assertEquals(1, vm.summaries.size)
+
+        vm.dialog = AppDialog.ConfirmClearMatches
+        vm.clearMatchHistory()
+        idle()
+        assertEquals(null, vm.dialog)
+        assertTrue(vm.summaries.isEmpty())
+        assertEquals("o último resultado também some", null, vm.game)
+        assertEquals(4, vm.players.size)
+        Thread.sleep(300)
+        val reopened = newVm()
+        assertTrue("apagado também no armazenamento", reopened.summaries.isEmpty())
+        assertEquals(null, reopened.game)
+        assertEquals(4, reopened.players.size)
+    }
+
+    @Test
+    fun clearingTheMatchHistoryNeverTouchesAGameInProgress() {
+        startAsking()
+        vm.clearMatchHistory()
+        idle()
+        assertTrue(vm.game != null && !vm.game!!.finished)
+    }
+
+    @Test
+    fun themeCountsAreComputedInTheBackgroundAndAddUp() {
+        assertEquals(null, vm.themeStats)
+        vm.refreshThemeStats()
+        waitFor { vm.themeStats != null }
+        val stats = vm.themeStats!!
+        assertEquals(vm.bank.questions.size, stats.values.sumOf { it.second })
+        assertTrue(stats.values.all { it.first == it.second })
     }
 
     @Test

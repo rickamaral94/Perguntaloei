@@ -16,12 +16,10 @@ Tablet (pergunta e placar lado a lado): ![](docs/telas/09-tablet-pergunta.png)
 
 | Arquivo | Uso |
 |---|---|
-| [`apk/PERGUNTALOEI-1.3.1-teste-arm64.apk`](apk/PERGUNTALOEI-1.3.1-teste-arm64.apk) (24 MB) | **Para testar.** Build *debug* para celulares arm64 (praticamente todos os aparelhos atuais). É exatamente o código coberto pelos testes. |
+| [`apk/PERGUNTALOEI-1.4.0-teste.apk`](apk/PERGUNTALOEI-1.4.0-teste.apk) (11 MB) | **Para testar.** Build *debug*, serve para qualquer celular Android. É exatamente o código coberto pelos testes. |
 
-A voz neural **não vem dentro do APK**: é um download opcional (~61 MB) feito em Configurações, só se o jogador quiser. Sem ela, o jogo usa a voz padrão (vozes do sistema Android).
-Para celulares antigos de 32 bits, gere o APK `armeabi-v7a` com `./gradlew assembleDebug` (sai em `app/build/outputs/apk/debug/`).
 
-Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.3.1-teste-arm64.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
+Para instalar: copie o APK para o celular e abra-o (permita "instalar apps desconhecidos"), ou `adb install apk/PERGUNTALOEI-1.4.0-teste.apk`. Android 7.0 (API 24) ou superior. Instala por cima das versões anteriores, mantendo jogadores e histórico.
 
 ## Estrutura do projeto
 
@@ -34,7 +32,7 @@ app/src/main/java/br/com/perguntaloei/
 │               (AnswerInterpreter), roteiro do apresentador (PresenterScript)
 ├─ data/        Armazenamento local com escrita atômica (jogadores, configurações,
 │               histórico de perguntas, partida em andamento, partidas anteriores)
-├─ voice/       Voz neural opcional (NeuralVoicePack baixa e confere; NeuralSpeaker: Piper pt-BR via sherpa-onnx), vozes do
+├─ voice/       Vozes do sistema (VoiceHost: escolhe a voz pt-BR mais natural), reconhecimento de fala
 │               sistema (VoiceHost/TextToSpeech) e reconhecimento de fala (SpeechInput),
 │               atrás de interfaces testáveis
 ├─ audio/       Efeitos sonoros 8 bits sintetizados no próprio app (sem arquivos de áudio)
@@ -44,7 +42,6 @@ app/src/main/java/br/com/perguntaloei/
 app/src/main/assets/questions.json   Banco de perguntas (gerado, offline)
 app/src/test/                        Testes (JVM + Robolectric)
 tools/questions/                     Fonte do banco (parte1…5.py) + validador/gerador
-tools/voz-neural/verificar.sh        Baixa a voz neural como o app (mesmos hashes) e gera áudio real, num PC Linux
 tools/make_icons.py                  Gerador do ícone (adaptativo + PNGs por densidade)
 ```
 
@@ -54,9 +51,9 @@ Requisitos: JDK 17+ e Android SDK (platform 35, build-tools 35).
 
 ```bash
 echo "sdk.dir=/caminho/do/android-sdk" > local.properties
-./gradlew testDebugUnitTest      # 86 testes
-./gradlew assembleDebug          # app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
-./gradlew assembleRelease        # app/build/outputs/apk/release/app-arm64-v8a-release.apk
+./gradlew testDebugUnitTest      # 72 testes
+./gradlew assembleDebug          # app/build/outputs/apk/debug/app-debug.apk
+./gradlew assembleRelease        # app/build/outputs/apk/release/app-release.apk
 ```
 
 Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/questions/build_questions.py`
@@ -76,7 +73,7 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 
 **Voz padrão** — o jogo já vem pronto com a voz do sistema Android (detalhes abaixo).
 
-**Voz neural (download opcional)** — em Configurações › Voz do apresentador há o botão "Baixar voz neural". Antes de baixar, o app explica o tamanho (~61 MB), de onde vem (Hugging Face, versão fixa do repositório público do modelo) e que nada sobre os jogadores é enviado; só baixa se o jogador confirmar. Há barra de progresso e "Cancelar" (o download pode ser retomado sem rebaixar o que já veio). Cada arquivo só é aceito se o tamanho e o SHA-256 baterem com os valores fixados no app. Depois de baixada, a voz (modelo Piper "faber", rodando no próprio celular com o sherpa-onnx) é bem mais natural e **funciona sem internet**; dá para alternar entre "Usar a voz neural" e "Usar a voz padrão" e "Apagar voz neural (liberar espaço)" a qualquer momento. A voz neural roda num **processo separado** do jogo (`NeuralVoiceService`), com 2 threads e prioridade baixa: se ela travar, demorar mais de 45 s para carregar, parar de responder no meio de uma fala ou o aparelho ficar sem memória, a tela continua respondendo, a fala em andamento termina com aviso e o jogo volta sozinho para a voz padrão (e avisa). Aparelhos com pouca memória (menos de ~2,5 GB) não oferecem a voz neural. Cada frase é gerada em segundo plano enquanto a anterior toca, e o aviso de "fim da leitura" só vem quando o último som termina — o microfone continua abrindo só depois da leitura. Se a voz neural não carregar no aparelho, o app volta sozinho para a voz do sistema. Amostras em [`docs/vozes/`](docs/vozes/).
+**Voz neural** — uma voz neural (Piper via sherpa-onnx) foi testada nas versões 1.2–1.3 e retirada na 1.4.0 para manter o app leve e estável; fica para avaliar mais adiante (o código está no histórico do git). Quem tinha baixado a voz tem os arquivos apagados automaticamente e volta para a voz do sistema.
 
 **Vozes do sistema (padrão)** — o app escolhe automaticamente a voz em português mais natural instalada no aparelho (maior qualidade informada pelo mecanismo, preferindo pt-BR e vozes que funcionam sem internet). Em Configurações › Voz do apresentador dá para trocar o mecanismo (ex.: Google, Samsung), escolher a voz (a mais natural vem marcada com ★), ajustar tom e velocidade, ouvir um exemplo e abrir a instalação de vozes de alta qualidade do Android. Vozes online, que costumam ser ainda mais naturais, só aparecem se você ativar "Permitir vozes online", com o aviso de que o texto falado (perguntas e nomes) vai para o provedor. As falas variam ("Paula, é com você!", "Valendo!", "Isso mesmo!") para soar menos mecânico.
 
@@ -89,17 +86,17 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 
 **Banco de perguntas** — **788 perguntas** em **23 temas**: Geografia, História, Ciência, Tecnologia, Cinema, Filmes infantis, Novelas, Televisão, Esportes, Marcas e slogans, Música, Literatura, Natureza, Cultura brasileira, Curiosidades, Língua portuguesa, Matemática, Política e cidadania, Artes, Mitologia e lendas, Astronomia e espaço, Corpo humano e saúde e Culinária. São 331 fáceis, 272 médias, 146 difíceis e 39 muito difíceis; 253 são sobre o Brasil. Cada uma tem id, texto, tema, subtema, dificuldade, faixa etária, formato, alternativas, resposta, sinônimos, explicação, fonte e, quando o fato pode mudar, data de referência (ex.: "Censo 2022", "Até a Copa de 2022"). O validador recusa alternativas duplicadas, resposta fora das alternativas, enunciado que contém a resposta e quase-duplicatas; uma auditoria extra procurou perguntas que entregassem a resposta de outra do mesmo assunto. Todos os temas têm pelo menos 4 perguntas para crianças de 6 anos. Política e cidadania trata só de instituições e regras (Constituição, eleições, Poderes), sem temas partidários.
 
-**Inéditas e histórico** — nenhuma pergunta (nem quase igual) se repete na partida; o histórico fica no aparelho e é consultado na seleção (por id e por "impressão digital" do enunciado, que pega pequenas reescritas). As perguntas de cada rodada são escolhidas antes de ela começar. Quando as inéditas de um tema acabam, o app avisa e marca "Já usada em partida anterior" — nunca diz "Inédita" sem consultar o histórico. Em Configurações: inéditas por tema e "Limpar histórico".
+**Inéditas e histórico** — nenhuma pergunta (nem quase igual) se repete na partida; o histórico fica no aparelho e é consultado na seleção (por id e por "impressão digital" do enunciado, que pega pequenas reescritas). As perguntas de cada rodada são escolhidas antes de ela começar. Quando as inéditas de um tema acabam, o app avisa e marca "Já usada em partida anterior" — nunca diz "Inédita" sem consultar o histórico. Em Configurações: inéditas por tema (contadas em segundo plano, sem travar a tela) e "Limpar histórico de perguntas". Também em Configurações, "Apagar histórico de partidas" apaga as "Últimas partidas" e o último resultado, com confirmação; jogadores, partida em andamento e histórico de perguntas não mudam.
 
 **Placar e integridade** — o placar é sempre calculado a partir do registro de perguntas avaliadas (não existe outro caminho para mudar pontos). Histórico da partida com jogador, pergunta, resposta dada, forma (voz/toque/digitada/grupo), resultado e ponto; itens desfeitos aparecem riscados. A partida é salva a cada ação (escrita atômica) e retomada após o app ser fechado ou interrompido.
 
 **Permissões** — na primeira abertura o app explica e pede, de uma vez, o microfone e o consentimento para o reconhecimento de fala ("Permitir microfone" ou "Agora não (só toque)"). Não pergunta de novo a cada partida; dá para mudar depois em Configurações.
 
-**Privacidade** — a internet só é usada se o jogador pedir para baixar a voz neural opcional (o download apenas busca os arquivos públicos da voz, sem enviar nada sobre os jogadores); nomes, idades, respostas e histórico ficam no aparelho; backup em nuvem desativado. Não grava nem guarda áudio. O microfone é pedido na primeira abertura, com explicação, e só é usado quando o jogo espera a resposta. Como o reconhecimento de fala do Android pode usar serviço online (geralmente Google), o app mostra um aviso e pede consentimento; recusando, tudo funciona por toque. Também há modo sem voz.
+**Privacidade** — o app **não pede permissão de INTERNET**; nomes, idades, respostas e histórico ficam no aparelho; backup em nuvem desativado. Não grava nem guarda áudio. O microfone é pedido na primeira abertura, com explicação, e só é usado quando o jogo espera a resposta. Como o reconhecimento de fala do Android pode usar serviço online (geralmente Google), o app mostra um aviso e pede consentimento; recusando, tudo funciona por toque. Também há modo sem voz.
 
 ## Validação feita
 
-86 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
+72 testes automatizados, todos passando (`./gradlew testDebugUnitTest`):
 
 | Requisito | Como foi verificado |
 |---|---|
@@ -112,16 +109,14 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 | Modo por toque sem microfone | `touchOnlyGameWorksWithoutAnySpeechRecognizer` (ViewModel) e `TouchUiTest` (partida completa por toques, celular e tablet). |
 | Permissões na primeira abertura | `permissionsAreRequestedOnceAtFirstLaunch`, `decliningAtLaunchKeepsTheGameTouchOnly`. |
 | Jogadores salvos que não jogam | `inactivePlayersStaySavedButDoNotPlay` e `TouchUiTest` (desliga um jogador pela tela; a partida segue só com os demais, na ordem). |
-| Voz mais natural | `NeuralSpeakerTest` (fila, ordem, fim só após o último som, interrupção, falha do modelo), `RemoteNeuralSpeakerTest` (voz em processo separado: fala completa, interrupção, processo da voz morrendo no meio da fala, prazo de carregamento, fala travada, modelo quebrado), `ifTheNeuralVoiceFailsTheGameGoesBackToTheDefaultVoiceAndRemembers`, `NeuralVoicePackTest` (download contra servidor local: hashes conferidos, arquivo adulterado ou grande demais rejeitado, erro do servidor, cancelar e retomar, apagar), `theDefaultVoiceIsTheSystemOneAndTheNeuralVoiceNeedsToBeDownloaded` e `tools/voz-neural/verificar.sh`, que baixa os arquivos reais e gera áudio de verdade; `theMostNaturalOfflineVoiceIsChosenAndCanBeChanged` para as vozes do sistema. |
+| Voz mais natural | `theMostNaturalOfflineVoiceIsChosenAndCanBeChanged` (vozes do sistema). |
 | Banco de perguntas | `QuestionBankTest` (788 perguntas válidas, sem quase-duplicatas, cobertura por tema/idade) e `everyBankAnswerIsRecognizedWhenSpokenExactly` (as 788 respostas faladas são entendidas). |
 | Microfone só ao esperar resposta | `microphoneOpensOnlyAfterTheQuestionAndOptionsAreRead`, `lateCallbackFromAnInterruptedReadingNeverOpensTheMicrophone`, `microphoneNeverOpensOutsideAQuestion`, `speechNeedsConsentAndPermissionFirst`. |
 
 ## Limitações conhecidas
 
 - **Não foi testado em aparelho físico nem em emulador** (o ambiente de desenvolvimento não tem aceleração de hardware para emulador). A interface foi executada com Robolectric; a voz e o microfone foram testados com implementações falsas que seguem o contrato do TextToSpeech/SpeechRecognizer. Vale um teste real de voz: sotaques, ruído da sala e o comportamento do serviço de reconhecimento variam de aparelho para aparelho.
-- **Voz neural no celular:** o download real foi verificado com o próprio código do app (64 MB do Hugging Face, hashes conferidos) e a síntese gerando áudio real num PC com esses arquivos, e a lógica de reprodução foi testada com falsos, mas ela ainda não rodou num celular de verdade. No PC, 25 s de fala saem em ~2,5 s; em celulares muito antigos pode haver uma pequena pausa antes de cada frase. Se algo falhar, o app usa a voz do sistema automaticamente.
-- **Tamanho:** o APK tem ~24 MB (debug). A voz neural (~61 MB) só ocupa espaço se for baixada. Há uma só voz neural (faber); amostras de outras vozes estão em `docs/vozes/`.
-- **Download da voz:** depende do Hugging Face continuar servindo a versão fixada do modelo. Se ele sair do ar, o download falha com uma mensagem e o jogo segue com a voz padrão.
+- **Tamanho:** o APK de teste (*debug*) tem ~11 MB; o *release* minificado, ~1,5 MB (não executado em aparelho).
 - O reconhecimento de fala depende do serviço instalado (normalmente Google). O app pede processamento no aparelho, mas não consegue garantir que o serviço não use a internet — por isso o aviso e o consentimento. Sem voz em português instalada, o app avisa e segue no modo tela/toque.
 - O APK *release* minificado não foi executado; use o APK de teste (*debug*) para avaliação.
 - As perguntas foram escritas e revisadas com cuidado, e as fontes indicam onde checar cada fato, mas as referências não foram consultadas online nesta sessão. Recomendo uma revisão humana, especialmente de novelas, marcas/slogans e datas.
@@ -134,6 +129,3 @@ Para alterar perguntas: edite `tools/questions/parte*.py` e rode `python3 tools/
 
 Código e perguntas: deste projeto. Sons e ícone: criados para este app.
 - Fonte Silkscreen © The Silkscreen Project Authors — SIL Open Font License 1.1 (`licenses/Silkscreen-OFL.txt`).
-- sherpa-onnx (motor da voz neural) — Apache 2.0 (`licenses/sherpa-onnx-LICENSE.txt`).
-- Voz Piper pt_BR "faber" — dados de treino CC0 (`licenses/voz-faber-MODEL_CARD.txt`).
-- Dados de fonética do espeak-ng (baixados junto com a voz neural opcional) — GPL v3 (`licenses/espeak-ng-COPYING.txt`). O código-fonte completo deste app está neste repositório.

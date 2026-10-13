@@ -7,5 +7,3 @@
 -keepclassmembers class br.com.perguntaloei.** { *** Companion; }
 -keepclasseswithmembers class br.com.perguntaloei.** { kotlinx.serialization.KSerializer serializer(...); }
 
-# sherpa-onnx (voz neural): o código nativo acessa estas classes e campos por nome.
--keep class com.k2fsa.sherpa.onnx.** { *; }
