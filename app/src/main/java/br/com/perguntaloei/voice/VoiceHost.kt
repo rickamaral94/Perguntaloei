@@ -32,17 +32,17 @@ enum class SpeakResult {
  * identificador; avisos de leituras antigas (interrompidas ou repetidas) são ignorados,
  * para que o fim de uma leitura velha nunca abra o microfone por engano.
  */
-class VoiceHost(context: Context, private val onStatus: (TtsStatus) -> Unit) {
+class VoiceHost(context: Context, private val onStatus: (TtsStatus) -> Unit) : Speaker {
 
     private val main = Handler(Looper.getMainLooper())
     private var tts: TextToSpeech? = null
-    var status: TtsStatus = TtsStatus.INITIALIZING
+    override var status: TtsStatus = TtsStatus.INITIALIZING
         private set
 
     private var token = 0
     private var callback: ((SpeakResult) -> Unit)? = null
     private var timeout: Runnable? = null
-    var isSpeaking: Boolean = false
+    override var isSpeaking: Boolean = false
         private set
 
     init {
@@ -106,7 +106,7 @@ class VoiceHost(context: Context, private val onStatus: (TtsStatus) -> Unit) {
     private fun endId(t: Int) = "t$t-fim"
 
     /** Fala os trechos em sequência e chama [onDone] uma única vez quando tudo terminar. */
-    fun speak(parts: List<Speech>, rate: Float, onDone: (SpeakResult) -> Unit) {
+    override fun speak(parts: List<Speech>, rate: Float, onDone: (SpeakResult) -> Unit) {
         cancelCurrent()
         val engine = tts
         if (status != TtsStatus.READY || engine == null || parts.isEmpty()) {
@@ -154,9 +154,9 @@ class VoiceHost(context: Context, private val onStatus: (TtsStatus) -> Unit) {
     }
 
     /** Interrompe a fala sem chamar o retorno da leitura interrompida. */
-    fun stop() = cancelCurrent()
+    override fun stop() = cancelCurrent()
 
-    fun shutdown() {
+    override fun shutdown() {
         cancelCurrent()
         tts?.shutdown()
         tts = null

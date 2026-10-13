@@ -29,7 +29,7 @@ object Arcade {
     val White = Color(0xFFFFFFFF)
     val Muted = Color(0xFFC9C4F2)
 
-    val Pixel = FontFamily(Font(R.font.press_start_2p))
+    val Pixel = FontFamily(Font(R.font.silkscreen_bold))
 
     fun themeColor(t: QuizTheme): Color = when (t) {
         QuizTheme.GEOGRAFIA -> Color(0xFF3DDC97)

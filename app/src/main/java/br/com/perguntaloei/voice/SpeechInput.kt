@@ -22,16 +22,16 @@ sealed interface SpeechEvent {
  * Reconhecimento de fala do Android. Escuta uma única vez por chamada de [start] e
  * não grava nem guarda áudio: só recebe o texto reconhecido.
  */
-class SpeechInput(private val context: Context) {
+class SpeechInput(private val context: Context) : Listener {
 
     private var recognizer: SpeechRecognizer? = null
     private var token = 0
-    var isListening = false
+    override var isListening = false
         private set
 
-    fun isAvailable(): Boolean = SpeechRecognizer.isRecognitionAvailable(context)
+    override fun isAvailable(): Boolean = SpeechRecognizer.isRecognitionAvailable(context)
 
-    fun start(onEvent: (SpeechEvent) -> Unit) {
+    override fun start(onEvent: (SpeechEvent) -> Unit) {
         destroyRecognizer()
         token++
         val t = token
@@ -114,12 +114,12 @@ class SpeechInput(private val context: Context) {
     }
 
     /** Para de ouvir e processa o que já foi dito. */
-    fun stop() {
+    override fun stop() {
         if (isListening) recognizer?.stopListening()
     }
 
     /** Cancela sem processar nada. */
-    fun cancel() {
+    override fun cancel() {
         token++
         isListening = false
         recognizer?.cancel()
@@ -133,7 +133,7 @@ class SpeechInput(private val context: Context) {
         recognizer = null
     }
 
-    fun destroy() {
+    override fun destroy() {
         token++
         isListening = false
         destroyRecognizer()

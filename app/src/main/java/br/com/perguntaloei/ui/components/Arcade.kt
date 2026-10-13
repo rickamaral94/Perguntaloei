@@ -55,6 +55,25 @@ import kotlin.random.Random
 
 val PixelShape = CutCornerShape(6.dp)
 
+/**
+ * Respeita a opção de acessibilidade "Remover animações" do Android: com a escala de
+ * animação em zero, os efeitos contínuos (estrelas, título, piscar) ficam parados.
+ */
+@Composable
+fun animationsEnabled(): Boolean = remember {
+    if (android.os.Build.VERSION.SDK_INT >= 26) android.animation.ValueAnimator.areAnimatorsEnabled() else true
+}
+
+/** Valor animado em loop, ou fixo quando as animações estão desligadas. */
+@Composable
+private fun looping(from: Float, to: Float, millis: Int, mode: RepeatMode, label: String): Float {
+    if (!animationsEnabled()) return from
+    val v by rememberInfiniteTransition(label = label).animateFloat(
+        from, to, infiniteRepeatable(tween(millis, easing = LinearEasing), mode), label = label,
+    )
+    return v
+}
+
 /** Texto em fonte pixel com sombra dura, estilo fliperama. */
 @Composable
 fun PixelText(
@@ -65,14 +84,16 @@ fun PixelText(
     align: TextAlign = TextAlign.Start,
     shadow: Color = Arcade.Magenta,
 ) {
+    // A Silkscreen tem letras baixas: compensa para manter a leitura fácil.
+    val scaled = size * 1.3f
     Text(
         text = text,
         modifier = modifier,
         textAlign = align,
         style = TextStyle(
             fontFamily = Arcade.Pixel,
-            fontSize = size,
-            lineHeight = size * 1.5f,
+            fontSize = scaled,
+            lineHeight = scaled * 1.3f,
             color = color,
             shadow = Shadow(shadow, Offset(4f, 4f), 0f),
         ),
@@ -97,11 +118,13 @@ fun ArcadeButton(
     val fill = if (enabled) color else Color(0xFF4A4670)
     val ink = if (enabled) textColor else Color(0xFFA8A4C8)
     val depth = if (pressed) 1.dp else 5.dp
+    // propagateMinConstraints: o botão só ocupa a largura toda quando o chamador pede (fillMaxWidth/weight).
     Box(
         modifier = modifier
             .heightIn(min = minHeight)
             .semantics { contentDescription = text }
             .clickable(interaction, indication = null, enabled = enabled, role = Role.Button, onClick = onClick),
+        propagateMinConstraints = true,
     ) {
         Box(
             Modifier
@@ -111,7 +134,6 @@ fun ArcadeButton(
         )
         Row(
             modifier = Modifier
-                .fillMaxWidth()
                 .heightIn(min = minHeight)
                 .offset(x = 5.dp - depth, y = 5.dp - depth)
                 .background(fill, PixelShape)
@@ -167,9 +189,7 @@ fun StarField(modifier: Modifier = Modifier) {
         val r = Random(42)
         List(70) { Triple(r.nextFloat(), r.nextFloat(), r.nextFloat()) }
     }
-    val t by rememberInfiniteTransition(label = "stars").animateFloat(
-        0f, 1f, infiniteRepeatable(tween(4000, easing = LinearEasing)), label = "twinkle",
-    )
+    val t = looping(0f, 1f, 4000, RepeatMode.Restart, "stars")
     Canvas(modifier.fillMaxSize()) {
         drawRect(Arcade.Bg)
         stars.forEachIndexed { i, (x, y, p) ->
@@ -188,11 +208,9 @@ fun StarField(modifier: Modifier = Modifier) {
 /** Título PERGUNTÁ-LO-EI ajustado à largura da tela, com leve "pulo". */
 @Composable
 fun GameTitle(modifier: Modifier = Modifier, animate: Boolean = true) {
-    val bounce by rememberInfiniteTransition(label = "title").animateFloat(
-        1f, 1.05f, infiniteRepeatable(tween(700), RepeatMode.Reverse), label = "bounce",
-    )
+    val bounce = looping(1f, 1.05f, 700, RepeatMode.Reverse, "title")
     BoxWithConstraints(modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        val size = (maxWidth.value / 17f).coerceIn(14f, 40f).sp
+        val size = (maxWidth.value / 21f).coerceIn(12f, 32f).sp
         PixelText(
             "PERGUNTÁ-LO-EI",
             modifier = Modifier.scale(if (animate) bounce else 1f),
@@ -205,18 +223,14 @@ fun GameTitle(modifier: Modifier = Modifier, animate: Boolean = true) {
 
 @Composable
 fun Blink(text: String, modifier: Modifier = Modifier, color: Color = Arcade.Cyan) {
-    val a by rememberInfiniteTransition(label = "blink").animateFloat(
-        1f, 0f, infiniteRepeatable(tween(600), RepeatMode.Reverse), label = "a",
-    )
+    val a = looping(1f, 0f, 600, RepeatMode.Reverse, "blink")
     PixelText(text, modifier = modifier.semantics { contentDescription = text }, size = 11.sp, color = color.copy(alpha = if (a > 0.5f) 1f else 0.2f), align = TextAlign.Center, shadow = Color.Transparent)
 }
 
 /** Indicador grande de microfone ativo. */
 @Composable
 fun MicIndicator(listening: Boolean, level: Float, modifier: Modifier = Modifier) {
-    val pulse by rememberInfiniteTransition(label = "mic").animateFloat(
-        0.9f, 1.15f, infiniteRepeatable(tween(500), RepeatMode.Reverse), label = "p",
-    )
+    val pulse = looping(0.9f, 1.15f, 500, RepeatMode.Reverse, "mic")
     Box(modifier.size(64.dp), contentAlignment = Alignment.Center) {
         if (listening) {
             Box(

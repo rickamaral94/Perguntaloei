@@ -3,6 +3,7 @@ package br.com.perguntaloei.audio
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioTrack
+import br.com.perguntaloei.voice.SoundPlayer
 import java.util.concurrent.Executors
 import kotlin.math.PI
 import kotlin.math.sin
@@ -13,12 +14,12 @@ enum class Sfx { SELECT, ROUND, CORRECT, WRONG, MIC_ON, MIC_OFF, VICTORY }
  * Efeitos sonoros originais estilo 8 bits, sintetizados no próprio app
  * (ondas quadradas com envelope curto). Volume baixo para não atrapalhar a conversa.
  */
-class SoundFx {
+class SoundFx : SoundPlayer {
 
     private val rate = 22050
     private val executor = Executors.newSingleThreadExecutor()
     private val cache = HashMap<Sfx, ShortArray>()
-    @Volatile var enabled = true
+    @Volatile override var enabled = true
 
     private data class Note(val freq: Double, val ms: Int, val duty: Double = 0.5)
 
@@ -56,7 +57,7 @@ class SoundFx {
         return out
     }
 
-    fun play(sfx: Sfx) {
+    override fun play(sfx: Sfx) {
         if (!enabled) return
         executor.execute {
             runCatching {
@@ -86,7 +87,7 @@ class SoundFx {
         }
     }
 
-    fun release() {
+    override fun release() {
         executor.shutdownNow()
     }
 }

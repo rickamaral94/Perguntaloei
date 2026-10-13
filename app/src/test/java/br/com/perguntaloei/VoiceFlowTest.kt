@@ -1,0 +1,356 @@
+package br.com.perguntaloei
+
+import android.app.Application
+import android.os.Looper
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import br.com.perguntaloei.audio.Sfx
+import br.com.perguntaloei.game.GameAction
+import br.com.perguntaloei.game.Phase
+import br.com.perguntaloei.game.Speech
+import br.com.perguntaloei.game.Transcript
+import br.com.perguntaloei.model.GameConfig
+import br.com.perguntaloei.model.Question
+import br.com.perguntaloei.model.QuestionFormat
+import br.com.perguntaloei.voice.Listener
+import br.com.perguntaloei.voice.SoundPlayer
+import br.com.perguntaloei.voice.SpeakResult
+import br.com.perguntaloei.voice.Speaker
+import br.com.perguntaloei.voice.SpeechEvent
+import br.com.perguntaloei.voice.TtsStatus
+import br.com.perguntaloei.voice.VoiceDeps
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.Shadows.shadowOf
+import org.robolectric.annotation.Config
+import java.time.Duration
+
+/** Voz falsa: guarda cada leitura e só "termina" quando o teste mandar. */
+class FakeSpeaker(onStatus: (TtsStatus) -> Unit) : Speaker {
+    override val status = TtsStatus.READY
+    override var isSpeaking = false
+    val readings = mutableListOf<Pair<List<Speech>, (SpeakResult) -> Unit>>()
+    var stops = 0
+
+    init { onStatus(TtsStatus.READY) }
+
+    override fun speak(parts: List<Speech>, rate: Float, onDone: (SpeakResult) -> Unit) {
+        isSpeaking = true
+        readings += parts to onDone
+    }
+
+    /** Termina a leitura mais recente que contém [marker] (ou a última). */
+    fun finishLast(result: SpeakResult = SpeakResult.COMPLETED) {
+        isSpeaking = false
+        readings.last().second(result)
+    }
+
+    fun lastText(): String = readings.last().first.joinToString(" ") { it.text }
+
+    // Como um TTS defeituoso: NÃO descarta o retorno das leituras interrompidas.
+    override fun stop() { stops++; isSpeaking = false }
+    override fun shutdown() = Unit
+}
+
+class FakeListener(var available: Boolean = true) : Listener {
+    override var isListening = false
+    var starts = 0
+    var cancels = 0
+    private var callback: ((SpeechEvent) -> Unit)? = null
+    override fun isAvailable() = available
+    override fun start(onEvent: (SpeechEvent) -> Unit) { starts++; isListening = true; callback = onEvent }
+    override fun stop() = Unit
+    override fun cancel() { cancels++; isListening = false }
+    override fun destroy() = Unit
+    fun say(text: String, confidence: Float? = 0.92f) {
+        isListening = false
+        callback!!(SpeechEvent.Results(listOf(Transcript(text, confidence))))
+    }
+    fun silence() {
+        isListening = false
+        callback!!(SpeechEvent.Failure("Não ouvi nenhuma resposta.", silence = true, serviceProblem = false))
+    }
+}
+
+class SilentSounds : SoundPlayer {
+    override var enabled = true
+    val played = mutableListOf<Sfx>()
+    override fun play(sfx: Sfx) { played += sfx }
+    override fun release() = Unit
+}
+
+@RunWith(AndroidJUnit4::class)
+@Config(sdk = [34])
+class VoiceFlowTest {
+
+    private lateinit var app: Application
+    private lateinit var speaker: FakeSpeaker
+    private lateinit var listener: FakeListener
+    private lateinit var vm: AppViewModel
+
+    private fun newVm(micAvailable: Boolean = true, permission: Boolean = true): AppViewModel {
+        listener = FakeListener(micAvailable)
+        return AppViewModel(app, VoiceDeps({ s -> FakeSpeaker(s).also { speaker = it } }, listener, SilentSounds(), { permission }))
+    }
+
+    private fun idle(ms: Long = 800) = shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(ms))
+
+    private val q: Question get() = vm.engine.currentQuestion(vm.game!!)!!
+    private fun scoreOfCurrent() = vm.game!!.score(vm.game!!.currentPlayer!!.id)
+    private fun totalScore() = vm.game!!.players.sumOf { vm.game!!.score(it.id) }
+
+    private fun spokenCorrect(q: Question) = q.answer
+    private fun spokenWrong(q: Question) = when (q.format) {
+        QuestionFormat.OPEN -> "banana com canela"
+        else -> q.options[(q.correctIndex + 1) % q.options.size]
+    }
+
+    @Before
+    fun setUp() {
+        app = ApplicationProvider.getApplicationContext()
+        vm = newVm()
+        vm.addSuggestedPlayers()
+        vm.updateSettings { it.copy(speechConsent = true, autoListen = true) }
+    }
+
+    /** Começa a partida e deixa a primeira pergunta sendo lida. */
+    private fun startAsking(config: GameConfig = GameConfig(rounds = 2)) {
+        vm.startNewGame(config)
+        idle()
+        vm.dispatch(GameAction.BeginRound)
+        idle()
+        assertEquals(Phase.ASKING, vm.game!!.phase)
+    }
+
+    private fun finishReadingAndListen() {
+        speaker.finishLast()
+        idle()
+        assertTrue("microfone deveria estar aberto", vm.voice.listening)
+    }
+
+    @Test
+    fun microphoneOpensOnlyAfterTheQuestionAndOptionsAreRead() {
+        startAsking()
+        val reading = speaker.lastText()
+        assertTrue(reading.contains("Vez de Paula"))
+        assertTrue(reading.contains(q.text))
+        q.options.forEach { assertTrue("alternativa lida: $it", reading.contains(it)) }
+        assertFalse("a leitura não pode revelar a resposta", q.format == QuestionFormat.OPEN && reading.contains(q.explanation))
+        // Durante a leitura: microfone fechado e alternativas bloqueadas.
+        assertEquals(0, listener.starts)
+        assertFalse(vm.voice.readingDone)
+        vm.touchOption(0)
+        assertEquals(Phase.ASKING, vm.game!!.phase)
+        vm.listenForAnswer()
+        idle()
+        assertEquals("Ouvir resposta é recusado durante a leitura", 0, listener.starts)
+        // Terminada a leitura, o microfone abre (escuta automática ligada).
+        speaker.finishLast()
+        idle()
+        assertEquals(1, listener.starts)
+        assertTrue(vm.voice.listening)
+    }
+
+    @Test
+    fun lateCallbackFromAnInterruptedReadingNeverOpensTheMicrophone() {
+        startAsking()
+        val first = speaker.readings.last().second
+        vm.repeatQuestion()
+        idle()
+        first(SpeakResult.COMPLETED) // retorno atrasado da leitura antiga
+        idle()
+        assertEquals(0, listener.starts)
+        assertFalse(vm.voice.readingDone)
+        finishReadingAndListen()
+    }
+
+    @Test
+    fun clearSpokenAnswerIsEvaluatedOnceAndOnlyForThePlayerOfTheTurn() {
+        startAsking()
+        finishReadingAndListen()
+        val player = vm.game!!.currentPlayer!!.id
+        listener.say(spokenCorrect(q))
+        idle()
+        assertEquals(Phase.REVEAL, vm.game!!.phase)
+        assertEquals(1, vm.game!!.score(player))
+        assertEquals(1, totalScore())
+        assertTrue("anuncia o próximo jogador", speaker.lastText().contains("Próxima vez: Katharina"))
+    }
+
+    @Test
+    fun uncertainTranscriptIsConfirmedBeforeEvaluation() {
+        startAsking()
+        finishReadingAndListen()
+        listener.say("acho que é ${spokenCorrect(q)}")
+        idle()
+        assertEquals(Phase.ASKING, vm.game!!.phase)
+        assertTrue(vm.voice.pending is Pending.Confirm)
+        assertEquals(0, totalScore())
+        vm.resolvePending(false)
+        idle()
+        assertEquals(0, totalScore())
+        assertEquals(Phase.ASKING, vm.game!!.phase)
+        // Fala de novo com clareza e confirma tocando em "Sim".
+        speaker.finishLast(); idle()
+        listener.say("acho que é ${spokenCorrect(q)}")
+        idle()
+        vm.resolvePending(true)
+        idle()
+        assertEquals(1, totalScore())
+    }
+
+    @Test
+    fun confirmationCanAlsoBeSpoken() {
+        startAsking()
+        finishReadingAndListen()
+        listener.say("talvez ${spokenWrong(q)}")
+        idle()
+        assertTrue(vm.voice.pending is Pending.Confirm)
+        speaker.finishLast() // "Entendi: ... Confirma?"
+        idle()
+        assertTrue(vm.voice.listeningForConfirmation)
+        listener.say("sim")
+        idle()
+        assertEquals(Phase.REVEAL, vm.game!!.phase)
+        assertEquals(0, totalScore())
+    }
+
+    @Test
+    fun inaudibleAnswerGivesNoPointAndKeepsTheTurn() {
+        startAsking()
+        finishReadingAndListen()
+        val player = vm.game!!.currentPlayer
+        listener.silence()
+        idle()
+        assertEquals(Phase.ASKING, vm.game!!.phase)
+        assertEquals(player, vm.game!!.currentPlayer)
+        assertEquals(0, totalScore())
+        assertTrue(vm.voice.message!!.contains("Não ouvi"))
+        // O grupo pode encerrar a vez sem ponto.
+        vm.dispatch(GameAction.NoAnswer)
+        assertEquals(0, totalScore())
+        assertEquals(Phase.REVEAL, vm.game!!.phase)
+    }
+
+    @Test
+    fun askingToRepeatIsNotAnAnswer() {
+        startAsking()
+        finishReadingAndListen()
+        val readings = speaker.readings.size
+        val stateBefore = vm.game
+        listener.say("repete por favor")
+        idle()
+        assertEquals(stateBefore, vm.game)
+        assertTrue("leu de novo", speaker.readings.size > readings)
+        assertTrue(speaker.lastText().contains(q.text))
+        assertFalse("microfone fechado enquanto relê", vm.voice.listening)
+        assertEquals(0, totalScore())
+    }
+
+    @Test
+    fun mentioningTwoOptionsAsksForClarification() {
+        startAsking(GameConfig(rounds = 2, themes = listOf(br.com.perguntaloei.model.Theme.GEOGRAFIA)))
+        if (q.format != QuestionFormat.MULTIPLE_CHOICE) return
+        finishReadingAndListen()
+        listener.say("${q.options[0]} ou ${q.options[1]}")
+        idle()
+        assertTrue(vm.voice.pending is Pending.Clarify)
+        assertEquals(0, totalScore())
+        assertEquals(Phase.ASKING, vm.game!!.phase)
+    }
+
+    @Test
+    fun microphoneNeverOpensOutsideAQuestion() {
+        startAsking()
+        vm.answerByTouch()
+        if (q.format == QuestionFormat.OPEN) vm.typedAnswer(q.answer) else vm.touchOption(q.correctIndex)
+        idle()
+        assertEquals(Phase.REVEAL, vm.game!!.phase)
+        val starts = listener.starts
+        vm.listenForAnswer()
+        idle(2000)
+        assertEquals(starts, listener.starts)
+    }
+
+    @Test
+    fun speechNeedsConsentAndPermissionFirst() {
+        vm.updateSettings { it.copy(speechConsent = null) }
+        startAsking()
+        speaker.finishLast()
+        idle()
+        assertEquals("sem consentimento não abre sozinho", 0, listener.starts)
+        vm.listenForAnswer()
+        assertEquals(AppDialog.SpeechConsent, vm.dialog)
+        vm.onSpeechConsent(false)
+        assertEquals(0, listener.starts)
+        assertTrue(vm.voice.touchMode)
+    }
+
+    @Test
+    fun touchOnlyGameWorksWithoutAnySpeechRecognizer() {
+        Thread.sleep(300) // jogadores salvos em disco pelo setUp
+        vm = newVm(micAvailable = false)
+        assertEquals(4, vm.players.size)
+        assertFalse(vm.recognitionAvailable)
+        vm.startNewGame(GameConfig(rounds = 2, voiceHost = false, voiceAnswers = false))
+        var guard = 0
+        while (!vm.game!!.finished && guard++ < 200) {
+            val g = vm.game!!
+            when (g.phase) {
+                Phase.ROUND_INTRO -> vm.dispatch(GameAction.BeginRound)
+                Phase.ASKING -> {
+                    assertTrue("modo sem voz libera as respostas na hora", vm.voice.readingDone)
+                    vm.listenForAnswer() // sem reconhecedor: avisa e segue no toque
+                    vm.dialog = null
+                    val question = q
+                    if (question.format == QuestionFormat.OPEN) vm.typedAnswer(question.answer) else vm.touchOption(question.correctIndex)
+                    assertEquals(Phase.REVEAL, vm.game!!.phase)
+                }
+                Phase.REVEAL -> vm.dispatch(GameAction.Next)
+                else -> vm.dispatch(GameAction.AcceptTie)
+            }
+            idle(50)
+        }
+        assertTrue(vm.game!!.finished)
+        assertEquals(0, listener.starts)
+        assertEquals("todos acertaram tudo", vm.game!!.players.size * 2, vm.game!!.players.sumOf { vm.game!!.score(it.id) })
+    }
+
+    @Test
+    fun interruptionStopsTheMicrophoneAndTheGameResumesFromDisk() {
+        startAsking()
+        finishReadingAndListen()
+        vm.onAppPaused()
+        assertFalse(vm.voice.listening)
+        assertTrue(listener.cancels > 0)
+        val saved = vm.game
+        Thread.sleep(400) // gravação em disco (thread de E/S)
+        idle()
+        // Processo recriado: um novo ViewModel lê a partida salva.
+        val vm2 = newVm()
+        assertEquals(saved, vm2.game)
+        vm2.go(Screen.GAME)
+        idle()
+        assertTrue("relê a pergunta ao retomar", speaker.lastText().contains(vm2.engine.currentQuestion(saved!!)!!.text))
+    }
+
+    @Test
+    fun undoAfterAMisheardAnswerRestoresTheScore() {
+        startAsking()
+        finishReadingAndListen()
+        listener.say(spokenCorrect(q))
+        idle()
+        assertEquals(1, totalScore())
+        vm.dispatch(GameAction.Undo)
+        idle()
+        assertEquals(0, totalScore())
+        assertEquals(Phase.ASKING, vm.game!!.phase)
+        assertTrue(vm.voice.readingDone)
+        assertNotNull(vm.game!!.notice)
+    }
+}

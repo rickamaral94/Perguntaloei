@@ -473,7 +473,7 @@ private fun Reveal(vm: AppViewModel, state: GameState) {
 
 @Composable
 private fun EndPanel(vm: AppViewModel, state: GameState) {
-    fun names(ids: List<String>) = ids.mapNotNull { state.player(it)?.name }.joinToString(" e ")
+    fun names(ids: List<String>) = joinNames(ids.mapNotNull { state.player(it)?.name })
     val tie = state.tie
     PixelPanel(Modifier.fillMaxWidth(), border = Arcade.Yellow) {
         val title = when {
@@ -562,8 +562,11 @@ private fun ScorePanel(vm: AppViewModel, state: GameState) {
             size = 11.sp, color = Arcade.Green, shadow = Color.Transparent,
         )
         Spacer(Modifier.height(6.dp))
-        ranked.forEachIndexed { i, p ->
+        val distinctScores = ranked.map { state.score(it.id) }.distinct()
+        ranked.forEach { p ->
             val score = state.score(p.id)
+            // Empatados recebem a mesma posição (e a mesma medalha).
+            val i = if (score == 0) 3 else distinctScores.indexOf(score)
             val pop by animateFloatAsState(1f, spring(Spring.DampingRatioHighBouncy), label = "score")
             Row(Modifier.fillMaxWidth().padding(vertical = 3.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text(
@@ -603,4 +606,11 @@ private fun ChampionshipPanel(state: GameState) {
             Text("Partida ${i + 1}: " + (w.mapNotNull { id -> state.player(id)?.name }.joinToString(" e ").ifEmpty { "empate" }), color = Arcade.Muted, fontSize = 14.sp)
         }
     }
+}
+
+/** "Ana", "Ana e Bia", "Ana, Bia e Caio". */
+fun joinNames(names: List<String>): String = when (names.size) {
+    0 -> ""
+    1 -> names[0]
+    else -> names.dropLast(1).joinToString(", ") + " e " + names.last()
 }

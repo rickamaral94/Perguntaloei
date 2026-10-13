@@ -39,6 +39,7 @@ import br.com.perguntaloei.voice.SpeakResult
 import br.com.perguntaloei.voice.SpeechEvent
 import br.com.perguntaloei.voice.SpeechInput
 import br.com.perguntaloei.voice.TtsStatus
+import br.com.perguntaloei.voice.VoiceDeps
 import br.com.perguntaloei.voice.VoiceHost
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -87,7 +88,17 @@ sealed interface UiEvent {
     data object RequestMicPermission : UiEvent
 }
 
-class AppViewModel(app: Application) : AndroidViewModel(app) {
+class AppViewModel @JvmOverloads constructor(
+    app: Application,
+    deps: VoiceDeps = VoiceDeps(
+        speaker = { onStatus -> VoiceHost(app, onStatus) },
+        listener = SpeechInput(app),
+        sounds = SoundFx(),
+        micPermission = {
+            ContextCompat.checkSelfPermission(app, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
+        },
+    ),
+) : AndroidViewModel(app) {
 
     private val store = LocalStore(File(app.filesDir, "dados"))
     private val ioWriter = Dispatchers.IO.limitedParallelism(1)
@@ -117,13 +128,17 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     private val _events = MutableSharedFlow<UiEvent>(extraBufferCapacity = 4)
     val events: SharedFlow<UiEvent> = _events
 
-    private val sfx = SoundFx().also { it.enabled = settings.soundEffects }
-    private val host = VoiceHost(app) { ttsStatus = it }
-    private val speech = SpeechInput(app)
+    private val sfx = deps.sounds.also { it.enabled = settings.soundEffects }
+    private val host = deps.speaker { ttsStatus = it }
+    private val speech = deps.listener
+    private val micPermission = deps.micPermission
     val recognitionAvailable: Boolean = speech.isAvailable()
 
     /** Identifica a pergunta em exibição; eventos de voz de outra pergunta são descartados. */
     private var presentationKey: String? = null
+
+    /** Ficha da leitura atual: o fim de uma leitura antiga (repetida/interrompida) nunca libera o microfone. */
+    private var readingToken = 0
     private var autoRetries = 0
     private var listenAfterPermission = false
     private var pendingListenJob: Job? = null
@@ -145,15 +160,22 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     // ================================================================== jogadores
 
+    /** Nomes iguais confundiriam o apresentador ("Vez de Lia" para duas pessoas). */
+    private fun nameTaken(name: String, exceptId: String? = null): Boolean {
+        val taken = players.any { it.id != exceptId && TextNormalizer.normalize(it.name) == TextNormalizer.normalize(name) }
+        if (taken) dialog = AppDialog.Message("Nome repetido", "Já existe um jogador chamado $name. Use um apelido ou o sobrenome para diferenciar.")
+        return taken
+    }
+
     fun addPlayer(name: String, age: Int?) {
         val clean = name.trim()
-        if (clean.isEmpty()) return
+        if (clean.isEmpty() || nameTaken(clean)) return
         updatePlayers(players + Player(UUID.randomUUID().toString(), clean, age))
     }
 
     fun editPlayer(id: String, name: String, age: Int?) {
         val clean = name.trim()
-        if (clean.isEmpty()) return
+        if (clean.isEmpty() || nameTaken(clean, id)) return
         updatePlayers(players.map { if (it.id == id) it.copy(name = clean, age = age) else it })
     }
 
@@ -173,8 +195,8 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     /** Participantes sugeridos (opcional): adiciona os que ainda não estão na lista. */
     fun addSuggestedPlayers() {
         val suggested = listOf("Paula" to 45, "Katharina" to 39, "Ricardo" to 32, "Vilma" to 63)
-        val existing = players.map { it.name.lowercase() }.toSet()
-        val toAdd = suggested.filter { it.first.lowercase() !in existing }
+        val existing = players.map { TextNormalizer.normalize(it.name) }.toSet()
+        val toAdd = suggested.filter { TextNormalizer.normalize(it.first) !in existing }
             .map { Player(UUID.randomUUID().toString(), it.first, it.second) }
         updatePlayers(players + toAdd)
     }
@@ -319,7 +341,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun endSpeech(state: GameState): List<Speech> {
-        fun names(ids: List<String>) = ids.mapNotNull { state.player(it)?.name }.joinToString(" e ")
+        fun names(ids: List<String>) = br.com.perguntaloei.ui.joinNames(ids.mapNotNull { state.player(it)?.name })
         val tie = state.tie
         return when {
             state.finished && state.winners.size == 1 -> listOf(Speech("Fim de jogo! Vitória de ${names(state.winners)}! Parabéns!", 0))
@@ -373,8 +395,9 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         }
         voice = VoiceUi(speaking = true, readingDone = false, message = if (resumed) "Partida retomada: lendo a pergunta de novo." else null)
         val parts = intro + PresenterScript.questionReading(playerName, q)
+        val token = ++readingToken
         host.speak(parts, settings.speechRate) { result ->
-            if (presentationKey != key || game?.phase != Phase.ASKING) return@speak
+            if (token != readingToken || presentationKey != key || game?.phase != Phase.ASKING) return@speak
             when (result) {
                 SpeakResult.COMPLETED -> {
                     voice = voice.copy(speaking = false, readingDone = true)
@@ -430,8 +453,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         return g.config.voiceAnswers && settings.autoListen && settings.speechConsent == true && recognitionAvailable && hasMicPermission()
     }
 
-    private fun hasMicPermission(): Boolean =
-        ContextCompat.checkSelfPermission(getApplication(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
+    private fun hasMicPermission(): Boolean = micPermission()
 
     private fun scheduleListen(confirmation: Boolean = false) {
         pendingListenJob?.cancel()
@@ -445,6 +467,11 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     fun listenForAnswer() {
         val g = game ?: return
         if (g.phase != Phase.ASKING) return
+        // Nunca abre a captura enquanto a pergunta e as alternativas ainda estão sendo lidas.
+        if (!voice.readingDone && !voice.touchMode) {
+            voice = voice.copy(message = "Aguarde o apresentador terminar de ler a pergunta e as alternativas.")
+            return
+        }
         if (!recognitionAvailable) {
             dialog = AppDialog.Message(
                 "Sem reconhecimento de fala",
@@ -658,6 +685,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
 
     /** Para fala e microfone imediatamente (sem disparar retornos pendentes). */
     private fun silenceIO() {
+        readingToken++
         pendingListenJob?.cancel()
         host.stop()
         speech.cancel()

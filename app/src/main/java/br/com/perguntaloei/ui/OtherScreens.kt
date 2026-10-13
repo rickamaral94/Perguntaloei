@@ -225,7 +225,7 @@ fun SettingsScreen(vm: AppViewModel) {
                 Spacer(Modifier.height(10.dp))
                 ArcadeButton("Limpar histórico de perguntas", { confirmClear = true }, Modifier.fillMaxWidth(), color = Arcade.Orange, fontSize = 15.sp)
             }
-            Text("Fonte dos títulos: Press Start 2P (SIL Open Font License). Sons sintetizados pelo próprio app.", color = Arcade.Muted, fontSize = 13.sp)
+            Text("Fonte dos títulos: Silkscreen, de Jason Kottke (SIL Open Font License). Sons sintetizados pelo próprio app.", color = Arcade.Muted, fontSize = 13.sp)
             Spacer(Modifier.height(24.dp))
         }
     }
