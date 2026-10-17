@@ -17,8 +17,8 @@ mc(T, "desenhos clássicos", 1, 6, "Qual marinheiro dos desenhos fica muito fort
    "Enciclopédia Britannica – verbete 'Popeye'")
 mc(T, "desenhos atuais", 1, 6, "De que cor é a roupa do Pocoyo?",
    ["Azul", "Vermelha", "Verde", "Amarela"], "Azul",
-   "O menino Pocoyo usa macacão e touca azuis e brinca com a pata Pato e a elefanta Elly.",
-   "Enciclopédia Britannica – verbete 'Pocoyo'")
+   "O menino Pocoyo usa macacão e touca azuis e brinca com o pato Pato e a elefanta Elly.",
+   "Zinkia Entertainment – série 'Pocoyo'")
 mc(T, "desenhos atuais", 1, 6, "Que animal é a Bluey, do desenho australiano?",
    ["Cachorrinha", "Gatinha", "Coelhinha", "Ursinha"], "Cachorrinha",
    "Bluey é uma filhote de cão da raça boiadeiro australiano, de pelo azulado.",
@@ -26,7 +26,7 @@ mc(T, "desenhos atuais", 1, 6, "Que animal é a Bluey, do desenho australiano?",
 tf(T, "desenhos clássicos", 1, 6, "No desenho 'Tom e Jerry', o Tom é o rato.", False,
    "Tom é o gato e Jerry é o ratinho esperto que sempre escapa dele.",
    "Enciclopédia Britannica – verbete 'Tom and Jerry'")
-mc(T, "desenhos clássicos", 1, 7, "Qual personagem de desenho é um felino magro e cor-de-rosa que nunca fala?",
+mc(T, "desenhos clássicos", 1, 7, "Qual personagem de desenho é um felino magro e cor-de-rosa que quase nunca fala?",
    ["Pantera Cor-de-Rosa", "Frajola", "Garfield", "Manda-Chuva"], "Pantera Cor-de-Rosa",
    "A Pantera Cor-de-Rosa surgiu na abertura de um filme de 1963 e ganhou desenhos próprios.",
    "Enciclopédia Britannica – verbete 'The Pink Panther'")
@@ -34,7 +34,7 @@ op(T, "desenhos clássicos", 1, 7, "Qual gato laranja dos desenhos e quadrinhos 
    "Garfield", ["garfield"],
    "Garfield foi criado pelo cartunista americano Jim Davis em 1978.",
    "Enciclopédia Britannica – verbete 'Garfield'")
-mc(T, "desenhos clássicos", 1, 6, "No desenho 'Os Flintstones', como se chama o pai da família?",
+mc(T, "desenhos clássicos", 1, 8, "No desenho 'Os Flintstones', como se chama o pai da família?",
    ["Fred", "Barney", "George", "Homer"], "Fred",
    "Fred Flintstone é casado com Wilma e trabalha numa pedreira.",
    "Enciclopédia Britannica – verbete 'The Flintstones'")
@@ -76,20 +76,20 @@ mc(T, "desenhos clássicos", 1, 9, "Qual menino gênio de desenho tem um laborat
    ["Dexter", "Jimmy Nêutron", "Johnny Bravo", "Timmy Turner"], "Dexter",
    "'O Laboratório de Dexter' estreou no Cartoon Network em 1996.",
    "Cartoon Network – série 'O Laboratório de Dexter'")
-op(T, "culinária na TV", 1, 9, "Qual era o nome do papagaio de pelúcia que fazia dupla com Ana Maria Braga na TV?",
-   "Louro José", ["louro josé", "louro jose"],
+op(T, "culinária na TV", 2, 12, "Qual era o nome do boneco de papagaio que fazia dupla com Ana Maria Braga na TV?",
+   "Louro José", ["louro josé", "louro jose", "o louro josé", "o louro jose"],
    "O boneco Louro José era animado e dublado pelo ator Tom Veiga.",
    "Memória Globo – programa 'Mais Você'", br=True)
-op(T, "programas infantis", 1, 10, "Como eram chamadas as jovens assistentes de palco da Xuxa?",
+op(T, "programas infantis", 2, 12, "Como eram chamadas as jovens assistentes de palco da Xuxa?",
    "Paquitas", ["paquitas", "paquita", "as paquitas"],
    "As Paquitas dançavam e ajudavam a Xuxa nos programas infantis desde os anos 1980.",
    "Memória Globo – programa 'Xou da Xuxa'", br=True)
 op(T, "grade de programação", 1, 10, "Como se chama a tradicional faixa de filmes exibida à tarde pela TV Globo?",
    "Sessão da Tarde", ["sessão da tarde", "sessao da tarde"],
    "A 'Sessão da Tarde' exibe filmes leves para toda a família desde 1974.",
-   "Memória Globo – 'Sessão da Tarde'", br=True)
+   "Memória Globo – 'Sessão da Tarde'", br=True, ref="2026-10-13")
 tf(T, "desenhos clássicos", 1, 9, "O desenho 'Os Simpsons' é produzido no Japão.", False,
-   "'Os Simpsons' é uma produção dos Estados Unidos, exibida desde 1989.",
+   "'Os Simpsons' é uma produção dos Estados Unidos, que estreou como série em 1989.",
    "Enciclopédia Britannica – verbete 'The Simpsons'")
 tf(T, "desenhos clássicos", 1, 10, "O Pica-Pau é um personagem criado no Brasil.", False,
    "Ele foi criado nos Estados Unidos, mas fez tanto sucesso aqui que foi exibido por décadas na TV brasileira.",
@@ -162,12 +162,12 @@ mc(T, "séries estrangeiras", 2, 12, "Qual personagem da Família Addams ganhou 
 mc(T, "reality shows", 2, 12, "No 'Big Brother Brasil', qual prova dá ao vencedor imunidade e o poder de indicar alguém ao paredão?",
    ["Prova do Líder", "Raio-X", "Repescagem", "Jogo da Discórdia"], "Prova do Líder",
    "O Líder da semana não pode ser votado e ganha um quarto especial na casa.",
-   "Memória Globo – 'Big Brother Brasil'", br=True)
+   "Memória Globo – 'Big Brother Brasil'", br=True, ref="2026-10-13")
 mc(T, "humorísticos", 2, 14, "Em 'A Grande Família', qual era a profissão de Agostinho Carrara?",
    ["Taxista", "Médico", "Professor", "Padeiro"], "Taxista",
    "Agostinho, vivido por Pedro Cardoso, era o genro malandro de Lineu e Nenê.",
    "Memória Globo – série 'A Grande Família'", br=True)
-mc(T, "séries estrangeiras", 2, 14, "A série 'Todo Mundo Odeia o Chris' é inspirada na infância de qual comediante?",
+mc(T, "séries estrangeiras", 2, 14, "A série 'Todo Mundo Odeia o Chris' é inspirada na juventude de qual comediante?",
    ["Chris Rock", "Eddie Murphy", "Will Smith", "Kevin Hart"], "Chris Rock",
    "Chris Rock também narra a série, que mostra sua adolescência no Brooklyn dos anos 1980.",
    "Enciclopédia Britannica – verbete 'Chris Rock'")
@@ -255,7 +255,7 @@ mc(T, "história da TV", 4, 16, "Em que ano começaram as transmissões de TV di
    ["2007", "2000", "2012", "2016"], "2007",
    "A primeira transmissão digital aberta foi em São Paulo, em 2 de dezembro de 2007.",
    "Agência Nacional de Telecomunicações (Anatel)", br=True)
-mc(T, "vinhetas e mascotes", 4, 16, "Qual designer austríaco criou o logotipo da TV Globo usado desde os anos 1970?",
+mc(T, "vinhetas e mascotes", 4, 16, "Qual designer austríaco criou, nos anos 1970, o famoso logotipo da TV Globo em forma de globo?",
    ["Hans Donner", "Aloísio Magalhães", "Ziraldo", "Oscar Niemeyer"], "Hans Donner",
    "Hans Donner chegou ao Brasil em 1974 e também criou muitas vinhetas da emissora.",
    "Memória Globo – 'Hans Donner'", br=True)
