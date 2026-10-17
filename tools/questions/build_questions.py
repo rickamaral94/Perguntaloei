@@ -84,6 +84,11 @@ def _prep(q):
     return _cache[key]
 
 
+# Para o texto quase igual contar como repetição, as palavras importantes também precisam bater:
+# "capital da Rússia" e "capital da Turquia" têm quase as mesmas letras, mas são perguntas diferentes.
+SIMILAR_MIN_JACCARD = 0.65
+
+
 def near_dup(a, b):
     na, ta, ra = _prep(a)
     nb, tb, rb = _prep(b)
@@ -93,9 +98,38 @@ def near_dup(a, b):
         return True
     # Similaridade >= 0.85 exige tamanhos parecidos: evita calcular a distância à toa.
     m = max(len(na), len(nb))
-    if m and abs(len(na) - len(nb)) / m <= 0.15 and 1 - lev(na, nb) / m >= 0.85:
+    if j >= SIMILAR_MIN_JACCARD and m and abs(len(na) - len(nb)) / m <= 0.15 and 1 - lev(na, nb) / m >= 0.85:
         return True
     return ra == rb and j >= 0.55
+
+
+def near_dup_pairs(qs, first_new=0):
+    """Pares (i, j) de quase-duplicatas, com j >= first_new.
+
+    Toda regra exige palavras em comum (Jaccard >= 0,55), então só compara perguntas que
+    compartilham alguma palavra — usando um índice — em vez de todos os pares.
+    """
+    index = defaultdict(list)
+    empty = []
+    for i, q in enumerate(qs):
+        tokens = _prep(q)[1]
+        if not tokens:
+            empty.append(i)
+        for t in tokens:
+            index[t].append(i)
+    pairs = set()
+    for j in range(first_new, len(qs)):
+        seen = set()
+        for t in _prep(qs[j])[1]:
+            seen.update(index[t])
+        if not _prep(qs[j])[1]:
+            seen.update(empty)
+        for i in seen:
+            if i == j or (i >= first_new and i > j):
+                continue  # cada par novo-novo uma vez só
+            if near_dup(qs[i], qs[j]):
+                pairs.add((min(i, j), max(i, j)))
+    return sorted(pairs)
 
 
 # ---------------------------------------------------------------- validação
@@ -125,10 +159,8 @@ def validate(qs):
             problems.append(f"{tag}: pergunta aberta sem sinônimos")
         if not q["text"].rstrip().endswith(("?", ".")):
             problems.append(f"{tag}: enunciado sem pontuação final")
-    for i in range(len(qs)):
-        for j in range(i + 1, len(qs)):
-            if near_dup(qs[i], qs[j]):
-                problems.append(f"quase-duplicatas: {qs[i]['id']} ~ {qs[j]['id']}: {qs[i]['text']} | {qs[j]['text']}")
+    for i, j in near_dup_pairs(qs):
+        problems.append(f"quase-duplicatas: {qs[j]['id']} ~ {qs[i]['id']}: {qs[j]['text']} | {qs[i]['text']}")
     return problems
 
 
@@ -149,20 +181,12 @@ def report(qs):
 
 
 if __name__ == "__main__":
-    import parte1  # noqa: F401
-    import parte2  # noqa: F401
-    import parte3  # noqa: F401
-    import parte4  # noqa: F401
-    import parte4b  # noqa: F401
-    import parte5  # noqa: F401
-    import parte6a  # noqa: F401
-    import parte6b  # noqa: F401
-    import parte6c  # noqa: F401
-    import parte6d  # noqa: F401
-    import parte7a  # noqa: F401
-    import parte7b  # noqa: F401
-    import parte7c  # noqa: F401
-    import parte7d  # noqa: F401
+    import importlib
+
+    from partes import PARTES
+
+    for m in PARTES:
+        importlib.import_module(m)
 
     problems = validate(QUESTIONS)
     report(QUESTIONS)
