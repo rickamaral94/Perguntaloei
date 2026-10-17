@@ -20,7 +20,7 @@ mc(T, "dia e noite", 1, 6, "Como se chama o momento em que o Sol desaparece no h
    ["Pôr do sol", "Nascer do sol", "Meio-dia", "Madrugada"], "Pôr do sol",
    "No pôr do sol, a rotação da Terra faz o Sol sumir no horizonte, do lado oeste.",
    "Enciclopédia Britannica – verbete 'Sunset'")
-op(T, "Lua", 1, 7, "Qual é o astro mais brilhante do céu à noite?", "Lua", ["lua", "a lua"],
+op(T, "Lua", 1, 7, "Qual é o astro mais brilhante do céu à noite?", "Lua", ["lua", "a lua", "lua cheia", "a lua cheia"],
    "A Lua cheia brilha muito mais do que qualquer estrela ou planeta, refletindo a luz do Sol.",
    "NASA – Moon: Facts")
 mc(T, "dia e noite", 1, 7, "Em que parte do dia o Sol fica mais alto no céu?",
@@ -80,7 +80,7 @@ mc(T, "sondas", 1, 10, "Qual destes robôs andou explorando o chão de Marte?",
    "NASA – Mars Science Laboratory: Curiosity Rover")
 mc(T, "Lua", 1, 10, "Qual astro é o principal responsável pelas marés dos oceanos?",
    ["Lua", "Sol", "Marte", "Vênus"], "Lua",
-   "A gravidade da Lua puxa a água dos oceanos, formando as marés altas e baixas; o Sol tem efeito menor.",
+   "A atração da Lua é mais forte no lado da Terra voltado para ela e mais fraca no lado oposto; essa diferença forma as marés altas e baixas. O Sol também influencia, com cerca de metade do efeito da Lua.",
    "NOAA – What Causes Tides?")
 mc(T, "astronautas", 1, 10, "Como se chama a atividade em que o astronauta sai da nave e flutua no espaço, preso por cabos?",
    ["Caminhada espacial", "Reentrada", "Decolagem", "Acoplagem"], "Caminhada espacial",
@@ -120,7 +120,7 @@ tf(T, "Lua", 2, 12, "As pegadas dos astronautas na Lua podem durar milhões de a
    "Sem atmosfera, nada apaga as marcas no solo lunar, a não ser o lento impacto de micrometeoritos.",
    "NASA – Moon: Facts")
 tf(T, "planetas", 2, 14, "Um dia em Marte dura quase o mesmo que um dia na Terra.", True,
-   "Marte gira em torno de si em cerca de 24 horas e 37 minutos.",
+   "Marte gira em torno de si em cerca de 24 horas e 37 minutos; o dia solar marciano, chamado sol, dura cerca de 24 horas e 40 minutos.",
    "NASA – Mars: Facts")
 mc(T, "estações do ano", 2, 12, "O que causa as estações do ano na Terra?",
    ["A inclinação do eixo da Terra", "A distância variável entre a Terra e o Sol",
@@ -231,7 +231,7 @@ mc(T, "astronautas", 3, 14, "Qual astronauta da Apollo 11 ficou em órbita da Lu
    "NASA – Apollo 11 Mission Overview")
 mc(T, "sondas", 3, 14, "Qual sonda da NASA passou perto de Plutão em 2015 e fez as primeiras fotos detalhadas dele?",
    ["New Horizons", "Voyager 2", "Cassini", "Juno"], "New Horizons",
-   "As fotos revelaram uma grande planície clara em forma de coração na superfície de Plutão.",
+   "As fotos revelaram uma grande região clara em forma de coração na superfície de Plutão.",
    "NASA – New Horizons")
 mc(T, "constelações", 3, 14, "Como é chamada popularmente a estrela pequena do Cruzeiro do Sul, que fica fora do desenho da cruz?",
    ["Intrometida", "Estrela d'Alva", "Sete-Estrelo", "Três Marias"], "Intrometida",
