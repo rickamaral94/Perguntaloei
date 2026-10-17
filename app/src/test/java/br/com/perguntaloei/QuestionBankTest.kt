@@ -58,6 +58,9 @@ class QuestionBankTest {
         assertTrue(TextNormalizer.isNearDuplicate("Qual é a capital do Brasil?", "Brasília", "Qual a capital do Brasil?", "Brasília"))
         assertTrue(TextNormalizer.isNearDuplicate("Quem escreveu Dom Casmurro?", "Machado de Assis", "Quem foi que escreveu o livro Dom Casmurro?", "Machado de Assis"))
         assertTrue(!TextNormalizer.isNearDuplicate("Qual é a capital da França?", "Paris", "Qual é o maior oceano do planeta?", "Pacífico"))
+        // Mesmo molde, assunto diferente: não é repetição.
+        assertTrue(!TextNormalizer.isNearDuplicate("Qual é a capital da Rússia?", "Moscou", "Qual é a capital da Turquia?", "Ancara"))
+        assertTrue(!TextNormalizer.isNearDuplicate("O que significa a sigla SUS?", "Sistema Único de Saúde", "O que significa a sigla CPU?", "Unidade central de processamento"))
     }
 
     /** A versão rápida dá exatamente o mesmo resultado da regra simples, par a par. */
@@ -74,7 +77,7 @@ class QuestionBankTest {
         for (i in qs.indices) for (j in i + 1 until qs.size) {
             val a = qs[i]; val b = qs[j]
             val jac = TextNormalizer.jaccard(a.text, b.text)
-            val dup = jac >= 0.8 || TextNormalizer.similarity(a.text, b.text) >= 0.85 ||
+            val dup = jac >= 0.8 || (jac >= TextNormalizer.SIMILAR_MIN_JACCARD && TextNormalizer.similarity(a.text, b.text) >= 0.85) ||
                 (TextNormalizer.normalize(a.answer) == TextNormalizer.normalize(b.answer) && jac >= 0.55)
             if (dup) {
                 naive.getOrPut(a.id) { mutableSetOf() }.add(b.id)

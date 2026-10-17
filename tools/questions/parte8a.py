@@ -132,9 +132,9 @@ mc(H, "Brasil Império", 3, 14, "Qual nome recebeu o governo de Dom Pedro II, qu
    ["Segundo Reinado", "Primeiro Reinado", "Período Regencial", "República Velha"], "Segundo Reinado",
    "O Segundo Reinado começou com o Golpe da Maioridade e terminou com a Proclamação da República.",
    "Enciclopédia Britannica – verbete 'Pedro II'", br=True)
-mc(H, "Brasil Império", 3, 14, "Em qual cidade a família real portuguesa desembarcou primeiro ao chegar ao Brasil, em 1808?",
+mc(H, "Brasil Império", 3, 14, "Em qual cidade o príncipe regente Dom João desembarcou primeiro ao chegar ao Brasil, em 1808?",
    ["Salvador", "Rio de Janeiro", "Recife", "São Luís"], "Salvador",
-   "A corte desembarcou em Salvador em janeiro de 1808 e seguiu para o Rio de Janeiro em março.",
+   "Dom João desembarcou em Salvador em janeiro de 1808 e só chegou ao Rio de Janeiro em março.",
    "Enciclopédia Britannica – verbete 'John VI'", br=True)
 tf(H, "Idade Média", 3, 14, "Os mongóis, liderados por Gengis Khan, formaram um dos maiores impérios da história.", True,
    "O Império Mongol chegou a se estender da Coreia até o leste da Europa.",
@@ -190,7 +190,7 @@ mc(P, "organizações internacionais", 2, 12, "Qual é a sigla da Organização 
    ["OMS", "OEA", "OMC", "OIT"], "OMS",
    "A OMS foi criada em 1948 e tem sede em Genebra, na Suíça.",
    "Organização Mundial da Saúde – institucional")
-op(P, "relações internacionais", 2, 12, "Como se chama o representante oficial que um país envia para outro país?",
+op(P, "relações internacionais", 2, 12, "Como se chama o diplomata de mais alto cargo que um país envia para representá-lo em outro país?",
    "Embaixador", ["embaixador", "embaixadora"],
    "O embaixador chefia a embaixada e representa seu país no exterior.",
    "Ministério das Relações Exteriores – Itamaraty")
@@ -208,7 +208,7 @@ mc(P, "organizações internacionais", 3, 14, "Qual órgão da ONU cuida de educ
    "UNESCO – institucional")
 mc(P, "história política", 3, 14, "Em que ano foi outorgada a primeira Constituição do Brasil, por Dom Pedro I?",
    ["1824", "1822", "1889", "1891"], "1824",
-   "A Constituição de 1824 foi a que vigorou por mais tempo no país, até 1891.",
+   "A Constituição de 1824 foi a que vigorou por mais tempo no país: 65 anos, até o fim do Império, em 1889.",
    "Planalto – legislação (Constituição de 1824)", br=True)
 mc(P, "organizações internacionais", 3, 14, "Qual destes países é membro permanente do Conselho de Segurança da ONU?",
    ["França", "Brasil", "Alemanha", "Japão"], "França",
@@ -228,7 +228,7 @@ mc(P, "eleições", 4, 16, "Por qual sistema são eleitos os deputados federais 
 op(P, "organizações internacionais", 4, 16, "Qual é o principal tribunal da ONU, com sede em Haia, que julga disputas entre países?",
    "Corte Internacional de Justiça",
    ["corte internacional de justiça", "corte internacional de justica", "tribunal internacional de justiça", "cij"],
-   "A Corte Internacional de Justiça funciona no Palácio da Paz, na Holanda.",
+   "A Corte Internacional de Justiça funciona no Palácio da Paz, em Haia, nos Países Baixos.",
    "ONU – Carta das Nações Unidas")
 
 # =========================================================== CULTURA BRASILEIRA
@@ -317,7 +317,7 @@ mc(N, "novelas infantis", 2, 9, "Na novela 'Carrossel', do SBT, por qual colega 
    ["Maria Joaquina", "Valéria", "Laura", "Alícia"], "Maria Joaquina",
    "Maria Joaquina costuma esnobar Cirilo, mas ele nunca desiste.",
    "SBT – Carrossel", br=True)
-mc(N, "novelas dos anos 2010", 1, 12, "Em 'Cheias de Charme' (2012), qual era a profissão das três protagonistas no começo da história?",
+mc(N, "novelas dos anos 2010", 2, 12, "Em 'Cheias de Charme' (2012), qual era a profissão das três protagonistas no começo da história?",
    ["Empregadas domésticas", "Professoras", "Enfermeiras", "Policiais"], "Empregadas domésticas",
    "Penha, Rosário e Cida trabalhavam como domésticas antes da fama.",
    "Memória Globo – Cheias de Charme", br=True)
@@ -375,7 +375,7 @@ op(N, "novelas dos anos 2000", 4, 16, "Em 'Duas Caras', que estreou em 2007, qua
 
 # =========================================================== TELEVISÃO
 T = "tv"
-mc(T, "programas infantis", 1, 6, "Quantos são os Teletubbies?",
+mc(T, "programas infantis", 2, 8, "Quantos são os Teletubbies?",
    ["4", "3", "5", "2"], "4",
    "Os Teletubbies são Tinky Winky, Dipsy, Laa-Laa e Po.",
    "BBC – Teletubbies")
@@ -390,7 +390,7 @@ mc(T, "programas infantis", 1, 8, "Qual programa infantil da TV Cultura se passa
 tf(T, "telejornais", 1, 10, "O 'Bom Dia Brasil', da TV Globo, é um telejornal exibido pela manhã.", True,
    "Como o nome sugere, o 'Bom Dia Brasil' vai ao ar no começo do dia.",
    "Memória Globo – Bom Dia Brasil", br=True)
-op(T, "programas infantis", 1, 10, "Qual palhaço famoso teve um programa infantil no SBT nos anos 1980?",
+op(T, "programas infantis", 2, 12, "Qual palhaço famoso teve um programa infantil no SBT nos anos 1980?",
    "Bozo", ["bozo", "palhaço bozo"],
    "O personagem americano ganhou versão brasileira no SBT e marcou uma geração.",
    "SBT – memória", br=True)
@@ -402,7 +402,7 @@ mc(T, "programas de entrevista", 2, 12, "Qual humorista e apresentador comandou 
    ["Jô Soares", "Chico Anysio", "Renato Aragão", "Fausto Silva"], "Jô Soares",
    "Antes da Globo, Jô Soares já fazia um programa de entrevistas no SBT.",
    "Memória Globo – Programa do Jô", br=True)
-mc(T, "programas de auditório", 2, 12, "Qual programa de perguntas, apresentado por Silvio Santos a partir de 1999, dava até um milhão de reais ao vencedor?",
+mc(T, "programas de auditório", 2, 12, "Qual programa de perguntas, apresentado por Silvio Santos a partir de 1999, tinha prêmio máximo de um milhão de reais?",
    ["Show do Milhão", "Qual é a Música?", "Passa ou Repassa", "Porta da Esperança"], "Show do Milhão",
    "Os participantes podiam pedir ajuda às cartas, aos universitários e às placas.",
    "SBT – memória", br=True)

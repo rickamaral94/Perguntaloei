@@ -86,9 +86,9 @@ mc(C, "insetos", 1, 7, "Qual inseto acende uma luz no próprio corpo à noite?",
    ["Vaga-lume", "Grilo", "Formiga", "Mosquito"], "Vaga-lume",
    "O vaga-lume produz luz por uma reação química no corpo, fenômeno chamado bioluminescência.",
    "Enciclopédia Britannica – verbete 'Firefly'")
-mc(C, "aves", 1, 8, "Qual ave brasileira tem um bico enorme e colorido, quase do tamanho do corpo?",
+mc(C, "aves", 1, 8, "Qual ave brasileira é famosa pelo bico enorme e colorido?",
    ["Tucano", "Pica-pau", "Bem-te-vi", "Gavião"], "Tucano",
-   "O tucano usa o bico grande e leve para alcançar frutas e ajudar a controlar a temperatura do corpo.",
+   "O bico do tucano parece pesado, mas é leve e oco por dentro; a ave o usa para alcançar frutas e ajudar a controlar a temperatura do corpo.",
    "Enciclopédia Britannica – verbete 'Toucan'", br=True)
 mc(C, "aves", 1, 8, "Qual ave caça à noite e consegue girar muito a cabeça para olhar para os lados e para trás?",
    ["Coruja", "Galinha", "Pato", "Pombo"], "Coruja",
@@ -101,9 +101,9 @@ mc(C, "oceanos", 1, 9, "Qual animal marinho tem o corpo gelatinoso e tentáculos
 tf(C, "oceanos", 2, 10, "O cavalo-marinho é um peixe.", True,
    "Apesar da forma diferente, o cavalo-marinho é um peixe ósseo que respira por brânquias.",
    "Enciclopédia Britannica – verbete 'Seahorse'")
-mc(C, "biomas", 2, 10, "Qual bioma brasileiro, de campos abertos, existe só no Rio Grande do Sul?",
+mc(C, "biomas", 2, 10, "Qual bioma de campos abertos, no Brasil, só existe no Rio Grande do Sul?",
    ["Pampa", "Caatinga", "Pantanal", "Cerrado"], "Pampa",
-   "O Pampa, formado principalmente por campos, ocupa a metade sul do Rio Grande do Sul.",
+   "O Pampa, formado principalmente por campos, cobre mais da metade do Rio Grande do Sul e continua pelo Uruguai e pela Argentina.",
    "IBGE – Biomas do Brasil", br=True)
 op(C, "comportamento animal", 2, 10, "Como se chama o animal que fica ativo à noite e descansa durante o dia?",
    "Noturno", ["noturno", "animal noturno", "noturna", "animais noturnos"],
@@ -139,8 +139,8 @@ mc(C, "ciência da vida", 3, 14, "Como se chama a área da ciência que estuda o
    ["Entomologia", "Ornitologia", "Ictiologia", "Herpetologia"], "Entomologia",
    "A entomologia estuda os insetos; a ornitologia estuda as aves, e a ictiologia, os peixes.",
    "Enciclopédia Britannica – verbete 'Entomology'")
-op(C, "mamíferos", 4, 14, "Em quantos compartimentos é dividido o estômago de uma vaca?",
-   "4", ["4", "quatro"],
+op(C, "mamíferos", 3, 14, "Em quantos compartimentos é dividido o estômago de uma vaca?",
+   "4", ["4", "quatro", "quatro compartimentos", "4 compartimentos"],
    "O estômago dos ruminantes tem rúmen, retículo, omaso e abomaso.",
    "Embrapa – Fisiologia digestiva dos ruminantes")
 
@@ -184,7 +184,7 @@ tf(C, "luas", 2, 12, "Marte tem duas pequenas luas, chamadas Fobos e Deimos.", T
    "Fobos e Deimos foram descobertas em 1877 pelo astrônomo norte-americano Asaph Hall.",
    "NASA – Mars Moons")
 op(C, "luas", 2, 12, "Quantas luas tem o planeta Mercúrio?",
-   "Nenhuma", ["nenhuma", "zero", "0", "não tem", "nao tem"],
+   "Nenhuma", ["nenhuma", "nenhum", "nenhuma lua", "zero", "0", "não tem", "nao tem"],
    "Mercúrio, assim como Vênus, não tem nenhum satélite natural.",
    "NASA – Mercury: Facts")
 mc(C, "exploração espacial", 2, 12, "Qual astronauta norte-americano pisou na Lua logo depois de Neil Armstrong, em 1969?",
@@ -201,7 +201,7 @@ mc(C, "observação do céu", 3, 14, "Como se chama o ponto do céu que fica exa
    "Enciclopédia Britannica – verbete 'Zenith'")
 mc(C, "luas", 3, 14, "Io, a lua com mais vulcões ativos do Sistema Solar, gira em torno de qual planeta?",
    ["Júpiter", "Saturno", "Urano", "Netuno"], "Júpiter",
-   "Io é uma das quatro grandes luas de Júpiter, e a força da gravidade do planeta aquece seu interior.",
+   "Io é uma das quatro grandes luas de Júpiter, e as forças de maré causadas pela gravidade do planeta aquecem seu interior.",
    "NASA – Io: Facts")
 mc(C, "exploração espacial", 3, 14, "Qual robô da NASA pousou em Marte em 2021 levando um pequeno helicóptero chamado Ingenuity?",
    ["Perseverance", "Curiosity", "Opportunity", "Spirit"], "Perseverance",
@@ -348,7 +348,7 @@ mc(C, "computação", 3, 14, "Qual memória do computador guarda os programas ab
    "Enciclopédia Britannica – verbete 'RAM'")
 mc(C, "inventores", 3, 14, "Qual inventor sérvio-americano ficou famoso pelos estudos com a corrente alternada?",
    ["Nikola Tesla", "Thomas Edison", "George Westinghouse", "Alexander Graham Bell"], "Nikola Tesla",
-   "Tesla criou o motor de indução de corrente alternada, sistema usado até hoje na distribuição de energia.",
+   "Tesla inventou o motor de indução e ajudou a criar o sistema de corrente alternada usado até hoje na distribuição de energia.",
    "Enciclopédia Britannica – verbete 'Nikola Tesla'")
 mc(C, "inventores brasileiros", 3, 14, "Qual padre gaúcho fez transmissões de voz sem fio em São Paulo, por volta de 1900, e é lembrado como pioneiro do rádio?",
    ["Roberto Landell de Moura", "Bartolomeu de Gusmão", "José de Anchieta", "Padre Cícero"], "Roberto Landell de Moura",
@@ -434,11 +434,11 @@ mc(C, "medidas", 3, 14, "Quantos centímetros quadrados cabem em um metro quadra
    ["10.000", "100", "1.000", "100.000"], "10.000",
    "Um metro quadrado é um quadrado de cem por cem centímetros, ou seja, dez mil centímetros quadrados.",
    "Inmetro – Sistema Internacional de Unidades")
-mc(C, "combinatória", 4, 14, "De quantas maneiras diferentes três pessoas podem se sentar lado a lado em três cadeiras?",
+mc(C, "combinatória", 3, 14, "De quantas maneiras diferentes três pessoas podem se sentar lado a lado em três cadeiras?",
    ["6", "3", "9", "27"], "6",
    "A primeira cadeira tem três opções, a segunda duas e a terceira uma: três vezes dois vezes um dá seis.",
    "Enciclopédia Britannica – verbete 'Permutation'")
 mc(C, "geometria", 4, 16, "Somando todos os ângulos internos de um hexágono, qual é o resultado?",
    ["720 graus", "540 graus", "360 graus", "1.080 graus"], "720 graus",
-   "Um polígono de n lados tem soma interna de n menos dois vezes cento e oitenta; para seis lados, setecentos e vinte graus.",
+   "Ligando um vértice aos outros, o hexágono se divide em quatro triângulos, e quatro vezes cento e oitenta dá setecentos e vinte graus.",
    "Euclides – Os Elementos")

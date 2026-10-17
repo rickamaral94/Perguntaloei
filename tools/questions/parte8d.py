@@ -31,7 +31,7 @@ mc(L, "literatura popular", 2, 10, "Como se chama a poesia popular nordestina ve
 mc(L, "literatura infantil", 2, 10, "Qual escritora brasileira escreveu 'Marcelo, Marmelo, Martelo'?",
    ["Ruth Rocha", "Ana Maria Machado", "Cecília Meireles", "Tatiana Belinky"], "Ruth Rocha",
    "O livro conta a história de um menino que resolve inventar novos nomes para as coisas.",
-   "Academia Brasileira de Letras", br=True)
+   "Enciclopédia Itaú Cultural – verbete 'Ruth Rocha'", br=True)
 mc(L, "literatura infantil", 2, 10, "Qual escritora brasileira escreveu 'Menina Bonita do Laço de Fita'?",
    ["Ana Maria Machado", "Ruth Rocha", "Lygia Bojunga", "Sylvia Orthof"], "Ana Maria Machado",
    "Ana Maria Machado é membro da Academia Brasileira de Letras e uma das maiores autoras infantis do país.",
@@ -39,7 +39,7 @@ mc(L, "literatura infantil", 2, 10, "Qual escritora brasileira escreveu 'Menina 
 mc(L, "poesia", 2, 12, "Qual poeta brasileira escreveu o livro infantil de poemas 'Ou Isto ou Aquilo'?",
    ["Cecília Meireles", "Cora Coralina", "Adélia Prado", "Rachel de Queiroz"], "Cecília Meireles",
    "O livro reúne poemas para crianças com brincadeiras de sons e palavras.",
-   "Academia Brasileira de Letras", br=True)
+   "Enciclopédia Itaú Cultural – verbete 'Cecília Meireles'", br=True)
 mc(L, "clássicos mundiais", 2, 12, "Quem escreveu 'Robinson Crusoé', sobre um náufrago que vive anos numa ilha?",
    ["Daniel Defoe", "Jonathan Swift", "Charles Dickens", "Walter Scott"], "Daniel Defoe",
    "O romance do escritor inglês foi publicado em 1719.",
@@ -65,7 +65,7 @@ mc(L, "autores brasileiros", 2, 12, "Qual escritor cearense escreveu o romance '
    "O romance de 1857 é um dos marcos do indianismo romântico brasileiro.",
    "Academia Brasileira de Letras", br=True)
 tf(L, "prêmios literários", 2, 14, "O Prêmio Camões, criado por Brasil e Portugal, homenageia autores de língua portuguesa.", True,
-   "Criado em 1988, é o prêmio literário mais importante da língua portuguesa.",
+   "Criado em 1988, é considerado o prêmio literário mais importante da língua portuguesa.",
    "Fundação Biblioteca Nacional – Prêmio Camões")
 mc(L, "literatura popular", 3, 14, "Qual técnica de gravura, feita com uma matriz de madeira entalhada, ilustra muitas capas de folhetos de cordel?",
    ["Xilogravura", "Litogravura", "Serigrafia", "Aquarela"], "Xilogravura",
@@ -111,7 +111,7 @@ mc(P, "diminutivo", 1, 6, "Um gato bem pequenininho é chamado de quê?",
    ["Gatinho", "Gatão", "Gataria", "Gatuno"], "Gatinho",
    "O sufixo '-inho' forma o diminutivo, que indica tamanho pequeno.", "Dicionário Houaiss da Língua Portuguesa")
 mc(P, "gênero", 1, 7, "O homem que atua em novelas e filmes é o ator; e a mulher, como se chama?",
-   ["Atriz", "Atora", "Atoa", "Atrice"], "Atriz",
+   ["Atriz", "Atora", "Atoriz", "Atrice"], "Atriz",
    "Ator e atriz formam um par de masculino e feminino com terminações diferentes.", "Dicionário Houaiss da Língua Portuguesa")
 tf(P, "sinônimos", 1, 8, "A palavra 'garoto' quer dizer o mesmo que 'menino'.", True,
    "Garoto e menino são sinônimos: palavras com sentido parecido.", "Dicionário Houaiss da Língua Portuguesa")
@@ -119,8 +119,8 @@ op(P, "ortografia", 1, 9, "Como se chama o sinal gráfico que aparece sobre o A 
    ["til"],
    "O til indica que a vogal tem som nasal.", "Academia Brasileira de Letras – VOLP")
 op(P, "coletivos", 2, 10, "Como se chama um grupo de cães?", "Matilha",
-   ["matilha"],
-   "Matilha é o coletivo de cães, especialmente os de caça.", "Dicionário Houaiss da Língua Portuguesa")
+   ["matilha", "cainçalha", "caincalha"],
+   "Matilha é o coletivo de cães, especialmente os de caça; cainçalha também é aceito.", "Dicionário Houaiss da Língua Portuguesa")
 mc(P, "antônimos", 2, 10, "Qual palavra tem sentido contrário a 'aceitar'?",
    ["Recusar", "Receber", "Aprovar", "Concordar"], "Recusar",
    "Quem recusa não aceita algo que foi oferecido.", "Dicionário Houaiss da Língua Portuguesa")
@@ -242,8 +242,8 @@ mc(M, "criaturas lendárias", 1, 8, "Qual criatura lendária tem corpo de leão 
 mc(M, "lendas europeias", 1, 8, "Qual herói das lendas inglesas roubava dos ricos para dar aos pobres?",
    ["Robin Hood", "Rei Artur", "Zorro", "Guilherme Tell"], "Robin Hood",
    "Robin Hood vivia com seu bando na floresta de Sherwood.", "Enciclopédia Britannica – verbete 'Robin Hood'")
-tf(M, "lendas", 1, 8, "Segundo as lendas, o lobisomem se transforma em noites de lua cheia.", True,
-   "Nas histórias populares, o homem vira lobo quando a lua cheia aparece.", "Câmara Cascudo – Dicionário do Folclore Brasileiro")
+tf(M, "lendas", 1, 8, "Em muitas lendas e filmes, o lobisomem se transforma em noites de lua cheia.", True,
+   "Em muitas histórias, o homem vira lobo na lua cheia; no folclore brasileiro, fala-se também das noites de sexta-feira.", "Câmara Cascudo – Dicionário do Folclore Brasileiro")
 mc(M, "mitologia chinesa", 1, 9, "Quantos animais formam o zodíaco chinês?",
    ["12", "7", "10", "9"], "12",
    "Cada ano do ciclo chinês é representado por um dos 12 animais.", "Enciclopédia Britannica – verbete 'Chinese zodiac'")
@@ -310,7 +310,7 @@ mc(C, "calendário", 1, 6, "Em qual mês do ano se comemora o Natal?",
 mc(C, "calendário", 1, 6, "Em qual dia comemoramos a chegada do Ano-Novo?",
    ["1º de janeiro", "25 de dezembro", "7 de setembro", "12 de outubro"], "1º de janeiro",
    "A virada do ano acontece na passagem de 31 de dezembro para 1º de janeiro.", "Enciclopédia Britannica – verbete 'New Year's Day'")
-mc(C, "calendário", 1, 7, "Em qual estação do ano as folhas de muitas árvores ficam secas e caem?",
+mc(C, "calendário", 1, 7, "Qual estação do ano é conhecida como a época em que as folhas das árvores caem?",
    ["Outono", "Verão", "Primavera", "Inverno"], "Outono",
    "Em inglês americano, o outono é até chamado de 'fall', que quer dizer queda.", "Enciclopédia Britannica – verbete 'Autumn'")
 mc(C, "bandeiras", 1, 8, "Qual é a cor do círculo no centro da bandeira do Japão?",

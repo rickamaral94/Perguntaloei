@@ -120,7 +120,7 @@ mc(I, "animação", 2, 10, "Em 'Como Treinar o Seu Dragão', qual é o nome do d
    "O apelido vem dos dentes que ele esconde quando quer.",
    "DreamWorks – Como Treinar o Seu Dragão (2010)")
 tf(I, "estúdios", 2, 10, "O filme 'Kung Fu Panda' foi produzido pela DreamWorks.", True,
-   "O filme de 2008 foi um dos maiores sucessos do estúdio, depois de 'Shrek'.",
+   "O filme de 2008 foi um dos maiores sucessos do estúdio, que também fez 'Shrek'.",
    "DreamWorks – Kung Fu Panda (2008)")
 op(I, "animação", 2, 10, "Em 'Ratatouille', qual é o nome do jovem ajudante de cozinha que o rato Remy controla puxando o cabelo?",
    "Linguini", ["linguini", "alfredo linguini"],
@@ -210,7 +210,7 @@ op(M, "choro", 3, 16, "Qual músico carioca compôs 'Carinhoso', um dos choros m
    "Pixinguinha", ["pixinguinha", "alfredo da rocha viana filho", "alfredo da rocha vianna filho"],
    "A melodia é de Pixinguinha, e a letra foi feita depois por João de Barro, o Braguinha.",
    "Dicionário Cravo Albin da MPB – Carinhoso", br=True)
-mc(M, "choro", 4, 16, "Qual cavaquinista compôs o choro 'Brasileirinho', de 1949?",
+mc(M, "choro", 4, 16, "Qual cavaquinista compôs o choro 'Brasileirinho', gravado por ele em 1949?",
    ["Waldir Azevedo", "Jacob do Bandolim", "Ernesto Nazareth", "Pixinguinha"], "Waldir Azevedo",
    "'Brasileirinho' é um dos choros mais tocados no cavaquinho até hoje.",
    "Dicionário Cravo Albin da MPB – Waldir Azevedo", br=True)
@@ -255,7 +255,7 @@ mc(E, "tênis", 2, 14, "Gustavo Kuerten, o Guga, foi três vezes campeão de qua
 mc(E, "Fórmula 1", 2, 12, "Qual autódromo de São Paulo recebe a corrida brasileira da Fórmula 1?",
    ["Interlagos", "Jacarepaguá", "Tarumã", "Velopark"], "Interlagos",
    "O nome oficial do circuito é Autódromo José Carlos Pace.",
-   "Fórmula 1 – Grande Prêmio de São Paulo", br=True)
+   "Fórmula 1 – Grande Prêmio de São Paulo", br=True, ref="2026-10-13")
 mc(E, "esportes paralímpicos", 2, 14, "Qual nadador é o maior medalhista paralímpico do Brasil?",
    ["Daniel Dias", "Clodoaldo Silva", "Gabriel Araújo", "André Brasil"], "Daniel Dias",
    "Daniel Dias conquistou 27 medalhas paralímpicas, sendo 14 de ouro.",
@@ -352,7 +352,7 @@ mc(A, "slogans", 3, 14, "Qual empresa usou o slogan 'Think different', que quer 
    "A campanha mostrava personalidades como Einstein e Gandhi.",
    "Apple – campanha Think Different (1997)")
 mc(A, "marcas brasileiras", 3, 16, "Qual empresa lançou o Kichute, tênis com travas de borracha muito usado para jogar bola nos anos 1970?",
-   ["Alpargatas", "Rainha", "Topper", "Penalty"], "Alpargatas",
+   ["Alpargatas", "Grendene", "Vulcabras", "Cambuci"], "Alpargatas",
    "O Kichute, preto e com cadarço comprido, virou febre entre os meninos dos anos 1970.",
    "Alpargatas – história da empresa", br=True)
 tf(A, "origem das marcas", 4, 16, "A marca de sorvetes Häagen-Dazs foi criada nos Estados Unidos, apesar do nome que parece escandinavo.", True,
@@ -378,7 +378,7 @@ mc(G, "salgados", 1, 8, "Qual salgado frito, de massa fina e recheado, é o par 
    "O pastel de feira é um clássico das feiras livres de São Paulo.",
    "Prefeitura de São Paulo – feiras livres", br=True)
 tf(G, "ingredientes", 1, 8, "A mandioca também é chamada de aipim e de macaxeira, dependendo da região do Brasil.", True,
-   "Aipim é comum no Rio e no Sul, e macaxeira, no Norte e no Nordeste.",
+   "Aipim é comum no Rio de Janeiro, na Bahia e no Sul, e macaxeira, em boa parte do Norte e do Nordeste.",
    "Embrapa Mandioca e Fruticultura", br=True)
 mc(G, "frutas brasileiras", 1, 8, "Qual fruta tem a castanha pendurada do lado de fora?",
    ["Caju", "Manga", "Goiaba", "Pitanga"], "Caju",

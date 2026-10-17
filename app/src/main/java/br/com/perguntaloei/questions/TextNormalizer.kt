@@ -95,11 +95,16 @@ object TextNormalizer {
         // Similaridade ≥ 0,85 exige tamanhos parecidos: a distância nunca é menor que a diferença de tamanho.
         val max = maxOf(normA.length, normB.length)
         if (max == 0) return true
-        if (kotlin.math.abs(normA.length - normB.length) <= 0.15 * max) {
+        // Texto quase igual só conta se as palavras importantes também baterem: "capital da Rússia" e
+        // "capital da Turquia" têm quase as mesmas letras, mas são perguntas diferentes.
+        if (j >= SIMILAR_MIN_JACCARD && kotlin.math.abs(normA.length - normB.length) <= 0.15 * max) {
             if (1.0 - levenshtein(normA, normB).toDouble() / max >= 0.85) return true
         }
         return answerA == answerB && j >= 0.55
     }
+
+    /** Mesmo valor de SIMILAR_MIN_JACCARD no gerador do banco (tools/questions/build_questions.py). */
+    const val SIMILAR_MIN_JACCARD = 0.65
 
     fun jaccardOf(ta: Set<String>, tb: Set<String>): Double {
         if (ta.isEmpty() && tb.isEmpty()) return 1.0
