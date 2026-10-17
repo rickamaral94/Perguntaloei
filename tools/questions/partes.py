@@ -15,4 +15,5 @@ PARTES = [
     "parte9_nov",
     "parte9_cul",
     "parte9_ast",
+    "parte9_cin",
 ]
