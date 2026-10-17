@@ -139,10 +139,6 @@ mc(T, "estrelas", 2, 12, "Qual é a cor das estrelas mais quentes?",
    ["Azul", "Vermelha", "Laranja", "Amarela"], "Azul",
    "As estrelas azuis passam dos 10 mil graus na superfície; as vermelhas são as mais frias.",
    "Enciclopédia Britannica – verbete 'Star'")
-mc(T, "estrelas", 2, 12, "Como se chama a enorme explosão de uma estrela de grande massa no fim da vida?",
-   ["Supernova", "Eclipse", "Aurora", "Cometa"], "Supernova",
-   "Uma supernova pode brilhar, por algumas semanas, mais do que uma galáxia inteira.",
-   "NASA – Supernovae")
 mc(T, "galáxias", 2, 12, "Qual é o formato da Via Láctea?",
    ["Espiral", "Elíptica", "Irregular", "Em forma de anel"], "Espiral",
    "A Via Láctea é uma galáxia espiral barrada, com braços que giram em torno de um centro.",
@@ -162,15 +158,11 @@ mc(T, "planetas", 2, 12, "Por que Marte tem cor avermelhada?",
     "Ele reflete a luz de Júpiter", "Sua atmosfera é feita de fogo"], "Seu solo tem muito óxido de ferro, como ferrugem",
    "O pó rico em óxido de ferro cobre a superfície e até deixa o céu marciano rosado.",
    "NASA – Mars: Facts")
-mc(T, "fases da Lua", 2, 12, "Como se chama a lua cheia que parece um pouco maior e mais brilhante por estar mais perto da Terra?",
-   ["Superlua", "Lua azul", "Lua nova", "Meia-lua"], "Superlua",
-   "A órbita da Lua é oval, e a superlua acontece quando a lua cheia coincide com o ponto mais próximo da Terra.",
-   "NASA – What Is a Supermoon?")
 mc(T, "unidades", 2, 12, "A unidade astronômica, usada para medir distâncias no Sistema Solar, é a distância média entre a Terra e qual astro?",
    ["Sol", "Lua", "Marte", "Júpiter"], "Sol",
    "Uma unidade astronômica vale cerca de 150 milhões de quilômetros.",
    "União Astronômica Internacional – Resolução B2 (2012)")
-mc(T, "agências espaciais", 2, 12, "A ESA é a agência espacial de qual continente?",
+mc(T, "agências espaciais", 1, 10, "A ESA é a agência espacial de qual continente?",
    ["Europa", "Ásia", "África", "Oceania"], "Europa",
    "A Agência Espacial Europeia reúne mais de vinte países e tem sede em Paris.",
    "ESA – About Us")
@@ -273,12 +265,12 @@ mc(T, "satélites", 4, 16, "Qual foi o primeiro satélite desenvolvido no Brasil
    "INPE – Satélite SCD-1", br=True)
 mc(T, "constelações", 4, 16, "Na bandeira do Brasil, a estrela mais brilhante do Cruzeiro do Sul representa qual estado?",
    ["São Paulo", "Rio de Janeiro", "Minas Gerais", "Bahia"], "São Paulo",
-   "A estrela Alfa do Cruzeiro do Sul representa São Paulo; as outras estrelas da cruz representam os demais estados das opções.",
+   "A Alfa do Cruzeiro do Sul representa São Paulo; Rio de Janeiro, Bahia e Minas Gerais são outras estrelas da mesma cruz.",
    "Lei nº 5.700/1971 – Anexo (Símbolos Nacionais)", br=True)
 mc(T, "constelações", 4, 16, "Qual ave dá nome a uma grande constelação dos povos guaranis, vista perto do Cruzeiro do Sul?",
    ["Ema", "Arara", "Beija-flor", "Gavião"], "Ema",
    "Para povos guaranis do sul do Brasil, o surgimento da Ema no início da noite, em junho, marca a chegada do inverno.",
-   "Germano Bruno Afonso – O Céu dos Índios Tembé / Mitos e Estações no Céu Tupi-Guarani", br=True)
+   "Germano Bruno Afonso – Mitos e Estações no Céu Tupi-Guarani (Scientific American Brasil)", br=True)
 mc(T, "cometas", 4, 16, "Qual cometa se partiu em pedaços e colidiu com Júpiter em 1994?",
    ["Shoemaker-Levy 9", "Halley", "Hale-Bopp", "Encke"], "Shoemaker-Levy 9",
    "Foi a primeira colisão entre dois corpos do Sistema Solar observada diretamente pelos cientistas.",

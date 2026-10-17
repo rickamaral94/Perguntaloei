@@ -122,7 +122,7 @@ tf(T, "cultura indígena", 2, 10, "O Dia dos Povos Indígenas é comemorado em 1
 mc(T, "festas populares", 2, 10, "A Folia de Reis homenageia quais personagens da história do Natal?",
    ["Os Reis Magos", "Os pastores", "Os anjos", "Os apóstolos"], "Os Reis Magos",
    "Os foliões cantam de casa em casa lembrando a viagem dos Magos até o Menino Jesus.",
-   "IPHAN – Folia de Reis", br=True)
+   "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
 tf(T, "costumes regionais", 2, 10, "O chimarrão gaúcho é preparado com água gelada.", False,
    "O chimarrão leva água quente; a versão gelada da erva-mate é o tereré.",
    "Embrapa – Erva-mate", br=True)
@@ -163,14 +163,14 @@ mc(T, "danças regionais", 2, 12, "Qual dança de roda, famosa na Ilha de Itamar
 mc(T, "artesanato", 2, 12, "Qual renda é feita sobre uma almofada, trocando rapidamente pequenos carretéis de madeira?",
    ["Renda de bilro", "Crochê", "Tricô", "Ponto-cruz"], "Renda de bilro",
    "Os bilros são as pecinhas de madeira que as rendeiras do Nordeste trocam de lugar para trançar a linha.",
-   "IPHAN – Renda de bilro", br=True)
+   "Fundação Joaquim Nabuco – Pesquisa Escolar: Renda de bilro", br=True)
 mc(T, "artesanato", 2, 12, "As carrancas, esculturas de cabeças assustadoras colocadas na frente dos barcos, são típicas de qual rio?",
    ["São Francisco", "Amazonas", "Tietê", "Paraná"], "São Francisco",
    "Segundo a crença dos barqueiros, as carrancas espantavam os maus espíritos das águas do Velho Chico.",
-   "IPHAN – Carrancas do São Francisco", br=True)
+   "Fundação Joaquim Nabuco – Pesquisa Escolar: Carrancas", br=True)
 mc(T, "religiosidade popular", 2, 12, "Como se chama o templo onde se pratica o candomblé?",
    ["Terreiro", "Sinagoga", "Mesquita", "Mosteiro"], "Terreiro",
-   "O Terreiro da Casa Branca, em Salvador, foi o primeiro templo afro-brasileiro tombado pelo IPHAN, em 1984.",
+   "O Terreiro da Casa Branca, em Salvador, foi o primeiro templo afro-brasileiro tombado pelo IPHAN, nos anos 1980.",
    "IPHAN – Terreiro da Casa Branca", br=True)
 mc(T, "religiosidade popular", 2, 12, "Como se chama a pessoa que, na tradição popular, reza com um raminho de folhas contra quebranto e mau-olhado?",
    ["Benzedeira", "Parteira", "Rendeira", "Doceira"], "Benzedeira",
@@ -179,7 +179,7 @@ mc(T, "religiosidade popular", 2, 12, "Como se chama a pessoa que, na tradição
 mc(T, "manifestações populares", 2, 12, "Como se chama o desafio de versos improvisados entre dois cantadores com viola, no Nordeste?",
    ["Repente", "Modinha", "Lundu", "Toada"], "Repente",
    "No repente, cada cantador tem de responder ao outro na hora, rimando e seguindo a métrica.",
-   "IPHAN – Registro das Matrizes do Forró e Repente", syn=("cantoria", "cantoria de viola"), br=True)
+   "Câmara Cascudo – Dicionário do Folclore Brasileiro", syn=("cantoria", "cantoria de viola"), br=True)
 op(T, "personagens", 2, 12, "Qual era o apelido de Virgulino Ferreira da Silva, o mais famoso cangaceiro do sertão?", "Lampião",
    ["lampião", "lampiao"],
    "Lampião e seu bando percorreram o sertão nordestino até 1938, quando ele morreu em Sergipe.",

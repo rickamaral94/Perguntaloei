@@ -11,4 +11,6 @@ PARTES = [
     "parte9_cor",
     "parte9_tv",
     "parte9_gas",
+    "parte9_mar",
+    "parte9_nov",
 ]
