@@ -18,7 +18,7 @@ mc(T, "utensílios", 1, 6, "Qual talher usamos para tomar sopa?",
 mc(T, "doces de festa", 1, 7, "Qual doce de festa é branquinho, feito com leite condensado e coco, e muitas vezes leva um cravo em cima?",
    ["Beijinho", "Cajuzinho", "Bem-casado", "Olho de sogra"], "Beijinho",
    "O beijinho é o 'irmão' de coco do brigadeiro e costuma ser enrolado no açúcar.",
-   "Câmara Cascudo – História da Alimentação no Brasil", br=True)
+   "Dicionário Houaiss da Língua Portuguesa – verbete 'beijinho'", br=True)
 mc(T, "laticínios", 1, 7, "Qual alimento feito de leite é azedinho e cremoso e costuma vir em potinhos?",
    ["Iogurte", "Gelatina", "Pudim", "Mingau"], "Iogurte",
    "O iogurte fica azedinho porque bactérias do bem transformam o açúcar do leite em ácido.",
@@ -57,7 +57,7 @@ mc(T, "nutrição", 1, 6, "Qual destas bebidas é a melhor para matar a sede?",
 mc(T, "padaria", 1, 8, "Qual doce de padaria, frito e recheado de creme, tem nome de algo que acontece quando a gente dorme?",
    ["Sonho", "Bomba", "Carolina", "Rosca"], "Sonho",
    "O sonho é uma bola de massa frita, recheada de creme e polvilhada com açúcar.",
-   "Câmara Cascudo – História da Alimentação no Brasil", br=True)
+   "Dicionário Houaiss da Língua Portuguesa – verbete 'sonho'", br=True)
 mc(T, "técnicas", 1, 7, "Para fritar a batata, ela é mergulhada em que líquido bem quente?",
    ["Óleo", "Água", "Leite", "Vinagre"], "Óleo",
    "O óleo de fritura costuma passar de 160 °C, por isso a batata fica dourada e crocante por fora.",
@@ -81,7 +81,7 @@ mc(T, "nutrição", 1, 6, "O que é importante fazer depois de comer doces?",
 mc(T, "queijos", 1, 9, "Qual queijo é assado no espeto e vendido nas praias, principalmente no Nordeste?",
    ["Queijo coalho", "Gorgonzola", "Parmesão", "Brie"], "Queijo coalho",
    "O queijo coalho é firme e não derrete fácil, por isso pode ir direto à brasa.",
-   "Embrapa Caprinos e Ovinos", br=True)
+   "MAPA – Instrução Normativa nº 30/2001, Regulamento Técnico de Identidade e Qualidade do Queijo de Coalho", br=True)
 op(T, "ingredientes", 1, 9, "De qual grão é feito o fubá?",
    "Milho", ["milho", "do milho", "grão de milho"],
    "O fubá é o milho moído bem fininho, usado em bolos, angu e polenta.",
@@ -112,7 +112,7 @@ mc(T, "frutas", 1, 8, "Qual fruta amarela, quando cortada em fatias, fica com fo
 mc(T, "pães do mundo", 2, 10, "Qual pão francês é comprido e fininho, com casca bem crocante?",
    ["Baguete", "Ciabatta", "Pão sírio", "Broa de milho"], "Baguete",
    "A baguete é um símbolo da França, e sua tradição artesanal virou Patrimônio da UNESCO em 2022.",
-   "UNESCO – Patrimônio Cultural Imaterial")
+   "UNESCO – Saber artesanal e cultura do pão baguete (Patrimônio Imaterial, 2022)")
 mc(T, "salgados", 2, 10, "Qual salgado de origem árabe é feito de trigo partido com carne moída e tem formato oval e pontudo?",
    ["Quibe", "Esfirra", "Empada", "Coxinha"], "Quibe",
    "O quibe chegou ao Brasil com imigrantes sírios e libaneses e virou salgado de festa.",
@@ -142,8 +142,8 @@ mc(T, "técnicas", 2, 10, "Como se chama a técnica de cozinhar o pudim com a fo
 mc(T, "técnicas", 2, 12, "Como se chama a técnica de dourar alho e cebola em pouca gordura, mexendo sempre, antes de juntar outros ingredientes?",
    ["Refogar", "Gratinar", "Escaldar", "Marinar"], "Refogar",
    "O refogado é a base do feijão e do arroz em muitas casas brasileiras.",
-   "Senac – Técnicas de Cozinha")
-mc(T, "queijos", 2, 10, "Qual queijo italiano, bem duro, é ralado por cima do macarrão e amadurece por mais de um ano?",
+   "Dicionário Houaiss da Língua Portuguesa – verbete 'refogar'")
+mc(T, "queijos", 2, 10, "Qual queijo italiano, bem duro, é ralado por cima do macarrão e amadurece por pelo menos um ano?",
    ["Parmesão", "Muçarela", "Ricota", "Mascarpone"], "Parmesão",
    "O Parmigiano Reggiano original precisa maturar pelo menos 12 meses.",
    "Consorzio del Formaggio Parmigiano Reggiano")
@@ -162,7 +162,7 @@ mc(T, "Itália", 2, 12, "Qual sobremesa italiana leva biscoito molhado no café 
 mc(T, "Portugal", 2, 10, "Qual peixe salgado e seco é o ingrediente mais famoso da cozinha portuguesa?",
    ["Bacalhau", "Salmão", "Atum", "Tilápia"], "Bacalhau",
    "Os portugueses dizem ter uma receita de bacalhau para cada dia do ano, embora o peixe venha de mares frios do norte.",
-   "Enciclopédia Britannica – verbete 'Portugal: Cuisine'")
+   "Enciclopédia Britannica – verbete 'Cod'")
 mc(T, "pães do mundo", 2, 10, "Qual pão achatado e redondo, que forma um bolso por dentro, é típico do Oriente Médio?",
    ["Pão sírio", "Brioche", "Ciabatta", "Pão de forma"], "Pão sírio",
    "Ao assar em forno bem quente, o vapor estufa a massa e cria o bolso do pão sírio, também chamado pita.",
@@ -185,7 +185,7 @@ mc(T, "nutrição", 2, 10, "Qual nutriente, presente no arroz, no pão e no maca
    "Ministério da Saúde – Guia Alimentar para a População Brasileira")
 tf(T, "nutrição", 2, 12, "O Guia Alimentar para a População Brasileira recomenda evitar alimentos ultraprocessados.", True,
    "A regra de ouro do guia é preferir alimentos naturais ou pouco processados aos ultraprocessados.",
-   "Ministério da Saúde – Guia Alimentar para a População Brasileira", br=True)
+   "Ministério da Saúde – Guia Alimentar para a População Brasileira (2014)", br=True, ref="2026-10-13")
 tf(T, "nomes regionais", 2, 10, "No Rio Grande do Sul, a tangerina é popularmente chamada de bergamota.", True,
    "A mesma fruta é chamada de tangerina, mexerica, mimosa ou bergamota, conforme a região do Brasil.",
    "Embrapa Mandioca e Fruticultura", br=True)
@@ -216,7 +216,7 @@ mc(T, "época dos alimentos", 3, 13, "Em quais estações o pinhão, semente da 
 mc(T, "África", 3, 14, "Qual prato do norte da África é feito com grãozinhos de sêmola de trigo cozidos no vapor?",
    ["Cuscuz marroquino", "Paella", "Homus", "Polenta"], "Cuscuz marroquino",
    "Os saberes ligados ao cuscuz de Marrocos, Argélia, Tunísia e Mauritânia são patrimônio da UNESCO desde 2020.",
-   "UNESCO – Patrimônio Cultural Imaterial")
+   "UNESCO – Saberes e práticas ligados ao cuscuz (Patrimônio Imaterial, 2020)")
 mc(T, "Índia", 3, 14, "Qual pão achatado indiano é assado grudado nas paredes de um forno de barro chamado tandoor?",
    ["Naan", "Bagel", "Brioche", "Focaccia"], "Naan",
    "No tandoor, a massa fica presa à parede quente e assa em poucos minutos.",
@@ -224,7 +224,7 @@ mc(T, "Índia", 3, 14, "Qual pão achatado indiano é assado grudado nas paredes
 mc(T, "Itália", 3, 13, "Em qual cidade italiana surgiu a pizza como a conhecemos hoje?",
    ["Nápoles", "Roma", "Milão", "Veneza"], "Nápoles",
    "A arte dos pizzaiolos napolitanos foi reconhecida como patrimônio da UNESCO em 2017.",
-   "UNESCO – Patrimônio Cultural Imaterial")
+   "UNESCO – A arte do pizzaiolo napolitano (Patrimônio Imaterial, 2017)")
 tf(T, "padaria", 3, 14, "O fermento químico em pó funciona com seres vivos, assim como o fermento biológico.", False,
    "O fermento biológico tem leveduras vivas; o químico solta gás por uma reação entre substâncias, sem seres vivos.",
    "Enciclopédia Britannica – verbete 'Baking powder'")

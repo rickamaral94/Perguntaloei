@@ -67,7 +67,7 @@ tf(T, "novelas juvenis", 1, 10, "A série juvenil 'Malhação' ficou no ar por a
 mc(T, "faixas de horário", 1, 10, "Qual faixa da TV Globo exibe à tarde reprises de novelas que já fizeram sucesso?",
    ["Vale a Pena Ver de Novo", "Sessão da Tarde", "Tela Quente", "Fantástico"], "Vale a Pena Ver de Novo",
    "O 'Vale a Pena Ver de Novo' está no ar desde 1980 e reexibe novelas antigas da emissora.",
-   "Memória Globo – verbete 'Vale a Pena Ver de Novo'", br=True)
+   "Memória Globo – verbete 'Vale a Pena Ver de Novo'", br=True, ref="2026-10-13")
 mc(T, "bastidores", 1, 10, "Quando a TV exibe de novo uma novela antiga, como se chama essa nova exibição?",
    ["Reprise", "Estreia", "Bastidores", "Making of"], "Reprise",
    "Na reprise, a mesma gravação é exibida outra vez, com os atores originais.",
@@ -78,7 +78,7 @@ mc(T, "novelas infantis", 1, 10, "Qual atriz mirim interpretou Dulce Maria na no
    "SBT – página oficial de 'Carinha de Anjo'", br=True)
 tf(T, "faixas de horário", 1, 12, "A principal novela da Globo, antes chamada de 'novela das oito', hoje é conhecida como 'novela das nove'.", True,
    "O horário da faixa nobre passou a começar por volta das 21h, e o apelido mudou junto.",
-   "Memória Globo – verbete 'Faixas de novelas'", br=True)
+   "Memória Globo – verbete 'Faixas de novelas'", br=True, ref="2026-10-13")
 mc(T, "novelas infantis", 1, 10, "Qual atriz interpretou as gêmeas da novela 'Cúmplices de um Resgate'?",
    ["Larissa Manoela", "Sophia Valverde", "Lorena Queiroz", "Maisa Silva"], "Larissa Manoela",
    "Larissa Manoela, que antes viveu Maria Joaquina em 'Carrossel', fez os dois papéis principais.",
@@ -139,7 +139,7 @@ mc(T, "autores", 2, 14, "Em qual bairro do Rio de Janeiro se passam muitas novel
 op(T, "cenários", 2, 14, "A novela 'Renascer' se passa numa região da Bahia famosa pelo cultivo de qual fruto?",
    "Cacau", ["cacau", "o cacau"],
    "A história de José Inocêncio se passa na zona cacaueira do sul da Bahia, em 1993 e no remake de 2024.",
-   "Memória Globo – verbete 'Renascer'", br=True)
+   "Memória Globo – verbete 'Renascer'", br=True, ref="2026-10-13")
 mc(T, "faixas de horário", 2, 14, "Na Globo, qual faixa de horário é conhecida por exibir muitas novelas de época?",
    ["Novela das seis", "Novela das sete", "Novela das nove", "Novela das onze"], "Novela das seis",
    "Tramas históricas como 'Novo Mundo' e 'Orgulho e Paixão' foram exibidas no fim da tarde.",
@@ -194,7 +194,7 @@ mc(T, "vilões", 2, 16, "Em 'Vale Tudo' (1988), qual era o nome da filha ambicio
    "Memória Globo – verbete 'Vale Tudo'", br=True)
 tf(T, "remakes", 2, 14, "A TV Globo exibiu um remake da novela 'Vale Tudo' em 2025.", True,
    "A nova versão, escrita por Manuela Dias, teve Débora Bloch como Odete Roitman.",
-   "Memória Globo – verbete 'Vale Tudo (2025)'", br=True)
+   "Memória Globo – verbete 'Vale Tudo (2025)'", br=True, ref="2026-10-13")
 op(T, "personagens", 2, 16, "Em 'Império' (2014), qual era o apelido de José Alfredo, vivido por Alexandre Nero?",
    "Comendador", ["comendador", "o comendador", "comendador josé alfredo"],
    "O Comendador comandava um império de joias, e a novela ganhou o Emmy Internacional em 2015.",
@@ -266,4 +266,4 @@ mc(T, "cidades fictícias", 4, 16, "Como se chamava o reino fictício onde se pa
 mc(T, "adaptações", 4, 16, "A novela 'Éramos Seis' foi adaptada do livro de qual escritora?",
    ["Maria José Dupré", "Rachel de Queiroz", "Lygia Fagundes Telles", "Cecília Meireles"], "Maria José Dupré",
    "O romance de 1943 sobre Dona Lola e seus filhos ganhou várias versões na TV, a mais recente na Globo em 2019.",
-   "Enciclopédia Itaú Cultural – verbete 'Maria José Dupré'", br=True)
+   "Enciclopédia Itaú Cultural – verbete 'Maria José Dupré'", br=True, ref="2026-10-13")

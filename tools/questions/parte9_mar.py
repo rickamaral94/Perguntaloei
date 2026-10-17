@@ -98,7 +98,7 @@ tf(T, "personagens", 1, 9, "A Hello Kitty foi criada no Japão.", True,
    "Enciclopédia Britannica – verbete 'Hello Kitty'")
 mc(T, "carros", 1, 10, "Qual montadora fabricou no Brasil o carro Uno, lançado em 1984?",
    ["Fiat", "Volkswagen", "Ford", "Chevrolet"], "Fiat",
-   "O Fiat Uno foi produzido em Betim, Minas Gerais, por quase trinta anos.",
+   "O Fiat Uno foi produzido por muitos anos na fábrica da Fiat em Betim, Minas Gerais.",
    "Fiat Brasil – história do Uno", br=True)
 mc(T, "tecnologia", 1, 9, "O Gmail, serviço de e-mail, pertence a qual empresa?",
    ["Google", "Microsoft", "Apple", "Yahoo"], "Google",
@@ -120,13 +120,13 @@ mc(T, "marcas que viraram nome", 2, 12, "Muita gente chama a fotocópia pelo nom
    "Enciclopédia Britannica – verbete 'Xerox Corporation'")
 mc(T, "marcas que viraram nome", 2, 12, "No Brasil, a fita adesiva transparente é muitas vezes chamada pelo nome de qual marca?",
    ["Durex", "Pritt", "Bic", "Faber-Castell"], "Durex",
-   "Durex foi a marca de fita adesiva da 3M no Brasil, e o nome passou a ser usado para qualquer fita.",
+   "Durex é a marca de fita adesiva da 3M no Brasil, e o nome passou a ser usado para qualquer fita.",
    "3M do Brasil – história", br=True)
 tf(T, "marcas que viraram nome", 2, 12, "A palavra chiclete veio do nome de uma marca de goma de mascar.", True,
-   "Chiclete vem de Chiclets, marca de goma de mascar em pastilhas da empresa americana Adams.",
+   "Chiclete vem de Chiclets, marca americana de goma de mascar em pastilhas.",
    "Dicionário Houaiss – verbete 'chiclete'")
 tf(T, "marcas que viraram nome", 2, 12, "Cotonete é o nome de uma marca que virou nome comum das hastes com algodão na ponta.", True,
-   "Cotonete é marca registrada da Johnson & Johnson, mas o nome passou a ser usado para qualquer haste flexível.",
+   "Cotonete é uma marca registrada, lançada no Brasil pela Johnson & Johnson, mas o nome passou a ser usado para qualquer haste flexível.",
    "Johnson & Johnson Brasil – marca Cotonetes", br=True)
 tf(T, "supermercados", 2, 12, "A rede de supermercados Carrefour é de origem americana.", False,
    "O Carrefour é francês; abriu seu primeiro hipermercado perto de Paris em 1963.",
@@ -183,7 +183,7 @@ mc(T, "brinquedos", 2, 12, "Em que década a boneca Barbie foi lançada?",
    "Enciclopédia Britannica – verbete 'Barbie'")
 mc(T, "doces", 2, 12, "Qual marca de chocolate usa uma vaca lilás nas embalagens?",
    ["Milka", "Lindt", "Hershey's", "Toblerone"], "Milka",
-   "A embalagem lilás existe desde 1901, e a vaca dessa cor virou símbolo da marca nos anos 1970.",
+   "A Milka usa a cor lilás nas embalagens há mais de cem anos, e uma vaca dessa cor virou o símbolo da marca.",
    "Mondelez International – marca Milka")
 mc(T, "marcas que viraram nome", 2, 12, "Qual empresa lançou o curativo adesivo Band-Aid?",
    ["Johnson & Johnson", "Colgate", "Nestlé", "Bayer"], "Johnson & Johnson",
@@ -240,8 +240,8 @@ mc(T, "slogans", 3, 14, "Qual analgésico ficou famoso com um slogan que termina
    "Memória da Propaganda – campanha Doril", br=True)
 mc(T, "propaganda", 3, 16, "Qual ator foi, por décadas, o garoto-propaganda da Bombril?",
    ["Carlos Moreno", "Tony Ramos", "Antonio Fagundes", "Marcos Caruso"], "Carlos Moreno",
-   "Carlos Moreno estrelou os comerciais da Bombril a partir de 1978 e entrou para o Guinness pela longa parceria.",
-   "Guinness World Records", br=True)
+   "Carlos Moreno estrelou os comerciais da Bombril a partir de 1978, numa das parcerias mais longas da propaganda brasileira.",
+   "Memória da Propaganda – campanha Bombril", br=True)
 
 # =========================================================== MUITO DIFÍCEIS
 op(T, "origem dos nomes", 4, 16, "A sigla Fiat quer dizer 'Fábrica Italiana de Automóveis de...' qual cidade?", "Turim",

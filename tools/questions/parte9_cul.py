@@ -69,8 +69,8 @@ tf(T, "símbolos nacionais", 1, 8, "Na faixa da bandeira do Brasil está escrito
    "Na faixa branca da bandeira está escrito o lema positivista 'Ordem e Progresso'.",
    "Lei nº 5.700/1971 – Símbolos Nacionais", br=True)
 tf(T, "cultura indígena", 1, 8, "Todos os povos indígenas do Brasil falam a mesma língua.", False,
-   "O Censo de 2010 registrou 274 línguas indígenas faladas no Brasil.",
-   "IBGE – Censo Demográfico 2010", br=True)
+   "O Censo 2022 do IBGE registrou 295 línguas indígenas faladas no Brasil.",
+   "IBGE – Censo Demográfico 2022", br=True, ref="2026-10-13")
 mc(T, "danças regionais", 1, 9, "Qual objeto colorido os passistas de frevo seguram enquanto dançam?",
    ["Sombrinha", "Leque", "Pandeiro", "Lenço"], "Sombrinha",
    "A pequena sombrinha colorida ajuda o passista a se equilibrar nos passos acrobáticos do frevo.",
@@ -129,7 +129,7 @@ tf(T, "costumes regionais", 2, 10, "O chimarrão gaúcho é preparado com água 
 op(T, "carnaval", 2, 12, "Como se chamam as músicas animadas de Carnaval, como 'Mamãe eu quero' e 'Cidade Maravilhosa'?", "Marchinhas",
    ["marchinhas", "marchinha", "marchinhas de carnaval", "marchas", "marcha"],
    "As marchinhas fizeram sucesso nos bailes e blocos de rua a partir dos anos 1920 e 1930.",
-   "Instituto Moreira Salles – Marchinhas de Carnaval", br=True)
+   "Dicionário Cravo Albin da Música Popular Brasileira", br=True)
 mc(T, "religiosidade popular", 2, 12, "Qual santo é festejado em 29 de junho, encerrando o ciclo das festas juninas?",
    ["São Pedro", "São João", "Santo Antônio", "São Sebastião"], "São Pedro",
    "São Pedro, padroeiro dos pescadores, fecha as festas juninas no fim do mês.",
@@ -137,7 +137,7 @@ mc(T, "religiosidade popular", 2, 12, "Qual santo é festejado em 29 de junho, e
 mc(T, "festas populares", 2, 12, "No Festival de Parintins, qual é a cor do boi Garantido?",
    ["Vermelho", "Azul", "Verde", "Amarelo"], "Vermelho",
    "O Garantido é vermelho e branco, e seu rival, o Caprichoso, é azul e branco.",
-   "IPHAN – Festa do Boi-Bumbá de Parintins", br=True)
+   "IPHAN – Complexo Cultural do Boi Bumbá do Médio Amazonas e Parintins", br=True)
 mc(T, "festas populares", 2, 12, "No Círio de Nazaré, milhares de promesseiros seguram e puxam o que, junto da berlinda da santa?",
    ["Uma corda", "Uma bandeira", "Um andor de flores", "Uma fita dourada"], "Uma corda",
    "A corda do Círio, com centenas de metros, é disputada pelos fiéis que pagam promessas.",
@@ -147,7 +147,7 @@ mc(T, "festas populares", 2, 12, "Qual é o símbolo do Divino Espírito Santo, 
    "Na tradição cristã, o Espírito Santo é representado por uma pomba.",
    "IPHAN – Festa do Divino Espírito Santo de Pirenópolis", br=True)
 tf(T, "festas populares", 2, 12, "As Folias de Reis costumam visitar as casas entre o Carnaval e a Páscoa.", False,
-   "O ciclo da Folia de Reis vai do Natal até 6 de janeiro, o Dia de Reis.",
+   "O ciclo da Folia de Reis costuma ir do Natal até 6 de janeiro, o Dia de Reis.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
 tf(T, "religiosidade popular", 2, 12, "Na Lavagem do Bonfim, em Salvador, as baianas lavam as escadarias da igreja com água de cheiro.", True,
    "A Lavagem acontece em janeiro e reúne fé católica e tradições afro-brasileiras.",
@@ -207,7 +207,7 @@ mc(T, "patrimônio", 3, 14, "Qual foi a primeira cidade brasileira declarada Pat
    "UNESCO – Historic Town of Ouro Preto", br=True)
 mc(T, "patrimônio", 3, 14, "Qual órgão federal cuida do patrimônio histórico do Brasil, tombando prédios e registrando tradições?",
    ["IPHAN", "IBGE", "INPE", "Embrapa"], "IPHAN",
-   "O Instituto do Patrimônio Histórico e Artístico Nacional foi criado em 1937.",
+   "O Instituto do Patrimônio Histórico e Artístico Nacional foi criado em 1937, com o nome de SPHAN.",
    "IPHAN – Institucional", syn=("instituto do patrimônio histórico e artístico nacional",), br=True)
 mc(T, "carnaval", 3, 14, "Qual bloco de Recife entrou para o Guinness como o maior bloco de carnaval do mundo?",
    ["Galo da Madrugada", "Cordão da Bola Preta", "Filhos de Gandhy", "Bloco da Lama"], "Galo da Madrugada",
@@ -236,7 +236,7 @@ mc(T, "festas populares", 3, 14, "Qual festa afro-brasileira coroa reis do Congo
 tf(T, "cultura indígena", 3, 14, "Os povos indígenas usam o fruto do jenipapo para fazer pinturas vermelhas no corpo.", False,
    "A tinta do jenipapo verde fica preta-azulada na pele; o vermelho vem do urucum.",
    "Embrapa – Jenipapo", br=True)
-tf(T, "patrimônio", 3, 14, "O centro histórico de Olinda nunca foi reconhecido como Patrimônio Mundial.", False,
+tf(T, "patrimônio", 3, 14, "O centro histórico de Olinda é reconhecido pela UNESCO como Patrimônio Mundial.", True,
    "Olinda entrou na lista de Patrimônio Mundial da UNESCO em 1982.",
    "UNESCO – Historic Centre of the Town of Olinda", br=True)
 mc(T, "falares regionais", 3, 14, "Qual palavra, usada para espanto, alegria ou raiva, é marca do falar paraense?",
@@ -248,10 +248,10 @@ mc(T, "falares regionais", 3, 14, "Qual palavra, usada para espanto, alegria ou 
 mc(T, "símbolos nacionais", 4, 16, "Quem compôs a música do Hino da Independência do Brasil?",
    ["Dom Pedro I", "Carlos Gomes", "Heitor Villa-Lobos", "Chiquinha Gonzaga"], "Dom Pedro I",
    "O imperador era músico e compôs a melodia; a letra é do jornalista Evaristo da Veiga.",
-   "Enciclopédia Britannica – verbete 'Pedro I'", syn=("pedro i", "d. pedro i"), br=True)
+   "Enciclopédia Itaú Cultural", syn=("pedro i", "d. pedro i"), br=True)
 tf(T, "símbolos nacionais", 4, 16, "A letra do Hino Nacional Brasileiro foi oficializada em 1922, no centenário da Independência.", True,
-   "A música era tocada desde o século XIX, mas a letra de Osório Duque Estrada só foi oficializada em 1922.",
-   "Câmara dos Deputados – Hino Nacional", br=True)
+   "A música era tocada desde o século XIX, mas a letra de Osório Duque Estrada só foi oficializada em 6 de setembro de 1922.",
+   "Decreto nº 15.671/1922 – Hino Nacional", br=True)
 mc(T, "patrimônio", 4, 16, "O Cais do Valongo, antigo porto de chegada de africanos escravizados e Patrimônio Mundial, fica em qual cidade?",
    ["Rio de Janeiro", "Salvador", "Recife", "São Luís"], "Rio de Janeiro",
    "Redescoberto em obras de 2011, o cais entrou na lista da UNESCO em 2017.",
@@ -260,11 +260,11 @@ mc(T, "danças regionais", 4, 16, "Qual dança afro-brasileira do Maranhão, em 
    ["Tambor de crioula", "Carimbó", "Xaxado", "Fandango"], "Tambor de crioula",
    "O tambor de crioula foi registrado como patrimônio cultural do Brasil pelo IPHAN em 2007.",
    "IPHAN – Tambor de Crioula do Maranhão", br=True)
-mc(T, "danças regionais", 4, 16, "No maracatu rural, qual personagem usa uma longa lança enfeitada e uma enorme cabeleira de fitas coloridas?",
+mc(T, "danças regionais", 4, 16, "No maracatu rural, qual personagem usa uma longa lança enfeitada e uma enorme cabeleira de tiras coloridas e brilhantes?",
    ["Caboclo de lança", "Mestre-sala", "Pierrô", "Rei Momo"], "Caboclo de lança",
    "O caboclo de lança, da Zona da Mata pernambucana, carrega chocalhos nas costas que soam a cada passo.",
    "IPHAN – Maracatu de Baque Solto", br=True)
 mc(T, "religiosidade popular", 4, 16, "Como se chamam os objetos, como pernas e cabeças de cera, deixados em igrejas para agradecer uma graça?",
    ["Ex-votos", "Relicários", "Andores", "Escapulários"], "Ex-votos",
-   "Salas de milagres, como a do Santuário de Aparecida, guardam milhares de ex-votos.",
+   "Salas de milagres ou de promessas, como a do Santuário de Aparecida, guardam milhares de ex-votos.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", syn=("ex-voto", "ex voto", "ex votos"), br=True)
