@@ -74,7 +74,7 @@ mc(T, "bastidores", 1, 10, "Quando a TV exibe de novo uma novela antiga, como se
    "Dicionário Houaiss – verbete 'reprise'")
 mc(T, "novelas infantis", 1, 10, "Qual atriz mirim interpretou Dulce Maria na novela 'Carinha de Anjo', do SBT?",
    ["Lorena Queiroz", "Sophia Valverde", "Larissa Manoela", "Maisa Silva"], "Lorena Queiroz",
-   "Lorena Queiroz tinha cerca de 5 anos quando estreou como a protagonista Dulce Maria, em 2016.",
+   "Lorena Queiroz ainda era bem pequena quando estreou como a protagonista Dulce Maria, em 2016.",
    "SBT – página oficial de 'Carinha de Anjo'", br=True)
 tf(T, "faixas de horário", 1, 12, "A principal novela da Globo, antes chamada de 'novela das oito', hoje é conhecida como 'novela das nove'.", True,
    "O horário da faixa nobre passou a começar por volta das 21h, e o apelido mudou junto.",
@@ -223,7 +223,7 @@ mc(T, "personagens", 3, 16, "Em 'O Rei do Gado' (1996), qual família de origem 
    "Memória Globo – verbete 'O Rei do Gado'", br=True)
 op(T, "emissoras", 3, 16, "Qual era o antigo nome dos Estúdios Globo, em Jacarepaguá?",
    "Projac", ["projac", "pro jac", "projeto jacarepaguá", "projeto jacarepagua"],
-   "O nome era a abreviação de 'Projeto Jacarepaguá', e a mudança para Estúdios Globo ocorreu em 2014.",
+   "O nome era a abreviação de 'Projeto Jacarepaguá', bairro da Zona Oeste do Rio.",
    "Memória Globo – verbete 'Estúdios Globo'", br=True)
 tf(T, "remakes", 3, 16, "O remake de 'Pantanal', exibido em 2022, foi escrito por Bruno Luperi, neto de Benedito Ruy Barbosa.", True,
    "Bruno Luperi adaptou a história criada pelo avô para a Rede Manchete em 1990.",
@@ -238,7 +238,7 @@ mc(T, "tramas", 3, 16, "Em 'Torre de Babel' (1998), que tipo de lugar explode no
    "Memória Globo – verbete 'Torre de Babel'", br=True)
 mc(T, "aberturas", 3, 16, "Qual designer austríaco criou o logotipo da Globo e muitas aberturas de novelas?",
    ["Hans Donner", "Oscar Niemeyer", "Romero Britto", "Ziraldo"], "Hans Donner",
-   "Hans Donner chegou à emissora em 1975 e marcou a identidade visual da TV brasileira.",
+   "Hans Donner chegou à emissora nos anos 1970 e marcou a identidade visual da TV brasileira.",
    "Memória Globo – verbete 'Hans Donner'", br=True)
 tf(T, "emissoras", 3, 16, "A novela 'Xica da Silva', de 1996, com Taís Araújo, foi exibida pela TV Globo.", False,
    "'Xica da Silva' foi um sucesso da Rede Manchete e lançou Taís Araújo como protagonista.",

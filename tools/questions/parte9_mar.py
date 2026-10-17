@@ -7,7 +7,7 @@ T = "mar"
 op(T, "brinquedos", 1, 7, "Como se chama o namorado da boneca Barbie?", "Ken", ["ken"],
    "Ken foi lançado pela Mattel em 1961, dois anos depois da Barbie.",
    "Enciclopédia Britannica – verbete 'Barbie'")
-mc(T, "doces", 1, 6, "O que são os M&M's?",
+mc(T, "doces", 1, 6, "Que tipo de doce é vendido com a marca M&M's?",
    ["Confeitos coloridos de chocolate", "Balas de goma", "Biscoitos recheados", "Pirulitos"],
    "Confeitos coloridos de chocolate",
    "Os M&M's são pastilhas de chocolate cobertas por uma casquinha de açúcar colorida.",
@@ -37,7 +37,7 @@ op(T, "veículos", 1, 8, "Que produto a marca brasileira Caloi é famosa por fab
    "Caloi – história da empresa", br=True)
 mc(T, "logotipos", 1, 8, "Que objeto do mar aparece no logotipo amarelo e vermelho da Shell?",
    ["Concha", "Estrela-do-mar", "Âncora", "Peixe"], "Concha",
-   "Shell quer dizer concha em inglês, e a empresa começou vendendo conchas decorativas.",
+   "Shell quer dizer concha em inglês; a família do fundador comerciava conchas trazidas do Oriente.",
    "Shell – história da marca")
 mc(T, "mascotes", 1, 8, "O Dollynho, mascote que se apresenta como 'seu amiguinho', representa que tipo de bebida?",
    ["Refrigerante", "Leite", "Café", "Iogurte"], "Refrigerante",
@@ -183,7 +183,7 @@ mc(T, "brinquedos", 2, 12, "Em que década a boneca Barbie foi lançada?",
    "Enciclopédia Britannica – verbete 'Barbie'")
 mc(T, "doces", 2, 12, "Qual marca de chocolate usa uma vaca lilás nas embalagens?",
    ["Milka", "Lindt", "Hershey's", "Toblerone"], "Milka",
-   "A vaca lilás é o símbolo da Milka desde o começo do século XX.",
+   "A embalagem lilás existe desde 1901, e a vaca dessa cor virou símbolo da marca nos anos 1970.",
    "Mondelez International – marca Milka")
 mc(T, "marcas que viraram nome", 2, 12, "Qual empresa lançou o curativo adesivo Band-Aid?",
    ["Johnson & Johnson", "Colgate", "Nestlé", "Bayer"], "Johnson & Johnson",
@@ -220,7 +220,7 @@ tf(T, "países de origem", 3, 14, "O Mercado Livre foi fundado no Brasil.", Fals
    "Mercado Livre – relações com investidores", br=True)
 mc(T, "calçados", 3, 14, "Qual empresa gaúcha fabrica as sandálias de plástico Melissa?",
    ["Grendene", "Alpargatas", "Azaleia", "Vulcabras"], "Grendene",
-   "A Grendene lançou a Melissa em 1979 e tem sede no Ceará e no Rio Grande do Sul.",
+   "A Grendene, fundada em Farroupilha, no Rio Grande do Sul, lançou a Melissa em 1979.",
    "Grendene – história", br=True)
 mc(T, "roupas", 3, 14, "Qual marca de calças jeans leva o nome do seu fundador, um imigrante alemão nos Estados Unidos?",
    ["Levi's", "Wrangler", "Lee", "Diesel"], "Levi's",

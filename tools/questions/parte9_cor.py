@@ -48,7 +48,7 @@ mc(T, "profissionais da saúde", 1, 8, "Qual médico é especialista na saúde d
    ["Pediatra", "Cardiologista", "Ortopedista", "Dermatologista"], "Pediatra",
    "O pediatra acompanha o crescimento e a saúde das crianças, desde o nascimento até a adolescência.",
    "Sociedade Brasileira de Pediatria")
-op(T, "respiração", 1, 9, "Qual gás o nosso corpo solta para fora quando expiramos o ar?",
+op(T, "respiração", 1, 9, "Qual gás, produzido pelas nossas células, o corpo elimina quando soltamos o ar dos pulmões?",
    "Gás carbônico", ["gás carbônico", "gas carbonico", "dióxido de carbono", "dioxido de carbono", "co2"],
    "As células produzem gás carbônico ao gerar energia, e os pulmões o eliminam quando soltamos o ar.",
    "Enciclopédia Britannica – verbete 'Respiration'")
@@ -172,7 +172,7 @@ mc(T, "cabelo e unhas", 2, 12, "De qual proteína são feitos os cabelos e as un
    ["Queratina", "Hemoglobina", "Insulina", "Caseína"], "Queratina",
    "A queratina é uma proteína resistente que também forma a camada mais externa da pele.",
    "Enciclopédia Britannica – verbete 'Keratin'")
-mc(T, "visão", 2, 12, "Como se chama o problema de visão em que a pessoa enxerga mal de longe?",
+mc(T, "visão", 2, 12, "Como se chama o problema de visão em que a pessoa vê bem de perto, mas tem dificuldade para enxergar de longe?",
    ["Miopia", "Hipermetropia", "Daltonismo", "Catarata"], "Miopia",
    "Na miopia, a imagem se forma antes da retina, e óculos ou lentes corrigem o foco.",
    "Conselho Brasileiro de Oftalmologia")
@@ -189,7 +189,7 @@ mc(T, "saúde pública", 2, 12, "Como se chama o sistema público de saúde do B
    "Ministério da Saúde", syn=("sus",), br=True)
 op(T, "doenças e prevenção", 2, 12, "Qual doença, causada por um vírus e prevenida com vacina, é chamada popularmente de paralisia infantil?",
    "Poliomielite", ["poliomielite", "pólio", "polio"],
-   "Graças à vacinação, o Brasil não registra casos de poliomielite desde 1989.",
+   "Graças à vacinação, o último caso de poliomielite no Brasil foi registrado em 1989.",
    "Ministério da Saúde")
 
 # =========================================================== DIFÍCEIS
@@ -203,7 +203,7 @@ mc(T, "sangue", 3, 14, "No adulto, onde é produzida a maior parte das células 
    "Enciclopédia Britannica – verbete 'Bone marrow'")
 mc(T, "alimentação", 3, 14, "Qual nutriente a lei brasileira manda acrescentar ao sal de cozinha para prevenir o bócio?",
    ["Iodo", "Ferro", "Cálcio", "Flúor"], "Iodo",
-   "O iodo é necessário para a glândula tireoide, e a falta dele pode causar o aumento do pescoço chamado bócio.",
+   "O iodo é necessário para a glândula tireoide, e a falta dele pode fazer a tireoide crescer, o que se chama bócio e incha o pescoço.",
    "Anvisa", br=True)
 tf(T, "cinco sentidos", 3, 12, "Cada parte da língua sente só um sabor: o doce na ponta e o amargo no fundo.", False,
    "Esse 'mapa da língua' é um mito: as papilas de todas as regiões da língua percebem todos os sabores.",
@@ -260,8 +260,8 @@ mc(T, "saúde pública", 4, 16, "Em que dia se comemora o Dia Nacional da Saúde
    "Fiocruz", br=True)
 mc(T, "vacinação", 4, 16, "Em que ano foi criado o Programa Nacional de Imunizações (PNI) do Brasil?",
    ["1973", "1988", "1960", "1994"], "1973",
-   "O PNI organiza a vacinação gratuita no país e oferece hoje dezenas de vacinas pelo SUS.",
-   "Ministério da Saúde", br=True)
+   "O PNI organiza a vacinação gratuita no país e oferece dezenas de vacinas pelo SUS.",
+   "Ministério da Saúde", br=True, ref="2026-10-13")
 mc(T, "cientistas da saúde", 4, 16, "Qual psiquiatra alagoana usou a pintura no tratamento de pacientes e criou o Museu de Imagens do Inconsciente?",
    ["Nise da Silveira", "Zilda Arns", "Bertha Lutz", "Rachel de Queiroz"], "Nise da Silveira",
    "Nise da Silveira rejeitou tratamentos agressivos como o eletrochoque e defendeu a arte e o afeto no cuidado psiquiátrico.",

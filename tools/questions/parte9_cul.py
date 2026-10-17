@@ -126,10 +126,10 @@ mc(T, "festas populares", 2, 10, "A Folia de Reis homenageia quais personagens d
 tf(T, "costumes regionais", 2, 10, "O chimarrão gaúcho é preparado com água gelada.", False,
    "O chimarrão leva água quente; a versão gelada da erva-mate é o tereré.",
    "Embrapa – Erva-mate", br=True)
-op(T, "símbolos nacionais", 2, 12, "Além da bandeira, do hino e das armas nacionais, qual é o quarto símbolo oficial do Brasil?", "Selo Nacional",
-   ["selo nacional", "selo", "o selo nacional", "o selo"],
-   "O Selo Nacional, usado para autenticar documentos oficiais e diplomas, é um círculo com a esfera da bandeira.",
-   "Constituição Federal de 1988 – art. 13", br=True)
+op(T, "carnaval", 2, 12, "Como se chamam as músicas animadas de Carnaval, como 'Mamãe eu quero' e 'Cidade Maravilhosa'?", "Marchinhas",
+   ["marchinhas", "marchinha", "marchinhas de carnaval", "marchas", "marcha"],
+   "As marchinhas fizeram sucesso nos bailes e blocos de rua a partir dos anos 1920 e 1930.",
+   "Instituto Moreira Salles – Marchinhas de Carnaval", br=True)
 mc(T, "religiosidade popular", 2, 12, "Qual santo é festejado em 29 de junho, encerrando o ciclo das festas juninas?",
    ["São Pedro", "São João", "Santo Antônio", "São Sebastião"], "São Pedro",
    "São Pedro, padroeiro dos pescadores, fecha as festas juninas no fim do mês.",
@@ -177,7 +177,7 @@ mc(T, "religiosidade popular", 2, 12, "Como se chama a pessoa que, na tradição
    "As benzedeiras usam rezas e ramos de plantas como arruda e alecrim.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
 mc(T, "manifestações populares", 2, 12, "Como se chama o desafio de versos improvisados entre dois cantadores com viola, no Nordeste?",
-   ["Repente", "Modinha", "Lundu", "Marchinha"], "Repente",
+   ["Repente", "Modinha", "Lundu", "Toada"], "Repente",
    "No repente, cada cantador tem de responder ao outro na hora, rimando e seguindo a métrica.",
    "IPHAN – Registro das Matrizes do Forró e Repente", syn=("cantoria", "cantoria de viola"), br=True)
 op(T, "personagens", 2, 12, "Qual era o apelido de Virgulino Ferreira da Silva, o mais famoso cangaceiro do sertão?", "Lampião",
@@ -193,10 +193,10 @@ tf(T, "patrimônio", 2, 12, "Em 2014, a roda de capoeira entrou na lista de patr
    "UNESCO – Capoeira circle", br=True)
 
 # ================================================== DIFÍCEIS
-mc(T, "símbolos nacionais", 3, 12, "Em que dia se comemora o Dia da Bandeira no Brasil?",
-   ["19 de novembro", "15 de novembro", "7 de setembro", "21 de abril"], "19 de novembro",
-   "A bandeira republicana foi adotada em 19 de novembro de 1889, quatro dias depois da Proclamação da República.",
-   "Lei nº 5.700/1971 – Símbolos Nacionais", br=True)
+mc(T, "cultura indígena", 3, 14, "Qual povo indígena vive entre Roraima e o Amazonas, e também tem aldeias na Venezuela?",
+   ["Yanomami", "Pataxó", "Kaingang", "Terena"], "Yanomami",
+   "A Terra Indígena Yanomami, coberta pela floresta amazônica, é uma das maiores do Brasil.",
+   "Instituto Socioambiental – Povos Indígenas no Brasil", syn=("ianomâmi",), br=True)
 mc(T, "símbolos nacionais", 3, 14, "Quem escreveu a letra do Hino Nacional Brasileiro?",
    ["Joaquim Osório Duque Estrada", "Olavo Bilac", "Castro Alves", "Gonçalves Dias"], "Joaquim Osório Duque Estrada",
    "A letra de Osório Duque Estrada foi escolhida para a música de Francisco Manuel da Silva.",
@@ -209,10 +209,10 @@ mc(T, "patrimônio", 3, 14, "Qual órgão federal cuida do patrimônio históric
    ["IPHAN", "IBGE", "INPE", "Embrapa"], "IPHAN",
    "O Instituto do Patrimônio Histórico e Artístico Nacional foi criado em 1937.",
    "IPHAN – Institucional", syn=("instituto do patrimônio histórico e artístico nacional",), br=True)
-mc(T, "artesanato", 3, 14, "As paneleiras de Goiabeiras, que fazem as panelas de barro da moqueca capixaba, ficam em qual estado?",
-   ["Espírito Santo", "Bahia", "Minas Gerais", "Rio de Janeiro"], "Espírito Santo",
-   "O ofício das paneleiras de Goiabeiras, em Vitória, foi o primeiro bem registrado como patrimônio imaterial pelo IPHAN, em 2002.",
-   "IPHAN – Ofício das Paneleiras de Goiabeiras", br=True)
+mc(T, "carnaval", 3, 14, "Qual bloco de Recife entrou para o Guinness como o maior bloco de carnaval do mundo?",
+   ["Galo da Madrugada", "Cordão da Bola Preta", "Filhos de Gandhy", "Bloco da Lama"], "Galo da Madrugada",
+   "O Galo da Madrugada desfila no Sábado de Zé Pereira e arrasta multidões pelo centro do Recife.",
+   "Guinness World Records", br=True)
 mc(T, "danças regionais", 3, 14, "Qual dança caipira tem filas de dançarinos que batem palmas e sapateiam ao som da viola?",
    ["Catira", "Xote", "Frevo", "Ciranda"], "Catira",
    "A catira, também chamada de cateretê, é forte no interior de Goiás, Minas Gerais e São Paulo.",
