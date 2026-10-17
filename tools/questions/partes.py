@@ -7,4 +7,5 @@ PARTES = [
     "parte6a", "parte6b", "parte6c", "parte6d",
     "parte7a", "parte7b", "parte7c", "parte7d",
     "parte8a", "parte8b", "parte8c", "parte8d",
+    "parte9_pol",
 ]
