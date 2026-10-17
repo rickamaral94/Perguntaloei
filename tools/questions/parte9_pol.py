@@ -32,7 +32,7 @@ mc(T, "serviços públicos", 1, 6, "Como se chama a escola mantida pelo governo,
    "No Brasil, o ensino nas escolas públicas é gratuito, como garante a Constituição.",
    "Constituição Federal de 1988 – artigo 206", br=True)
 op(T, "formas de governo", 1, 6, "Como se chama o homem que governa um reino e usa coroa?", "Rei",
-   ["rei", "o rei", "um rei"],
+   ["rei", "o rei", "um rei", "monarca", "o monarca"],
    "Reis e rainhas são os chefes de Estado nas monarquias.",
    "Enciclopédia Britannica – verbete 'Monarchy'")
 tf(T, "direitos da criança", 1, 6, "Toda criança tem direito de ir à escola.", True,
@@ -92,7 +92,7 @@ tf(T, "três Poderes", 1, 9, "Os prefeitos fazem parte do Poder Legislativo.", F
    "Constituição Federal de 1988 – artigo 29", br=True)
 mc(T, "formas de governo", 1, 9, "Qual é a forma de governo do Brasil desde 1889?",
    ["República", "Monarquia", "Império", "Reinado"], "República",
-   "Em 1889, o Império acabou e o Brasil passou a ser uma república, com presidentes eleitos.",
+   "Em 1889, o Império acabou e o Brasil passou a ser uma república, governada por presidentes.",
    "Constituição Federal de 1988 – artigo 1º", br=True)
 mc(T, "formas de governo", 1, 10, "Como se chama a forma de governo em que um rei ou uma rainha é o chefe de Estado?",
    ["Monarquia", "República", "Federação", "Anarquia"], "Monarquia",
@@ -105,7 +105,7 @@ mc(T, "formas de governo", 1, 10, "Qual destes países tem um rei ou uma rainha 
 op(T, "organismos internacionais", 1, 10, "Qual é o nome da moeda usada pela maior parte dos países da União Europeia?", "Euro",
    ["euro", "o euro", "euros"],
    "O euro começou a circular em notas e moedas em 2002.",
-   "Banco Central Europeu – The euro")
+   "Banco Central Europeu – The euro", ref="2026-10-13")
 mc(T, "história política mundial", 1, 10, "Quem foi o primeiro presidente dos Estados Unidos?",
    ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "Benjamin Franklin"], "George Washington",
    "George Washington governou de 1789 a 1797 e dá nome à capital do país.",
@@ -135,7 +135,7 @@ tf(T, "eleições", 2, 14, "Se nenhum candidato a presidente tiver mais da metad
 op(T, "impostos", 2, 12, "Qual imposto estadual é cobrado todo ano de quem tem carro ou moto?", "IPVA",
    ["ipva", "imposto sobre a propriedade de veículos automotores", "imposto sobre veículos"],
    "O IPVA é cobrado pelos estados, e parte do valor vai para o município onde o veículo está registrado.",
-   "Constituição Federal de 1988 – artigos 155 e 158", br=True)
+   "Constituição Federal de 1988 – artigos 155 e 158", br=True, ref="2026-10-13")
 tf(T, "impostos", 2, 14, "O IPTU, cobrado sobre casas e terrenos nas cidades, é um imposto do governo federal.", False,
    "O IPTU é um imposto municipal, cobrado pelas prefeituras.",
    "Constituição Federal de 1988 – artigo 156", br=True)
@@ -157,9 +157,9 @@ mc(T, "organismos internacionais", 2, 12, "Como são chamados os soldados das mi
    "Nações Unidas – Peacekeeping")
 mc(T, "organismos internacionais", 2, 12, "Qual organização humanitária, fundada em Genebra em 1863, socorre feridos em guerras e catástrofes?",
    ["Cruz Vermelha", "UNESCO", "OTAN", "Banco Mundial"], "Cruz Vermelha",
-   "A Cruz Vermelha nasceu da iniciativa do suíço Henry Dunant, que ganhou o primeiro Nobel da Paz.",
+   "A Cruz Vermelha nasceu da iniciativa do suíço Henry Dunant, que dividiu o primeiro Nobel da Paz, em 1901.",
    "Comitê Internacional da Cruz Vermelha – History")
-op(T, "formas de governo", 2, 12, "No parlamentarismo, qual é o título de quem chefia o governo?", "Primeiro-ministro",
+op(T, "formas de governo", 2, 12, "Na maioria dos países parlamentaristas, qual é o título de quem chefia o governo?", "Primeiro-ministro",
    ["primeiro-ministro", "primeiro ministro", "primeira-ministra", "primeira ministra", "premiê"],
    "No parlamentarismo, o primeiro-ministro depende do apoio do Parlamento para governar.",
    "Enciclopédia Britannica – verbete 'Parliamentary system'")
@@ -199,7 +199,7 @@ mc(T, "presidentes históricos", 2, 14, "Qual presidente brasileiro tinha como l
    "O Plano de Metas de JK, de 1956 a 1961, incentivou indústrias, estradas e a construção de Brasília.",
    "CPDOC/FGV – verbete 'Juscelino Kubitschek'", br=True)
 tf(T, "organismos internacionais", 2, 14, "Por tradição, o Brasil é o primeiro país a discursar no debate geral da Assembleia Geral da ONU.", True,
-   "A tradição existe desde os primeiros anos da ONU, quando o Brasil se ofereceu para abrir os discursos.",
+   "A tradição vem dos primeiros anos da ONU; logo depois do Brasil costuma falar o país anfitrião, os Estados Unidos.",
    "Ministério das Relações Exteriores – Brasil nas Nações Unidas", br=True)
 
 # =========================================================== DIFÍCEIS
@@ -208,7 +208,7 @@ tf(T, "Judiciário", 3, 14, "Os ministros do Supremo Tribunal Federal são eleit
    "Constituição Federal de 1988 – artigo 101", br=True)
 mc(T, "Constituições brasileiras", 3, 14, "De que ano é a primeira Constituição do Brasil republicano?",
    ["1891", "1824", "1934", "1946"], "1891",
-   "A Constituição de 1891 criou o regime presidencialista e a federação no Brasil.",
+   "A Constituição de 1891 adotou o presidencialismo e consolidou a federação criada com a República.",
    "Senado Federal – Constituições brasileiras", br=True)
 mc(T, "presidentes históricos", 3, 14, "Quem foi o primeiro presidente civil do Brasil, que tomou posse em 1894?",
    ["Prudente de Morais", "Floriano Peixoto", "Campos Sales", "Rodrigues Alves"], "Prudente de Morais",

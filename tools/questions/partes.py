@@ -8,4 +8,6 @@ PARTES = [
     "parte7a", "parte7b", "parte7c", "parte7d",
     "parte8a", "parte8b", "parte8c", "parte8d",
     "parte9_pol",
+    "parte9_cor",
+    "parte9_tv",
 ]

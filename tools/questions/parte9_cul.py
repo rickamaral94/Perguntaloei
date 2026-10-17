@@ -53,8 +53,8 @@ mc(T, "brincadeiras", 1, 7, "Qual brincadeira com bola tem dois times que tentam
    ["Queimada", "Amarelinha", "Pega-pega", "Cabra-cega"], "Queimada",
    "Na queimada, quem é atingido pela bola fica 'queimado' e vai para o fundo do campo adversário.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
-mc(T, "brincadeiras", 1, 8, "Qual brincadeira usa um barbante enrolado nos dedos para formar desenhos, passando de mão em mão?",
-   ["Cama de gato", "Passa-anel", "Pula-corda", "Telefone sem fio"], "Cama de gato",
+op(T, "brincadeiras", 1, 8, "Qual brincadeira usa um barbante enrolado nos dedos para formar desenhos, passando de mão em mão?", "Cama de gato",
+   ["cama de gato", "cama-de-gato"],
    "A cama de gato é brincada em muitos povos do mundo, e cada troca de mãos forma uma figura nova.",
    "Enciclopédia Britannica – verbete 'Cat's cradle'", br=True)
 mc(T, "cantigas de roda", 1, 8, "Na cantiga 'Escravos de Jó', qual é o nome do jogo que eles jogavam?",
@@ -79,8 +79,8 @@ op(T, "carnaval", 1, 9, "Como se chama o rei do Carnaval, que recebe a chave da 
    ["rei momo", "momo"],
    "O nome vem de Momo, o deus grego do sarcasmo e da zombaria.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
-tf(T, "falares regionais", 1, 9, "'Oxente' é uma expressão de espanto típica do Nordeste.", True,
-   "'Oxente', também dito 'oxe', é uma marca do falar nordestino, muito ouvida na Bahia e em Pernambuco.",
+tf(T, "falares regionais", 1, 9, "'Oxente' é uma expressão de espanto típica do falar gaúcho.", False,
+   "'Oxente', também dito 'oxe', é marca do falar nordestino, muito ouvida na Bahia e em Pernambuco.",
    "Dicionário Houaiss – verbete 'oxente'", br=True)
 mc(T, "falares regionais", 1, 10, "Qual expressão de surpresa é típica do jeito de falar gaúcho?",
    ["Bah", "Uai", "Oxente", "Égua"], "Bah",
@@ -90,8 +90,8 @@ op(T, "símbolos nacionais", 1, 10, "No Hino Nacional, o Brasil é chamado de 'g
    ["natureza"],
    "O verso 'Gigante pela própria natureza' fala do tamanho e das riquezas naturais do país.",
    "Lei nº 5.700/1971 – Símbolos Nacionais", br=True)
-mc(T, "cultura indígena", 1, 10, "Qual semente vermelha muitos povos indígenas usam para pintar o corpo?",
-   ["Urucum", "Açaí", "Guaraná", "Pequi"], "Urucum",
+op(T, "cultura indígena", 1, 10, "Qual semente vermelha muitos povos indígenas usam para pintar o corpo?", "Urucum",
+   ["urucum", "urucu"],
    "O urucum dá uma tinta vermelha que também protege a pele do sol e dos insetos.",
    "Embrapa – Urucum", br=True)
 mc(T, "religiosidade popular", 1, 10, "Qual santo junino é conhecido como o 'santo casamenteiro'?",
@@ -126,9 +126,9 @@ mc(T, "festas populares", 2, 10, "A Folia de Reis homenageia quais personagens d
 tf(T, "costumes regionais", 2, 10, "O chimarrão gaúcho é preparado com água gelada.", False,
    "O chimarrão leva água quente; a versão gelada da erva-mate é o tereré.",
    "Embrapa – Erva-mate", br=True)
-mc(T, "símbolos nacionais", 2, 12, "Qual destes é um dos símbolos nacionais do Brasil, segundo a Constituição?",
-   ["O Selo Nacional", "O Cristo Redentor", "O Pão de Açúcar", "O samba"], "O Selo Nacional",
-   "A Constituição lista quatro símbolos nacionais: a bandeira, o hino, as armas e o selo nacionais.",
+op(T, "símbolos nacionais", 2, 12, "Além da bandeira, do hino e das armas nacionais, qual é o quarto símbolo oficial do Brasil?", "Selo Nacional",
+   ["selo nacional", "selo", "o selo nacional", "o selo"],
+   "O Selo Nacional, usado para autenticar documentos oficiais e diplomas, é um círculo com a esfera da bandeira.",
    "Constituição Federal de 1988 – art. 13", br=True)
 mc(T, "religiosidade popular", 2, 12, "Qual santo é festejado em 29 de junho, encerrando o ciclo das festas juninas?",
    ["São Pedro", "São João", "Santo Antônio", "São Sebastião"], "São Pedro",
@@ -146,8 +146,8 @@ mc(T, "festas populares", 2, 12, "Qual é o símbolo do Divino Espírito Santo, 
    ["Uma pomba branca", "Um peixe", "Uma estrela", "Um cordeiro"], "Uma pomba branca",
    "Na tradição cristã, o Espírito Santo é representado por uma pomba.",
    "IPHAN – Festa do Divino Espírito Santo de Pirenópolis", br=True)
-tf(T, "festas populares", 2, 12, "As Folias de Reis costumam visitar as casas entre o Natal e o Dia de Reis, 6 de janeiro.", True,
-   "O ciclo da Folia de Reis vai de 24 de dezembro a 6 de janeiro, dia dedicado aos Reis Magos.",
+tf(T, "festas populares", 2, 12, "As Folias de Reis costumam visitar as casas entre o Carnaval e a Páscoa.", False,
+   "O ciclo da Folia de Reis vai do Natal até 6 de janeiro, o Dia de Reis.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
 tf(T, "religiosidade popular", 2, 12, "Na Lavagem do Bonfim, em Salvador, as baianas lavam as escadarias da igreja com água de cheiro.", True,
    "A Lavagem acontece em janeiro e reúne fé católica e tradições afro-brasileiras.",
@@ -176,16 +176,12 @@ mc(T, "religiosidade popular", 2, 12, "Como se chama a pessoa que, na tradição
    ["Benzedeira", "Parteira", "Rendeira", "Doceira"], "Benzedeira",
    "As benzedeiras usam rezas e ramos de plantas como arruda e alecrim.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
-mc(T, "carnaval", 2, 12, "Como se chama a camiseta que os foliões usam para acompanhar os blocos de trio elétrico em Salvador?",
-   ["Abadá", "Gibão", "Pilcha", "Batina"], "Abadá",
-   "O abadá funciona como uma senha para entrar na área do bloco, protegida pelas cordas.",
-   "Dicionário Houaiss – verbete 'abadá'", br=True)
 mc(T, "manifestações populares", 2, 12, "Como se chama o desafio de versos improvisados entre dois cantadores com viola, no Nordeste?",
    ["Repente", "Modinha", "Lundu", "Marchinha"], "Repente",
    "No repente, cada cantador tem de responder ao outro na hora, rimando e seguindo a métrica.",
    "IPHAN – Registro das Matrizes do Forró e Repente", syn=("cantoria", "cantoria de viola"), br=True)
-mc(T, "personagens", 2, 12, "Qual era o apelido de Virgulino Ferreira da Silva, o mais famoso cangaceiro do sertão?",
-   ["Lampião", "Corisco", "Antônio Conselheiro", "Zé Pretinho"], "Lampião",
+op(T, "personagens", 2, 12, "Qual era o apelido de Virgulino Ferreira da Silva, o mais famoso cangaceiro do sertão?", "Lampião",
+   ["lampião", "lampiao"],
    "Lampião e seu bando percorreram o sertão nordestino até 1938, quando ele morreu em Sergipe.",
    "Fundação Joaquim Nabuco – Lampião", br=True)
 mc(T, "patrimônio", 2, 12, "O modo artesanal de fazer queijo, registrado como patrimônio cultural pelo IPHAN em 2008, é tradição de qual estado?",
@@ -205,22 +201,10 @@ mc(T, "símbolos nacionais", 3, 14, "Quem escreveu a letra do Hino Nacional Bras
    ["Joaquim Osório Duque Estrada", "Olavo Bilac", "Castro Alves", "Gonçalves Dias"], "Joaquim Osório Duque Estrada",
    "A letra de Osório Duque Estrada foi escolhida para a música de Francisco Manuel da Silva.",
    "Academia Brasileira de Letras – Osório Duque-Estrada", syn=("osório duque estrada", "duque estrada"), br=True)
-mc(T, "símbolos nacionais", 3, 14, "Qual poeta escreveu a letra do Hino à Bandeira?",
-   ["Olavo Bilac", "Machado de Assis", "Carlos Drummond de Andrade", "Cecília Meireles"], "Olavo Bilac",
-   "O hino que começa com 'Salve, lindo pendão da esperança' tem música de Francisco Braga.",
-   "Academia Brasileira de Letras – Olavo Bilac", br=True)
 mc(T, "patrimônio", 3, 14, "Qual foi a primeira cidade brasileira declarada Patrimônio Mundial pela UNESCO, em 1980?",
    ["Ouro Preto", "Olinda", "Salvador", "Paraty"], "Ouro Preto",
    "A antiga Vila Rica, centro do ciclo do ouro, abriu a lista brasileira de Patrimônios Mundiais.",
    "UNESCO – Historic Town of Ouro Preto", br=True)
-mc(T, "patrimônio", 3, 14, "Qual capital do Nordeste, com casarões cobertos de azulejos portugueses, tem seu centro histórico declarado Patrimônio Mundial?",
-   ["São Luís", "Teresina", "Natal", "Aracaju"], "São Luís",
-   "O centro histórico de São Luís, no Maranhão, entrou na lista da UNESCO em 1997.",
-   "UNESCO – Historic Centre of São Luís", br=True)
-mc(T, "patrimônio", 3, 14, "O Conjunto Moderno da Pampulha, Patrimônio Mundial desde 2016, fica em qual cidade?",
-   ["Belo Horizonte", "Brasília", "São Paulo", "Curitiba"], "Belo Horizonte",
-   "O conjunto tem obras de Oscar Niemeyer, como a Igreja de São Francisco de Assis, em volta da lagoa.",
-   "UNESCO – Pampulha Modern Ensemble", br=True)
 mc(T, "patrimônio", 3, 14, "Qual órgão federal cuida do patrimônio histórico do Brasil, tombando prédios e registrando tradições?",
    ["IPHAN", "IBGE", "INPE", "Embrapa"], "IPHAN",
    "O Instituto do Patrimônio Histórico e Artístico Nacional foi criado em 1937.",
@@ -229,26 +213,14 @@ mc(T, "artesanato", 3, 14, "As paneleiras de Goiabeiras, que fazem as panelas de
    ["Espírito Santo", "Bahia", "Minas Gerais", "Rio de Janeiro"], "Espírito Santo",
    "O ofício das paneleiras de Goiabeiras, em Vitória, foi o primeiro bem registrado como patrimônio imaterial pelo IPHAN, em 2002.",
    "IPHAN – Ofício das Paneleiras de Goiabeiras", br=True)
-mc(T, "artesanato", 3, 14, "Qual cerâmica indígena antiga, com desenhos geométricos, recebeu o nome da maior ilha do Pará?",
-   ["Marajoara", "Tapajônica", "Caiçara", "Sertaneja"], "Marajoara",
-   "A cerâmica marajoara foi produzida por povos que viveram na Ilha de Marajó há mais de mil anos.",
-   "Museu Paraense Emílio Goeldi – Cerâmica Marajoara", br=True)
 mc(T, "danças regionais", 3, 14, "Qual dança caipira tem filas de dançarinos que batem palmas e sapateiam ao som da viola?",
    ["Catira", "Xote", "Frevo", "Ciranda"], "Catira",
    "A catira, também chamada de cateretê, é forte no interior de Goiás, Minas Gerais e São Paulo.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", syn=("cateretê",), br=True)
-mc(T, "danças regionais", 3, 14, "Qual dança típica de Cuiabá e de Mato Grosso é dançada em pares, com saias floridas, palmas e batidas de pé?",
-   ["Siriri", "Frevo", "Xaxado", "Maracatu"], "Siriri",
-   "O siriri é dançado nas festas de santo do Mato Grosso, ao som da viola de cocho e do ganzá.",
-   "IPHAN – Modo de Fazer Viola de Cocho", br=True)
 mc(T, "danças regionais", 3, 14, "Qual dança afro-brasileira do Sudeste, com tambores e versos chamados 'pontos', é considerada uma das raízes do samba?",
    ["Jongo", "Xote", "Vanerão", "Catira"], "Jongo",
    "O jongo foi registrado como patrimônio cultural do Brasil pelo IPHAN em 2005.",
    "IPHAN – Jongo no Sudeste", br=True)
-mc(T, "danças regionais", 3, 14, "Qual dança afro-brasileira da Bahia é feita com bastões de madeira batidos uns nos outros, como numa luta?",
-   ["Maculelê", "Frevo", "Catira", "Ciranda"], "Maculelê",
-   "O maculelê nasceu em Santo Amaro, no Recôncavo Baiano, e costuma ser apresentado junto com a capoeira.",
-   "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
 mc(T, "trajes típicos", 3, 14, "Como se chama o traje típico gaúcho, com bombacha, lenço e botas?",
    ["Pilcha", "Gibão", "Abadá", "Bata"], "Pilcha",
    "No Rio Grande do Sul, a pilcha é reconhecida por lei estadual como traje de honra.",
@@ -261,36 +233,9 @@ mc(T, "festas populares", 3, 14, "Qual festa afro-brasileira coroa reis do Congo
    ["Congada", "Cavalhada", "Quadrilha", "Pastoril"], "Congada",
    "As congadas são muito fortes em Minas Gerais, Goiás e São Paulo, com cortejos, tambores e coroações.",
    "Câmara Cascudo – Dicionário do Folclore Brasileiro", syn=("congado",), br=True)
-mc(T, "festas populares", 3, 14, "Qual personagem do Bumba meu boi é a mulher grávida que tem desejo de comer a língua do boi?",
-   ["Catirina", "Maria Bonita", "Dona Benta", "Sinhá Vitória"], "Catirina",
-   "Para satisfazer o desejo de Catirina, Pai Francisco mata o boi, que depois é ressuscitado.",
-   "IPHAN – Complexo Cultural do Bumba Meu Boi do Maranhão", syn=("mãe catirina",), br=True)
-mc(T, "festas populares", 3, 14, "Em que dia acontece a grande festa de Iemanjá no bairro do Rio Vermelho, em Salvador?",
-   ["2 de fevereiro", "1º de janeiro", "13 de maio", "24 de junho"], "2 de fevereiro",
-   "Os devotos levam flores e presentes em balaios que são entregues ao mar.",
-   "Prefeitura de Salvador – Festa de Iemanjá", br=True)
-mc(T, "carnaval", 3, 14, "Qual bloco de Recife entrou para o Guinness como o maior bloco de carnaval do mundo?",
-   ["Galo da Madrugada", "Cordão da Bola Preta", "Filhos de Gandhy", "Bloco da Lama"], "Galo da Madrugada",
-   "O Galo da Madrugada desfila no Sábado de Zé Pereira, com um galo gigante na ponte Duarte Coelho.",
-   "Guinness World Records", br=True)
-mc(T, "carnaval", 3, 14, "Qual afoxé de Salvador desfila com roupas brancas e azuis, em homenagem a um líder pacifista indiano?",
-   ["Filhos de Gandhy", "Olodum", "Timbalada", "Ara Ketu"], "Filhos de Gandhy",
-   "O afoxé foi fundado em 1949 por estivadores do porto de Salvador.",
-   "IPHAN – Afoxé Filhos de Gandhy", br=True)
-mc(T, "cultura indígena", 3, 14, "Qual povo indígena vive entre Roraima e o Amazonas, e também tem aldeias na Venezuela?",
-   ["Yanomami", "Pataxó", "Kaingang", "Terena"], "Yanomami",
-   "A Terra Indígena Yanomami é uma das maiores do Brasil, coberta pela floresta amazônica.",
-   "Instituto Socioambiental – Povos Indígenas no Brasil", syn=("ianomâmi",), br=True)
-mc(T, "cultura indígena", 3, 14, "Qual parque indígena de Mato Grosso foi criado em 1961, com o trabalho dos irmãos Villas-Bôas?",
-   ["Xingu", "Tumucumaque", "Yanomami", "Raposa Serra do Sol"], "Xingu",
-   "O Parque Indígena do Xingu reúne mais de uma dezena de povos diferentes.",
-   "Instituto Socioambiental – Território Indígena do Xingu", syn=("parque indígena do xingu",), br=True)
-tf(T, "cultura indígena", 3, 14, "Muitos povos indígenas usam o fruto do jenipapo para fazer pinturas pretas no corpo.", True,
-   "O suco do jenipapo verde escurece em contato com a pele e a pintura dura vários dias.",
+tf(T, "cultura indígena", 3, 14, "Os povos indígenas usam o fruto do jenipapo para fazer pinturas vermelhas no corpo.", False,
+   "A tinta do jenipapo verde fica preta-azulada na pele; o vermelho vem do urucum.",
    "Embrapa – Jenipapo", br=True)
-tf(T, "símbolos nacionais", 3, 14, "O Selo Nacional é usado para autenticar documentos do governo e diplomas.", True,
-   "A Lei dos Símbolos Nacionais diz que o Selo autentica atos de governo, diplomas e certificados escolares oficiais.",
-   "Lei nº 5.700/1971 – Símbolos Nacionais", br=True)
 tf(T, "patrimônio", 3, 14, "O centro histórico de Olinda nunca foi reconhecido como Patrimônio Mundial.", False,
    "Olinda entrou na lista de Patrimônio Mundial da UNESCO em 1982.",
    "UNESCO – Historic Centre of the Town of Olinda", br=True)
@@ -298,10 +243,6 @@ mc(T, "falares regionais", 3, 14, "Qual palavra, usada para espanto, alegria ou 
    ["Égua", "Bah", "Uai", "Tchê"], "Égua",
    "No Pará, 'égua!' pode significar quase tudo, dependendo da entonação.",
    "Dicionário Houaiss – verbete 'égua'", br=True)
-mc(T, "religiosidade popular", 3, 14, "Como se chama o pequeno armário com imagens de santos, comum nas casas do interior para as rezas?",
-   ["Oratório", "Cristaleira", "Baú", "Penteadeira"], "Oratório",
-   "Muitos oratórios mineiros do século XVIII são hoje peças de museu.",
-   "Museu do Oratório – Ouro Preto", br=True)
 
 # ================================================== MUITO DIFÍCEIS
 mc(T, "símbolos nacionais", 4, 16, "Quem compôs a música do Hino da Independência do Brasil?",
@@ -315,14 +256,6 @@ mc(T, "patrimônio", 4, 16, "O Cais do Valongo, antigo porto de chegada de afric
    ["Rio de Janeiro", "Salvador", "Recife", "São Luís"], "Rio de Janeiro",
    "Redescoberto em obras de 2011, o cais entrou na lista da UNESCO em 2017.",
    "UNESCO – Valongo Wharf Archaeological Site", br=True)
-mc(T, "patrimônio", 4, 16, "As ruínas de São Miguel Arcanjo, de uma antiga missão jesuítica com os guaranis, ficam em qual estado?",
-   ["Rio Grande do Sul", "Paraná", "Mato Grosso do Sul", "Santa Catarina"], "Rio Grande do Sul",
-   "As ruínas em São Miguel das Missões fazem parte de um Patrimônio Mundial dividido com a Argentina.",
-   "UNESCO – Jesuit Missions of the Guaranis", br=True)
-mc(T, "cultura indígena", 4, 16, "A arte gráfica Kusiwa, de pintura corporal, reconhecida pela UNESCO, pertence a qual povo indígena do Amapá?",
-   ["Wajãpi", "Kayapó", "Guarani", "Pataxó"], "Wajãpi",
-   "Os desenhos Kusiwa representam animais e seres da mitologia do povo Wajãpi.",
-   "UNESCO – Oral and graphic expressions of the Wajapi", syn=("wajapi", "waiãpi"), br=True)
 mc(T, "danças regionais", 4, 16, "Qual dança afro-brasileira do Maranhão, em louvor a São Benedito, tem a 'punga', uma umbigada entre as dançarinas?",
    ["Tambor de crioula", "Carimbó", "Xaxado", "Fandango"], "Tambor de crioula",
    "O tambor de crioula foi registrado como patrimônio cultural do Brasil pelo IPHAN em 2007.",
