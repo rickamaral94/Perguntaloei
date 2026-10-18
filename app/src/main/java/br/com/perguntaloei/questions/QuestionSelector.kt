@@ -91,9 +91,11 @@ data class Pick(
 
 class QuestionSelector(private val bank: QuestionBank) {
 
-    /** Usada (ou quase igual a uma usada) nesta partida. */
+    /** Usada nesta partida, quase igual a uma usada, ou com a resposta entregue por uma usada (ou vice-versa). */
     fun usedInGame(q: Question, gameUsed: Set<String>): Boolean =
-        q.id in gameUsed || bank.nearDuplicates[q.id].orEmpty().any { it in gameUsed }
+        q.id in gameUsed ||
+            bank.nearDuplicates[q.id].orEmpty().any { it in gameUsed } ||
+            bank.answerConflicts[q.id].orEmpty().any { it in gameUsed }
 
     /** Usada (ou quase igual a uma usada) em partidas anteriores, segundo o histórico salvo. */
     fun usedInHistory(q: Question, history: UsageHistory): Boolean =

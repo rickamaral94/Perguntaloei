@@ -156,7 +156,10 @@ class AppViewModel @JvmOverloads constructor(
         val bank = Diagnostics.timed("banco", "ler perguntas") {
             app.assets.open("questions.json").use { QuestionBank.fromJson(it.reader(Charsets.UTF_8).readText()) }
         }
-        Diagnostics.timed("banco", "preparar comparação de perguntas") { bank.fingerprintTokens.size }
+        Diagnostics.timed("banco", "preparar comparação de perguntas") {
+            bank.fingerprintTokens.size
+            bank.answerConflicts.size
+        }
         bank
     }
 

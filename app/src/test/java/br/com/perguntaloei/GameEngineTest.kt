@@ -283,6 +283,44 @@ class GameEngineTest {
     }
 
     @Test
+    fun aQuestionThatGivesAwayAnotherAnswerNeverComesInTheSameGame() {
+        // No banco real: perguntas do mesmo tema em que o enunciado de uma traz a resposta da outra.
+        val conflicts = bank.answerConflicts
+        assertTrue("o banco tem pares assim para o teste fazer sentido", conflicts.isNotEmpty())
+        repeat(8) { seed ->
+            var s = engine.newGame(GameConfig(rounds = 5), TestSupport.family, 4000L + seed)
+            while (!s.finished) {
+                s = when (s.phase) {
+                    Phase.ROUND_INTRO -> engine.reduce(s, GameAction.BeginRound)
+                    Phase.ASKING -> engine.answer(s, seed % 2 == 0)
+                    Phase.REVEAL -> engine.reduce(s, GameAction.Next)
+                    else -> engine.reduce(s, GameAction.AcceptTie)
+                }
+            }
+            val used = s.usedQuestionIds
+            for (id in used) {
+                val clash = conflicts[id].orEmpty().intersect(used)
+                assertTrue("$id saiu junto com $clash, que entrega a resposta", clash.isEmpty())
+            }
+        }
+    }
+
+    @Test
+    fun answerConflictsAreFoundInBothDirections() {
+        fun q(id: String, text: String, answer: String) = bank.questions.first().copy(id = id, text = text, answer = answer, options = listOf(answer, "Outra", "Mais uma"))
+        val small = br.com.perguntaloei.questions.QuestionBank(
+            listOf(
+                q("a", "Qual combustível, feito da cana-de-açúcar, abastece carros?", "Etanol"),
+                q("b", "De qual planta é feito o etanol?", "Cana-de-açúcar"),
+                q("c", "Qual é a cor do céu num dia limpo?", "Azul"),
+            ),
+        )
+        assertEquals(setOf("b"), small.answerConflicts["a"])
+        assertEquals(setOf("a"), small.answerConflicts["b"])
+        assertTrue(small.answerConflicts["c"].isNullOrEmpty())
+    }
+
+    @Test
     fun reportedQuestionsAreNeverPickedEvenWhenReusingHistory() {
         // Metade do banco reportada e o resto já usado: só pode sair pergunta não reportada.
         val blocked = bank.questions.filterIndexed { i, _ -> i % 2 == 0 }.map { it.id }.toSet()

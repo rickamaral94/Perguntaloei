@@ -26,6 +26,33 @@ class QuestionBank(
 
     val fingerprints: Map<String, String> by lazy { questions.associate { it.id to TextNormalizer.fingerprint(it.text) } }
 
+    /**
+     * Pares do mesmo tema em que o enunciado de uma pergunta contém a resposta da outra
+     * (ex.: "Qual combustível, feito da cana-de-açúcar…" e "De qual planta é feito o etanol?").
+     * O sorteio nunca põe as duas na mesma partida. Calculado uma vez, em segundo plano.
+     */
+    val answerConflicts: Map<String, Set<String>> by lazy {
+        val padded = questions.associate { it.id to " ${TextNormalizer.normalize(it.text)} " }
+        val keys = questions.mapNotNull { q ->
+            TextNormalizer.normalize(q.answer)
+                .takeIf { it.length >= 5 && it !in GENERIC_ANSWERS && !it.all(Char::isDigit) }
+                ?.let { q.id to " $it " }
+        }.toMap()
+        val result = HashMap<String, MutableSet<String>>()
+        for (group in questions.groupBy { it.theme }.values) {
+            for (a in group) {
+                val key = keys[a.id] ?: continue
+                for (b in group) {
+                    if (a.id != b.id && padded.getValue(b.id).contains(key)) {
+                        result.getOrPut(a.id) { mutableSetOf() }.add(b.id)
+                        result.getOrPut(b.id) { mutableSetOf() }.add(a.id)
+                    }
+                }
+            }
+        }
+        result
+    }
+
     /** Palavras de cada impressão digital, calculadas uma única vez. */
     val fingerprintTokens: Map<String, Set<String>> by lazy { fingerprints.mapValues { (_, fp) -> fp.split(' ').toSet() } }
 
@@ -73,6 +100,9 @@ class QuestionBank(
     }
 
     companion object {
+        /** Respostas comuns demais para contar como "entregar" a resposta de outra pergunta. */
+        private val GENERIC_ANSWERS = setOf("verdadeiro", "falso", "brasil", "brasileiro", "brasileira", "agua", "terra")
+
         val TRUE_FALSE_OPTIONS = listOf("Verdadeiro", "Falso")
 
         private val json = Json { ignoreUnknownKeys = true }
