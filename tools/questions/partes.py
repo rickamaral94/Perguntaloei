@@ -28,4 +28,5 @@ PARTES = [
     "parte9_his",
     "parte9_lit",
     "parte9_art",
+    "parte9_por",
 ]
