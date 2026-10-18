@@ -80,7 +80,7 @@ op(T, "transportes", 1, 8, "Qual veículo de duas rodas tem motor e é muito usa
    "Enciclopédia Britannica – verbete 'Motorcycle'")
 mc(T, "transportes", 1, 9, "Qual meio de transporte leva os turistas por cabos no alto até o Pão de Açúcar, no Rio de Janeiro?",
    ["Teleférico", "Metrô", "Monotrilho", "Ônibus"], "Teleférico",
-   "O famoso bondinho do Pão de Açúcar, inaugurado em 1912, é um teleférico com cabines penduradas em cabos.",
+   "O famoso bondinho do Pão de Açúcar, cujo primeiro trecho foi inaugurado em 1912, é um teleférico com cabines penduradas em cabos.",
    "Parque Bondinho Pão de Açúcar – história", br=True)
 mc(T, "segurança na internet", 1, 9, "Como deve ser uma senha segura?",
    ["Longa, misturando letras, números e símbolos", "Igual ao nosso nome", "Só com a data de aniversário",
@@ -101,23 +101,19 @@ mc(T, "energia", 1, 9, "Qual combustível, feito da cana-de-açúcar, abastece m
 tf(T, "tecnologia brasileira", 1, 10, "O Pix permite enviar dinheiro a qualquer hora, inclusive à noite e nos fins de semana.", True,
    "O Pix funciona 24 horas por dia, sete dias por semana, e o dinheiro chega em poucos segundos.",
    "Banco Central do Brasil – Pix", br=True)
-mc(T, "energia", 1, 9, "Que tipo de usina usa a força da água dos rios para gerar a maior parte da eletricidade do Brasil?",
-   ["Hidrelétrica", "Nuclear", "A carvão", "A diesel"], "Hidrelétrica",
-   "A água represada passa por turbinas, que giram geradores e produzem eletricidade.",
-   "Empresa de Pesquisa Energética (EPE) – Balanço Energético Nacional", br=True, ref="2026-10-13")
 
 # =========================================================== MÉDIAS
 mc(T, "aparelhos de casa", 2, 12, "Que tipo de luz invisível a maioria dos controles remotos de TV usa para mandar os comandos?",
    ["Infravermelha", "Ultravioleta", "Raio X", "Laser verde"], "Infravermelha",
-   "O controle pisca uma luzinha infravermelha em códigos; dá para vê-la apontando o controle para a câmera do celular.",
+   "O controle pisca uma luzinha infravermelha em códigos; muitas câmeras de celular conseguem mostrar essa luz que nossos olhos não veem.",
    "Enciclopédia Britannica – verbete 'Remote control'")
 mc(T, "aparelhos de casa", 2, 12, "O forno de micro-ondas esquenta a comida principalmente agitando as moléculas de qual substância?",
    ["Água", "Sal", "Açúcar", "Ferro"], "Água",
-   "As micro-ondas fazem as moléculas de água vibrarem, e esse movimento vira calor.",
+   "O campo elétrico das micro-ondas muda de sentido bilhões de vezes por segundo e faz as moléculas de água girarem para lá e para cá; essa agitação vira calor.",
    "Enciclopédia Britannica – verbete 'Microwave oven'")
 mc(T, "invenções", 2, 12, "Qual inventor criou o fonógrafo, aparelho que gravava e tocava sons, em 1877?",
    ["Thomas Edison", "Graham Bell", "Guglielmo Marconi", "Nikola Tesla"], "Thomas Edison",
-   "O fonógrafo gravava o som em um cilindro coberto de papel-alumínio; a primeira gravação foi uma cantiga infantil.",
+   "O fonógrafo gravava o som em um cilindro coberto por uma folha fina de estanho; Edison testou o aparelho recitando uma cantiga infantil.",
    "Enciclopédia Britannica – verbete 'Phonograph'")
 mc(T, "invenções", 2, 12, "Quais irmãos norte-americanos voaram com o avião Flyer, em 1903?",
    ["Irmãos Wright", "Irmãos Lumière", "Irmãos Grimm", "Irmãos Marx"], "Irmãos Wright",
@@ -135,10 +131,10 @@ mc(T, "engenharia", 2, 10, "Qual ponte, inaugurada em 1974, atravessa a Baía de
    ["Ponte Rio-Niterói", "Ponte Hercílio Luz", "Ponte Estaiada Octavio Frias", "Ponte JK"], "Ponte Rio-Niterói",
    "Com cerca de 13 quilômetros, ela é uma das maiores pontes do Brasil.",
    "Ecoponte – história da Ponte Rio-Niterói", br=True)
-mc(T, "engenharia", 2, 10, "Qual usina hidrelétrica, construída pelo Brasil e pelo Paraguai no rio Paraná, é uma das maiores do mundo?",
-   ["Itaipu", "Belo Monte", "Tucuruí", "Furnas"], "Itaipu",
-   "Itaipu é binacional: metade pertence ao Brasil e metade ao Paraguai.",
-   "Itaipu Binacional", br=True)
+mc(T, "engenharia", 3, 14, "Qual usina hidrelétrica da China, no rio Yangtzé, é a maior do mundo em potência instalada?",
+   ["Três Gargantas", "Itaipu", "Belo Monte", "Hoover"], "Três Gargantas",
+   "Inaugurada por etapas e concluída em 2012, Três Gargantas tem potência de cerca de 22 mil megawatts; a brasileira Itaipu, com 14 mil, vem logo atrás.",
+   "Enciclopédia Britannica – verbete 'Three Gorges Dam'", syn=("três gargantas", "tres gargantas"), ref="2026-10-13")
 mc(T, "unidades digitais", 2, 10, "Como se chama cada pontinho colorido que forma a imagem numa tela?",
    ["Pixel", "Byte", "Chip", "Cursor"], "Pixel",
    "Quanto mais pixels uma tela tem, mais nítida a imagem fica.",
@@ -162,8 +158,8 @@ tf(T, "segurança na internet", 2, 10, "Tudo o que postamos na internet pode ser
    "SaferNet Brasil – dicas de segurança", br=True)
 op(T, "transportes", 2, 12, "Como se chama o carro que pode usar gasolina, etanol ou a mistura dos dois no mesmo tanque?",
    "Flex", ["flex", "carro flex", "bicombustível", "bicombustivel", "flexível", "total flex"],
-   "Os carros flex chegaram ao mercado brasileiro em 2003 e hoje são maioria no país.",
-   "Embrapa – Agroenergia", br=True)
+   "Os carros flex chegaram ao mercado brasileiro em 2003 e hoje são a maioria dos carros novos vendidos no país.",
+   "ANFAVEA – Anuário da Indústria Automobilística Brasileira", br=True, ref="2026-10-13")
 mc(T, "comunicação", 2, 10, "Qual era o apelido dos telefones públicos brasileiros com cobertura em forma de concha?",
    ["Orelhão", "Cabinão", "Bocão", "Caramujo"], "Orelhão",
    "A cobertura arredondada protege do sol e da chuva e diminui o barulho da rua durante a ligação.",
@@ -178,7 +174,7 @@ op(T, "segurança na internet", 2, 10, "Como se chama o programa que protege o c
    "CERT.br – Cartilha de Segurança para Internet")
 mc(T, "transportes", 2, 12, "Qual cidade brasileira ficou famosa pelos ônibus em faixas exclusivas e pelas estações em forma de tubo?",
    ["Curitiba", "Salvador", "Belém", "Manaus"], "Curitiba",
-   "O sistema de Curitiba, criado nos anos 1970, inspirou corredores de ônibus em várias cidades do mundo.",
+   "Os corredores exclusivos de Curitiba começaram em 1974 e as estações-tubo surgiram em 1991; o sistema inspirou cidades do mundo todo.",
    "URBS – Urbanização de Curitiba", br=True)
 mc(T, "energia", 2, 12, "Em qual estado ficam as usinas nucleares brasileiras Angra 1 e Angra 2?",
    ["Rio de Janeiro", "São Paulo", "Minas Gerais", "Bahia"], "Rio de Janeiro",
@@ -200,7 +196,7 @@ mc(T, "transportes", 2, 14, "Em qual cidade paulista fica a sede da Embraer, fab
 # =========================================================== DIFÍCEIS
 mc(T, "aparelhos de casa", 3, 14, "Qual peça da geladeira, geralmente atrás e embaixo dela, bombeia o gás que retira o calor de dentro?",
    ["Compressor", "Termostato", "Lâmpada", "Borracha da porta"], "Compressor",
-   "O compressor faz o gás circular; ele absorve o calor lá dentro e o solta pela grade de trás.",
+   "O compressor faz o fluido refrigerante circular: ele evapora e absorve o calor lá dentro e depois o solta pela grade de trás, o condensador.",
    "Enciclopédia Britannica – verbete 'Refrigeration'")
 mc(T, "engenharia", 3, 14, "Qual túnel ferroviário passa por baixo do mar e liga a Inglaterra à França?",
    ["Eurotúnel", "Túnel de São Gotardo", "Túnel Seikan", "Túnel Rebouças"], "Eurotúnel",
@@ -208,7 +204,7 @@ mc(T, "engenharia", 3, 14, "Qual túnel ferroviário passa por baixo do mar e li
    "Enciclopédia Britannica – verbete 'Channel Tunnel'", syn=("túnel do canal da mancha",))
 mc(T, "inteligência artificial", 3, 14, "Qual computador da IBM venceu o campeão mundial de xadrez Garry Kasparov, em 1997?",
    ["Deep Blue", "Watson", "ENIAC", "AlphaGo"], "Deep Blue",
-   "Foi a primeira vez que um computador derrotou um campeão mundial numa partida com regras de torneio.",
+   "Foi a primeira vez que um computador venceu um campeão mundial num confronto de seis partidas com regras de torneio.",
    "Enciclopédia Britannica – verbete 'Deep Blue'")
 mc(T, "videogames", 3, 14, "Qual videogame de 1972, um dos primeiros de sucesso, imitava uma partida de tênis de mesa?",
    ["Pong", "Space Invaders", "Pac-Man", "Asteroids"], "Pong",
@@ -235,10 +231,10 @@ mc(T, "tecnologia brasileira", 3, 14, "Qual acelerador de partículas brasileiro
 mc(T, "transportes", 3, 16, "Qual empresário brasileiro fabricou carros com o próprio sobrenome, como o pequeno BR-800?",
    ["João Gurgel", "Ayrton Senna", "Alberto Santos Dumont", "Assis Chateaubriand"], "João Gurgel",
    "João Augusto Conrado do Amaral Gurgel lançou o BR-800 em 1988, um carro popular inteiramente projetado no Brasil.",
-   "Enciclopédia Itaú Cultural – Gurgel", br=True, syn=("gurgel",))
+   "Revista Quatro Rodas – história da Gurgel", br=True, syn=("gurgel",))
 mc(T, "videogames", 3, 14, "Qual empresa brasileira lançou no país os consoles Master System e Mega Drive?",
    ["Tectoy", "Gradiente", "Positivo", "Itautec"], "Tectoy",
-   "A Tectoy era parceira da Sega no Brasil e chegou a criar jogos próprios, como os da Turma da Mônica.",
+   "A Tectoy era parceira da Sega no Brasil e chegou a adaptar jogos com personagens nacionais, como os da Turma da Mônica.",
    "Tectoy – história", br=True)
 tf(T, "engenharia", 3, 14, "O Cristo Redentor, no Rio de Janeiro, é feito de bronze.", False,
    "A estátua é de concreto armado, revestida por milhares de pequenos triângulos de pedra-sabão.",
@@ -248,9 +244,9 @@ tf(T, "engenharia", 3, 14, "O Cristo Redentor, no Rio de Janeiro, é feito de br
 tf(T, "comunicação", 4, 16, "O orelhão foi criado pela arquiteta Chu Ming Silveira, nos anos 1970.", True,
    "Nascida na China e radicada no Brasil, ela desenhou o orelhão para a Companhia Telefônica Brasileira.",
    "Museu das Telecomunicações (Oi Futuro) – história do orelhão", br=True)
-mc(T, "robótica", 4, 14, "De que língua vem a palavra 'robô', popularizada por uma peça de teatro de 1920?",
+mc(T, "robótica", 4, 14, "De que língua vem a palavra 'robô', popularizada por uma peça de teatro escrita em 1920?",
    ["Tcheco", "Japonês", "Inglês", "Latim"], "Tcheco",
-   "Na peça 'R.U.R.', de Karel Čapek, a palavra vem de 'robota', que quer dizer trabalho forçado.",
+   "Na peça 'R.U.R.', do escritor tcheco Karel Čapek, a palavra, sugerida por seu irmão Josef, vem de 'robota', que quer dizer trabalho forçado.",
    "Enciclopédia Britannica – verbete 'Robot'")
 mc(T, "transportes", 4, 16, "Qual avião turboélice para passageiros foi o primeiro fabricado em série pela Embraer?",
    ["Bandeirante", "Tucano", "Brasília", "Xingu"], "Bandeirante",
@@ -262,7 +258,7 @@ mc(T, "comunicação", 4, 16, "Qual cientista alemão comprovou a existência da
    "Enciclopédia Britannica – verbete 'Heinrich Hertz'", syn=("hertz",))
 mc(T, "computador", 4, 16, "Qual empresa lançou em 1956 o primeiro disco rígido comercial, do tamanho de um armário grande?",
    ["IBM", "Intel", "Apple", "Microsoft"], "IBM",
-   "O IBM 350, do sistema RAMAC, pesava cerca de uma tonelada e guardava uns 5 megabytes.",
+   "O IBM 350, do sistema RAMAC, pesava cerca de uma tonelada e guardava uns 5 milhões de caracteres, algo perto de 4 megabytes de hoje.",
    "IBM – história do RAMAC")
 mc(T, "videogames", 4, 16, "Qual empresa lançou o Odyssey, de 1972, considerado o primeiro console de videogame doméstico?",
    ["Magnavox", "Atari", "Nintendo", "Sega"], "Magnavox",
