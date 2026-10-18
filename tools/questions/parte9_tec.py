@@ -11,10 +11,6 @@ mc(T, "transportes", 1, 6, "Qual veículo voa com uma grande hélice girando no 
    ["Helicóptero", "Avião a jato", "Foguete", "Planador"], "Helicóptero",
    "A hélice de cima do helicóptero, chamada de rotor, permite subir em linha reta e até ficar parado no ar.",
    "Enciclopédia Britannica – verbete 'Helicopter'")
-mc(T, "transportes", 1, 6, "Qual veículo tem asas e leva passageiros pelo céu de uma cidade para outra?",
-   ["Avião", "Navio", "Trem", "Ônibus"], "Avião",
-   "As asas do avião criam uma força de sustentação quando o ar passa por elas em alta velocidade.",
-   "Enciclopédia Britannica – verbete 'Airplane'")
 tf(T, "aparelhos de casa", 1, 6, "O ferro de passar fica quente para desamassar as roupas.", True,
    "O calor do ferro, às vezes junto com vapor, amolece as fibras do tecido e tira os amassados.",
    "Enciclopédia Britannica – verbete 'Iron (household appliance)'")
@@ -22,10 +18,6 @@ mc(T, "aparelhos de casa", 1, 6, "Qual aparelho usamos para tostar fatias de pã
    ["Torradeira", "Liquidificador", "Batedeira", "Geladeira"], "Torradeira",
    "A torradeira tem fios que ficam muito quentes e deixam o pão dourado e crocante.",
    "Enciclopédia Britannica – verbete 'Toaster'")
-mc(T, "aparelhos de casa", 1, 6, "Qual aparelho da cozinha bate a massa de bolo com dois batedores que giram?",
-   ["Batedeira", "Torradeira", "Geladeira", "Micro-ondas"], "Batedeira",
-   "Os batedores giram bem rápido e misturam ovos, farinha e açúcar, deixando a massa fofinha.",
-   "Enciclopédia Britannica – verbete 'Mixer'")
 tf(T, "transportes", 1, 6, "Uma bicicleta comum anda com a força das pernas de quem pedala.", True,
    "Os pedais giram a coroa, e a corrente leva esse movimento até a roda de trás.",
    "Enciclopédia Britannica – verbete 'Bicycle'")
@@ -127,10 +119,6 @@ mc(T, "invenções", 2, 12, "Qual inventor criou o fonógrafo, aparelho que grav
    ["Thomas Edison", "Graham Bell", "Guglielmo Marconi", "Nikola Tesla"], "Thomas Edison",
    "O fonógrafo gravava o som em um cilindro coberto de papel-alumínio; a primeira gravação foi uma cantiga infantil.",
    "Enciclopédia Britannica – verbete 'Phonograph'")
-mc(T, "invenções", 2, 12, "Quais irmãos franceses fizeram a primeira sessão pública e paga de cinema, em Paris, em 1895?",
-   ["Irmãos Lumière", "Irmãos Wright", "Irmãos Grimm", "Irmãos Montgolfier"], "Irmãos Lumière",
-   "Auguste e Louis Lumière exibiram filmes curtos com seu cinematógrafo num café de Paris.",
-   "Enciclopédia Britannica – verbete 'Lumière brothers'", syn=("lumière", "lumiere"))
 mc(T, "invenções", 2, 12, "Quais irmãos norte-americanos voaram com o avião Flyer, em 1903?",
    ["Irmãos Wright", "Irmãos Lumière", "Irmãos Grimm", "Irmãos Marx"], "Irmãos Wright",
    "Wilbur e Orville Wright voaram na Carolina do Norte; no Brasil, celebra-se Santos Dumont por decolar o 14-Bis por meios próprios em 1906.",
@@ -151,14 +139,6 @@ mc(T, "engenharia", 2, 10, "Qual usina hidrelétrica, construída pelo Brasil e 
    ["Itaipu", "Belo Monte", "Tucuruí", "Furnas"], "Itaipu",
    "Itaipu é binacional: metade pertence ao Brasil e metade ao Paraguai.",
    "Itaipu Binacional", br=True)
-mc(T, "engenharia", 2, 12, "Qual é o prédio mais alto do mundo, com mais de 800 metros, em Dubai?",
-   ["Burj Khalifa", "Empire State Building", "Torre Eiffel", "Petronas Towers"], "Burj Khalifa",
-   "Inaugurado em 2010, o Burj Khalifa tem 828 metros de altura.",
-   "Enciclopédia Britannica – verbete 'Burj Khalifa'", ref="2026-10-13")
-mc(T, "engenharia", 2, 12, "Qual canal, inaugurado em 1914, liga os oceanos Atlântico e Pacífico pela América Central?",
-   ["Canal do Panamá", "Canal de Suez", "Canal da Mancha", "Canal de Corinto"], "Canal do Panamá",
-   "O canal usa eclusas, como degraus de água, para levantar e baixar os navios.",
-   "Enciclopédia Britannica – verbete 'Panama Canal'")
 mc(T, "unidades digitais", 2, 10, "Como se chama cada pontinho colorido que forma a imagem numa tela?",
    ["Pixel", "Byte", "Chip", "Cursor"], "Pixel",
    "Quanto mais pixels uma tela tem, mais nítida a imagem fica.",
@@ -174,15 +154,6 @@ mc(T, "videogames", 2, 12, "Na série 'The Legend of Zelda', como se chama o her
    ["Link", "Ganon", "Kirby", "Toad"], "Link",
    "Muita gente pensa que o herói se chama Zelda, mas esse é o nome da princesa.",
    "Nintendo – série The Legend of Zelda")
-mc(T, "videogames", 2, 12, "Qual console portátil da Nintendo, lançado em 1989, vinha com o jogo Tetris em muitos países?",
-   ["Game Boy", "Nintendo DS", "PSP", "Game Gear"], "Game Boy",
-   "O Game Boy tinha tela em tons de verde e funcionava com pilhas comuns.",
-   "Enciclopédia Britannica – verbete 'Game Boy'")
-mc(T, "comunicação", 2, 10, "Para que servem os satélites de comunicação que giram ao redor da Terra?",
-   ["Retransmitir sinais de TV, telefone e internet", "Fazer chover", "Iluminar a noite", "Medir terremotos"],
-   "Retransmitir sinais de TV, telefone e internet",
-   "O satélite recebe o sinal de uma antena na Terra e o envia de volta para outro lugar muito distante.",
-   "Enciclopédia Britannica – verbete 'Communications satellite'")
 tf(T, "transportes", 2, 12, "O Concorde era um avião de passageiros que voava mais rápido que o som.", True,
    "O Concorde cruzava o Atlântico em cerca de três horas e meia e deixou de voar em 2003.",
    "Enciclopédia Britannica – verbete 'Concorde'")
@@ -193,10 +164,6 @@ op(T, "transportes", 2, 12, "Como se chama o carro que pode usar gasolina, etano
    "Flex", ["flex", "carro flex", "bicombustível", "bicombustivel", "flexível", "total flex"],
    "Os carros flex chegaram ao mercado brasileiro em 2003 e hoje são maioria no país.",
    "Embrapa – Agroenergia", br=True)
-mc(T, "transportes", 2, 12, "Qual empresário norte-americano popularizou o automóvel com a linha de montagem do Modelo T?",
-   ["Henry Ford", "Karl Benz", "Enzo Ferrari", "Ferdinand Porsche"], "Henry Ford",
-   "Com a linha de montagem, criada em 1913, cada carro passou a ser montado em bem menos tempo e ficou mais barato.",
-   "Enciclopédia Britannica – verbete 'Henry Ford'")
 mc(T, "comunicação", 2, 10, "Qual era o apelido dos telefones públicos brasileiros com cobertura em forma de concha?",
    ["Orelhão", "Cabinão", "Bocão", "Caramujo"], "Orelhão",
    "A cobertura arredondada protege do sol e da chuva e diminui o barulho da rua durante a ligação.",
@@ -205,18 +172,6 @@ mc(T, "internet", 2, 10, "Como se chamam as mensagens indesejadas, geralmente pr
    ["Spam", "Cookie", "Backup", "Download"], "Spam",
    "Os programas de e-mail costumam separar essas mensagens numa pasta própria.",
    "CERT.br – Cartilha de Segurança para Internet")
-mc(T, "computador", 2, 12, "Como se chama a cópia de segurança dos arquivos, guardada em outro lugar para não perdê-los?",
-   ["Backup", "Spam", "Firewall", "Cache"], "Backup",
-   "Com um backup, as fotos e os documentos podem ser recuperados se o aparelho quebrar ou for perdido.",
-   "CERT.br – Cartilha de Segurança para Internet")
-mc(T, "computador", 2, 12, "Em computação, como se chama a sequência de passos que um programa segue para resolver um problema?",
-   ["Algoritmo", "Pixel", "Hardware", "Navegador"], "Algoritmo",
-   "Uma receita de bolo é um bom exemplo de algoritmo: passos em ordem para chegar a um resultado.",
-   "Enciclopédia Britannica – verbete 'Algorithm'")
-mc(T, "computador", 2, 10, "Como se chamam as partes físicas do computador, que podemos tocar, como o teclado e a tela?",
-   ["Hardware", "Software", "Download", "Wi-Fi"], "Hardware",
-   "Já os programas, que não podemos tocar, são chamados de software.",
-   "Enciclopédia Britannica – verbete 'Computer hardware'")
 op(T, "segurança na internet", 2, 10, "Como se chama o programa que protege o computador contra vírus?",
    "Antivírus", ["antivírus", "antivirus", "programa antivírus"],
    "O antivírus procura programas maliciosos e os bloqueia ou remove.",
@@ -247,10 +202,6 @@ mc(T, "aparelhos de casa", 3, 14, "Qual peça da geladeira, geralmente atrás e 
    ["Compressor", "Termostato", "Lâmpada", "Borracha da porta"], "Compressor",
    "O compressor faz o gás circular; ele absorve o calor lá dentro e o solta pela grade de trás.",
    "Enciclopédia Britannica – verbete 'Refrigeration'")
-mc(T, "invenções", 3, 14, "Quais irmãos franceses fizeram subir, em 1783, um grande balão de ar quente diante de multidões?",
-   ["Irmãos Montgolfier", "Irmãos Lumière", "Irmãos Wright", "Irmãos Grimm"], "Irmãos Montgolfier",
-   "Joseph-Michel e Jacques-Étienne Montgolfier fizeram também o primeiro voo tripulado em balão, em Paris.",
-   "Enciclopédia Britannica – verbete 'Montgolfier brothers'", syn=("montgolfier",))
 mc(T, "engenharia", 3, 14, "Qual túnel ferroviário passa por baixo do mar e liga a Inglaterra à França?",
    ["Eurotúnel", "Túnel de São Gotardo", "Túnel Seikan", "Túnel Rebouças"], "Eurotúnel",
    "Inaugurado em 1994, ele tem cerca de 50 quilômetros, boa parte sob o Canal da Mancha.",

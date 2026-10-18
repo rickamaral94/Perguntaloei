@@ -16,4 +16,11 @@ PARTES = [
     "parte9_cul",
     "parte9_ast",
     "parte9_cin",
+    "parte9_esp",
+    "parte9_tec",
+    "parte9_mus",
+    "parte9_cie",
+    "parte9_inf",
+    "parte9_nat",
+    "parte9_cur",
 ]

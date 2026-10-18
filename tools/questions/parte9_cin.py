@@ -41,9 +41,9 @@ mc(T, "franquias", 1, 9, "Em 'Star Wars', qual é o nome do copiloto alto e pelu
 tf(T, "super-heróis", 1, 8, "O Batman não tem superpoderes: ele usa inteligência, treino e equipamentos.", True,
    "Bruce Wayne é um humano comum que se preparou durante anos e conta com muitos aparelhos.",
    "DC – personagem 'Batman'")
-op(T, "prêmios", 1, 8, "De que cor é o famoso tapete por onde os artistas chegam à festa do Oscar?", "Vermelho",
+op(T, "prêmios", 1, 8, "De que cor costuma ser o famoso tapete por onde os artistas chegam à festa do Oscar?", "Vermelho",
    ["vermelho", "vermelha"],
-   "O tapete vermelho virou símbolo das grandes estreias e das cerimônias de premiação.",
+   "O tapete vermelho virou símbolo das grandes estreias e das cerimônias de premiação; só em 2023 o Oscar usou, por uma vez, um tapete cor de champanhe.",
    "Academy of Motion Picture Arts and Sciences – Oscars.org")
 mc(T, "gêneros", 1, 8, "Como se chama o tipo de filme feito para dar medo em quem assiste?",
    ["Terror", "Comédia", "Musical", "Romance"], "Terror",
@@ -90,16 +90,16 @@ mc(T, "cinema brasileiro", 1, 10, "Em 'O Auto da Compadecida', Chicó termina su
    "Globo Filmes – 'O Auto da Compadecida' (2000)", br=True)
 mc(T, "divulgação", 1, 9, "Como se chama o vídeo curto com cenas de um filme, feito para divulgá-lo antes da estreia?",
    ["Trailer", "Legenda", "Roteiro", "Claquete"], "Trailer",
-   "O nome vem do inglês e significa 'reboque', porque no início ele passava depois do filme principal.",
+   "O nome vem do inglês e significa 'reboque'; a explicação mais conhecida é que, no início, ele passava depois do filme principal.",
    "Enciclopédia Britannica – verbete 'Trailer'", syn=("trêiler",))
 mc(T, "gêneros", 1, 10, "Como se chama o filme que mostra fatos e pessoas reais, sem uma história inventada?",
    ["Documentário", "Ficção científica", "Animação", "Comédia"], "Documentário",
    "O documentário registra a realidade, como a vida dos animais, uma viagem ou um acontecimento histórico.",
    "Enciclopédia Britannica – verbete 'Documentary'")
 tf(T, "história do cinema", 1, 9, "Os primeiros filmes do cinema já tinham falas gravadas e eram coloridos.", False,
-   "Os primeiros filmes eram em preto e branco e mudos; muitas vezes um pianista tocava ao vivo na sala.",
+   "Os primeiros filmes eram mudos e quase sempre em preto e branco (alguns eram pintados à mão, quadro a quadro); muitas vezes um pianista tocava ao vivo na sala.",
    "Enciclopédia Britannica – verbete 'Silent film'")
-mc(T, "cinema brasileiro", 1, 10, "Em 'Central do Brasil', o menino Josué viaja pelo sertão à procura de quem?",
+mc(T, "cinema brasileiro", 2, 12, "Em 'Central do Brasil', o menino Josué viaja pelo sertão à procura de quem?",
    ["Do pai", "De um tesouro", "De um cachorro", "De um avião"], "Do pai",
    "Depois que a mãe morre, Josué parte com Dora em busca do pai que nunca conheceu.",
    "VideoFilmes – 'Central do Brasil' (1998)", br=True, syn=("o pai", "pai"))
@@ -129,8 +129,8 @@ op(T, "franquias", 2, 9, "Como se chama o esporte jogado em vassouras voadoras n
    "Quadribol", ["quadribol", "quidditch"],
    "No quadribol, o apanhador tenta pegar o pomo de ouro, uma bolinha dourada com asas.",
    "Warner Bros. – Wizarding World")
-tf(T, "vilões", 2, 10, "Em 'Star Wars', Darth Vader luta com um sabre de luz azul.", False,
-   "O sabre de Darth Vader é vermelho, a cor dos sabres dos sith, que seguem o lado sombrio da Força.",
+tf(T, "vilões", 2, 10, "Na trilogia original de 'Star Wars', Darth Vader luta com um sabre de luz azul.", False,
+   "O sabre de Darth Vader é vermelho, a cor dos sabres dos sith, que seguem o lado sombrio da Força. Antes, quando ainda era o jedi Anakin Skywalker, ele usava um sabre azul.",
    "Lucasfilm – StarWars.com, verbete 'Darth Vader'")
 mc(T, "diretores", 2, 12, "Quem criou a saga 'Star Wars' e dirigiu o primeiro filme, de 1977?",
    ["George Lucas", "Steven Spielberg", "James Cameron", "Ridley Scott"], "George Lucas",
@@ -173,7 +173,7 @@ mc(T, "cinema brasileiro", 2, 12, "Na comédia 'Se Eu Fosse Você', o que aconte
    "Depois de uma briga, marido e mulher acordam um no corpo do outro.",
    "Globo Filmes – 'Se Eu Fosse Você' (2006)", br=True)
 tf(T, "atores", 2, 12, "A atriz Fernanda Torres é filha de Fernanda Montenegro.", True,
-   "Fernanda Torres é filha de Fernanda Montenegro e do ator Fernando Torres, e as duas atuaram juntas em 'Ainda Estou Aqui'.",
+   "Fernanda Torres é filha de Fernanda Montenegro e do ator Fernando Torres, e as duas viveram a mesma personagem, Eunice Paiva, em idades diferentes, em 'Ainda Estou Aqui'.",
    "Enciclopédia Itaú Cultural – verbete 'Fernanda Montenegro'", br=True)
 tf(T, "cinema brasileiro", 2, 12, "O filme 'O Auto da Compadecida 2' chegou aos cinemas em 2024.", True,
    "A continuação, de novo com Matheus Nachtergaele e Selton Mello, estreou no Natal de 2024.",
@@ -244,7 +244,7 @@ mc(T, "história do cinema", 3, 14, "Qual filme de 1927 é considerado o primeir
    "Enciclopédia Britannica – verbete 'The Jazz Singer'")
 
 # =========================================================== MUITO DIFÍCEIS
-mc(T, "história do cinema", 4, 16, "Qual pioneiro francês fez 'Viagem à Lua', de 1902, em que um foguete acerta o olho da Lua?",
+mc(T, "história do cinema", 4, 16, "Qual pioneiro francês fez 'Viagem à Lua', de 1902, em que uma nave disparada por um canhão acerta o olho da Lua?",
    ["Georges Méliès", "Louis Lumière", "Jean Renoir", "François Truffaut"], "Georges Méliès",
    "Méliès era ilusionista e criou alguns dos primeiros efeitos especiais do cinema.",
    "Enciclopédia Britannica – verbete 'Georges Méliès'", syn=("méliès", "melies"))
@@ -254,11 +254,11 @@ mc(T, "técnica", 4, 16, "Quantos quadros por segundo é o padrão clássico de 
    "Enciclopédia Britannica – verbete 'Motion picture technology'", syn=("vinte e quatro",))
 mc(T, "prêmios", 4, 16, "O filme 'Orfeu Negro', rodado no Rio durante o Carnaval, ganhou o Oscar de filme estrangeiro representando qual país?",
    ["França", "Brasil", "Portugal", "Itália"], "França",
-   "Dirigido pelo francês Marcel Camus, o filme também venceu a Palma de Ouro em Cannes, em 1959.",
+   "Dirigido pelo francês Marcel Camus e inscrito no Oscar pela França, embora fosse uma coprodução com Brasil e Itália, o filme também venceu a Palma de Ouro em Cannes, em 1959.",
    "Academy of Motion Picture Arts and Sciences – 32ª cerimônia (1960)", br=True)
 mc(T, "atores", 4, 16, "Qual ator, parceiro de Oscarito nas chanchadas, tinha o nome verdadeiro de Sebastião Prata?",
    ["Grande Otelo", "Mazzaropi", "Ankito", "Zé Trindade"], "Grande Otelo",
-   "Grande Otelo também atuou em 'Macunaíma', de 1969, no papel do herói quando nasce.",
+   "Grande Otelo também atuou em 'Macunaíma', de 1969, na primeira fase do herói, antes de ele virar branco.",
    "Enciclopédia Itaú Cultural – verbete 'Grande Otelo'", br=True)
 op(T, "clássicos", 4, 16, "Em qual cidade americana o boxeador Rocky Balboa sobe correndo a escadaria de um museu?",
    "Filadélfia", ["filadélfia", "filadelfia", "philadelphia"],
