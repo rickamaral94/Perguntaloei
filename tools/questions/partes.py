@@ -23,4 +23,5 @@ PARTES = [
     "parte9_inf",
     "parte9_nat",
     "parte9_cur",
+    "parte9_geo",
 ]
