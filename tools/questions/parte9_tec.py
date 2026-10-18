@@ -94,7 +94,7 @@ op(T, "comunicação", 1, 9, "Como se chamava o aparelho de teclas usado para es
 tf(T, "aparelhos de casa", 1, 9, "As lâmpadas de LED gastam mais energia que as antigas lâmpadas incandescentes.", False,
    "O LED gasta bem menos energia para iluminar o mesmo tanto e dura muito mais.",
    "Procel – dicas de economia de energia", br=True)
-mc(T, "energia", 1, 9, "Qual combustível, feito da cana-de-açúcar, abastece muitos carros no Brasil?",
+mc(T, "energia", 1, 9, "Além da gasolina, qual combustível vendido nos postos brasileiros pode abastecer os carros flex?",
    ["Etanol", "Diesel", "Querosene", "Carvão"], "Etanol",
    "O Brasil é um dos maiores produtores de etanol do mundo, e ele é vendido em quase todos os postos.",
    "Embrapa – Agroenergia", br=True, syn=("álcool",))
