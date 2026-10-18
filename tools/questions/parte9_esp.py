@@ -44,7 +44,7 @@ mc(T, "regras", 1, 8, "No futebol, qual cor de cartão serve de advertência, se
    "Quem recebe o segundo cartão amarelo na mesma partida também recebe o vermelho e deixa o campo.",
    "FIFA – Regras do Jogo (IFAB), Regra 12: Faltas e conduta antidesportiva")
 mc(T, "modalidades", 1, 9, "Qual esporte coletivo se joga com as mãos, arremessando a bola para dentro de um gol?",
-   ["Handebol", "Polo aquático", "Futsal", "Basquete"], "Handebol",
+   ["Handebol", "Vôlei", "Futsal", "Basquete"], "Handebol",
    "O handebol é disputado em quadra, e os jogadores podem dar no máximo três passos segurando a bola.",
    "Federação Internacional de Handebol (IHF) – Regras do Jogo")
 mc(T, "lutas", 1, 9, "Qual luta japonesa tem lutadores muito pesados que tentam empurrar o adversário para fora de um círculo?",
@@ -84,7 +84,7 @@ tf(T, "futsal", 1, 8, "O futsal é jogado num campo de grama.", False,
    "O futsal é disputado em quadra, com piso liso de madeira ou material sintético.",
    "FIFA – Regras do Jogo de Futsal")
 tf(T, "tênis", 1, 9, "No tênis, a bola pode quicar duas vezes antes de o jogador devolvê-la.", False,
-   "No tênis, a bola só pode quicar uma vez no chão antes de ser rebatida; se quicar duas, o ponto é perdido.",
+   "No tênis, a bola só pode quicar uma vez no chão antes de ser rebatida; se quicar duas, o ponto é perdido. Só no tênis em cadeira de rodas são permitidos dois quiques.",
    "Federação Internacional de Tênis (ITF) – Regras do Tênis")
 tf(T, "paralímpicos", 1, 9, "Os Jogos Paralímpicos reúnem atletas com deficiência.", True,
    "Os Jogos Paralímpicos acontecem logo depois dos Olímpicos, na mesma cidade-sede.",
@@ -94,7 +94,7 @@ tf(T, "olimpíadas", 1, 10, "A chama olímpica é acesa na Grécia, com a luz do
    "Comitê Olímpico Internacional – 'The Olympic flame'")
 tf(T, "jogadores", 1, 10, "Pelé ganhou três Copas do Mundo como jogador da seleção brasileira.", True,
    "Pelé foi campeão em 1958, 1962 e 1970, e é o único jogador com três títulos mundiais.",
-   "FIFA – verbete 'Pelé'", br=True)
+   "FIFA – verbete 'Pelé'", br=True, ref="2026-10-13")
 op(T, "regras", 1, 6, "No futebol, que palavra o narrador grita quando a bola entra na rede do adversário?", "Gol",
    ["gol", "golo", "goool"],
    "O gol vale um ponto, e vence a partida o time que marcar mais gols.",
@@ -104,7 +104,7 @@ op(T, "xadrez", 1, 7, "Qual jogo de tabuleiro tem peças chamadas rei, rainha, t
    "O xadrez é reconhecido como esporte pelo Comitê Olímpico Internacional e tem campeonatos mundiais.",
    "Federação Internacional de Xadrez (FIDE) – Leis do Xadrez")
 op(T, "regras", 1, 9, "No futebol, como se chama a cobrança feita da marca a 11 metros do gol?", "Pênalti",
-   ["pênalti", "penalti", "penálti", "penalty", "tiro penal"],
+   ["pênalti", "penalti", "penálti", "penalty", "tiro penal", "penalidade máxima"],
    "O pênalti é marcado quando há falta dentro da grande área, e só o goleiro pode tentar defender.",
    "FIFA – Regras do Jogo (IFAB), Regra 14: O tiro penal")
 
@@ -119,7 +119,7 @@ mc(T, "jogadores", 2, 10, "Oscar Schmidt, apelidado de 'Mão Santa', foi um craq
    "FIBA – Hall da Fama, verbete 'Oscar Schmidt'", br=True)
 mc(T, "ginástica", 2, 14, "Qual ginasta brasileira foi a primeira do país campeã mundial, no solo, em 2003?",
    ["Daiane dos Santos", "Rebeca Andrade", "Jade Barbosa", "Flávia Saraiva"], "Daiane dos Santos",
-   "Daiane venceu o Mundial de Anaheim, nos Estados Unidos, e tem um salto com seu nome no código da ginástica.",
+   "Daiane venceu o Mundial de Anaheim, nos Estados Unidos, e tem um movimento do solo com seu nome no código da ginástica.",
    "Confederação Brasileira de Ginástica", br=True)
 mc(T, "copas do mundo", 2, 12, "Em qual país foi disputada a Copa do Mundo de 1970, a do tricampeonato brasileiro?",
    ["México", "Argentina", "Inglaterra", "Alemanha"], "México",
@@ -133,7 +133,7 @@ mc(T, "copas do mundo", 2, 12, "Qual país sediou a Copa do Mundo de 2010, a pri
    ["África do Sul", "Egito", "Nigéria", "Marrocos"], "África do Sul",
    "A Copa de 2010 ficou marcada pelo som das vuvuzelas nos estádios.",
    "FIFA – Copa do Mundo de 2010")
-mc(T, "copas do mundo", 2, 12, "Qual seleção conquistou a Copa do Mundo de 2010, seu primeiro título mundial?",
+mc(T, "copas do mundo", 2, 12, "Qual seleção conquistou a Copa do Mundo de 2010, que foi o primeiro título mundial do país?",
    ["Espanha", "Holanda", "Alemanha", "Itália"], "Espanha",
    "A Espanha venceu a Holanda por 1 a 0 na prorrogação, com gol de Andrés Iniesta.",
    "FIFA – Copa do Mundo de 2010")
@@ -226,15 +226,15 @@ mc(T, "ginástica", 3, 14, "Qual destes aparelhos da ginástica artística é us
    "Federação Internacional de Ginástica (FIG) – Código de Pontuação")
 mc(T, "copas do mundo", 3, 14, "Em qual país o Brasil conquistou sua primeira Copa do Mundo?",
    ["Suécia", "Suíça", "Chile", "Inglaterra"], "Suécia",
-   "Em 1958, o Brasil venceu a Suécia, dona da casa, por 5 a 2 na final, em Estocolmo.",
+   "Em 1958, o Brasil venceu a Suécia, dona da casa, por 5 a 2 na final, disputada na região de Estocolmo.",
    "FIFA – Copa do Mundo de 1958", br=True)
 op(T, "paralímpicos", 3, 14, "Qual esporte paralímpico consiste em lançar bolas tentando deixá-las o mais perto possível de uma bolinha branca?",
    "Bocha", ["bocha", "bocha paralímpica", "boccia"],
    "A bocha paralímpica é disputada por atletas com deficiências severas, e o Brasil já ganhou ouro na modalidade.",
    "Comitê Paralímpico Brasileiro")
 tf(T, "esportes de inverno", 3, 14, "Os Jogos Olímpicos de Inverno já foram realizados na América do Sul.", False,
-   "Todas as edições dos Jogos de Inverno foram disputadas no Hemisfério Norte.",
-   "Comitê Olímpico Internacional – Jogos Olímpicos de Inverno")
+   "Todas as edições dos Jogos de Inverno, até Milão-Cortina 2026, foram disputadas no Hemisfério Norte.",
+   "Comitê Olímpico Internacional – Jogos Olímpicos de Inverno", ref="2026-10-13")
 tf(T, "vôlei", 3, 16, "A seleção brasileira masculina de vôlei conquistou seu primeiro título mundial em 2002.", True,
    "O título veio na Argentina, com vitória sobre a Rússia na final; depois o Brasil foi campeão também em 2006 e 2010.",
    "Federação Internacional de Vôlei (FIVB) – Campeonato Mundial", br=True)
@@ -249,8 +249,8 @@ mc(T, "copas do mundo", 4, 16, "Qual atacante brasileiro marcou gols em todos os
    "FIFA – Copa do Mundo de 1970", br=True)
 mc(T, "copas do mundo", 4, 16, "Qual atacante francês marcou 13 gols numa única Copa do Mundo, a de 1958?",
    ["Just Fontaine", "Michel Platini", "Thierry Henry", "Zinedine Zidane"], "Just Fontaine",
-   "Os 13 gols de Just Fontaine em 1958 são o recorde de gols de um jogador numa só edição da Copa.",
-   "FIFA – verbete 'Just Fontaine'")
+   "Os 13 gols de Just Fontaine em 1958 são o recorde de gols de um jogador numa só edição da Copa; nem Mbappé, artilheiro de 2026 com 10 gols, chegou lá.",
+   "FIFA – verbete 'Just Fontaine'", ref="2026-10-13")
 mc(T, "esportes de inverno", 4, 16, "Em qual país foram realizados os primeiros Jogos Olímpicos de Inverno, em 1924?",
    ["França", "Suíça", "Noruega", "Áustria"], "França",
    "A primeira edição aconteceu em Chamonix, ao pé do Monte Branco, nos Alpes franceses.",
