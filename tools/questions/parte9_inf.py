@@ -44,7 +44,7 @@ mc(T, "animais dos filmes", 1, 6, "Em 'Madagascar', que animal é o Marty, melho
    "DreamWorks Animation – 'Madagascar' (2005)")
 mc(T, "Minions", 1, 6, "Qual fruta os Minions adoram?",
    ["Banana", "Maçã", "Uva", "Melancia"], "Banana",
-   "Os Minions são loucos por banana e até cantam uma música chamada 'Banana'.",
+   "Os Minions são loucos por banana e, em 'Meu Malvado Favorito 2', até cantam uma música chamada 'Banana'.",
    "Illumination – 'Meu Malvado Favorito' (2010)")
 mc(T, "brinquedos", 1, 6, "Em 'Toy Story', qual brinquedo tem olhos, nariz e boca que podem ser tirados e trocados de lugar?",
    ["Senhor Cabeça de Batata", "Rex", "Slinky", "Porquinho"], "Senhor Cabeça de Batata",
@@ -95,7 +95,7 @@ mc(T, "animação brasileira", 1, 8, "Em 'Rio 2', a família da ararinha Blu via
    ["Amazônia", "Mata Atlântica", "Caatinga", "Pantanal"], "Amazônia",
    "Em 'Rio 2', Blu, Jade e os filhos deixam o Rio de Janeiro e vão para a Floresta Amazônica.",
    "Blue Sky Studios – 'Rio 2' (2014)", br=True)
-mc(T, "Turma da Mônica", 1, 8, "No filme 'Turma da Mônica: Laços', a turma sai em busca de qual cachorro desaparecido?",
+mc(T, "Turma da Mônica", 2, 8, "No filme 'Turma da Mônica: Laços', a turma sai em busca de qual cachorro desaparecido?",
    ["Floquinho", "Bidu", "Mingau", "Sansão"], "Floquinho",
    "Mônica, Cebolinha, Cascão e Magali partem numa aventura para encontrar o cachorro do Cebolinha.",
    "AdoroCinema – 'Turma da Mônica: Laços' (2019)", br=True)
@@ -202,7 +202,7 @@ tf(T, "sequências", 3, 12, "'Moana 2' foi lançado antes de 'Frozen II'.", Fals
    "'Frozen II' estreou em 2019 e 'Moana 2' só chegou aos cinemas em 2024.",
    "Disney – lançamentos de 2019 e 2024")
 tf(T, "clássicos da Disney", 3, 12, "'O Rei Leão', de 1994, foi feito todo em computação gráfica.", False,
-   "O filme de 1994 é uma animação desenhada à mão; a versão de 2019 é que foi toda feita em computador.",
+   "O filme de 1994 é uma animação desenhada à mão, com computador usado só em poucas cenas, como a debandada dos gnus; a versão de 2019 é que foi feita em computação gráfica.",
    "Enciclopédia Britannica – verbete 'The Lion King'")
 mc(T, "músicas dos filmes", 3, 12, "Em 'O Rei Leão', qual é o título em português da canção de abertura, quando Simba é apresentado aos animais?",
    ["Ciclo sem Fim", "Hakuna Matata", "Aqui no Mar", "Um Mundo Ideal"], "Ciclo sem Fim",
@@ -210,7 +210,7 @@ mc(T, "músicas dos filmes", 3, 12, "Em 'O Rei Leão', qual é o título em port
    "Disney – 'O Rei Leão' (1994)")
 mc(T, "personagens", 3, 12, "Em 'A Bela e a Fera', qual personagem encantada é um bule de chá?",
    ["Madame Samovar", "Lumière", "Zip", "Gaston"], "Madame Samovar",
-   "Madame Samovar é a bule bondosa, mãe da xicarazinha Zip.",
+   "Madame Samovar é um bule bondoso, mãe da xicarazinha Zip.",
    "Disney – 'A Bela e a Fera' (1991)")
 mc(T, "lugares", 3, 12, "Em 'Como Treinar o Seu Dragão', qual é o nome da ilha viking onde Soluço vive?",
    ["Berk", "Asgard", "Valhala", "Midgard"], "Berk",

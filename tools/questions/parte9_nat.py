@@ -86,14 +86,14 @@ mc(T, "fenômenos naturais", 1, 8, "Como se chama a montanha que pode soltar lav
    "A lava é a rocha derretida que vem do interior da Terra e sai pela boca do vulcão.",
    "Serviço Geológico do Brasil (SGB)")
 tf(T, "aracnídeos", 1, 8, "As aranhas produzem fios de seda para fazer suas teias.", True,
-   "A seda sai de glândulas na ponta do abdome da aranha e é muito resistente para o seu tamanho.",
+   "Todas as aranhas produzem seda, que sai de glândulas na ponta do abdome; muitas a usam para tecer teias, e o fio é muito resistente para o seu tamanho.",
    "Enciclopédia Britannica – verbete 'spider'")
 mc(T, "plantas", 1, 8, "Como se chama a parte da planta que sustenta as folhas e as flores e, nas árvores, forma o tronco?",
    ["Caule", "Raiz", "Fruto", "Pétala"], "Caule",
    "O caule sustenta a planta e leva a água e os nutrientes da raiz até as folhas.",
    "Enciclopédia Britannica – verbete 'stem'")
-tf(T, "mamíferos", 1, 8, "A baleia respira por um buraco no alto da cabeça.", True,
-   "Esse buraco é o espiráculo; quando a baleia solta o ar, forma aquele jato que vemos de longe.",
+tf(T, "mamíferos", 1, 8, "A baleia respira o ar por uma abertura no alto da cabeça.", True,
+   "Essa abertura é o espiráculo; as baleias com barbas, como a jubarte, têm dois. Quando a baleia solta o ar, forma aquele jato que vemos de longe.",
    "Enciclopédia Britannica – verbete 'whale'")
 mc(T, "répteis", 1, 8, "Qual destes animais troca a pele inteira de tempos em tempos e deixa para trás uma pele vazia?",
    ["Cobra", "Coelho", "Tatu", "Lesma"], "Cobra",
@@ -171,7 +171,7 @@ op(T, "insetos", 2, 10, "Em quantas partes se divide o corpo de um inseto?", "3"
    "Enciclopédia Britannica – verbete 'insect'")
 mc(T, "biomas", 2, 12, "Qual bioma brasileiro tem árvores de troncos tortos e casca grossa, que ajudam a resistir ao fogo?",
    ["Cerrado", "Pampa", "Pantanal", "Amazônia"], "Cerrado",
-   "A casca grossa protege as árvores do Cerrado das queimadas naturais que acontecem na época seca.",
+   "A casca grossa protege as árvores do Cerrado do fogo, que faz parte da história natural desse bioma há milhares de anos.",
    "Embrapa Cerrados", br=True)
 tf(T, "peixes", 2, 12, "O tubarão-baleia caça focas e outros animais grandes.", False,
    "Apesar do tamanho, o tubarão-baleia se alimenta filtrando da água o plâncton e peixes pequenos.",
@@ -202,7 +202,7 @@ op(T, "plantas", 2, 10, "Como se chama o processo em que as plantas usam a luz d
 # =========================================================== DIFÍCEIS
 mc(T, "fauna brasileira", 3, 12, "Qual macaco brasileiro é conhecido por usar pedras como martelo para quebrar cocos e sementes duras?",
    ["Macaco-prego", "Bugio", "Muriqui", "Sagui"], "Macaco-prego",
-   "Na Serra da Capivara, no Piauí, pesquisadores encontraram ferramentas de pedra usadas por macacos-prego há centenas de anos.",
+   "Na Serra da Capivara, no Piauí, pesquisadores encontraram ferramentas de pedra usadas por macacos-prego há cerca de 3 mil anos.",
    "Enciclopédia Britannica – verbete 'capuchin monkey'", br=True)
 mc(T, "aves", 3, 12, "Qual ave é a mais rápida do mundo quando mergulha para caçar?",
    ["Falcão-peregrino", "Águia-careca", "Andorinha", "Avestruz"], "Falcão-peregrino",
@@ -237,12 +237,12 @@ tf(T, "mamíferos", 3, 14, "A equidna, assim como o ornitorrinco, é um mamífer
    "Enciclopédia Britannica – verbete 'monotreme'")
 mc(T, "peixes", 3, 12, "Qual peixe da Amazônia é famoso por dar fortes choques elétricos?",
    ["Poraquê", "Pirarucu", "Tambaqui", "Piranha"], "Poraquê",
-   "O poraquê, também chamado de enguia-elétrica, solta descargas de centenas de volts para caçar e se defender.",
+   "O poraquê, chamado em outros países de enguia-elétrica, embora não seja uma enguia de verdade, solta descargas de centenas de volts para caçar e se defender.",
    "Enciclopédia Britannica – verbete 'electric eel'", br=True)
 tf(T, "fauna brasileira", 3, 12, "O tamanduá-bandeira não tem dentes.", True,
    "O tamanduá-bandeira não tem dentes: ele lambe formigas e cupins com a língua pegajosa e os engole inteiros.",
    "ICMBio", br=True)
-op(T, "plantas", 3, 12, "Como se chama o momento em que a semente começa a brotar e dá origem a uma nova planta?",
+op(T, "plantas", 2, 10, "Como se chama o momento em que a semente começa a brotar e dá origem a uma nova planta?",
    "Germinação", ["germinação", "germinacao"],
    "Para germinar, a semente precisa de água, ar e temperatura adequada.",
    "Embrapa")
@@ -267,7 +267,7 @@ mc(T, "plantas", 4, 14, "Como as samambaias se reproduzem, já que não produzem
 mc(T, "árvores brasileiras", 4, 16, "A madeira de qual árvore brasileira ameaçada é considerada a melhor para fazer arcos de violino?",
    ["Pau-brasil", "Mogno", "Jacarandá", "Cedro"], "Pau-brasil",
    "Fora do Brasil, o pau-brasil é conhecido como 'pernambuco', a madeira preferida dos fabricantes de arcos desde o século XVIII.",
-   "Enciclopédia Britannica – verbete 'brazilwood'", br=True)
+   "Enciclopédia Britannica – verbete 'brazilwood'", br=True, ref="2026-10-13")
 mc(T, "répteis", 4, 16, "Qual destes animais é o parente vivo mais próximo das aves?",
    ["Crocodilo", "Lagarto", "Tartaruga", "Cobra"], "Crocodilo",
    "Aves e crocodilos descendem de um mesmo grupo de répteis antigos, o mesmo que deu origem aos dinossauros.",

@@ -33,7 +33,7 @@ mc(T, "medidas", 1, 6, "Qual aparelho mostra quantos quilos uma pessoa pesa?",
    ["Balança", "Régua", "Bússola", "Relógio"], "Balança",
    "A balança mede a massa, que no dia a dia chamamos de peso, em quilogramas.",
    "Inmetro – Unidades de medida")
-mc(T, "luz", 1, 6, "Qual destes objetos usamos para ver bem grandes coisas pequenas, como uma formiga?",
+mc(T, "luz", 1, 6, "Qual destes objetos usamos para ver bem maiores coisas pequenas, como uma formiga?",
    ["Lupa", "Espelho", "Peneira", "Régua"], "Lupa",
    "A lupa tem uma lente que aumenta a imagem do que olhamos de perto.",
    "Enciclopédia Britannica – verbete 'Magnifying glass'")
@@ -44,7 +44,7 @@ mc(T, "forças", 1, 6, "O que sentimos quando esfregamos as mãos uma na outra b
    "Enciclopédia Britannica – verbete 'Friction'")
 op(T, "luz", 1, 6, "Como se chama o arco colorido que aparece no céu quando faz sol e chove ao mesmo tempo?",
    "Arco-íris", ["arco-íris", "arco-iris", "arco íris", "arco iris"],
-   "A luz do sol se divide em cores ao atravessar as gotas de chuva.",
+   "A luz do sol se divide em cores ao entrar nas gotas de chuva, refletir dentro delas e sair de volta.",
    "Enciclopédia Britannica – verbete 'Rainbow'")
 mc(T, "eletricidade", 1, 7, "Qual destes materiais cobre os fios elétricos para proteger contra choques?",
    ["Plástico", "Cobre", "Ferro", "Alumínio"], "Plástico",
@@ -54,7 +54,7 @@ mc(T, "misturas", 1, 7, "Quando mexemos açúcar num copo de água até ele sumi
    ["Dissolveu-se", "Evaporou", "Congelou", "Derreteu"], "Dissolveu-se",
    "O açúcar não derrete: ele se espalha entre as partículas de água, formando uma mistura doce.",
    "Enciclopédia Britannica – verbete 'Solution'", syn=("dissolveu", "se dissolveu"))
-tf(T, "flutuação", 1, 7, "Uma moeda de metal colocada numa bacia com água fica boiando.", False,
+tf(T, "flutuação", 1, 7, "Uma moeda de metal jogada numa bacia com água fica boiando.", False,
    "A moeda é mais densa que a água e por isso afunda.",
    "Enciclopédia Britannica – verbete 'Buoyancy'")
 mc(T, "luz", 1, 7, "Qual destes produz a própria luz?",
@@ -79,7 +79,7 @@ mc(T, "química da cozinha", 1, 8, "O que acontece quando misturamos vinagre com
 mc(T, "calor", 1, 8, "Para que serve uma garrafa térmica?",
    ["Manter a bebida quente ou fria por mais tempo", "Ferver a água sozinha", "Congelar a bebida",
     "Adoçar a bebida"], "Manter a bebida quente ou fria por mais tempo",
-   "Suas paredes duplas, com pouco ar entre elas, dificultam a passagem do calor.",
+   "Ela tem paredes duplas, quase sem ar entre elas, que dificultam a passagem do calor.",
    "Enciclopédia Britannica – verbete 'Vacuum flask'")
 mc(T, "materiais", 1, 8, "O papel é feito principalmente de fibras de qual material?",
    ["Madeira", "Plástico", "Areia", "Pedra"], "Madeira",
@@ -89,21 +89,21 @@ mc(T, "energia", 1, 8, "Qual destes meios de transporte usa a força do vento pa
    ["Barco a vela", "Bicicleta", "Trem elétrico", "Carro a gasolina"], "Barco a vela",
    "A vela recebe o empurrão do vento, que movimenta o barco sem precisar de motor.",
    "Enciclopédia Britannica – verbete 'Sailing'")
-mc(T, "energia", 1, 9, "Qual tipo de usina usa a força da água dos rios para gerar eletricidade?",
+mc(T, "energia", 1, 9, "Nas barragens, a queda da água represada gira turbinas. Que usina é essa?",
    ["Hidrelétrica", "Eólica", "Solar", "Nuclear"], "Hidrelétrica",
    "As hidrelétricas são a principal fonte de eletricidade do Brasil, país cheio de rios caudalosos.",
    "Empresa de Pesquisa Energética – Matriz Elétrica Brasileira", br=True, ref="2026-10-13")
 mc(T, "energia", 1, 9, "De qual planta é feita a maior parte do etanol usado como combustível no Brasil?",
    ["Cana-de-açúcar", "Mandioca", "Soja", "Café"], "Cana-de-açúcar",
    "O caldo da cana é fermentado e depois destilado para produzir o etanol que abastece os carros.",
-   "Embrapa – Agroenergia", br=True)
+   "Embrapa – Agroenergia", br=True, ref="2026-10-13")
 op(T, "magnetismo", 1, 9, "Como se chamam as duas pontas de um ímã, onde a força de atração é mais forte?",
    "Polos", ["polos", "polo", "polo norte e polo sul", "polos norte e sul"],
    "Todo ímã tem um polo norte e um polo sul, e se for partido ao meio cada pedaço ganha os dois polos.",
    "Enciclopédia Britannica – verbete 'Magnet'")
-tf(T, "segurança elétrica", 1, 9, "Durante uma tempestade com raios, ficar debaixo de uma árvore sozinha no campo é uma boa forma de se proteger.",
+tf(T, "segurança elétrica", 1, 9, "Durante uma tempestade com raios, ficar debaixo de uma árvore isolada no meio do campo é uma boa forma de se proteger.",
    False,
-   "Árvores isoladas atraem raios; o mais seguro é se abrigar dentro de casas ou de carros fechados.",
+   "Árvores isoladas são alvos comuns de raios; o mais seguro é se abrigar dentro de casas ou de carros fechados.",
    "INPE – Grupo de Eletricidade Atmosférica (ELAT)")
 mc(T, "eletricidade", 1, 9, "Por que o cabelo fica arrepiado e gruda num balão de festa esfregado nele?",
    ["Por causa da eletricidade estática", "Por causa do vento", "Por causa da gravidade",
@@ -134,7 +134,7 @@ op(T, "luz", 2, 10, "Qual peça de vidro em forma de triângulo separa a luz bra
    "Enciclopédia Britannica – verbete 'Prism'")
 mc(T, "forças", 2, 10, "Qual força faz uma bola rolando na grama ir parando aos poucos?",
    ["Atrito", "Magnetismo", "Eletricidade", "Empuxo"], "Atrito",
-   "O atrito acontece quando duas superfícies se esfregam e sempre atrapalha o movimento.",
+   "O atrito entre a bola e a grama se opõe ao movimento e vai freando a bola até ela parar.",
    "Enciclopédia Britannica – verbete 'Friction'")
 tf(T, "flutuação", 2, 10, "É mais fácil boiar na água do mar do que na água de uma piscina.", True,
    "O sal deixa a água do mar mais densa, e ela empurra o corpo para cima com mais força.",
@@ -147,7 +147,7 @@ mc(T, "eletricidade", 2, 10, "Para uma lâmpada ligada a uma pilha acender, como
    "A corrente só passa num circuito fechado, quando os fios formam um caminho completo.",
    "Enciclopédia Britannica – verbete 'Electric circuit'")
 tf(T, "magnetismo", 2, 10, "Um ímã comum atrai as latinhas de alumínio.", False,
-   "O alumínio não é atraído por ímãs comuns; ferro, níquel e cobalto são os metais atraídos.",
+   "O alumínio não é atraído por ímãs comuns; os principais metais atraídos são ferro, níquel e cobalto.",
    "Enciclopédia Britannica – verbete 'Ferromagnetism'")
 mc(T, "luz", 2, 10, "Qual cor aparece na parte de cima, por fora, de um arco-íris comum?",
    ["Vermelho", "Violeta", "Verde", "Azul"], "Vermelho",
@@ -172,7 +172,7 @@ mc(T, "calor", 2, 10, "Por que as roupas de lã nos deixam aquecidos no frio?",
    "Enciclopédia Britannica – verbete 'Thermal insulation'")
 mc(T, "química da cozinha", 2, 12, "O suco de limão e o vinagre são substâncias de que tipo?",
    ["Ácidas", "Básicas", "Neutras", "Gasosas"], "Ácidas",
-   "Os ácidos têm gosto azedo; o vinagre, por exemplo, tem ácido acético.",
+   "Os ácidos têm gosto azedo: o limão tem ácido cítrico e o vinagre tem ácido acético.",
    "Enciclopédia Britannica – verbete 'Acid'")
 mc(T, "medidas", 2, 12, "Qual é a unidade básica de massa no Sistema Internacional de Unidades?",
    ["Quilograma", "Grama", "Libra", "Tonelada"], "Quilograma",
@@ -190,24 +190,24 @@ mc(T, "eletricidade", 2, 12, "Qual peça do quadro de luz desliga a energia sozi
    "Enciclopédia Britannica – verbete 'Circuit breaker'")
 mc(T, "cientistas", 2, 12, "Qual processo, que aquece o leite para eliminar micróbios, recebeu o nome de um cientista francês?",
    ["Pasteurização", "Fermentação", "Destilação", "Evaporação"], "Pasteurização",
-   "O nome homenageia Louis Pasteur, que mostrou que o aquecimento controlado mata microrganismos.",
+   "O nome homenageia Louis Pasteur, que mostrou que um aquecimento moderado elimina a maior parte dos micróbios que estragam os alimentos.",
    "Enciclopédia Britannica – verbete 'Pasteurization'")
 mc(T, "método científico", 2, 12, "No método científico, como se chama a explicação provável que o cientista testa com experimentos?",
    ["Hipótese", "Conclusão", "Observação", "Tabela"], "Hipótese",
    "Se os experimentos não confirmarem a hipótese, o cientista a corrige ou cria outra.",
    "Enciclopédia Britannica – verbete 'Scientific method'")
-mc(T, "recursos naturais", 2, 12, "O pré-sal é uma camada de rocha no fundo do mar com grandes reservas de qual recurso?",
+mc(T, "recursos naturais", 2, 12, "O pré-sal é uma camada de rocha bem abaixo do fundo do mar com grandes reservas de qual recurso?",
    ["Petróleo", "Ouro", "Carvão", "Água doce"], "Petróleo",
    "As reservas do pré-sal ficam no litoral do Sudeste, a vários quilômetros de profundidade.",
    "Petrobras – Pré-sal", br=True)
 op(T, "estados físicos", 2, 12, "Qual é o nome científico do derretimento, a passagem do estado sólido para o líquido?",
    "Fusão", ["fusão", "fusao"],
-   "A água pura, por exemplo, passa por fusão a zero grau Celsius ao nível do mar.",
+   "O gelo, por exemplo, passa por fusão a zero grau Celsius e vira água líquida.",
    "Enciclopédia Britannica – verbete 'Melting'")
 
 # =========================================================== DIFÍCEIS
-tf(T, "eletricidade", 3, 12, "O Brasil é o país com o maior número de raios do mundo.", True,
-   "Segundo o INPE, dezenas de milhões de raios atingem o território brasileiro todos os anos.",
+tf(T, "eletricidade", 3, 12, "Segundo o INPE, o Brasil é o país com o maior número de raios do mundo.", True,
+   "Pelos dados do INPE, dezenas de milhões de raios atingem o território brasileiro todos os anos.",
    "INPE – Grupo de Eletricidade Atmosférica (ELAT)", br=True, ref="2026-10-13")
 op(T, "forças", 3, 12, "Como se chama a força que a água faz para cima e ajuda os objetos a flutuar?",
    "Empuxo", ["empuxo", "força de empuxo"],
@@ -217,12 +217,12 @@ tf(T, "luz", 3, 12, "Para ver um arco-íris, a pessoa precisa estar de costas pa
    "O arco-íris se forma no lado oposto ao Sol, porque as gotas devolvem a luz na direção de quem olha.",
    "Enciclopédia Britannica – verbete 'Rainbow'")
 tf(T, "estados físicos", 3, 12, "A água salgada congela a uma temperatura mais alta do que a água doce.", False,
-   "O sal abaixa o ponto de congelamento: a água do mar só congela abaixo de zero grau.",
+   "O sal abaixa o ponto de congelamento: a água do mar só congela por volta de dois graus negativos.",
    "Enciclopédia Britannica – verbete 'Seawater'")
 mc(T, "energia", 3, 12, "Em qual município do Rio de Janeiro ficam as usinas nucleares brasileiras?",
    ["Angra dos Reis", "Paraty", "Macaé", "Niterói"], "Angra dos Reis",
    "A Central Nuclear Almirante Álvaro Alberto reúne as usinas Angra 1 e Angra 2.",
-   "Eletronuclear – Institucional", br=True)
+   "Eletronuclear – Institucional", br=True, ref="2026-10-13")
 tf(T, "calor", 3, 14, "No alto de montanhas muito altas, a água ferve a uma temperatura menor que cem graus Celsius.", True,
    "Com menos pressão do ar, a água precisa de menos calor para ferver.",
    "Enciclopédia Britannica – verbete 'Boiling point'")
@@ -273,5 +273,5 @@ mc(T, "pesquisa brasileira", 4, 16, "Qual é o nome do acelerador de partículas
    "O Sirius, do Centro Nacional de Pesquisa em Energia e Materiais, produz uma luz potente que revela a estrutura dos materiais.",
    "CNPEM – Sirius", br=True)
 tf(T, "cientistas", 4, 16, "Albert Einstein ganhou o Prêmio Nobel de Física por causa da teoria da relatividade.", False,
-   "O Nobel de 1921 foi dado a Einstein por explicar o efeito fotoelétrico, não pela relatividade.",
+   "O Nobel de Física de 1921 foi dado a Einstein por explicar o efeito fotoelétrico, não pela relatividade.",
    "Nobel Prize – Albert Einstein, Facts")

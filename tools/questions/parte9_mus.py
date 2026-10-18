@@ -6,22 +6,22 @@ T = "mus"
 # ================================================== FÁCEIS
 mc(T, "músicas infantis", 1, 6, "Na música 'A Dona Aranha', o que derrubou a aranha quando ela subia pela parede?",
    ["A chuva", "O vento", "O gato", "A vassoura"], "A chuva",
-   "A letra diz: 'A Dona Aranha subiu pela parede, veio a chuva forte e a derrubou'.",
-   "Câmara Cascudo – Dicionário do Folclore Brasileiro")
+   "A letra diz: 'A Dona Aranha subiu pela parede, veio a chuva forte e a derrubou'. É a versão brasileira da cantiga inglesa 'Itsy Bitsy Spider'.",
+   "Cancioneiro infantil tradicional (domínio público)")
 mc(T, "músicas infantis", 1, 6, "Na música 'Meu pintinho amarelinho', onde o pintinho cabe?",
    ["Na minha mão", "No meu bolso", "No meu chapéu", "Na caixinha"], "Na minha mão",
    "A canção diz: 'Meu pintinho amarelinho cabe aqui na minha mão'.",
-   "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
+   "Cancioneiro infantil tradicional (domínio público)", br=True)
 mc(T, "músicas infantis", 1, 6, "Na música 'Seu Lobato', o que Seu Lobato tinha, cheio de bichos?",
    ["Um sítio", "Um circo", "Um barco", "Um zoológico"], "Um sítio",
-   "A canção diz 'Seu Lobato tinha um sítio, ia, ia, ô' e vai apresentando os animais do lugar.",
-   "Câmara Cascudo – Dicionário do Folclore Brasileiro")
+   "A canção diz 'Seu Lobato tinha um sítio, ia, ia, ô' e vai apresentando os animais do lugar. É a versão brasileira de 'Old MacDonald Had a Farm'.",
+   "Cancioneiro infantil tradicional (domínio público)")
 mc(T, "canções famosas", 1, 6, "Na música de aniversário, depois de 'Parabéns a você, nesta data querida', o que se canta?",
    ["Muitas felicidades, muitos anos de vida", "Muitos presentes e doces na mesa",
     "Vamos todos cantar com alegria", "Um bolo bem grande para a festa"],
    "Muitas felicidades, muitos anos de vida",
-   "A melodia é a mesma de 'Happy Birthday to You', mas a letra brasileira é própria.",
-   "Câmara Cascudo – Dicionário do Folclore Brasileiro", br=True)
+   "A melodia é a mesma de 'Happy Birthday to You', mas a letra brasileira é própria: foi escrita por Bertha Celeste Homem de Mello e venceu um concurso da Rádio Tupi, em 1942.",
+   "Enciclopédia Britannica – verbete 'Happy Birthday to You'; Rádio Tupi", br=True)
 op(T, "canções", 1, 6, "Como se chama a música cantada baixinho para fazer o bebê dormir?", "Canção de ninar",
    ["canção de ninar", "cancao de ninar", "cantiga de ninar", "música de ninar", "musica de ninar", "acalanto",
     "cantiga de embalar"],
@@ -100,7 +100,7 @@ op(T, "gêneros", 1, 10, "O que quer dizer a sigla MPB?", "Música Popular Brasi
    "O nome se firmou nos anos 1960 para a música de artistas como Chico Buarque, Elis Regina e Milton Nascimento.",
    "Enciclopédia Itaú Cultural – verbete 'MPB'", br=True)
 tf(T, "música internacional", 1, 10, "Os Beatles eram uma banda dos Estados Unidos.", False,
-   "Os Beatles eram ingleses e começaram a carreira em Liverpool, nos anos 1960.",
+   "Os Beatles eram ingleses, de Liverpool, e fizeram sucesso no mundo todo nos anos 1960.",
    "Enciclopédia Britannica – verbete 'the Beatles'")
 tf(T, "música erudita", 1, 10, "Mozart começou a compor música quando ainda era criança.", True,
    "Wolfgang Amadeus Mozart escreveu suas primeiras peças por volta dos 5 anos de idade.",
@@ -130,8 +130,8 @@ mc(T, "teoria musical", 2, 12, "Qual aparelho faz um 'tique-taque' regular para 
    ["Metrônomo", "Diapasão", "Afinador", "Amplificador"], "Metrônomo",
    "O metrônomo pode ser ajustado para bater mais rápido ou mais devagar, conforme o andamento.",
    "Enciclopédia Britannica – verbete 'Metronome'")
-tf(T, "instrumentos", 2, 12, "O contrabaixo é o instrumento mais agudo da família do violino.", False,
-   "É o contrário: o contrabaixo é o maior e o mais grave da família; o violino é o mais agudo.",
+tf(T, "instrumentos", 2, 12, "Entre os instrumentos de cordas tocados com arco na orquestra, o contrabaixo é o mais agudo.", False,
+   "É o contrário: o contrabaixo é o maior e o mais grave desse grupo; o violino é o mais agudo.",
    "Enciclopédia Britannica – verbete 'Double bass'")
 tf(T, "instrumentos", 2, 12, "O ukulele, pequeno instrumento de quatro cordas, surgiu no Japão.", False,
    "O ukulele surgiu no Havaí, a partir de um instrumento levado por imigrantes da Ilha da Madeira, parente do cavaquinho.",
@@ -147,7 +147,7 @@ mc(T, "instrumentos brasileiros", 2, 12, "Qual instrumento de dez cordas, arruma
 mc(T, "artistas brasileiros", 2, 12, "Qual compositor brasileiro dá nome ao aeroporto internacional do Galeão, no Rio de Janeiro?",
    ["Tom Jobim", "Vinicius de Moraes", "Pixinguinha", "Cartola"], "Tom Jobim",
    "O aeroporto se chama oficialmente Aeroporto Internacional do Rio de Janeiro/Galeão – Antonio Carlos Jobim.",
-   "Infraero – Aeroporto Internacional do Rio de Janeiro/Galeão", br=True)
+   "Lei nº 9.778/1999", br=True)
 op(T, "música internacional", 2, 12, "De qual cidade inglesa eram os Beatles?", "Liverpool", ["liverpool"],
    "Liverpool é uma cidade portuária no noroeste da Inglaterra, onde a banda tocava no Cavern Club.",
    "Enciclopédia Britannica – verbete 'the Beatles'")
@@ -173,7 +173,7 @@ mc(T, "artistas brasileiros", 2, 14, "Qual cantora formou o trio Tribalistas com
    ["Marisa Monte", "Ivete Sangalo", "Daniela Mercury", "Adriana Calcanhotto"], "Marisa Monte",
    "O primeiro disco dos Tribalistas, de 2002, trouxe o sucesso 'Já Sei Namorar'.",
    "Enciclopédia Itaú Cultural – verbete 'Marisa Monte'", br=True)
-mc(T, "artistas brasileiros", 2, 14, "Qual cantor baiano, pioneiro do rock no Brasil, gravou 'Maluco Beleza' e 'Metamorfose Ambulante'?",
+mc(T, "artistas brasileiros", 2, 14, "Qual cantor baiano, um dos pioneiros do rock no Brasil, gravou 'Maluco Beleza' e 'Metamorfose Ambulante'?",
    ["Raul Seixas", "Erasmo Carlos", "Lulu Santos", "Ney Matogrosso"], "Raul Seixas",
    "Raul Seixas nasceu em Salvador e é lembrado até hoje pelo grito 'Toca Raul!' nos shows.",
    "Enciclopédia Itaú Cultural – verbete 'Raul Seixas'", br=True)
@@ -248,7 +248,7 @@ mc(T, "instrumentos brasileiros", 3, 16, "Qual instrumento de oito cordas, em qu
 # ================================================== MUITO DIFÍCEIS
 mc(T, "samba", 4, 16, "Qual canção, registrada por Donga em 1916, é considerada o primeiro samba gravado?",
    ["Pelo Telefone", "Aquarela do Brasil", "Com Que Roupa?", "Carinhoso"], "Pelo Telefone",
-   "A gravação saiu em 1917 e ajudou a espalhar o nome 'samba' pelo país.",
+   "Registrada em nome de Donga e Mauro de Almeida, a música nasceu nas rodas da casa de Tia Ciata; a gravação saiu em 1917 e ajudou a espalhar o nome 'samba' pelo país.",
    "Enciclopédia Itaú Cultural – verbete 'Donga'", br=True)
 mc(T, "festivais", 4, 16, "Qual canção de Chico Buarque dividiu o primeiro lugar do festival da TV Record de 1966 com 'Disparada'?",
    ["A Banda", "Construção", "Roda Viva", "Apesar de Você"], "A Banda",
