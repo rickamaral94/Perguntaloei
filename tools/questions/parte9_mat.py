@@ -118,18 +118,10 @@ mc(T, "formas geométricas", 2, 10, "Como se chama o polígono que tem cinco lad
    ["Pentágono", "Hexágono", "Heptágono", "Octógono"], "Pentágono",
    "O prefixo grego 'penta' significa cinco, como em pentacampeão.",
    "Enciclopédia Britannica – verbete 'Pentagon'")
-mc(T, "multiplicação", 2, 10, "Qual é o triplo de doze?",
-   ["36", "24", "32", "48"], "36",
-   "O triplo é três vezes o número: três vezes doze dá trinta e seis.",
-   "Base Nacional Comum Curricular – Matemática, 4º ano")
 mc(T, "dinheiro", 2, 10, "Carla comprou um lanche de doze reais e um suco de sete reais e pagou com uma nota de vinte. Quanto recebeu de troco?",
    ["1 real", "2 reais", "3 reais", "8 reais"], "1 real",
    "Doze mais sete dá dezenove reais, e vinte menos dezenove deixa um real de troco.",
    "Base Nacional Comum Curricular – Matemática, 4º ano", syn=("um real",), br=True)
-mc(T, "dinheiro", 2, 10, "Quantas moedas de cinquenta centavos são necessárias para formar cinco reais?",
-   ["10", "5", "20", "50"], "10",
-   "Duas moedas de cinquenta centavos formam um real, então cinco reais precisam de dez moedas.",
-   "Banco Central do Brasil – Moedas do Real", br=True)
 mc(T, "dinheiro", 2, 9, "Qual destes valores NÃO existe como moeda do real?",
    ["30 centavos", "5 centavos", "10 centavos", "50 centavos"], "30 centavos",
    "As moedas do real são de um, cinco, dez, vinte e cinco e cinquenta centavos, além da de um real.",
@@ -144,18 +136,10 @@ mc(T, "frações", 2, 10, "Uma barra de chocolate tem doze quadradinhos. Quantos
    ["4", "3", "6", "9"], "4",
    "Um terço de doze é doze dividido por três, que dá quatro.",
    "Base Nacional Comum Curricular – Matemática, 4º ano")
-mc(T, "sequências", 2, 10, "Na sequência cem, noventa, oitenta, setenta, qual número vem depois?",
-   ["60", "50", "65", "69"], "60",
-   "A cada passo a sequência diminui dez, então depois de setenta vem sessenta.",
-   "Base Nacional Comum Curricular – Matemática, 3º ano")
 mc(T, "multiplicação", 2, 10, "Uma caixa tem seis fileiras com nove bombons em cada uma. Quantos bombons há na caixa?",
    ["54", "45", "56", "63"], "54",
    "Seis vezes nove é igual a cinquenta e quatro.",
    "Base Nacional Comum Curricular – Matemática, 4º ano")
-mc(T, "medidas de tempo", 2, 10, "Quantos dias há em três semanas?",
-   ["21", "18", "24", "30"], "21",
-   "Cada semana tem sete dias, e três vezes sete dá vinte e um.",
-   "Base Nacional Comum Curricular – Matemática, 3º ano")
 mc(T, "medidas de tempo", 2, 10, "Que horas serão quinze minutos depois das dez e cinquenta?",
    ["Onze e cinco", "Dez e cinco", "Onze e quinze", "Onze e meia"], "Onze e cinco",
    "Dez minutos levam às onze horas, e os cinco que faltam levam às onze e cinco.",
@@ -164,16 +148,9 @@ op(T, "multiplicação", 2, 10, "Uma aranha tem oito patas. Quantas patas têm, 
    ["24", "vinte e quatro"],
    "Três vezes oito é igual a vinte e quatro.",
    "Base Nacional Comum Curricular – Matemática, 3º ano")
-tf(T, "sólidos geométricos", 2, 10, "Um cilindro tem duas bases em forma de círculo.", True,
-   "O cilindro tem duas bases circulares iguais, ligadas por uma superfície curva.",
-   "Base Nacional Comum Curricular – Matemática, 5º ano")
 tf(T, "sólidos geométricos", 2, 10, "Uma esfera tem vértices e arestas.", False,
    "A esfera é totalmente arredondada e não tem nenhuma aresta nem vértice.",
    "Base Nacional Comum Curricular – Matemática, 5º ano")
-mc(T, "formas geométricas", 2, 10, "Dobrando uma folha quadrada ao meio, de uma ponta à ponta oposta, que figura se forma?",
-   ["Triângulo", "Retângulo", "Pentágono", "Losango"], "Triângulo",
-   "A dobra pela diagonal divide o quadrado em dois triângulos iguais.",
-   "Base Nacional Comum Curricular – Matemática, 4º ano")
 mc(T, "multiplicação", 2, 9, "Num estacionamento há três carros e cinco motos. Quantas rodas há ao todo?",
    ["22", "16", "20", "32"], "22",
    "Os carros somam doze rodas e as motos somam dez, num total de vinte e duas.",
@@ -182,10 +159,6 @@ mc(T, "problemas de tempo", 2, 10, "A Copa do Mundo de futebol acontece de quatr
    ["2022", "2020", "2021", "2016"], "2022",
    "Somando quatro anos a 2014 chega-se a 2018 e, depois, a 2022.",
    "FIFA – FIFA World Cup", br=True)
-mc(T, "problemas de tempo", 2, 10, "Brasília foi inaugurada em 1960. Quantos anos a cidade completou em 2010?",
-   ["50", "40", "60", "45"], "50",
-   "De 1960 a 2010 passaram-se cinquenta anos.",
-   "IBGE – Cidades", br=True)
 mc(T, "médias", 2, 12, "Um time fez dois gols no primeiro jogo, quatro no segundo e nenhum no terceiro. Qual foi a média de gols por jogo?",
    ["2", "3", "4", "6"], "2",
    "O total é seis gols em três jogos, e seis dividido por três dá dois.",
@@ -197,10 +170,6 @@ mc(T, "perímetro", 2, 12, "Qual é o perímetro de um quadrado com sete centím
 mc(T, "ângulos", 2, 12, "Como se chama o ângulo que mede menos de noventa graus?",
    ["Agudo", "Obtuso", "Reto", "Raso"], "Agudo",
    "Ângulos menores que o reto são agudos; os maiores que o reto e menores que o raso são obtusos.",
-   "Base Nacional Comum Curricular – Matemática, 6º ano")
-mc(T, "ângulos", 2, 12, "Quantos graus tem uma volta completa?",
-   ["360", "180", "90", "100"], "360",
-   "Uma volta inteira mede trezentos e sessenta graus; meia volta mede cento e oitenta.",
    "Base Nacional Comum Curricular – Matemática, 6º ano")
 mc(T, "porcentagem", 2, 12, "Num grupo de cinquenta crianças, vinte por cento gostam de jiló. Quantas crianças são?",
    ["10", "20", "5", "25"], "10",
@@ -214,10 +183,6 @@ mc(T, "formas geométricas", 2, 12, "Como se chama o ponto onde dois lados de um
    ["Vértice", "Aresta", "Diagonal", "Raio"], "Vértice",
    "Os vértices são os 'cantos' do polígono, onde um lado termina e outro começa.",
    "Base Nacional Comum Curricular – Matemática, 6º ano")
-mc(T, "medidas de tempo", 2, 12, "Quantos segundos há em um minuto e meio?",
-   ["90", "150", "80", "60"], "90",
-   "Um minuto tem sessenta segundos e meio minuto tem trinta, somando noventa.",
-   "Inmetro – Sistema Internacional de Unidades")
 mc(T, "números romanos", 2, 12, "Na numeração romana, qual letra vale mil?",
    ["M", "D", "C", "L"], "M",
    "Na numeração romana, M vale mil, D vale quinhentos, C vale cem e L vale cinquenta.",
@@ -268,47 +233,17 @@ mc(T, "matemáticos famosos", 3, 14, "Qual sábio grego calculou uma boa aproxim
    ["Arquimedes", "Euclides", "Pitágoras", "Tales"], "Arquimedes",
    "Arquimedes mostrou que pi fica entre três inteiros e dez setenta e um avos e três inteiros e um sétimo.",
    "Enciclopédia Britannica – verbete 'Archimedes'")
-mc(T, "curiosidades matemáticas", 3, 14, "O número pi é a divisão do comprimento de uma circunferência por qual outra medida dela?",
-   ["Diâmetro", "Raio", "Área", "Altura"], "Diâmetro",
-   "Em qualquer círculo, o contorno dividido pelo diâmetro dá sempre pi, cerca de três vírgula catorze.",
-   "Enciclopédia Britannica – verbete 'pi'")
-tf(T, "curiosidades matemáticas", 3, 14, "O número pi tem infinitas casas decimais que nunca se repetem num padrão.", True,
-   "Pi é um número irracional: suas casas decimais continuam para sempre sem formar repetição.",
-   "Enciclopédia Britannica – verbete 'pi'")
 tf(T, "par e ímpar", 3, 12, "Zero é um número par.", True,
    "Zero dividido por dois dá zero, sem resto, por isso ele é par.",
    "Enciclopédia Britannica – verbete 'parity'")
-mc(T, "divisibilidade", 3, 12, "Qual destes números pode ser dividido por três sem deixar resto?",
-   ["51", "52", "53", "55"], "51",
-   "Cinquenta e um é três vezes dezessete; um truque é ver que cinco mais um dá seis, que é múltiplo de três.",
-   "Base Nacional Comum Curricular – Matemática, 6º ano")
 mc(T, "problemas de idade", 3, 12, "Uma mãe tem trinta anos e o filho tem seis. Daqui a quantos anos a mãe terá o triplo da idade do filho?",
    ["6", "4", "8", "12"], "6",
    "Daqui a seis anos a mãe terá trinta e seis e o filho doze, e trinta e seis é o triplo de doze.",
    "Base Nacional Comum Curricular – Matemática, 7º ano")
-mc(T, "números", 3, 14, "Quantos números de dois algarismos existem, do dez ao noventa e nove?",
-   ["90", "89", "99", "100"], "90",
-   "De dez a noventa e nove são noventa números, pois noventa e nove menos dez mais um dá noventa.",
-   "Base Nacional Comum Curricular – Matemática, 6º ano")
-mc(T, "medidas de tempo", 3, 12, "Em um dia inteiro, quantas voltas completas dá o ponteiro das horas de um relógio comum?",
-   ["2", "1", "12", "24"], "2",
-   "O ponteiro das horas leva doze horas para dar uma volta, então dá duas voltas em vinte e quatro horas.",
-   "Observatório Nacional – Hora Legal Brasileira")
-mc(T, "números", 3, 12, "Como se chama o sistema de numeração que usamos hoje, com algarismos de zero a nove?",
-   ["Indo-arábico", "Romano", "Grego", "Egípcio"], "Indo-arábico",
-   "Os algarismos nasceram na Índia e chegaram à Europa por meio dos árabes, daí o nome.",
-   "Enciclopédia Britannica – verbete 'Hindu-Arabic numerals'")
 op(T, "medidas de tempo", 3, 12, "Quantos minutos há em um dia inteiro?", "1.440",
    ["1440", "1.440", "mil quatrocentos e quarenta"],
    "Vinte e quatro horas vezes sessenta minutos dá mil quatrocentos e quarenta minutos.",
    "Observatório Nacional – Hora Legal Brasileira")
-mc(T, "multiplicação", 3, 14, "Quanto é doze dividido por meio?",
-   ["24", "6", "12", "36"], "24",
-   "Dividir por meio é ver quantas metades cabem em doze: cabem vinte e quatro.",
-   "Base Nacional Comum Curricular – Matemática, 7º ano")
-tf(T, "formas geométricas", 3, 12, "O círculo é um polígono.", False,
-   "Polígonos são figuras formadas só por lados retos, e o círculo é contornado por uma linha curva.",
-   "Base Nacional Comum Curricular – Matemática, 6º ano")
 tf(T, "ângulos", 3, 12, "Um ângulo raso mede noventa graus.", False,
    "O ângulo raso mede cento e oitenta graus, como uma linha reta; o de noventa é o reto.",
    "Base Nacional Comum Curricular – Matemática, 6º ano")
@@ -329,10 +264,6 @@ mc(T, "raciocínio lógico", 4, 14, "Um caracol sobe três metros de um poço du
    ["8", "10", "7", "9"], "8",
    "Em sete dias ele avança sete metros e, no oitavo dia, sobe os três que faltam e chega à borda.",
    "Base Nacional Comum Curricular – Matemática, 7º ano")
-mc(T, "calendário", 4, 14, "Num mês de trinta dias, o dia primeiro caiu num domingo. Em que dia da semana cai o dia trinta?",
-   ["Segunda-feira", "Sábado", "Terça-feira", "Sexta-feira"], "Segunda-feira",
-   "Os dias um, oito, quinze, vinte e dois e vinte e nove são domingos, então o dia trinta é segunda-feira.",
-   "Base Nacional Comum Curricular – Matemática, 6º ano")
 op(T, "potências", 4, 14, "Qualquer número diferente de zero elevado a zero dá qual resultado?", "1",
    ["1", "um"],
    "Por definição, todo número diferente de zero elevado a zero é igual a um.",

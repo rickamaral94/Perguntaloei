@@ -37,7 +37,7 @@ tf(T, "continentes", 1, 8, "A Antártida é um continente quase todo coberto de 
    "Cerca de 98% da Antártida fica debaixo de uma enorme camada de gelo.",
    "Enciclopédia Britannica – verbete 'Antarctica'")
 op(T, "países", 1, 8, "Em qual país ficam as pirâmides de Gizé?", "Egito", ["egito"],
-   "As pirâmides de Gizé ficam ao lado da cidade do Cairo, no Egito.",
+   "As pirâmides de Gizé ficam bem perto da cidade do Cairo, a capital do Egito.",
    "Enciclopédia Britannica – verbete 'Pyramids of Giza'")
 mc(T, "continentes", 1, 8, "Qual destes países fica na Europa?",
    ["Itália", "Egito", "Peru", "Japão"], "Itália",
@@ -45,16 +45,16 @@ mc(T, "continentes", 1, 8, "Qual destes países fica na Europa?",
    "Enciclopédia Britannica – verbete 'Italy'")
 
 # ======================================================== FÁCEIS (idade 9–10)
-mc(T, "línguas", 1, 8, "Qual é a língua oficial da Argentina?",
+mc(T, "línguas", 1, 8, "Qual é a língua falada pela maioria das pessoas na Argentina?",
    ["Espanhol", "Português", "Inglês", "Francês"], "Espanhol",
-   "A Argentina foi colônia da Espanha, por isso fala espanhol.",
+   "A Argentina foi colônia da Espanha, por isso quase todo mundo lá fala espanhol.",
    "Enciclopédia Britannica – verbete 'Argentina'")
 op(T, "cidades do mundo", 1, 9, "Em qual país fica a cidade de Nova York?", "Estados Unidos",
    ["estados unidos", "eua", "estados unidos da américa", "estados unidos da america"],
    "Nova York é a cidade mais populosa dos Estados Unidos.",
    "Enciclopédia Britannica – verbete 'New York City'")
 mc(T, "oceanos", 1, 9, "Qual oceano fica entre a América e a Europa?",
-   ["Atlântico", "Pacífico", "Índico", "Glacial Ártico"], "Atlântico",
+   ["Atlântico", "Pacífico", "Índico", "Glacial Antártico"], "Atlântico",
    "O oceano Atlântico separa as Américas, a oeste, da Europa e da África, a leste.",
    "Enciclopédia Britannica – verbete 'Atlantic Ocean'")
 mc(T, "mapas", 1, 9, "Como se chama a parte do mapa que explica o significado de cada cor e símbolo?",
@@ -220,7 +220,7 @@ op(T, "rios", 3, 14, "Como se chama o fenômeno de ondas que sobem a foz de um r
    "O nome vem do tupi e lembra o estrondo das águas quando a onda avança rio acima.",
    "Enciclopédia Britannica – verbete 'Bore'", br=True)
 tf(T, "rios", 3, 14, "O rio Amazonas nasce no Brasil.", False,
-   "O Amazonas nasce na cordilheira dos Andes, no Peru, e entra no Brasil já como um rio caudaloso.",
+   "O Amazonas nasce na cordilheira dos Andes, no Peru (o ponto exato da nascente ainda é debatido), e entra no Brasil já como um rio caudaloso.",
    "Enciclopédia Britannica – verbete 'Amazon River'", br=True)
 mc(T, "rios", 3, 14, "Qual é o rio mais longo da Ásia?",
    ["Yangtzé", "Ganges", "Mekong", "Eufrates"], "Yangtzé",
