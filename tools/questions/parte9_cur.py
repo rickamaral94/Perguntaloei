@@ -26,7 +26,7 @@ mc(T, "datas comemorativas", 1, 6, "Na tradição da Páscoa, qual animal entreg
    "Enciclopédia Britannica – verbete 'Easter Bunny'")
 mc(T, "datas comemorativas", 1, 6, "Quais animais puxam o trenó do Papai Noel?",
    ["Renas", "Cavalos", "Cachorros", "Bois"], "Renas",
-   "Renas são parentes dos cervos e vivem em lugares muito frios, como a Lapônia, no norte da Europa.",
+   "Renas são um tipo de cervo e vivem em lugares muito frios, como a Lapônia, no norte da Europa.",
    "Enciclopédia Britannica – verbete 'Santa Claus'")
 tf(T, "datas comemorativas", 1, 6, "Na festa de aniversário, é tradição o aniversariante assoprar as velinhas do bolo.", True,
    "Depois do 'Parabéns', o aniversariante apaga as velinhas com um sopro, e muita gente faz um pedido em silêncio.",
@@ -118,7 +118,7 @@ mc(T, "calendário", 2, 10, "Quantos meses do ano têm 31 dias?",
    ["7", "6", "5", "8"], "7",
    "Têm 31 dias janeiro, março, maio, julho, agosto, outubro e dezembro.",
    "Observatório Nacional – Calendário")
-op(T, "calendário", 2, 10, "Em qual dia e mês nasceu quem só tem aniversário 'de verdade' de quatro em quatro anos?",
+op(T, "calendário", 2, 10, "Em qual dia e mês nasceu quem geralmente só tem aniversário 'de verdade' de quatro em quatro anos?",
    "29 de fevereiro", ["29 de fevereiro", "vinte e nove de fevereiro", "29/02", "dia 29 de fevereiro"],
    "O dia 29 de fevereiro só existe nos anos bissextos, por isso quem nasce nele comemora em 28 de fevereiro ou 1º de março nos outros anos.",
    "Observatório Nacional – Ano bissexto")
@@ -150,7 +150,7 @@ mc(T, "números e contagens", 2, 12, "Quantas horas tem uma semana inteira?",
    "Observatório Nacional – Hora Legal Brasileira")
 mc(T, "datas comemorativas", 2, 12, "Em qual país a tradição da árvore de Natal enfeitada ganhou força antes de se espalhar pelo mundo?",
    ["Alemanha", "Brasil", "Egito", "México"], "Alemanha",
-   "O costume de enfeitar pinheiros no Natal surgiu na região da atual Alemanha e se espalhou a partir do século 19.",
+   "A árvore de Natal enfeitada, como conhecemos hoje, se firmou em regiões da atual Alemanha há uns 400 anos e se espalhou pelo mundo a partir do século 19.",
    "Enciclopédia Britannica – verbete 'Christmas tree'")
 op(T, "calendário", 2, 9, "Como se chama um período de quinze dias?",
    "Quinzena", ["quinzena", "uma quinzena"],
@@ -162,7 +162,7 @@ tf(T, "mitos populares", 2, 12, "Os vikings usavam capacetes com chifres nas bat
 mc(T, "dinheiro", 2, 10, "Qual animal aparece na nota de dois reais?",
    ["Tartaruga-marinha", "Garça", "Arara", "Mico-leão-dourado"], "Tartaruga-marinha",
    "Cada cédula do real traz um animal da fauna brasileira, e a de dois reais mostra a tartaruga-marinha.",
-   "Banco Central do Brasil – Cédulas do real", br=True)
+   "Banco Central do Brasil – Cédulas do real", br=True, ref="2026-10-13")
 tf(T, "monumentos", 2, 12, "A Estátua da Liberdade é verde porque foi pintada dessa cor.", False,
    "Ela é revestida de cobre, que tinha cor de moeda nova e ficou verde com o tempo por causa da oxidação, a chamada pátina.",
    "National Park Service – Statue of Liberty")
@@ -179,7 +179,7 @@ tf(T, "idiomas", 2, 10, "A Libras, língua de sinais usada por pessoas surdas no
    "Planalto – Lei nº 10.436/2002", br=True)
 mc(T, "idiomas", 2, 12, "Qual língua foi criada no século 19 para ser um idioma internacional fácil de aprender?",
    ["Esperanto", "Latim", "Sânscrito", "Tupi"], "Esperanto",
-   "O esperanto foi lançado em 1887 pelo médico polonês Ludwik Zamenhof.",
+   "O esperanto foi lançado em 1887 pelo médico Ludwik Zamenhof, que nasceu onde hoje é a Polônia.",
    "Enciclopédia Britannica – verbete 'Esperanto'")
 mc(T, "ilhas famosas", 2, 12, "A qual país pertence a Ilha de Páscoa, famosa pelas enormes estátuas de pedra chamadas moais?",
    ["Chile", "Peru", "México", "Nova Zelândia"], "Chile",
@@ -192,7 +192,7 @@ mc(T, "datas comemorativas", 2, 12, "A melodia do 'Parabéns a você' veio de um
    "Enciclopédia Britannica – verbete 'Happy Birthday to You'")
 mc(T, "profissões", 2, 12, "Como se chama o profissional que desenha mapas?",
    ["Cartógrafo", "Calígrafo", "Geólogo", "Arquiteto"], "Cartógrafo",
-   "A cartografia é a ciência de fazer mapas, e no Brasil o IBGE produz os mapas oficiais do país.",
+   "A cartografia é a ciência de fazer mapas; no Brasil, o IBGE é um dos órgãos que produzem os mapas oficiais.",
    "IBGE – Cartografia")
 mc(T, "documentos", 2, 12, "Quantos algarismos tem o número do CPF, contando os dois dígitos finais de verificação?",
    ["11", "8", "9", "13"], "11",
@@ -200,9 +200,9 @@ mc(T, "documentos", 2, 12, "Quantos algarismos tem o número do CPF, contando os
    "Receita Federal", br=True)
 
 # =========================================================== DIFÍCEIS
-mc(T, "objetos do dia a dia", 3, 12, "Na China antiga, as primeiras escovas de dentes com cerdas usavam pelos de qual animal?",
+mc(T, "objetos do dia a dia", 3, 12, "Na China, por volta do ano 1500, as primeiras escovas de dentes com cerdas usavam pelos de qual animal?",
    ["Porco", "Cavalo", "Coelho", "Ovelha"], "Porco",
-   "Por volta de 1498, os chineses prendiam pelos duros do pescoço de porcos num cabo de osso ou bambu.",
+   "Segundo a Biblioteca do Congresso dos EUA, em 1498 os chineses já prendiam pelos duros do pescoço de porcos num cabo de osso ou bambu.",
    "Biblioteca do Congresso dos EUA – Everyday Mysteries: 'Who invented the toothbrush?'")
 mc(T, "objetos do dia a dia", 3, 12, "Antes da borracha de apagar, o que as pessoas costumavam usar para apagar traços de lápis?",
    ["Miolo de pão", "Folha de alface", "Casca de banana", "Sabão"], "Miolo de pão",
@@ -240,12 +240,12 @@ mc(T, "datas comemorativas", 3, 12, "O Dia Nacional do Livro Infantil, em 18 de 
    ["Monteiro Lobato", "Ziraldo", "Ruth Rocha", "Cecília Meireles"], "Monteiro Lobato",
    "Monteiro Lobato, criador do Sítio do Picapau Amarelo, nasceu em 18 de abril de 1882, em Taubaté.",
    "Planalto – Lei nº 10.402/2002", br=True)
-tf(T, "museus", 3, 14, "O Museu Nacional, no Rio de Janeiro, funciona num palácio onde morou a família imperial brasileira.", True,
-   "O museu ocupa o Paço de São Cristóvão, na Quinta da Boa Vista, que foi residência de Dom Pedro I e Dom Pedro II.",
+tf(T, "museus", 3, 14, "O prédio do Museu Nacional, no Rio de Janeiro, é um palácio onde morou a família imperial brasileira.", True,
+   "O museu ocupa o Paço de São Cristóvão, na Quinta da Boa Vista, que foi residência de Dom João VI, Dom Pedro I e Dom Pedro II; o palácio foi atingido por um incêndio em 2018 e passa por reconstrução.",
    "Museu Nacional/UFRJ", br=True)
-op(T, "telefone", 3, 12, "Como se chama o código de dois algarismos discado antes do número para ligar para outra cidade do Brasil?",
+op(T, "telefone", 3, 12, "Como se chama o código de dois algarismos que indica a região de um telefone, como o 11 de São Paulo, usado nas ligações para outra cidade do Brasil?",
    "DDD", ["ddd", "código ddd", "código de área", "discagem direta a distância"],
-   "DDD quer dizer Discagem Direta a Distância; o de São Paulo capital, por exemplo, é 11.",
+   "DDD quer dizer Discagem Direta a Distância; o do Rio de Janeiro capital, por exemplo, é 21.",
    "Anatel – Códigos Nacionais", br=True)
 
 # =========================================================== MUITO DIFÍCEIS
@@ -259,7 +259,7 @@ mc(T, "bandeiras", 4, 14, "Segundo o Guinness, qual país tem a bandeira naciona
    "Guinness World Records – Oldest national flag", ref="2026-10-13")
 mc(T, "idiomas", 4, 16, "Qual bispo do século 6 é lembrado por dar aos dias da semana em português nomes como 'segunda-feira' e 'terça-feira'?",
    ["Martinho de Dume", "Santo Agostinho", "Padre Antônio Vieira", "José de Anchieta"], "Martinho de Dume",
-   "Ele propôs trocar os nomes ligados a deuses pagãos por 'feiras' numeradas, e por isso o português conta os dias da semana.",
+   "Ele defendeu trocar os nomes ligados a deuses pagãos pelas 'feiras' numeradas usadas pela Igreja, costume que o português adotou e que quase nenhuma outra língua seguiu.",
    "Ciberdúvidas da Língua Portuguesa – origem dos nomes dos dias da semana")
 tf(T, "calendário", 4, 14, "O ano de 1900 foi bissexto.", False,
    "Anos terminados em 00 só são bissextos se forem divisíveis por 400; por isso 2000 foi bissexto, mas 1900 não.",

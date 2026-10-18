@@ -12,7 +12,7 @@ mc(T, "filhotes", 1, 6, "Como se chama o filhote da galinha?",
    "O pintinho sai do ovo depois de uns 21 dias de choco e já nasce coberto de penugem.",
    "Embrapa – Criação de galinhas caipiras")
 op(T, "filhotes", 1, 7, "Como se chama o filhote da ovelha?", "Cordeiro",
-   ["cordeiro", "cordeirinho", "cordeira", "borrego", "borrega"],
+   ["cordeiro", "cordeirinho", "cordeira", "borrego", "borrega", "carneirinho"],
    "O cordeiro, também chamado de borrego, nasce coberto de lã e mama o leite da ovelha.",
    "Dicionário Houaiss – verbete 'cordeiro'")
 mc(T, "filhotes", 1, 7, "Como se chama o filhote do porco?",
