@@ -27,7 +27,7 @@ op(T, "números", 1, 6, "Na contagem, qual número fica entre o seis e o oito?",
    ["7", "sete"],
    "Contando seis, sete, oito, o sete fica no meio.",
    "Base Nacional Comum Curricular – Matemática, 1º ano")
-tf(T, "formas geométricas", 1, 7, "Um triângulo tem quatro vértices.", False,
+tf(T, "formas geométricas", 1, 7, "Um triângulo tem quatro pontas, ou vértices.", False,
    "O triângulo tem três lados e três vértices, que são as pontas onde os lados se encontram.",
    "Base Nacional Comum Curricular – Matemática, 2º ano")
 mc(T, "dobro e metade", 1, 7, "Marina tem três bonecas e sua prima tem o dobro. Quantas bonecas tem a prima?",
@@ -204,7 +204,7 @@ mc(T, "matemáticos famosos", 3, 14, "O Dia Nacional da Matemática, em 6 de mai
    ["Malba Tahan", "Monteiro Lobato", "Machado de Assis", "Ziraldo"], "Malba Tahan",
    "A Lei 12.835, de 2013, escolheu o dia em que nasceu Júlio César de Mello e Souza, o Malba Tahan.",
    "Lei nº 12.835/2013", br=True)
-mc(T, "matemáticos famosos", 3, 14, "Qual matemático brasileiro ganhou a Medalha Fields, o maior prêmio da matemática, em 2014?",
+mc(T, "matemáticos famosos", 3, 14, "Qual matemático brasileiro ganhou a Medalha Fields, um dos prêmios mais importantes da matemática, em 2014?",
    ["Artur Avila", "César Lattes", "Oswaldo Cruz", "Carlos Chagas"], "Artur Avila",
    "Artur Avila foi o primeiro latino-americano a receber a Medalha Fields.",
    "União Matemática Internacional – Fields Medal 2014", br=True)
@@ -223,7 +223,7 @@ mc(T, "dinheiro", 2, 9, "Qual é a cédula de maior valor do real?",
    "A nota de duzentos reais, com o lobo-guará, foi lançada em 2020.",
    "Banco Central do Brasil – Cédulas do Real", br=True, ref="2026-10-13")
 op(T, "sequências", 3, 14, "Qual matemático italiano dá nome à sequência um, um, dois, três, cinco, oito, treze?", "Fibonacci",
-   ["fibonacci", "leonardo fibonacci", "leonardo de pisa"],
+   ["fibonacci", "leonardo fibonacci", "leonardo de pisa", "leonardo pisano"],
    "Leonardo de Pisa, o Fibonacci, apresentou essa sequência em seu livro 'Liber Abaci', de 1202.",
    "Enciclopédia Britannica – verbete 'Fibonacci'")
 tf(T, "matemáticos famosos", 3, 14, "Hipátia de Alexandria foi uma matemática e filósofa da Antiguidade.", True,
@@ -260,9 +260,9 @@ mc(T, "raciocínio lógico", 4, 14, "Cinco pessoas se cumprimentam e cada uma ap
 tf(T, "números primos", 4, 16, "Existem infinitos números primos.", True,
    "Euclides demonstrou, há mais de dois mil anos, que a lista dos números primos nunca termina.",
    "Enciclopédia Britannica – verbete 'prime'")
-mc(T, "raciocínio lógico", 4, 14, "Um caracol sobe três metros de um poço durante o dia e escorrega dois à noite. Se o poço tem dez metros, em quantos dias ele chega à borda?",
+mc(T, "raciocínio lógico", 4, 14, "Um caracol está no fundo de um poço de dez metros. Durante o dia ele sobe três metros e, à noite, escorrega dois. Em quantos dias ele chega à borda?",
    ["8", "10", "7", "9"], "8",
-   "Em sete dias ele avança sete metros e, no oitavo dia, sobe os três que faltam e chega à borda.",
+   "Ao fim de sete dias e sete noites ele subiu sete metros e, no oitavo dia, sobe os três que faltam e chega à borda.",
    "Base Nacional Comum Curricular – Matemática, 7º ano")
 op(T, "potências", 4, 14, "Qualquer número diferente de zero elevado a zero dá qual resultado?", "1",
    ["1", "um"],

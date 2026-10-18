@@ -86,9 +86,9 @@ mc(T, "alfabeto", 1, 6, "Qual destes bichos tem o nome começando pela vogal O?"
    ["Onça", "Gato", "Rato", "Leão"], "Onça",
    "'Onça' começa com O, uma das cinco vogais: A, E, I, O e U.",
    GRAM)
-mc(T, "classes de palavras", 1, 9, "Na frase 'O menino chutou a bola', qual palavra é o verbo?",
-   ["Chutou", "Menino", "Bola", "O"], "Chutou",
-   "'Chutou' indica a ação feita pelo menino, por isso é o verbo da frase.",
+mc(T, "classes de palavras", 1, 9, "Na frase 'O menino chutou a bola', qual é a classe da palavra 'bola'?",
+   ["Substantivo", "Verbo", "Adjetivo", "Advérbio"], "Substantivo",
+   "'Bola' dá nome a um objeto, por isso é um substantivo; 'chutou' é o verbo da frase.",
    BECH)
 tf(T, "classes de palavras", 1, 9, "Na frase 'Ana come maçã', a palavra 'come' é um verbo.", True,
    "'Come' indica a ação que Ana realiza; é uma forma do verbo 'comer'.",
